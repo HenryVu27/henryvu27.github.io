@@ -22,67 +22,122 @@
                     <li><a href="#education">Education</a></li>
                     <li><a href="#tech-stack">Tech Stack</a></li>
                     <li><a href="#interests">Interests</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
+                <a class="resume-btn" href="ML_Resume_Online.pdf" target="_blank" rel="noopener">Resume</a>
             </div>
         </nav>
     </header>
 
     <main>
-        <section id="about" class="section">
-            <div class="container">
-                <h1>Henry Vu</h1>
-                <p class="subtitle">Computer Science Graduate Student & ML Researcher</p>
-                <div class="profile-image">
-                    <img src="assets/pp.jpg" alt="Henry Vu">
-                </div>
-                <p class="bio">
-                    A passionate computer scientist with expertise in machine learning, computer vision, and natural language processing.
-                    Currently pursuing M.Sc. in Computer Science at UT Dallas, focusing on Intelligent Systems.
-                </p>
-                <div class="contact-info">
-                    <p><i class="fas fa-phone"></i> 469-649-6967</p>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:Vuducdung28@gmail.com">Vuducdung28@gmail.com</a></p>
+        <section id="intro" class="section intro-section fade-in-section">
+            <div class="container intro-container left-intro">
+                <div class="intro-flex">
+                    <h1 class="big-intro">
+                        Hi, it's Henry <span class="wave" role="img" aria-label="waving hand">👋</span>
+                    </h1>
+                    <p class="intro-subtext">I'm a computer scientist and ML enthusiast passionate about building intelligent systems and impactful software.</p>
+                    <button class="contact-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Get in touch</button>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="section">
+        <section id="about" class="section about-section fade-in-section">
+            <div class="container about-container">
+                <div class="about-text">
+                    <div class="section-heading">
+                        <span class="section-number">01.</span>
+                        <h2>About Me</h2>
+                        <div class="section-line"></div>
+                    </div>
+                    <p>
+                        I'm Henry, a computer scientist passionate about machine learning, computer vision, and natural language processing. I enjoy building innovative solutions and exploring new technologies. Currently, I'm pursuing my M.Sc. in Computer Science at UT Dallas, focusing on Intelligent Systems.
+                    </p>
+                    <p>
+                        My experience spans research, teaching, and software engineering, with a strong foundation in both theory and practical application. I love collaborating on impactful projects and sharing knowledge with others.
+                    </p>
+                    <h3>Tech Stack</h3>
+                    <ul class="about-tech-list">
+                        <li>Python</li>
+                        <li>PyTorch</li>
+                        <li>TensorFlow</li>
+                        <li>scikit-learn</li>
+                        <li>HuggingFace</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <div class="profile-image">
+                        <div class="profile-shadow"></div>
+                        <img class="profile-pic" src="assets/pp_tinted.jpg" alt="Henry Vu" data-original="assets/pp.jpg" data-tinted="assets/pp_tinted.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section fade-in-section">
             <div class="container">
-                <h2>Professional Experience</h2>
+                <div class="section-heading">
+                    <span class="section-number">02.</span>
+                    <h2>Experience</h2>
+                    <div class="section-line"></div>
+                </div>
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <h3>Computer Vision Intern</h3>
-                            <p class="company">Thormed Innovation</p>
+                            <p class="company highlight">Thormed Innovation</p>
                             <p class="date">Feb 2025 - Present</p>
                             <ul>
-                                <li>Developed lightweight semantic segmentation models in LiteRT for efficient bladder volume calculation</li>
-                                <li>Fine-tuned pretrained U-Net and ViT-based architectures, achieving Dice ≥ 90% and Hausdorff Distance ≤ 10mm</li>
-                                <li>Leveraged Python and OpenCV for bladder ultrasound image processing and SAMUS model implementation</li>
-                                <li>Experimenting with CycleGAN and Diffusion-based models for synthetic ultrasound data generation</li>
+                                <li>Developed lightweight semantic segmentation models in <b>LiteRT</b> for efficient and automated bladder volume calculation.</li>
+                                <li>Fine-tuned pretrained <b>U-Net</b> and <b>ViT</b>-based architectures, achieving Dice <b>&ge; 90%</b> and Hausdorff Distance <b>&le; 10mm</b>.</li>
+                                <li>Performed model quantization and inference optimization to reduce model size and improve runtime efficiency, preserving up to <b>98%</b> of accuracy.</li>
+                                <li>Leveraged <b>Python</b> and <b>OpenCV</b> to extract bladder ultrasound images from video and applied the trained <b>SAMUS</b> model to generate segmentation masks, addressing medical data scarcity.</li>
+                                <li>Experimenting with <b>CycleGAN</b> and <b>Diffusion</b>-based models for synthetic ultrasound data generation.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
                             <h3>Teaching Assistant</h3>
-                            <p class="company">University of Texas at Dallas</p>
+                            <p class="company highlight">University of Texas at Dallas</p>
                             <p class="date">Jan 2025 - Present</p>
                             <ul>
-                                <li>Held weekly office hours and prepared seminar materials</li>
-                                <li>Mentored 100+ students in Advanced Algorithm and Data Structures</li>
+                                <li>Held weekly office hours, prepared seminar and exam materials, and graded coursework.</li>
+                                <li>Mentored <b>100+</b> students in Advanced Algorithm and Data Structures through technical and code reviews.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <h3>Undergraduate Researcher</h3>
-                            <p class="company">Alberta Machine Intelligence Institute (Amii)</p>
-                            <p class="date">Apr 2022 - May 2024</p>
+                            <h3>Undergraduate Research Assistant</h3>
+                            <p class="company highlight">System-driven Optimization & Decision Algorithms, University of Alberta</p>
+                            <p class="date">Dec 2023 - May 2024</p>
                             <ul>
-                                <li>Implemented online optimization algorithms using primal-dual framework</li>
-                                <li>Conducted research on multi-armed bandits and reinforcement learning</li>
-                                <li>Simulated various algorithms (UCB, Exp3, Thompson Sampling) on real-world data</li>
+                                <li><b>Reinforcement Learning</b>: Conducted a comprehensive survey on stochastic, adversarial, Markovian, and restless multi-armed bandits.</li>
+                                <li>Built simulations in <b>Python</b> to assess real-world performance of bandit algorithms such as<b>UCB</b>, <b>Exp3</b>, <b>Thompson Sampling</b> and <b>Gittins Index</b>.</li>
+                                <li>Supervised by <a href="https://xiaoqitan.org/" target="_blank"><b>Dr. Xiaoqi Tan</b></a>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Teaching Assistant</h3>
+                            <p class="company highlight">University of Alberta</p>
+                            <p class="date">Sep 2023 - May 2024</p>
+                            <ul>
+                                <li>Held weekly office hours, prepared seminar and exam materials, and graded coursework.</li>
+                                <li>Mentored <b>100+</b> students in Advanced Algorithm and Data Structures through technical and code reviews.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Undergraduate Researcher - Online Learning</h3>
+                            <p class="company highlight">Alberta Machine Intelligence Institute (Amii)</p>
+                            <p class="date">Apr 2022 - May 2023</p>
+                            <ul>
+                                <li><b>Online Learning</b>: Implemented algorithms for online optimization problems using the online <b>primal-dual</b> framework. 
+                                <li>Studied a new online learning framework that incorporates machine-learned predictions, extending beyond traditional worst-case analysis.</li>
                             </ul>
                         </div>
                     </div>
@@ -90,9 +145,13 @@
             </div>
         </section>
 
-        <section id="projects" class="section">
+        <section id="projects" class="section fade-in-section">
             <div class="container">
-                <h2>Selected Projects</h2>
+                <div class="section-heading">
+                    <span class="section-number">03.</span>
+                    <h2>Projects</h2>
+                    <div class="section-line"></div>
+                </div>
                 <div class="projects-grid">
                     <div class="project-card">
                         <h3>Decode EEG using Multi-Modal Approach</h3>
@@ -120,81 +179,13 @@
                 </div>
             </div>
         </section>
-
-        <section id="education" class="section">
+        <section id="interests" class="section fade-in-section">
             <div class="container">
-                <h2>Education</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>University of Texas at Dallas</h3>
-                            <p class="degree">M.Sc. Computer Science - Intelligent Systems</p>
-                            <p class="date">Sep 2024 - Expected Aug 2027</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>University of Alberta</h3>
-                            <p class="degree">B.Sc. Computing Science with Honors</p>
-                            <p class="date">Sep 2019 - May 2024</p>
-                            <p>GPA: 3.83/4.0, graduated Summa cum laude</p>
-                            <p>International Student Scholarship, Dean's list 2020-2024</p>
-                        </div>
-                    </div>
+                <div class="section-heading">
+                    <span class="section-number">04.</span>
+                    <h2>Interests & Notes</h2>
+                    <div class="section-line"></div>
                 </div>
-            </div>
-        </section>
-
-        <section id="tech-stack" class="section">
-            <div class="container">
-                <h2>Technical Skills</h2>
-                <div class="tech-grid">
-                    <div class="tech-category">
-                        <h3>Languages</h3>
-                        <ul>
-                            <li>Python</li>
-                            <li>Java</li>
-                            <li>Linux</li>
-                            <li>C++</li>
-                            <li>R</li>
-                            <li>SQL</li>
-                            <li>HTML/CSS</li>
-                            <li>JavaScript</li>
-                            <li>MATLAB</li>
-                            <li>LaTeX</li>
-                        </ul>
-                    </div>
-                    <div class="tech-category">
-                        <h3>Frameworks & Libraries</h3>
-                        <ul>
-                            <li>NumPy</li>
-                            <li>Pandas</li>
-                            <li>PyTorch</li>
-                            <li>TensorFlow</li>
-                            <li>scikit-learn</li>
-                            <li>HuggingFace</li>
-                        </ul>
-                    </div>
-                    <div class="tech-category">
-                        <h3>Developer Tools</h3>
-                        <ul>
-                            <li>Git</li>
-                            <li>Linux</li>
-                            <li>Docker</li>
-                            <li>MongoDB</li>
-                            <li>Android Studio</li>
-                            <li>R Studio</li>
-                            <li>VS Code</li>
-                            <li>Firebase</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="interests" class="section">
-            <div class="container">
-                <h2>Interests & Notes</h2>
                 <div class="interests-grid">
                     <div class="interest-card">
                         <i class="fas fa-brain"></i>
@@ -212,6 +203,25 @@
                         <p>Academic research in ML, AI, and their applications</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact-section fade-in-section">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-number">05.</span>
+                    <h2>Get in Touch</h2>
+                    <div class="section-line"></div>
+                </div>
+                <form class="contact-form">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <button type="submit">Send</button>
+                </form>
             </div>
         </section>
     </main>

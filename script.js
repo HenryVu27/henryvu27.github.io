@@ -64,4 +64,32 @@ window.addEventListener('scroll', () => {
             link.classList.add('active');
         }
     });
-}); 
+});
+
+// Fade-in on scroll for sections
+const fadeSections = document.querySelectorAll('.fade-in-section');
+const fadeInObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+fadeSections.forEach(section => {
+    fadeInObserver.observe(section);
+});
+
+// Profile image hover swap
+const profilePic = document.querySelector('.profile-pic');
+if (profilePic) {
+    profilePic.addEventListener('mouseenter', function() {
+        this.src = this.getAttribute('data-original');
+    });
+    profilePic.addEventListener('mouseleave', function() {
+        this.src = this.getAttribute('data-tinted');
+    });
+} 
