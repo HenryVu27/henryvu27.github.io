@@ -1,1 +1,232 @@
-Test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henry Vu - Personal Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="light-mode">
+    <header>
+        <nav>
+            <div class="nav-content">
+                <div class="logo">HV</div>
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#tech-stack">Tech Stack</a></li>
+                    <li><a href="#interests">Interests</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="section">
+            <div class="container">
+                <h1>Henry Vu</h1>
+                <p class="subtitle">Computer Science Graduate Student & ML Researcher</p>
+                <div class="profile-image">
+                    <img src="https://via.placeholder.com/200" alt="Henry Vu">
+                </div>
+                <p class="bio">
+                    A passionate computer scientist with expertise in machine learning, computer vision, and natural language processing.
+                    Currently pursuing M.Sc. in Computer Science at UT Dallas, focusing on Intelligent Systems.
+                </p>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> 469-649-6967</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:Vuducdung28@gmail.com">Vuducdung28@gmail.com</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <div class="container">
+                <h2>Professional Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Computer Vision Intern</h3>
+                            <p class="company">Thormed Innovation</p>
+                            <p class="date">Feb 2025 - Present</p>
+                            <ul>
+                                <li>Developed lightweight semantic segmentation models in LiteRT for efficient bladder volume calculation</li>
+                                <li>Fine-tuned pretrained U-Net and ViT-based architectures, achieving Dice ≥ 90% and Hausdorff Distance ≤ 10mm</li>
+                                <li>Leveraged Python and OpenCV for bladder ultrasound image processing and SAMUS model implementation</li>
+                                <li>Experimenting with CycleGAN and Diffusion-based models for synthetic ultrasound data generation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Teaching Assistant</h3>
+                            <p class="company">University of Texas at Dallas</p>
+                            <p class="date">Jan 2025 - Present</p>
+                            <ul>
+                                <li>Held weekly office hours and prepared seminar materials</li>
+                                <li>Mentored 100+ students in Advanced Algorithm and Data Structures</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>Undergraduate Researcher</h3>
+                            <p class="company">Alberta Machine Intelligence Institute (Amii)</p>
+                            <p class="date">Apr 2022 - May 2024</p>
+                            <ul>
+                                <li>Implemented online optimization algorithms using primal-dual framework</li>
+                                <li>Conducted research on multi-armed bandits and reinforcement learning</li>
+                                <li>Simulated various algorithms (UCB, Exp3, Thompson Sampling) on real-world data</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2>Selected Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>Decode EEG using Multi-Modal Approach</h3>
+                        <p>Implemented RoBERTa for word embedding, achieving significant improvements in F1-score. Developed a novel EEG extraction framework combining convolution and self-attention modules.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf" target="_blank"><i class="fas fa-file-pdf"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>Modeling Political Sarcasm</h3>
+                        <p>Developed 15+ novel features for political sarcasm detection, achieving F1-score of 0.7814. Implemented DistilRoBERTa and conducted comprehensive model interpretation.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/HenryVu27/PoliticalSarcasm" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf" target="_blank"><i class="fas fa-file-pdf"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>UManitoba Navigator</h3>
+                        <p>Built a navigation system using FastAPI and React, implementing Dijkstra's algorithm for optimal route finding. Won first-time participant award at .devHacks.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/HenryVu27/devHack2024" target="_blank"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <div class="container">
+                <h2>Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>University of Texas at Dallas</h3>
+                            <p class="degree">M.Sc. Computer Science - Intelligent Systems</p>
+                            <p class="date">Sep 2024 - Expected Aug 2027</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>University of Alberta</h3>
+                            <p class="degree">B.Sc. Computing Science with Honors</p>
+                            <p class="date">Sep 2019 - May 2024</p>
+                            <p>GPA: 3.83/4.0, graduated Summa cum laude</p>
+                            <p>International Student Scholarship, Dean's list 2020-2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech-stack" class="section">
+            <div class="container">
+                <h2>Technical Skills</h2>
+                <div class="tech-grid">
+                    <div class="tech-category">
+                        <h3>Languages</h3>
+                        <ul>
+                            <li>Python</li>
+                            <li>Java</li>
+                            <li>Linux</li>
+                            <li>C++</li>
+                            <li>R</li>
+                            <li>SQL</li>
+                            <li>HTML/CSS</li>
+                            <li>JavaScript</li>
+                            <li>MATLAB</li>
+                            <li>LaTeX</li>
+                        </ul>
+                    </div>
+                    <div class="tech-category">
+                        <h3>Frameworks & Libraries</h3>
+                        <ul>
+                            <li>NumPy</li>
+                            <li>Pandas</li>
+                            <li>PyTorch</li>
+                            <li>TensorFlow</li>
+                            <li>scikit-learn</li>
+                            <li>HuggingFace</li>
+                        </ul>
+                    </div>
+                    <div class="tech-category">
+                        <h3>Developer Tools</h3>
+                        <ul>
+                            <li>Git</li>
+                            <li>Linux</li>
+                            <li>Docker</li>
+                            <li>MongoDB</li>
+                            <li>Android Studio</li>
+                            <li>R Studio</li>
+                            <li>VS Code</li>
+                            <li>Firebase</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="interests" class="section">
+            <div class="container">
+                <h2>Interests & Notes</h2>
+                <div class="interests-grid">
+                    <div class="interest-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>Machine Learning</h3>
+                        <p>Deep Learning, Computer Vision, NLP, and Reinforcement Learning</p>
+                    </div>
+                    <div class="interest-card">
+                        <i class="fas fa-code"></i>
+                        <h3>Software Development</h3>
+                        <p>Full-stack development, Algorithm design, and System architecture</p>
+                    </div>
+                    <div class="interest-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Research</h3>
+                        <p>Academic research in ML, AI, and their applications</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/HenryVu27" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com/henryvu27" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2024 Henry Vu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
