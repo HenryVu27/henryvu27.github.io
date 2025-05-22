@@ -1,26 +1,16 @@
 :root {
-    /* Custom color scheme */
-    --bg-color: #212531;
-    --text-color: #c5c3c4;
-    --primary-color: #4b3a70;
-    --secondary-color: #b7a2c9;
-    --accent-color: #b7a2c9;
-    --card-bg: #322f42;
-    --border-color: #4b3a70;
-    --nav-bg: rgba(33, 37, 49, 0.95);
-    --shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
-}
-
-.dark-mode {
-    --bg-color: #181a23;
-    --text-color: #c5c3c4;
-    --primary-color: #b7a2c9;
-    --secondary-color: #4b3a70;
-    --accent-color: #b7a2c9;
-    --card-bg: #232136;
-    --border-color: #322f42;
-    --nav-bg: rgba(24, 26, 35, 0.95);
-    --shadow: 0 4px 6px -1px rgba(0,0,0,0.5);
+    /* Updated color scheme */
+    --bg-color: #1F2733;
+    --text-color: #fefee3;
+    --primary-color: #0576b3;
+    --secondary-color: #fefee3;
+    --accent-color: #313e50;
+    --card-bg: #313e50;
+    --border-color: #0576b3;
+    --nav-bg: rgba(49, 62, 80, 0.95);
+    --big-intro: #fefed8ff;
+    --shadow: 0 4px 6px -1px rgba(0,0,0,0.15);
+    background: #1F2733;
 }
 
 * {
@@ -30,11 +20,13 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--bg-color);
+    background: var(--bg-color);
     transition: background-color 0.3s, color 0.3s;
+    text-align: justify;
+    font-weight: 400;
 }
 
 .container {
@@ -137,11 +129,12 @@ header {
 }
 
 /* Sections */
-.section {
+.section, .about-section, .contact-section {
     padding: 6rem 0;
     min-height: 100vh;
     display: flex;
     align-items: center;
+    background: transparent !important;
 }
 
 #about {
@@ -150,26 +143,25 @@ header {
 
 .profile-image {
     margin: 0 auto;
-    width: 250px;
-    height: 250px;
+    width: 400px;
+    height: 400px;
     position: relative;
     z-index: 2;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2.5rem;
 }
 
 .profile-image .profile-pic {
-    width: 220px;
-    height: 220px;
+    width: 380px;
+    height: 380px;
     border-radius: 50%;
     object-fit: cover;
     position: relative;
     z-index: 2;
     display: block;
     margin: 0 auto;
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     background: transparent;
 }
 
@@ -177,23 +169,20 @@ header {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 250px;
-    height: 250px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
     border: 3px solid var(--secondary-color);
     background: transparent;
     z-index: 1;
     transform: translate(-50%, -50%);
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     pointer-events: none;
 }
 
-.profile-image:hover .profile-pic {
-    transform: translateY(-1px);
-}
-
+/* Remove all hover effects */
+.profile-image:hover .profile-pic,
 .profile-image:hover .profile-border {
-    transform: translate(-50%, calc(-50% + 2px));
+    transform: none;
 }
 
 .profile-image img {
@@ -248,6 +237,22 @@ h2 {
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: var(--shadow);
+    color: var(--text-color);
+}
+
+.timeline-content .date {
+    font-style: italic;
+    font-size: 0.90em;
+    color: #bfc9d1;
+    margin-bottom: 1.1em;
+}
+
+.intro-description,
+.timeline-content ul,
+.timeline-content li,
+.project-desc {
+    color: #aab8cf;
+    margin-bottom: 0.5em;
 }
 
 /* Projects Grid */
@@ -264,16 +269,53 @@ h2 {
     border-radius: 8px;
     box-shadow: var(--shadow);
     transition: transform 0.3s;
+    color: var(--text-color);
 }
 
 .project-card:hover {
     transform: translateY(-5px);
 }
 
+.project-card h3 {
+    transition: color 0.2s;
+    text-align: left;
+}
+
+.project-card h3:hover {
+    color: var(--primary-color);
+}
+
+.project-card h3 a {
+    text-decoration: none !important;
+    color: var(--text-color);
+    transition: color 0.2s;
+}
+
+.project-card h3 a:hover,
+.project-card h3 a:focus {
+    color: var(--primary-color);
+}
+
+.project-card h3 a::after {
+    display: none !important;
+}
+
 .project-links {
     margin-top: 1rem;
     display: flex;
-    gap: 1rem;
+    gap: 0.7rem;
+    align-items: center;
+}
+
+.project-links i {
+    font-size: 1.5rem;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .project-links a {
@@ -298,6 +340,7 @@ h2 {
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: var(--shadow);
+    color: var(--text-color);
 }
 
 .tech-category h3 {
@@ -336,6 +379,7 @@ h2 {
     box-shadow: var(--shadow);
     text-align: center;
     transition: transform 0.3s;
+    color: var(--text-color);
 }
 
 .interest-card:hover {
@@ -401,13 +445,29 @@ footer {
 }
 
 a {
-    color: var(--accent-color);
-    text-decoration: underline;
+    color: var(--primary-color);
+    text-decoration: none;
+    position: relative;
     transition: color 0.2s;
 }
 
 a:visited {
-    color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+a:hover::after, a:focus::after {
+    width: 100%;
 }
 
 a:hover, a:focus {
@@ -438,15 +498,31 @@ a:hover, a:focus {
     margin-top: 6rem;
 }
 
-.big-intro {
-    font-size: 4rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: 1.2rem;
+.intro-greeting {
+    color: #64ffda;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+}
+
+.intro-main {
+    color: #fefee3;
+    font-size: 4.5rem;
+    font-weight: 500;
+    font-family: 'Inter', 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+    margin-bottom: 3rem;
     letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    line-height: 1.1;
+}
+
+.big-intro {
+    color: var(--text-color);
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+    line-height: 1.15;
 }
 
 .wave {
@@ -471,36 +547,52 @@ a:hover, a:focus {
     100% { transform: rotate(0deg); }
 }
 
-.intro-subtext {
-    font-size: 1.3rem;
-    color: var(--secondary-color);
-    margin-bottom: 2.2rem;
-    margin-top: 0.2rem;
-    font-weight: 400;
+.intro-description {
+    color: #bfc9d1;
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin-bottom: 2.5rem;
+    margin-top: 1.5rem;
+    line-height: 1.6;
+    text-align: left;
 }
 
 .section-heading {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 1rem;
-    margin-bottom: 2.2rem;
+    margin-bottom: 1.2rem;
     width: 100%;
 }
 
 .section-number {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-size: 1.3rem;
     font-family: monospace;
     font-weight: 600;
     flex-shrink: 0;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    display: inline;
+    align-items: baseline;
+    justify-content: flex-end;
+    height: auto;
 }
 
 .section-heading h2 {
-    color: var(--primary-color);
-    font-size: 2rem;
-    font-weight: bold;
+    color: var(--text-color);
+    font-size: 2.2rem !important;
+    font-weight: 500;
+    font-family: 'Inter', 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
     margin: 0;
     flex-shrink: 0;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    display: inline;
+    align-items: baseline;
+    height: auto;
 }
 
 .section-line {
@@ -546,14 +638,15 @@ a:hover, a:focus {
 .about-text {
     flex: 2 1 350px;
     min-width: 300px;
+    text-align: justify;
 }
 
 .about-text h2 {
-    display: flex;
-    align-items: center;
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
+    color: inherit;
+    font-size: inherit;
+    margin-bottom: inherit;
+    display: inherit;
+    align-items: inherit;
 }
 
 .about-text h3 {
@@ -563,10 +656,14 @@ a:hover, a:focus {
     margin-bottom: 0.5rem;
 }
 
+.about-text p {
+    margin-bottom: 1.2em;
+}
+
 .about-tech-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 0.5rem 2rem;
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    gap: 0.2rem 0.3rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -574,17 +671,20 @@ a:hover, a:focus {
 }
 
 .about-tech-list li {
-    color: var(--text-color);
+    color: #aab8cf;
     padding-left: 1.2em;
     position: relative;
-    margin-bottom: 0.3em;
+    margin-bottom: 0.1em;
+    font-family: 'Fira Mono', 'Consolas', 'Monaco', monospace;
+    font-size: 1em;
 }
 
 .about-tech-list li::before {
-    content: '▹';
+    content: '▸';
     position: absolute;
     left: 0;
-    color: var(--secondary-color);
+    color: #64ffda;
+    font-size: 1em;
 }
 
 .about-image {
@@ -609,15 +709,14 @@ a:hover, a:focus {
 }
 
 .profile-image .profile-pic {
-    width: 180px;
-    height: 180px;
+    width: 220px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
     position: relative;
     z-index: 2;
     display: block;
     margin: 0 auto;
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     background: transparent;
 }
 
@@ -632,7 +731,6 @@ a:hover, a:focus {
     background: transparent;
     z-index: 1;
     transform: translate(-50%, -50%);
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     pointer-events: none;
 }
 
@@ -712,4 +810,76 @@ a:hover, a:focus {
 .fade-in-section.is-visible {
     opacity: 1;
     transform: none;
-} 
+}
+
+.company-link {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.prominent-btn {
+    background: var(--primary-color);
+    color: #fefee3;
+    border: 2px solid var(--primary-color);
+    font-weight: 600;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+.prominent-btn:hover, .prominent-btn:focus {
+    background: #025a85;
+    color: #fefee3;
+    border-color: #025a85;
+}
+
+.project-desc {
+    text-align: left;
+    color: #8892b0;
+}
+
+.project-card-link {
+    display: contents;
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-card-link .project-card {
+    transition: box-shadow 0.2s;
+}
+
+.project-card-link:hover .project-card,
+.project-card-link:focus .project-card {
+    box-shadow: 0 6px 24px 0 rgba(0,0,0,0.18);
+    cursor: pointer;
+}
+
+.project-card-link .project-card h3 {
+    transition: color 0.2s;
+}
+
+.project-card-link:hover .project-card h3,
+.project-card-link:focus .project-card h3 {
+    color: var(--primary-color);
+    text-decoration: none !important;
+}
+
+.project-card-link .project-card h3 a,
+.project-card-link .project-card h3 a:hover,
+.project-card-link .project-card h3 a:focus,
+.project-card-link .project-card h3 a::after {
+    text-decoration: none !important;
+    display: none !important;
+}
+
+.project-card-link:hover .project-desc,
+.project-card-link:focus .project-desc {
+    color: #aab8cf;
+    text-decoration: none !important;
+}
+
+.project-card-link::after,
+.project-card-link:hover::after,
+.project-card-link:focus::after {
+    display: none !important;
+    content: none !important;
+}

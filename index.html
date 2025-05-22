@@ -12,16 +12,10 @@
         <nav>
             <div class="nav-content">
                 <div class="logo">HV</div>
-                <div class="theme-toggle">
-                    <i class="fas fa-moon"></i>
-                </div>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#tech-stack">Tech Stack</a></li>
-                    <li><a href="#interests">Interests</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <a class="resume-btn" href="ML_Resume_Online.pdf" target="_blank" rel="noopener">Resume</a>
@@ -33,11 +27,12 @@
         <section id="intro" class="section intro-section fade-in-section">
             <div class="container intro-container left-intro">
                 <div class="intro-flex">
-                    <h1 class="big-intro">
-                        Hi, it's Henry <span class="wave" role="img" aria-label="waving hand">👋</span>
-                    </h1>
-                    <p class="intro-subtext">I'm a computer scientist and ML enthusiast passionate about building intelligent systems and impactful software.</p>
-                    <button class="contact-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Get in touch</button>
+                    <h1 class="intro-main">Hey, it's Henry <span class="wave" role="img" aria-label="waving hand">👋</span></h1>
+                    <h2 class="big-intro">I'm exploring how to build thinking machines.</h2>
+                    <p class="intro-description">
+                        I'm a graduate student in Computer Science focused on Intelligent Systems at UT Dallas. I apply machine learning and algorithmic techniques, informed by mathematical theory and statistical analysis, to tackle complex problems.
+                    </p>
+                    <button class="contact-btn prominent-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Get in touch</button>
                 </div>
             </div>
         </section>
@@ -51,14 +46,15 @@
                         <div class="section-line"></div>
                     </div>
                     <p>
-                        I'm Henry, a computer scientist passionate about machine learning, computer vision, and natural language processing. I enjoy building innovative solutions and exploring new technologies. Currently, I'm pursuing my M.Sc. in Computer Science at UT Dallas, focusing on Intelligent Systems.
+                        Hello! My name is Henry Vu. I'm currently a graduate student in Computer Science at <a href="https://engineering.utdallas.edu/" target="_blank">&#64;UTDallas</a>, specializing in Intelligent Systems. Previously, I received my B.Sc. Honors in Computer Science at <a href="https://www.ualberta.ca/en/computing-science/index.html" target="_blank">&#64;UAlberta</a>.
                     </p>
                     <p>
-                        My experience spans research, teaching, and software engineering, with a strong foundation in both theory and practical application. I love collaborating on impactful projects and sharing knowledge with others.
+                        My interest developed early in math competition. I have always enjoyed modeling real-world problems in rigorous mathematical language, seeing the underlying structure, and translating that structure into computational solutions. 
                     </p>
-                    <h3>Tech Stack</h3>
+                    <p>
+                        Here are a few technologies I&#39;ve been working with recently:
+                    </p>
                     <ul class="about-tech-list">
-                        <li>Python</li>
                         <li>PyTorch</li>
                         <li>TensorFlow</li>
                         <li>scikit-learn</li>
@@ -68,7 +64,7 @@
                 <div class="about-image">
                     <div class="profile-image">
                         <div class="profile-shadow"></div>
-                        <img class="profile-pic" src="assets/pp_tinted.jpg" alt="Henry Vu" data-original="assets/pp.jpg" data-tinted="assets/pp_tinted.jpg">
+                        <img class="profile-pic" src="assets/pp.jpg" alt="Henry Vu">
                     </div>
                 </div>
             </div>
@@ -84,8 +80,7 @@
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <h3>Computer Vision Intern</h3>
-                            <p class="company highlight">Thormed Innovation</p>
+                            <h3>Computer Vision Intern <span class="company-link">@Thormed Innovation</span></h3>
                             <p class="date">Feb 2025 - Present</p>
                             <ul>
                                 <li>Developed lightweight semantic segmentation models in <b>LiteRT</b> for efficient and automated bladder volume calculation.</li>
@@ -98,45 +93,41 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <h3>Teaching Assistant</h3>
-                            <p class="company highlight">University of Texas at Dallas</p>
+                            <h3>Teaching Assistant <a href="https://engineering.utdallas.edu/" target="_blank">&#64;UTDallas</a></h3>
                             <p class="date">Jan 2025 - Present</p>
                             <ul>
                                 <li>Held weekly office hours, prepared seminar and exam materials, and graded coursework.</li>
-                                <li>Mentored <b>100+</b> students in Advanced Algorithm and Data Structures through technical and code reviews.</li>
+                                <li>Mentored <b>100+</b> students in <b>Advanced Algorithm</b> and <b>Data Structures</b> through technical and code reviews.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <h3>Undergraduate Research Assistant</h3>
-                            <p class="company highlight">System-driven Optimization & Decision Algorithms, University of Alberta</p>
+                            <h3>Undergraduate Research Assistant <a href="https://sodalab.ca/" target="_blank">&#64;SODALab</a></h3>
                             <p class="date">Dec 2023 - May 2024</p>
                             <ul>
-                                <li><b>Reinforcement Learning</b>: Conducted a comprehensive survey on stochastic, adversarial, Markovian, and restless multi-armed bandits.</li>
-                                <li>Built simulations in <b>Python</b> to assess real-world performance of bandit algorithms such as<b>UCB</b>, <b>Exp3</b>, <b>Thompson Sampling</b> and <b>Gittins Index</b>.</li>
+                                <li><b>Reinforcement Learning</b>: Conducted an in-depth theoretical and empirical survey about multi-armed bandit problems under settings such as stochastic, adversarial, Markovian, and restless bandits.</li>
+                                <li>Designed and implemented <b>Python</b> simulations to empirically validate and compare the performance of classic bandit algorithms, including <b>UCB, Exp3, Thompson Sampling,</b> and <b>Gittins Index</b>.</li>
                                 <li>Supervised by <a href="https://xiaoqitan.org/" target="_blank"><b>Dr. Xiaoqi Tan</b></a>.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <h3>Teaching Assistant</h3>
-                            <p class="company highlight">University of Alberta</p>
+                            <h3>Teaching Assistant <a href="https://www.ualberta.ca/en/computing-science/index.html" target="_blank">&#64;UAlberta</a></h3>
                             <p class="date">Sep 2023 - May 2024</p>
                             <ul>
                                 <li>Held weekly office hours, prepared seminar and exam materials, and graded coursework.</li>
-                                <li>Mentored <b>100+</b> students in Advanced Algorithm and Data Structures through technical and code reviews.</li>
+                                <li>Mentored <b>300+</b> students in <b>Advanced Algorithm</b> and <b>Data Structures</b> through technical reviews and weekly problem solving sessions.</li>
                             </ul>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <h3>Undergraduate Researcher - Online Learning</h3>
-                            <p class="company highlight">Alberta Machine Intelligence Institute (Amii)</p>
+                            <h3>Undergraduate Researcher - Online Learning <a href="https://www.amii.ca/" target="_blank">&#64;Amii</a></h3>
                             <p class="date">Apr 2022 - May 2023</p>
                             <ul>
-                                <li><b>Online Learning</b>: Implemented algorithms for online optimization problems using the online <b>primal-dual</b> framework. 
+                                <li><b>Online Learning</b>: Researched and implemented algorithms for online optimization problems such as online conversion, knapsack, and bipartite matching using the online <b>primal-dual</b> framework. 
                                 <li>Studied a new online learning framework that incorporates machine-learned predictions, extending beyond traditional worst-case analysis.</li>
                             </ul>
                         </div>
@@ -149,33 +140,39 @@
             <div class="container">
                 <div class="section-heading">
                     <span class="section-number">03.</span>
-                    <h2>Projects</h2>
+                    <h2>Projects I've Worked On</h2>
                     <div class="section-line"></div>
                 </div>
                 <div class="projects-grid">
-                    <div class="project-card">
-                        <h3>Decode EEG using Multi-Modal Approach</h3>
-                        <p>Implemented RoBERTa for word embedding, achieving significant improvements in F1-score. Developed a novel EEG extraction framework combining convolution and self-attention modules.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf" target="_blank"><i class="fas fa-file-pdf"></i></a>
+                    <a class="project-card-link" href="https://github.com/HenryVu27/EEG-Multimodal-Decoding" target="_blank">
+                        <div class="project-card">
+                            <h3>EEG Decoding using Multi-Modal Approach</h3>
+                            <p class="project-desc">A framework for decoding EEG signals using multi-modal neural networks.</p>
+                            <div class="project-links">
+                                <i class="fab fa-github"></i>
+                                <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf" target="_blank" onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-card">
-                        <h3>Modeling Political Sarcasm</h3>
-                        <p>Developed 15+ novel features for political sarcasm detection, achieving F1-score of 0.7814. Implemented DistilRoBERTa and conducted comprehensive model interpretation.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/HenryVu27/PoliticalSarcasm" target="_blank"><i class="fab fa-github"></i></a>
-                            <a href="https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf" target="_blank"><i class="fas fa-file-pdf"></i></a>
+                    </a>
+                    <a class="project-card-link" href="https://github.com/HenryVu27/PoliticalSarcasm" target="_blank">
+                        <div class="project-card">
+                            <h3>Modeling Political Sarcasm</h3>
+                            <p class="project-desc">An in-depth analysis of classic and modern NLP methods for detecting political sarcasm in text.</p>
+                            <div class="project-links">
+                                <i class="fab fa-github"></i>
+                                <a href="https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf" target="_blank" onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-card">
-                        <h3>UManitoba Navigator</h3>
-                        <p>Built a navigation system using FastAPI and React, implementing Dijkstra's algorithm for optimal route finding. Won first-time participant award at .devHacks.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/HenryVu27/devHack2024" target="_blank"><i class="fab fa-github"></i></a>
+                    </a>
+                    <a class="project-card-link" href="https://github.com/HenryVu27/devHack2024" target="_blank">
+                        <div class="project-card">
+                            <h3>UManitoba Navigator</h3>
+                            <p class="project-desc">A campus navigation system using Dijkstra's algorithm for optimal routing.</p>
+                            <div class="project-links">
+                                <i class="fab fa-github"></i>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
