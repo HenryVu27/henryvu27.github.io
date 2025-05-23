@@ -263,6 +263,7 @@ h2 {
 .project-desc {
     color: #aab8cf;
     margin-bottom: 0.5em;
+    font-weight: 400;
 }
 
 /* Projects Grid */
@@ -505,7 +506,7 @@ a:hover, a:focus {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 14rem;
+    margin-top: 10rem;
 }
 
 .intro-greeting {
@@ -521,7 +522,7 @@ a:hover, a:focus {
     font-size: 4.5rem;
     font-weight: 500;
     font-family: 'Inter', 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     letter-spacing: 1px;
     line-height: 1.1;
 }
@@ -529,7 +530,8 @@ a:hover, a:focus {
 .big-intro {
     color: var(--text-color);
     font-size: 2.2rem;
-    font-weight: 500;
+    font-weight: 400;
+    margin-left: 2px;
     margin-bottom: 0.5rem;
     letter-spacing: 0.5px;
     line-height: 1.15;
@@ -558,11 +560,12 @@ a:hover, a:focus {
 }
 
 .intro-description {
-    color: #bfc9d1;
-    font-size: 1.15rem;
+    color: #aab8cf;
+    font-size: 1.1rem;
     max-width: 700px;
     margin-bottom: 2.5rem;
     margin-top: 1.5rem;
+    margin-left: 2px;
     line-height: 1.6;
     text-align: left;
 }
