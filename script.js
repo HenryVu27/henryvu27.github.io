@@ -53,3 +53,77 @@ const fadeInObserver = new IntersectionObserver((entries, observer) => {
 fadeSections.forEach(section => {
     fadeInObserver.observe(section);
 });
+
+// Scroll down arrow functionality
+document.querySelector('.scroll-down-arrow').addEventListener('click', () => {
+    document.getElementById('about').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+});
+
+// Playful typing animation
+function playfulTypingAnimation() {
+    const element = document.getElementById('typing-text');
+    const baseText = "I'm exploring how to build ";
+    const wrongText = "sentient sand.";
+    const correctText = "statistical models.";
+    
+    let currentText = "";
+    let phase = 'typing-wrong'; 
+    let charIndex = 0;
+    
+    function type() {
+        if (phase === 'typing-wrong') {
+            if (charIndex < (baseText + wrongText).length) {
+                currentText = (baseText + wrongText).substring(0, charIndex + 1);
+                charIndex++;
+            } else {
+                phase = 'pausing';
+                setTimeout(() => {
+                    phase = 'deleting';
+                    charIndex = baseText.length + wrongText.length;
+                    type();
+                }, 600);
+                element.textContent = currentText;
+                return;
+            }
+        } else if (phase === 'deleting') {
+            if (charIndex > baseText.length) {
+                currentText = (baseText + wrongText).substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                phase = 'typing-correct';
+                charIndex = 0;
+            }
+        } else if (phase === 'typing-correct') {
+            if (charIndex < correctText.length) {
+                currentText = baseText + correctText.substring(0, charIndex + 1);
+                charIndex++;
+            } else {
+                phase = 'done';
+                element.textContent = currentText;
+                return;
+            }
+        } else if (phase === 'pausing') {
+            return;
+        }
+        
+        element.textContent = currentText;
+        
+        let speed = 60;
+        if (phase === 'deleting') {
+            speed = 60;
+        } else if (phase === 'typing-correct') {
+            speed = 80;
+        }
+        
+        setTimeout(type, speed);
+    }
+    
+    setTimeout(() => {
+        type();
+    }, 1500);
+}
+
+document.addEventListener('DOMContentLoaded', playfulTypingAnimation);
