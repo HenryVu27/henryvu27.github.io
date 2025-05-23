@@ -1,16 +1,13 @@
 :root {
-    /* Updated color scheme */
-    --bg-color: #1F2733;
-    --text-color: #fefee3;
-    --primary-color: #0576b3;
-    --secondary-color: #fefee3;
-    --accent-color: #313e50;
-    --card-bg: #313e50;
-    --border-color: #0576b3;
-    --nav-bg: rgba(49, 62, 80, 0.95);
-    --big-intro: #fefed8ff;
-    --shadow: 0 4px 6px -1px rgba(0,0,0,0.15);
-    background: #1F2733;
+    --bg-color: #1a202c;      
+    --primary-color: #63b3ed;      
+    --secondary-color: #a0aec0; 
+    --accent-color: #ecc94b;     
+    --card-bg: #2d3748;
+    --border-color: #63b3ed;      
+    --nav-bg: rgba(26, 32, 44, 0.9); 
+    --big-intro: #cbd5e0;         
+    --shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
 
 * {
@@ -45,6 +42,23 @@ header {
     background-color: rgba(49, 62, 80, 0.15);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow);
+}
+.animated-subtitle {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+    animation: fadeSlideUp 1.4s ease-out;
+}
+
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .nav-content {
@@ -535,8 +549,19 @@ a:hover, a:focus {
     margin-bottom: 0.5rem;
     letter-spacing: 0.5px;
     line-height: 1.15;
+    color: var(--secondary-color);
+    animation: fadeSlideUp 1.4s ease-out;
 }
-
+@keyframes fadeSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 .wave {
     display: inline-block;
     transition: transform 0.2s;
