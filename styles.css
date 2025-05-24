@@ -35,6 +35,8 @@
     /* Effects */
     --shadow: 0 6px 15px rgba(0,0,0,0.25);
     --accent-color-rgb: 236, 201, 75;
+    --plexus-particle-color: rgba(0, 240, 194, 0.18);
+    --plexus-line-color: rgba(0, 240, 194, 0.13);
 }
 
 * {
@@ -51,6 +53,13 @@ body {
     transition: background-color 0.3s, color 0.3s;
     text-align: justify;
     font-weight: 400;
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+html {
+    min-height: 100%;
 }
 
 .container {
@@ -115,23 +124,67 @@ header {
     color: var(--primary-color);
 }
 
-.theme-dropdown {
+.theme-toggle-btn {
     margin-left: 1.5rem;
+    position: relative;
 }
 
-.theme-toggle {
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: var(--text-color);
-    transition: color 0.3s;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.theme-toggle:hover {
+.theme-toggle-icon {
+    background: none;
+    border: none;
     color: var(--primary-color);
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: box-shadow 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+    outline: none;
+    position: relative;
+    z-index: 1;
+}
+
+.theme-toggle-icon:focus,
+.theme-toggle-icon:hover {
+    background: rgba(0, 240, 194, 0.12);
+    box-shadow: 0 0 0 4px rgba(0, 240, 194, 0.15);
+    color: var(--primary-color);
+}
+
+.theme-toggle-icon.spinning {
+    animation: spin-palette 0.6s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 0 12px 2px var(--primary-color), 0 0 0 4px rgba(0,240,194,0.15);
+}
+
+@keyframes spin-palette {
+    0% { transform: rotate(0deg); }
+    80% { transform: rotate(340deg) scale(1.15); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Tooltip for theme name */
+.theme-toggle-btn[title] {
+    position: relative;
+}
+.theme-toggle-btn[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    left: 50%;
+    top: 120%;
+    transform: translateX(-50%);
+    background: rgba(26,32,44,0.85);
+    color: #fff;
+    padding: 0.35em 0.8em;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 1;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+}
+.theme-toggle-btn[title]::after {
+    opacity: 0;
+    transition: opacity 0.2s;
 }
 
 .resume-btn {
@@ -499,13 +552,20 @@ a:hover, a:focus {
 }
 
 .intro-section {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    min-height: 100vh;
-    background: radial-gradient(circle at top left, var(--bg-color) 0%, rgba(26, 32, 44, 0.95) 75%), var(--bg-color);
-    text-align: left;
     position: relative;
+    overflow: hidden;
+}
+
+#plexus-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    min-height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    display: block;
 }
 
 .intro-container.left-intro {
@@ -527,7 +587,7 @@ a:hover, a:focus {
 }
 
 .big-intro {
-    color: var(--light-text);
+    color: var(--big-intro);
     font-size: 4.5rem;
     font-weight: 500;
     font-family: 'Inter', 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
@@ -1013,33 +1073,66 @@ a:hover, a:focus {
 
 .scroll-down-arrow {
     position: absolute;
-    bottom: 125px;
+    bottom: clamp(32px, 6vh, 80px);
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    animation: bounce 2s infinite;
+    font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+    color: var(--primary-color);
+    animation: bounceDown 2s infinite;
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.85;
     transition: opacity 0.3s, color 0.3s;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
 }
 
 .scroll-down-arrow:hover {
-    opacity: 0.8;
-    color: #8892b0;
+    opacity: 1;
+    color: var(--accent-color);
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+.scroll-down-text {
+    font-size: 1.05rem;
+    color: var(--primary-color);
+    margin-top: 0.2rem;
+    letter-spacing: 0.04em;
+    font-family: inherit;
+    opacity: 0.85;
+    animation: fadeInScrollText 2.5s 0.5s both;
+}
+
+@keyframes bounceDown {
+    0%, 100% {
         transform: translateY(0) translateX(-50%);
     }
-    40% {
-        transform: translateY(-20px) translateX(-50%);
+    50% {
+        transform: translateY(16px) translateX(-50%);
     }
-    60% {
-        transform: translateY(-10px) translateX(-50%);
-    }
+}
+
+@keyframes fadeInScrollText {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 0.85; transform: translateY(0); }
+}
+
+.section-divider {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    position: relative;
+    z-index: 2;
+    background: transparent;
+}
+
+.section-divider svg {
+    display: block;
+    width: 100vw;
+    height: 80px;
+    color: var(--primary-color);
 }
 
 .error-message {
@@ -1179,6 +1272,8 @@ input::placeholder, textarea::placeholder {
     --accent-color: #ecc94b;
     --card-bg: #1a1a1a;
     --border-color: #63b3ed;
+    --plexus-particle-color: rgba(0, 240, 194, 0.18);
+    --plexus-line-color: rgba(0, 240, 194, 0.13);
 }
 
 :root[data-theme="dark"] {
@@ -1199,6 +1294,47 @@ input::placeholder, textarea::placeholder {
     --accent-color: #38a169;
     --card-bg: #ffffff;
     --border-color: #e2e8f0;
+}
+
+:root[data-theme="sophisticated"] {
+    --bg-color: #efecea;
+    --text-color: #79726e;
+    --primary-color: #3a3c49;
+    --secondary-color: #bdb5aa;
+    --accent-color: #d43246;
+    --card-bg: #fff;
+    --border-color: #e2ded9;
+    --nav-bg: #efecea;
+    --big-intro: #3a3c49;
+    --muted-text: #79726e;
+    --light-text: #fff;
+    --cursor-color: #3a3c49;
+    --date-color: #bdb5aa;
+    --list-text: #79726e;
+    --error-color: #d43246;
+    --accent-bg: #d43246;
+    --accent-text: #fff;
+    --input-bg: #f6f5f4;
+    --input-border: #bdb5aa;
+    --hover-bg: #e2ded9;
+    --button-hover: #d43246;
+    --button-active: #3a3c49;
+    --button-hover-text: #fff;
+    --button-hover-bg: #d43246;
+    --button-hover-border: #d43246;
+    --shadow: 0 6px 15px rgba(58,60,73,0.1);
+    --plexus-particle-color: rgba(58, 60, 73, 0.18);
+    --plexus-line-color: rgba(58, 60, 73, 0.13);
+}
+
+body {
+    font-family: 'Inter', 'Montserrat', Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color);
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-weight: 500;
 }
 
 /* Contact Form Button Specific Styles */

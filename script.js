@@ -204,19 +204,168 @@ if (contactForm) {
 }
 
 // Theme switching functionality
+// For now, only one theme, but code is ready for more
+const themes = [
+    { key: 'neon-light', name: 'Neon Light' },
+    { key: 'sophisticated', name: 'Sophisticated' }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
-    const themeOptions = document.querySelectorAll('.theme-option');
+    const themeToggleBtn = document.querySelector('.theme-toggle-icon');
+    const themeToggleLi = document.querySelector('.theme-toggle-btn');
     const root = document.documentElement;
-    
-    // Set initial theme from localStorage or default to neon-light
-    const savedTheme = localStorage.getItem('theme') || 'neon-light';
-    root.setAttribute('data-theme', savedTheme);
-    
-    themeOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            const theme = option.getAttribute('data-theme');
-            root.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
+    let currentThemeIndex = 0;
+
+    // Set initial theme from localStorage or default
+    const savedTheme = localStorage.getItem('theme') || themes[0].key;
+    const savedIndex = themes.findIndex(t => t.key === savedTheme);
+    currentThemeIndex = savedIndex !== -1 ? savedIndex : 0;
+    root.setAttribute('data-theme', themes[currentThemeIndex].key);
+    if (themeToggleLi) themeToggleLi.title = `Theme: ${themes[currentThemeIndex].name}`;
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            // Cycle to next theme (for now, just one)
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            const theme = themes[currentThemeIndex];
+            root.setAttribute('data-theme', theme.key);
+            localStorage.setItem('theme', theme.key);
+            if (themeToggleLi) themeToggleLi.title = `Theme: ${theme.name}`;
+            // Animate icon
+            themeToggleBtn.classList.add('spinning');
+            setTimeout(() => themeToggleBtn.classList.remove('spinning'), 600);
         });
-    });
+    }
 });
+
+// Plexus/Particle Network Background for Intro Section
+(function() {
+    const canvas = document.getElementById('plexus-bg');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let dpr = window.devicePixelRatio || 1;
+    let width = 0, height = 0;
+    const PARTICLE_COUNT = 32;
+    const PARTICLE_RADIUS = 2.2;
+    const LINE_DIST = 110;
+    function getColors() {
+        const styles = getComputedStyle(document.documentElement);
+        return {
+            particle: styles.getPropertyValue('--plexus-particle-color').trim() || 'rgba(0,240,194,0.18)',
+            line: styles.getPropertyValue('--plexus-line-color').trim() || 'rgba(0,240,194,0.13)'
+        };
+    }
+    let particles = [];
+    let mouse = { x: null, y: null };
+
+    function resize() {
+        width = window.innerWidth;
+        height = Math.max(document.body.scrollHeight, window.innerHeight);
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+    }
+
+    function randomVel() {
+        return (Math.random() - 0.5) * 0.18;
+    }
+
+    function getParticleCount() {
+        // 1 particle per 20,000 px², min 32, max 180
+        return Math.max(32, Math.min(180, Math.floor((width * height) / 20000)));
+    }
+
+    function createParticles() {
+        particles = [];
+        for (let i = 0; i < getParticleCount(); i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: randomVel(),
+                vy: randomVel(),
+                r: PARTICLE_RADIUS + Math.random() * 0.7
+            });
+        }
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, width, height);
+        const colors = getColors();
+        // Draw lines
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const a = particles[i], b = particles[j];
+                const dx = a.x - b.x, dy = a.y - b.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < LINE_DIST) {
+                    ctx.save();
+                    ctx.globalAlpha = 1;
+                    ctx.strokeStyle = colors.line;
+                    ctx.beginPath();
+                    ctx.moveTo(a.x, a.y);
+                    ctx.lineTo(b.x, b.y);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+        }
+        // Draw particles
+        for (const p of particles) {
+            ctx.save();
+            ctx.globalAlpha = 1;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+            ctx.fillStyle = colors.particle;
+            ctx.shadowColor = colors.particle;
+            ctx.shadowBlur = 6;
+            ctx.fill();
+            ctx.restore();
+        }
+    }
+
+    function animate() {
+        for (const p of particles) {
+            p.x += p.vx;
+            p.y += p.vy;
+            // Bounce off edges
+            if (p.x < 0 || p.x > width) p.vx *= -1;
+            if (p.y < 0 || p.y > height) p.vy *= -1;
+            // Gentle mouse repulsion
+            if (mouse.x !== null && mouse.y !== null) {
+                const dx = p.x - mouse.x, dy = p.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 80) {
+                    p.vx += dx / dist * 0.03;
+                    p.vy += dy / dist * 0.03;
+                }
+            }
+        }
+        draw();
+        requestAnimationFrame(animate);
+    }
+
+    function onMouseMove(e) {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = (e.clientX - rect.left) * (width / rect.width);
+        mouse.y = (e.clientY - rect.top) * (height / rect.height);
+    }
+    function onMouseLeave() {
+        mouse.x = null;
+        mouse.y = null;
+    }
+
+    window.addEventListener('resize', () => {
+        resize();
+        createParticles();
+    });
+    canvas.addEventListener('mousemove', onMouseMove);
+    canvas.addEventListener('mouseleave', onMouseLeave);
+
+    // Initial setup
+    setTimeout(() => {
+        resize();
+        createParticles();
+        animate();
+    }, 100);
+})();

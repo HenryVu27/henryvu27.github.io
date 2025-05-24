@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="light-mode">
+    <canvas id="plexus-bg"></canvas>
     <header>
         <nav>
             <div class="nav-content">
@@ -20,16 +21,10 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="#interests">Interests</a></li>
-                    <li class="theme-dropdown">
-                        <button class="theme-btn">
+                    <li class="theme-toggle-btn" title="Theme: Neon Light">
+                        <button class="theme-toggle-icon" aria-label="Switch theme">
                             <i class="fas fa-palette"></i>
-                            <span>Theme</span>
                         </button>
-                        <div class="theme-menu">
-                            <div class="theme-option" data-theme="neon-light">
-                                <span class="theme-name">Neon Light</span>
-                            </div>
-                        </div>
                     </li>
                 </ul>
             </div>
@@ -46,9 +41,15 @@
                 </div>
                 <div class="scroll-down-arrow">
                     <i class="fas fa-chevron-down"></i>
+                    <span class="scroll-down-text">Scroll to About</span>
                 </div>
             </div>
         </section>
+        <div class="section-divider">
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="currentColor" opacity="0.08"/>
+            </svg>
+        </div>
         <section id="about" class="section about-section fade-in-section">
             <div class="container about-container">
                 <div class="about-text">
@@ -249,7 +250,6 @@
                 <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="https://x.com/HenryVu65366184" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
             </div>
-            <p>&copy; 2024 Henry Vu. All rights reserved.</p>
         </div>
     </footer>
 
