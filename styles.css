@@ -70,61 +70,53 @@ header {
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow);
 }
-.animated-subtitle {
-    font-size: 2rem;
-    font-weight: 500;
-    color: var(--secondary-color);
-    animation: fadeSlideUp 1.4s ease-out;
-}
-
-@keyframes fadeSlideUp {
-    0% {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 .nav-content {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 2rem;
+    padding: 0.7rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
 }
 
 .logo {
-    margin-right: auto;
+    flex: 0 0 auto;
+    height: 35px;
+    width: auto;
 }
 
 .logo img {
-    width: 100%;
     height: 100%;
+    width: auto;
     object-fit: contain;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
-    justify-content: flex-end;
-    flex: 0 1 auto;
+    gap: 2.5rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 500;
+    font-size: 1rem;
     transition: color 0.3s;
+    padding: 0.5rem 0;
 }
 
 .nav-links a:hover {
     color: var(--primary-color);
+}
+
+.theme-dropdown {
+    margin-left: 1.5rem;
 }
 
 .theme-toggle {
@@ -530,7 +522,7 @@ a:hover, a:focus {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 20rem;
+    margin-top: 15rem;
     animation: fadeSlideUp 0.8s ease-out;
 }
 
@@ -868,7 +860,7 @@ a:hover, a:focus {
     resize: vertical;
 }
 
-.submit-btn, button, .prominent-btn {
+.submit-btn {
     background: var(--primary-color);
     color: var(--accent-text);
     border: none;
@@ -879,9 +871,15 @@ a:hover, a:focus {
     cursor: pointer;
     transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+    padding: 1rem 2rem;
+    height: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
-.submit-btn:hover, button:hover, .prominent-btn:hover {
+.submit-btn:hover {
     background: var(--button-hover);
     color: var(--accent-text);
     box-shadow: 0 6px 18px 0 rgba(0,0,0,0.18);
@@ -889,6 +887,7 @@ a:hover, a:focus {
 }
 
 .submit-btn i {
+    font-size: 1rem;
     transition: transform 0.2s;
 }
 
@@ -1200,4 +1199,41 @@ input::placeholder, textarea::placeholder {
     --accent-color: #38a169;
     --card-bg: #ffffff;
     --border-color: #e2e8f0;
+}
+
+/* Contact Form Button Specific Styles */
+.contact-form .submit-btn {
+    background: var(--primary-color);
+    color: var(--accent-text);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Neue Montreal', 'Montserrat', 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+    padding: 1rem 2rem;
+    height: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.contact-form .submit-btn:hover {
+    background: var(--button-hover);
+    color: var(--accent-text);
+    box-shadow: 0 6px 18px 0 rgba(0,0,0,0.18);
+    transform: scale(1.01);
+}
+
+/* Reset general button styles */
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    height: auto;
+    display: inline-flex;
+    align-items: center;
 }
