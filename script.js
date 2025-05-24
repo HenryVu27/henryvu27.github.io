@@ -202,3 +202,21 @@ if (contactForm) {
         }
     });
 }
+
+// Theme switching functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const themeOptions = document.querySelectorAll('.theme-option');
+    const root = document.documentElement;
+    
+    // Set initial theme from localStorage or default to neon-light
+    const savedTheme = localStorage.getItem('theme') || 'neon-light';
+    root.setAttribute('data-theme', savedTheme);
+    
+    themeOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const theme = option.getAttribute('data-theme');
+            root.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        });
+    });
+});
