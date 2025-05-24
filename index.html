@@ -209,21 +209,18 @@
                     <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
                         <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
                         <div class="input-group">
-                            <input type="text" id="subject" name="subject" required placeholder="Subject">
-                            <div class="line"></div>
+                            <input type="text" id="subject" name="subject" placeholder="Subject">
                             <div class="error-message"></div>
                         </div>
                         <div class="input-group">
                             <input type="email" id="email" name="email" required placeholder="Email">
-                            <div class="line"></div>
                             <div class="error-message"></div>
                         </div>
                         <div class="input-group message-group">
                             <textarea id="message" name="message" rows="5" required placeholder="Message"></textarea>
-                            <div class="line"></div>
                             <div class="error-message"></div>
                         </div>
-                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                        <input type="checkbox" name="botcheck" style="display: none;">
                         <button type="submit" class="submit-btn">
                             <span>Send</span>
                             <i class="fas fa-paper-plane"></i>

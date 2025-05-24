@@ -858,14 +858,6 @@ a:hover, a:focus {
     background: #232b3a;
 }
 
-.input-group label {
-    display: none;
-}
-
-.input-group .line {
-    display: none;
-}
-
 .message-group textarea {
     min-height: 120px;
     resize: vertical;
