@@ -32,7 +32,7 @@
                 <div class="intro-flex">
                     <h1 class="big-intro">Hey, it's Henry <span class="wave" role="img" aria-label="waving hand">👋</span></h1>
                     <h2 class="intro-main" id="typing-text"></h2>
-                    <button class="contact-btn prominent-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Get in touch</button>
+                    <button class="contact-btn prominent-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Get in Touch <i class="fas fa-paper-plane contact-btn-icon"></i></button>
                 </div>
                 <div class="scroll-down-arrow">
                     <i class="fas fa-chevron-down"></i>
@@ -201,18 +201,36 @@
         <section id="contact" class="section contact-section fade-in-section">
             <div class="container">
                 <div class="section-heading">
-                    <h2>Let's Connect</h2>
+                    <h2>Say hello <span class="wave" role="img" aria-label="waving hand">👋</span></h2>
                     <div class="section-line"></div>
                 </div>
-                <form class="contact-form">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                    <button type="submit">Send</button>
-                </form>
+                <div class="contact-card">
+                    <div class="contact-note">I read every message. Drop me a line and I'll get back to you soon!</div>
+                    <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <div class="input-group">
+                            <input type="text" id="subject" name="subject" required placeholder="Subject">
+                            <div class="line"></div>
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" id="email" name="email" required placeholder="Email">
+                            <div class="line"></div>
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="input-group message-group">
+                            <textarea id="message" name="message" rows="5" required placeholder="Message"></textarea>
+                            <div class="line"></div>
+                            <div class="error-message"></div>
+                        </div>
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                        <button type="submit" class="submit-btn">
+                            <span>Send</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div id="form-status"></div>
+                </div>
             </div>
         </section>
     </main>

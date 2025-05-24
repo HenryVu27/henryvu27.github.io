@@ -24,7 +24,7 @@ window.addEventListener('scroll', () => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
         
-        if (pageYOffset >= sectionTop - 200) {
+        if (window.scrollY >= sectionTop - 200) {
             current = section.getAttribute('id');
         }
     });
@@ -67,7 +67,7 @@ function playfulTypingAnimation() {
     const element = document.getElementById('typing-text');
     const baseText = "I'm exploring how to build ";
     const wrongText = "sentient sand.";
-    const correctText = "statistical models.";
+    const correctText = "machines that can learn.";
     
     let currentText = "";
     let phase = 'typing-wrong'; 
@@ -127,3 +127,78 @@ function playfulTypingAnimation() {
 }
 
 document.addEventListener('DOMContentLoaded', playfulTypingAnimation);
+
+// AJAX Web3Forms contact form submission with custom validation
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('form-status');
+
+function validateEmail(email) {
+    // Simple email regex
+    return /^\S+@\S+\.\S+$/.test(email);
+}
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        let valid = true;
+        // Clear all error messages
+        contactForm.querySelectorAll('.error-message').forEach(div => div.textContent = '');
+
+        // Validate email
+        const email = contactForm.querySelector('input[name="email"]');
+        if (!email.value.trim()) {
+            email.parentElement.querySelector('.error-message').textContent = 'Please enter your email.';
+            valid = false;
+        } else if (!validateEmail(email.value.trim())) {
+            email.parentElement.querySelector('.error-message').textContent = 'Please enter a valid email.';
+            valid = false;
+        }
+        // Validate message
+        const message = contactForm.querySelector('textarea[name="message"]');
+        if (!message.value.trim()) {
+            message.parentElement.querySelector('.error-message').textContent = 'Please enter a message.';
+            valid = false;
+        }
+        if (!valid) return;
+
+        formStatus.textContent = '';
+        contactForm.style.transition = 'opacity 0.4s';
+        contactForm.style.opacity = '0.5';
+
+        const formData = new FormData(contactForm);
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            if (result.success) {
+                contactForm.style.transition = 'opacity 0.4s';
+                contactForm.style.opacity = '0';
+                setTimeout(() => {
+                    contactForm.style.display = 'none';
+                    formStatus.textContent = 'Message sent!';
+                    formStatus.style.opacity = '0';
+                    formStatus.style.transition = 'opacity 0.6s';
+                    formStatus.style.color = '#7ed6a7';
+                    formStatus.style.fontSize = '1.2rem';
+                    formStatus.style.fontWeight = '600';
+                    formStatus.style.marginTop = '2.5rem';
+                    formStatus.style.textAlign = 'center';
+                    setTimeout(() => {
+                        formStatus.style.opacity = '1';
+                    }, 50);
+                }, 400);
+            } else {
+                throw new Error(result.message || 'Something went wrong.');
+            }
+        } catch (err) {
+            contactForm.style.opacity = '1';
+            formStatus.textContent = 'Could not send message. Please try again later.';
+            formStatus.style.color = '#e57373';
+            formStatus.style.fontWeight = '600';
+            formStatus.style.marginTop = '1.5rem';
+            formStatus.style.textAlign = 'center';
+        }
+    });
+}
