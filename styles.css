@@ -1,6 +1,58 @@
 :root[data-theme="digital-abyss"] {
-    --error-color: #ff6b6b;
-    --shadow: 0 6px 15px rgba(0,0,0,0.25);
+    /* === Background Colors === */
+    --bg-color: #0e0e0e;                      /* Main background */
+    --card-bg: #1a1a1a;                       /* Card and container backgrounds */
+    --nav-bg: rgba(26, 32, 44, 0.5);          /* Navigation bar background */
+    --hover-bg: #1a1a1a;                      /* Hovered background for inputs/buttons */
+
+    /* === Text Colors === */
+    --text-color: #ffffff;                    /* Main text */
+    --big-intro: #cbd5e0;                     /* Large intro text */
+    --heading-color: var(--big-intro);        /* Section headings */
+    --subtitle-color: var(--secondary-color); /* Subtitles */
+    --muted-text: #8892b0;                    /* Muted/secondary text */
+    --light-text: #fefee3;                    /* Light text (on dark bg) */
+    --date-color: #bfc9d1;                    /* Dates in timeline */
+    --list-text: #aab8cf;                     /* List items */
+    --cursor-color: #c5d1e0;                  /* Typing cursor */
+    --error-color: #ff6b6b;                   /* Error messages */
+    --description-color: #d1d9e6;             /* (Unused) Description text */
+
+    /* === Button Colors === */
+    --button-bg: #008c7a;                     /* Button background */
+    --button-text-color: #0e0e0e;             /* Button text */
+    --button-hover: #024a70;                  /* Button hover color (border/bg) */
+    --button-active: #024a70;                 /* Button active/pressed */
+    --button-hover-bg: #025a85;               /* Button hover background */
+    --button-hover-border: #025a85;           /* Button hover border */
+    --button-hover-text-color: #cbd5e0;       /* Button hover text */
+    --button-border-color: var(--button-hover); /* Button border */
+
+    /* === Border Colors === */
+    --border-color: #63b3ed;                  /* Card and section borders */
+    --input-border: #222;                     /* Input border */
+
+    /* === Accent Colors === */
+    --primary-color: #00f0c2;                 /* Primary accent (buttons, highlights) */
+    --secondary-color: #b0b0b0;               /* Secondary accent */
+    --accent-color: #ecc94b;                  /* Accent (decorative, lines, etc.) */
+    --accent-bg: #00f0c2;                     /* Accent background */
+
+    /* === Input Colors === */
+    --input-bg: #181818;                      /* Input background */
+
+    /* === Effects & Shadows === */
+    --shadow: 0 6px 15px rgba(0,0,0,0.25);    /* Card shadow */
+    --plexus-particle-color: rgba(0, 240, 194, 0.18); /* Plexus effect */
+    --plexus-line-color: rgba(0, 240, 194, 0.13);     /* Plexus effect */
+    --theme-toggle-icon-color: #fff;                  /* Theme toggle icon */
+    --theme-toggle-glow: rgba(0,240,194,0.45);        /* Theme toggle glow */
+    --accent-color-rgb: 236, 201, 75;                 /* (Unused) Accent color RGB */
+
+    /* === Timeline Colors === */
+    --timeline-title-color: var(--big-intro);         /* Timeline title */
+    --timeline-desc-color: var(--subtitle-color);     /* Timeline description */
+    --emphasis-color: var(--primary-color);           /* Emphasis text */
     --theme-toggle-icon-color: #fff;
     --theme-toggle-glow: rgba(0,240,194,0.45);
     --subtitle-color: var(--secondary-color);
@@ -28,10 +80,9 @@
     --timeline-title-color: var(--big-intro);
     --timeline-desc-color: var(--subtitle-color);
     --emphasis-color: var(--primary-color);
-    --button-text-color: #0e0e0e;
     --input-bg: #181818;
-    --input-border: #222;
     --hover-bg: #1a1a1a;
+    --about-desc-color: var(--subtitle-color);
 }
 
 :root[data-theme="morning-fog"] {
@@ -56,7 +107,7 @@
     --hover-bg: #e2ded9;
     --button-active: #3a3c49;
     --button-hover-bg: #d43245c5;
-    --button-hover-border: #d43245c5;
+    --button-hover-border: var(--button-hover-bg);
     --shadow: 0 6px 15px rgba(58,60,73,0.1);
     --plexus-particle-color: rgba(58, 60, 73, 0.18);
     --plexus-line-color: rgba(58, 60, 73, 0.13);
@@ -69,6 +120,7 @@
     --timeline-title-color: var(--big-intro);
     --timeline-desc-color: var(--subtitle-color);
     --emphasis-color: var(--primary-color);
+    --about-desc-color: var(--subtitle-color);
 }
 
 :root[data-theme="sakura-garden"] {
@@ -92,9 +144,9 @@
     --input-border: #d5c5c8;
     --hover-bg: #fbeaec;
     --button-bg: #db7f8e;
-    --button-active: #604d53;
-    --button-hover-bg: #604d53;
-    --button-hover-border: #604d53;
+    --button-active: #e0829d;
+    --button-hover-bg: #104d404f;
+    --button-hover-border: var(--button-hover-bg);
     --button-hover-text-color: var(--big-intro);
     --shadow: 0 6px 15px rgba(96,77,83,0.10);
     --plexus-particle-color: rgba(219, 127, 142, 0.18);
@@ -106,43 +158,163 @@
     --timeline-desc-color: var(--subtitle-color);
     --emphasis-color: var(--primary-color);
     --heading-color: #604d53;
+    --about-desc-color: var(--subtitle-color);
 }
 
 :root[data-theme="misty-woods"] {
-    --bg-color: #262b15;
-    --text-color: #afb4ad;
-    --primary-color: #848871;
-    --secondary-color: #464b37;
-    --accent-color: #3f3f3f;
-    --card-bg: #3f3f3f;
-    --border-color: #464b37;
-    --nav-bg: #262b15;
-    --big-intro: #afb4ad;
-    --muted-text: #848871;
-    --light-text: #afb4ad;
-    --cursor-color: #afb4ad;
-    --date-color: #848871;
-    --list-text: #848871;
-    --error-color: #af4d4d;
-    --button-text-color: #262b15;
-    --input-bg: #3f3f3f;
-    --input-border: #464b37;
-    --hover-bg: #464b37;
-    --button-bg: #848871;
-    --button-active: #464b37;
-    --button-hover-bg: #afb4ad;
-    --button-hover-border: #afb4ad;
-    --button-hover-text-color: #262b15;
-    --shadow: 0 6px 15px rgba(70,75,55,0.18);
-    --plexus-particle-color: rgba(132, 136, 113, 0.18);
-    --plexus-line-color: rgba(132, 136, 113, 0.13);
-    --theme-toggle-icon-color: #afb4ad;
-    --theme-toggle-glow: rgba(132,136,113,0.25);
-    --subtitle-color: #848871;
-    --heading-color: #afb4ad;
-    --timeline-title-color: var(--big-intro);
-    --timeline-desc-color: var(--subtitle-color);
-    --emphasis-color: var(--primary-color);
+    /* === Background Colors === */
+    --bg-color: #262b15;                      /* Main background */
+    --card-bg: #303620;                       /* Card and container backgrounds */
+    --nav-bg: rgba(38, 43, 21, 0.85);         /* Navigation bar background */
+    --hover-bg: #414833;                      /* Hovered background for inputs/buttons */
+
+    /* === Text Colors === */
+    --text-color: #afb4ad;                    /* Main text */
+    --big-intro: #c8ccc6;                     /* Large intro text */
+    --heading-color: var(--big-intro);        /* Section headings */
+    --subtitle-color: var(--secondary-color); /* Subtitles */
+    --muted-text: #7a8075;                    /* Muted/secondary text */
+    --light-text: #e0e4dd;                    /* Light text (on dark bg) */
+    --date-color: var(--muted-text);          /* Dates in timeline */
+    --list-text: var(--text-color);           /* List items */
+    --cursor-color: var(--primary-color);     /* Typing cursor */
+    --error-color: #c86464;                   /* Error messages */
+
+    /* === Button Colors === */
+    --button-bg: var(--primary-color);        /* Button background */
+    --button-text-color: #202412;             /* Button text */
+    --button-hover-bg: #633b3b;               /* Button hover background */
+    --button-hover-border: var(--button-hover-bg); /* Button hover border */
+    --button-hover-text-color: var(--big-intro);   /* Button hover text */
+    --button-active: #91b391;                 /* Button active/pressed */
+
+    /* === Border Colors === */
+    --border-color: #5a6349;                  /* Card and section borders */
+    --input-border: var(--secondary-color);   /* Input border */
+
+    /* === Accent Colors === */
+    --primary-color: #a5c9a5;                 /* Primary accent (buttons, highlights) */
+    --secondary-color: #848871;               /* Secondary accent */
+    --accent-color: #b08d57;                  /* Accent (decorative, lines, etc.) */
+
+    /* === Input Colors === */
+    --input-bg: #3a402b;                      /* Input background */
+
+    /* === Effects & Shadows === */
+    --shadow: 0 6px 15px rgba(25, 28, 17, 0.25); /* Card shadow */
+    --plexus-particle-color: rgba(165, 201, 165, 0.18); /* Plexus effect */
+    --plexus-line-color: rgba(165, 201, 165, 0.13);     /* Plexus effect */
+    --theme-toggle-icon-color: var(--text-color);       /* Theme toggle icon */
+    --theme-toggle-glow: rgba(165, 201, 165, 0.25);     /* Theme toggle glow */
+
+    /* === Timeline Colors === */
+    --timeline-title-color: var(--big-intro);           /* Timeline title */
+    --timeline-desc-color: var(--subtitle-color);       /* Timeline description */
+    --about-desc-color: var(--subtitle-color);
+}
+
+:root[data-theme="forest-frost"] {
+    /* === Background Colors === */
+    --bg-color: #b6cdc7;                      /* Main background */
+    --card-bg: #e5e6e1;                       /* Card and container backgrounds */
+    --nav-bg: rgba(181, 205, 199, 0.85);      /* Navigation bar background */
+    --hover-bg: #d8e0dc;                      /* Hovered background for inputs/buttons */
+
+    /* === Text Colors === */
+    --text-color: #293535;                    /* Main text */
+    --big-intro: #293535;                     /* Large intro text */
+    --heading-color: var(--big-intro);        /* Section headings */
+    --subtitle-color: #556e68;                /* Subtitles */
+    --muted-text: #7c9e9d;                    /* Muted/secondary text */
+    --light-text: #293535;                    /* Light text (on dark bg) */
+    --date-color: var(--muted-text);          /* Dates in timeline */
+    --list-text: var(--text-color);           /* List items */
+    --cursor-color: var(--primary-color);     /* Typing cursor */
+    --error-color: #c86464;                   /* Error messages */
+
+    /* === Button Colors === */
+    --button-bg: var(--primary-color);        /* Button background */
+    --button-text-color: #e5e6e1;             /* Button text */
+    --button-hover-bg: #556e68;               /* Button hover background */
+    --button-hover-border: var(--button-hover-bg); /* Button hover border */
+    --button-hover-text-color: #e5e6e1;       /* Button hover text */
+    --button-active: #7c9e9d;                 /* Button active/pressed */
+
+    /* === Border Colors === */
+    --border-color: #7c9e9d;                  /* Card and section borders */
+    --input-border: var(--secondary-color);   /* Input border */
+
+    /* === Accent Colors === */
+    --primary-color: #556e68;                 /* Primary accent (buttons, highlights) */
+    --secondary-color: #7c9e9d;               /* Secondary accent */
+    --accent-color: #293535;                  /* Accent (decorative, lines, etc.) */
+
+    /* === Input Colors === */
+    --input-bg: #e5e6e1;                      /* Input background */
+
+    /* === Effects & Shadows === */
+    --shadow: 0 6px 15px rgba(41, 53, 53, 0.15); /* Card shadow */
+    --plexus-particle-color: rgba(85, 110, 104, 0.18); /* Plexus effect */
+    --plexus-line-color: rgba(85, 110, 104, 0.13);     /* Plexus effect */
+    --theme-toggle-icon-color: var(--text-color);       /* Theme toggle icon */
+    --theme-toggle-glow: rgba(85, 110, 104, 0.25);     /* Theme toggle glow */
+
+    /* === Timeline Colors === */
+    --timeline-title-color: var(--big-intro);           /* Timeline title */
+    --timeline-desc-color: var(--subtitle-color);       /* Timeline description */
+    --about-desc-color: var(--subtitle-color);
+}
+
+:root[data-theme="green-wilder"] {
+    /* === Background Colors === */
+    --bg-color: #d2e1cc;                      /* Main background (leafy light) */
+    --card-bg: #5e8d83;                       /* Card and container backgrounds (muted green) */
+    --nav-bg: rgba(210, 225, 204, 0.92);      /* Navigation bar background */
+    --hover-bg: #b7cbb2;                      /* Hovered background for inputs/buttons */
+
+    /* === Text Colors === */
+    --text-color: #161d23;                    /* Main text (deep green) */
+    --big-intro: #161d23;                     /* Large intro text */
+    --heading-color: var(--big-intro);        /* Section headings */
+    --subtitle-color: #114538;                /* Subtitles (rich green) */
+    --muted-text: #5e8d83;                    /* Muted/secondary text (matches card) */
+    --light-text: #d2e1cc;                    /* Light text (on dark bg) */
+    --date-color: var(--muted-text);          /* Dates in timeline */
+    --list-text: var(--text-color);           /* List items */
+    --cursor-color: var(--primary-color);     /* Typing cursor */
+    --error-color: #e57373;                   /* Error messages */
+
+    /* === Button Colors === */
+    --button-bg: #0f444c;                     /* Button background (deep teal) */
+    --button-text-color: #d2e1cc;             /* Button text (light) */
+    --button-hover-bg: #114538;               /* Button hover background (darker green) */
+    --button-hover-border: var(--button-hover-bg); /* Button hover border */
+    --button-hover-text-color: #d2e1cc;       /* Button hover text */
+    --button-active: #5e8d83;                 /* Button active/pressed (muted green) */
+
+    /* === Border Colors === */
+    --border-color: #114538;                  /* Card and section borders */
+    --input-border: var(--secondary-color);   /* Input border */
+
+    /* === Accent Colors === */
+    --primary-color: #0f444c;                 /* Primary accent (buttons, highlights) */
+    --secondary-color: #5e8d83;               /* Secondary accent */
+    --accent-color: #114538;                  /* Accent (decorative, lines, etc.) */
+
+    /* === Input Colors === */
+    --input-bg: #e5e6e1;                      /* Input background */
+
+    /* === Effects & Shadows === */
+    --shadow: 0 6px 15px rgba(22, 29, 35, 0.13); /* Card shadow */
+    --plexus-particle-color: rgba(15, 68, 76, 0.18); /* Plexus effect */
+    --plexus-line-color: rgba(15, 68, 76, 0.13);     /* Plexus effect */
+    --theme-toggle-icon-color: var(--text-color);       /* Theme toggle icon */
+    --theme-toggle-glow: rgba(15, 68, 76, 0.22);     /* Theme toggle glow */
+
+    /* === Timeline Colors === */
+    --timeline-title-color: var(--big-intro);           /* Timeline title */
+    --timeline-desc-color: var(--subtitle-color);       /* Timeline description */
+    --about-desc-color: var(--subtitle-color);
 }
 
 * {
@@ -276,19 +448,39 @@ header {
 
 .profile-image {
     margin: 0 auto;
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
     position: relative;
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2.5rem;
+    cursor: pointer;
+    animation: float 6s ease-in-out infinite;
+}
+
+.profile-image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+    opacity: 0.2;
+    z-index: -1;
+    transition: opacity 0.3s;
+}
+
+.profile-image:hover::before {
+    opacity: 0.4;
 }
 
 .profile-image .profile-pic {
-    width: 380px;
-    height: 380px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
     position: relative;
@@ -296,32 +488,21 @@ header {
     display: block;
     margin: 0 auto;
     background: transparent;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.profile-image .profile-border {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    border: 3px solid var(--secondary-color);
-    background: transparent;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
+.profile-image:hover .profile-pic {
+    transform: scale(1.04);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Remove all hover effects */
-.profile-image:hover .profile-pic,
-.profile-image:hover .profile-border {
-    transform: none;
-}
-
-.profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -902,6 +1083,7 @@ a:hover, a:focus {
 
 .about-text p {
     margin-bottom: 1.5em;
+    color: var(--about-desc-color);
 }
 
 .about-image {
@@ -912,44 +1094,6 @@ a:hover, a:focus {
     position: relative;
     z-index: 1;
     margin-top: 3rem
-}
-
-.profile-image {
-    margin: 0 auto;
-    width: 200px;
-    height: 200px;
-    position: relative;
-    z-index: 2;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.profile-image .profile-pic {
-    width: 220px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    position: relative;
-    z-index: 2;
-    display: block;
-    margin: 0 auto;
-    background: transparent;
-}
-
-.profile-image .profile-border {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 3px solid var(--secondary-color);
-    background: transparent;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
 }
 
 .contact-section {
@@ -1035,19 +1179,18 @@ a:hover, a:focus {
     gap: 0.5rem;
 }
 
+.submit-btn i {
+    color: var(--button-text-color);
+}
+
 .submit-btn:hover {
     background: var(--button-hover-bg);
-    color: var(--button-text-color);
     box-shadow: 0 6px 18px 0 rgba(0,0,0,0.18);
     transform: scale(1.01);
 }
 
-.submit-btn i {
-    font-size: 1rem;
-    transition: transform 0.2s;
-}
-
-.submit-btn:hover i {
+.submit-btn:hover span, .submit-btn:hover i {
+    color: var(--button-hover-text-color);
     transform: translateX(4px);
 }
 
@@ -1134,11 +1277,11 @@ a:hover, a:focus {
 
 .scroll-down-arrow {
     position: absolute;
-    bottom: clamp(32px, 6vh, 80px);
+    bottom: clamp(80px, 12vh, 160px);
     left: 50%;
     transform: translateX(-50%);
     font-size: clamp(1.5rem, 2.2vw, 2.2rem);
-    color: var(--primary-color);
+    color: var(--text-color);
     animation: bounceDown 2s infinite;
     cursor: pointer;
     opacity: 0.85;
@@ -1153,16 +1296,6 @@ a:hover, a:focus {
 .scroll-down-arrow:hover {
     opacity: 1;
     color: var(--accent-color);
-}
-
-.scroll-down-text {
-    font-size: 1.05rem;
-    color: var(--primary-color);
-    margin-top: 0.2rem;
-    letter-spacing: 0.04em;
-    font-family: inherit;
-    opacity: 0.85;
-    animation: fadeInScrollText 2.5s 0.5s both;
 }
 
 @keyframes bounceDown {
@@ -1450,4 +1583,23 @@ button {
 .timeline-content b,
 .timeline-content strong {
     color: var(--emphasis-color);
+}
+
+@keyframes fly-off {
+  0% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  60% {
+    transform: translateX(60px) rotate(-10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(180px) rotate(-30deg);
+    opacity: 0;
+  }
+}
+
+.submit-btn .fa-paper-plane.fly-off {
+  animation: fly-off 0.7s cubic-bezier(0.4,0,0.2,1) forwards;
 }

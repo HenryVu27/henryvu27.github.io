@@ -85,7 +85,7 @@ function playfulTypingAnimation() {
                     phase = 'deleting';
                     charIndex = baseText.length + wrongText.length;
                     type();
-                }, 1);
+                }, 600);
                 element.textContent = currentText;
                 return;
             }
@@ -114,11 +114,11 @@ function playfulTypingAnimation() {
         
         element.textContent = currentText;
         
-        let speed = 1;
+        let speed = 55;
         if (phase === 'deleting') {
-            speed = 1;
+            speed = 50;
         } else if (phase === 'typing-correct') {
-            speed = 1;
+            speed = 60;
         }
         
         setTimeout(type, speed);
@@ -203,6 +203,19 @@ if (contactForm) {
             formStatus.style.marginTop = '1.5rem';
             formStatus.style.textAlign = 'center';
         }
+
+        // Fly-off animation for paper plane
+        const planeIcon = contactForm.querySelector('.submit-btn .fa-paper-plane');
+        if (planeIcon) {
+            planeIcon.classList.remove('fly-off');
+            // Force reflow to restart animation if needed
+            void planeIcon.offsetWidth;
+            planeIcon.classList.add('fly-off');
+            planeIcon.addEventListener('animationend', function handler() {
+                planeIcon.classList.remove('fly-off');
+                planeIcon.removeEventListener('animationend', handler);
+            });
+        }
     });
 }
 
@@ -212,7 +225,9 @@ const themes = [
     { key: 'digital-abyss', name: 'Digital Abyss' },
     { key: 'morning-fog', name: 'Morning Fog' },
     { key: 'sakura-garden', name: 'Sakura Garden' },
-    { key: 'misty-woods', name: 'Misty Woods' }
+    { key: 'misty-woods', name: 'Misty Woods' },
+    { key: 'forest-frost', name: 'Forest Frost' },
+    { key: 'green-wilder', name: 'Green Wilder' }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -221,16 +236,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const root = document.documentElement;
     let currentThemeIndex = 0;
 
-    // Set initial theme from localStorage or default
-    const savedTheme = localStorage.getItem('theme') || themes[0].key;
-    const savedIndex = themes.findIndex(t => t.key === savedTheme);
-    currentThemeIndex = savedIndex !== -1 ? savedIndex : 0;
+    // Always default to digital-abyss unless user has previously selected a theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme && themes.some(t => t.key === savedTheme)) {
+        currentThemeIndex = themes.findIndex(t => t.key === savedTheme);
+    } else {
+        currentThemeIndex = 0; // digital-abyss is first in the array
+        root.setAttribute('data-theme', themes[0].key);
+        localStorage.setItem('theme', themes[0].key);
+    }
     root.setAttribute('data-theme', themes[currentThemeIndex].key);
     if (themeToggleLi) themeToggleLi.title = `${themes[currentThemeIndex].name}`;
 
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
-            // Cycle to next theme (for now, just one)
+            // Cycle to next theme
             currentThemeIndex = (currentThemeIndex + 1) % themes.length;
             const theme = themes[currentThemeIndex];
             root.setAttribute('data-theme', theme.key);
