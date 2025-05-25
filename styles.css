@@ -26,11 +26,6 @@
     --input-bg: #181818;
     --input-border: #222;
     --hover-bg: #1a1a1a;
-    --button-hover: #00cfa3;
-    --button-active: #024a70;
-    --button-hover-text: #fefee3;
-    --button-hover-bg: #025a85;
-    --button-hover-border: #025a85;
     
     /* Effects */
     --shadow: 0 6px 15px rgba(0,0,0,0.25);
@@ -50,6 +45,11 @@
 
 /* Theme Variables */
 :root[data-theme="digital-abyss"] {
+    --button-hover: #024a70;
+    --button-active: #024a70;
+    --button-hover-text: #fefee3;
+    --button-hover-bg: #025a85;
+    --button-hover-border: #025a85;
     --bg-color: #0e0e0e;
     --text-color: #ffffff;
     --primary-color: #00f0c2;
@@ -60,7 +60,7 @@
     --plexus-particle-color: rgba(0, 240, 194, 0.18);
     --plexus-line-color: rgba(0, 240, 194, 0.13);
     --button-bg: #008c7a;
-    --button-border-color: #00f0c2;
+    --button-border-color: var(--button-hover);
     --button-hover-text-color: #fff;
     --timeline-title-color: var(--big-intro);
     --timeline-desc-color: var(--subtitle-color);
@@ -99,7 +99,7 @@
     --theme-toggle-icon-color: #79726e;
     --theme-toggle-glow: rgba(172, 162, 150, 0.35);
     --subtitle-color: #79726e;
-    --button-border-color: #b0b0b0;
+    --button-border-color: var(--button-hover);
     --button-hover-text-color: #222;
     --heading-color: #3a3c49;
     --timeline-title-color: var(--big-intro);
@@ -109,18 +109,32 @@
 
 :root[data-theme="sakura-garden"] {
     --bg-color: #ffdbda;
-    --card-bg: #d5c5c8;
+    --text-color: #604d53;
     --primary-color: #604d53;
     --secondary-color: #9da3a4;
     --accent-color: #db7f8e;
+    --card-bg: #d5c5c8;
     --border-color: #9da3a4;
-    --text-color: #604d53;
+    --nav-bg: #ffdbda;
+    --big-intro: #604d53;
+    --muted-text: #9da3a4;
     --light-text: #fff;
+    --cursor-color: #604d53;
+    --date-color: #9da3a4;
+    --list-text: #604d53;
+    --error-color: #db7f8e;
+    --accent-bg: #db7f8e;
+    --accent-text: #fff;
+    --input-bg: #fbeaec;
+    --input-border: #d5c5c8;
+    --hover-bg: #fbeaec;
     --button-bg: #db7f8e;
-    --button-border-color: #604d53;
+    --button-border-color: var(--button-hover);
+    --button-hover: #604d53;
+    --button-active: #604d53;
+    --button-hover-text: #fff;
     --button-hover-bg: #604d53;
-    --button-hover-text-color: #fff;
-    --heading-color: #604d53;
+    --button-hover-border: #604d53;
     --shadow: 0 6px 15px rgba(96,77,83,0.10);
     --plexus-particle-color: rgba(219, 127, 142, 0.18);
     --plexus-line-color: rgba(219, 127, 142, 0.13);
@@ -130,6 +144,7 @@
     --timeline-title-color: var(--big-intro);
     --timeline-desc-color: var(--subtitle-color);
     --emphasis-color: var(--primary-color);
+    --heading-color: #604d53;
 }
 
 * {
