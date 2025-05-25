@@ -81,9 +81,10 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: rgba(49, 62, 80, 0.15);
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow);
+    background-color: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.5s cubic-bezier(0.4,0,0.2,1);
 }
 
 .nav-content {
@@ -111,10 +112,28 @@ header {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2.5rem;
+    gap: 0.2rem;
     align-items: center;
     margin: 0;
     padding: 0;
+}
+
+.nav-dot {
+    color: var(--secondary-color);
+    opacity: 0.7;
+    font-size: 1.1em;
+    margin: 0 0.6rem;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    height: 1em;
+}
+
+.nav-links li:not(.nav-dot) {
+    display: flex;
+    align-items: center;
 }
 
 .nav-links a {
@@ -696,54 +715,88 @@ a:hover, a:focus {
 
 .section-heading {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 1rem;
     margin-bottom: 1.2rem;
     width: 100%;
 }
 
 .section-heading h2 {
-    color: var(--text-color);
+    color: var(--heading-color);
     font-size: 2.2rem !important;
     font-weight: 500;
-    font-family: 'Inter', 'Calibre', 'San Francisco', 'SF Pro Text', -apple-system, system-ui, sans-serif;
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
     margin: 0;
     flex-shrink: 0;
     background: none;
     padding: 0;
     border-radius: 0;
     display: inline;
-    align-items: baseline;
-    height: auto;
+    align-items: center;
+    height: 1.5em;
+    line-height: 1.2;
 }
 
 .section-line {
     flex: 1;
-    height: 1px;
-    background: var(--border-color);
-    opacity: 0.2;
+    height: 2px;
+    background: var(--primary-color);
+    opacity: 0.18;
     margin-left: 1.2rem;
+    border-radius: 1px;
+    align-self: center;
 }
 
-.contact-btn {
-    padding: 0.6rem 1.8rem;
-    font-size: 1.1rem;
-    color: var(--primary-color);
+.contact-btn, .prominent-btn {
+    position: relative;
+    overflow: hidden;
     background: var(--button-bg);
+    color: var(--accent-text);
     border: 2px solid var(--button-border-color);
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s ease, color 0.2s;
+    transition: color 0.2s;
     margin-top: 0.5rem;
     font-weight: 500;
+    z-index: 1;
 }
 
-.contact-btn:hover, .contact-btn:focus {
+.contact-btn::before, .prominent-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 0%;
+    background: var(--button-hover-bg);
+    z-index: 2;
+    transition: width 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+.contact-btn:hover::before, .contact-btn:focus::before,
+.prominent-btn:hover::before, .prominent-btn:focus::before {
+    width: 100%;
+}
+
+.contact-btn span, .prominent-btn span {
+    position: relative;
+    z-index: 3;
+    display: inline-block;
+    transition: color 0.2s;
+}
+
+.contact-btn::after, .prominent-btn::after {
+    content: none;
+}
+
+.contact-btn i, .prominent-btn i {
+    position: relative;
+    z-index: 3;
+    transition: color 0.2s;
+}
+
+.contact-btn:hover i, .contact-btn:focus i,
+.prominent-btn:hover i, .prominent-btn:focus i {
     color: var(--button-hover-text-color);
-}
-
-.contact-btn:active {
-    transform: translateY(0);
+    transition: color 0.2s 0.12s;
 }
 
 .about-section {
@@ -767,50 +820,8 @@ a:hover, a:focus {
     text-align: justify;
 }
 
-.about-text h2 {
-    color: inherit;
-    font-size: inherit;
-    margin-bottom: inherit;
-    display: inherit;
-    align-items: inherit;
-}
-
-.about-text h3 {
-    margin-top: 2rem;
-    color: var(--secondary-color);
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-
 .about-text p {
     margin-bottom: 1.5em;
-}
-
-.about-tech-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
-    gap: 0.2rem 0.3rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 1rem;
-}
-
-.about-tech-list li {
-    color: var(--list-text);
-    padding-left: 1.2em;
-    position: relative;
-    margin-bottom: 0.1em;
-    font-family: 'Fira Mono', 'Consolas', 'Monaco', monospace;
-    font-size: 1em;
-}
-
-.about-tech-list li::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--primary-color);
-    font-size: 1em;
 }
 
 .about-image {
@@ -989,7 +1000,7 @@ a:hover, a:focus {
 
 .company-link {
     color: var(--primary-color);
-    font-weight: 600;
+    font-weight: 250;
 }
 
 .prominent-btn {
@@ -1178,96 +1189,6 @@ input::placeholder, textarea::placeholder {
     background: var(--card-bg);
     border-radius: 8px;
 }
-
-/* Theme Dropdown Styles */
-.theme-dropdown {
-    position: relative;
-}
-
-.theme-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    transition: color 0.3s;
-}
-
-.theme-btn:hover {
-    color: var(--primary-color);
-}
-
-.theme-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: rgba(26, 32, 44, 0.25);
-    backdrop-filter: blur(10px);
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    padding: 0.5rem;
-    min-width: 150px;
-    display: none;
-    z-index: 1000;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.theme-dropdown:hover .theme-menu {
-    display: block;
-}
-
-.theme-option {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.2s;
-}
-
-.theme-option:hover {
-    background-color: transparent;
-}
-
-.theme-name {
-    color: var(--text-color);
-    font-size: 0.95rem;
-    position: relative;
-    transition: color 0.2s;
-}
-
-.theme-name::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background: currentColor;
-    transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
-}
-
-.theme-name:hover::after {
-    width: 100%;
-}
-
-.theme-name:hover {
-    text-decoration: none;
-    color: var(--primary-color);
-}
-
-/* Remove theme preview styles */
-.theme-preview,
-.theme-preview.digital-abyss,
-.theme-preview.dark,
-.theme-preview.light {
-    display: none;
-}
-
 /* Theme Variables */
 :root[data-theme="digital-abyss"] {
     --bg-color: #0e0e0e;
@@ -1318,6 +1239,7 @@ input::placeholder, textarea::placeholder {
     --subtitle-color: #79726e;
     --button-border-color: #b0b0b0;
     --button-hover-text-color: #222;
+    --heading-color: #3a3c49;
 }
 
 body {
@@ -1373,4 +1295,72 @@ button {
     border-color: var(--button-hover-border);
     box-shadow: 0 6px 15px rgba(0,0,0,0.25);
     transform: translateY(-3px);
+}
+
+.about-paragraph {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+    margin-bottom: 2.2rem;
+}
+.about-paragraph.visible {
+    opacity: 1;
+    transform: none;
+}
+.about-text .about-paragraph-title {
+    font-size: 1.25rem;
+    font-weight: 250;
+    color: var(--primary-color);
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.01em;
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+}
+
+.intro-flex .contact-btn {
+    opacity: 0;
+    transform: translateY(32px);
+    pointer-events: none;
+    transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.intro-flex .contact-btn.visible {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+}
+
+.nav-links li:not(:last-child)::after { content: none; }
+
+/* Footer nav styles */
+.footer-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2rem;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+}
+.footer-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05rem;
+    transition: color 0.2s;
+    margin: 0 0.1rem;
+}
+.footer-nav a:hover {
+    color: var(--primary-color);
+}
+.footer-divider {
+    color: var(--secondary-color);
+    opacity: 0.7;
+    margin: 0 0.5rem;
+    font-size: 1.2em;
+    user-select: none;
+}
+
+/* Header hide/show transition */
+.hide-header {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
 }

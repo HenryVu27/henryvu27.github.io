@@ -68,6 +68,7 @@ function playfulTypingAnimation() {
     const baseText = "I'm exploring how to build ";
     const wrongText = "sentient sand.";
     const correctText = "machines that can learn.";
+    const contactBtn = document.querySelector('.intro-flex .contact-btn');
     
     let currentText = "";
     let phase = 'typing-wrong'; 
@@ -103,6 +104,8 @@ function playfulTypingAnimation() {
             } else {
                 phase = 'done';
                 element.textContent = currentText;
+                // Show the Get in Touch button with animation
+                if (contactBtn) contactBtn.classList.add('visible');
                 return;
             }
         } else if (phase === 'pausing') {
@@ -111,11 +114,11 @@ function playfulTypingAnimation() {
         
         element.textContent = currentText;
         
-        let speed = 60;
+        let speed = 55;
         if (phase === 'deleting') {
-            speed = 60;
+            speed = 50;
         } else if (phase === 'typing-correct') {
-            speed = 80;
+            speed = 60;
         }
         
         setTimeout(type, speed);
@@ -371,4 +374,38 @@ document.addEventListener('DOMContentLoaded', () => {
         createParticles();
         animate();
     }, 100);
+})();
+
+// Fade-in for About Me paragraphs
+(function() {
+    const paragraphs = document.querySelectorAll('.about-paragraph.fade-in-paragraph');
+    if (!paragraphs.length) return;
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry, idx) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, idx * 180); // Staggered fade-in
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.18 });
+    paragraphs.forEach(p => observer.observe(p));
+})();
+
+// Hide header when scrolling past the intro section
+(function() {
+    const header = document.querySelector('header');
+    const intro = document.getElementById('intro');
+    if (!header || !intro) return;
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                header.classList.remove('hide-header');
+            } else {
+                header.classList.add('hide-header');
+            }
+        });
+    }, { threshold: 0.01 });
+    observer.observe(intro);
 })();

@@ -17,9 +17,13 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
+                    <li class="nav-dot">·</li>
                     <li><a href="#experience">Experience</a></li>
+                    <li class="nav-dot">·</li>
                     <li><a href="#projects">Projects</a></li>
+                    <li class="nav-dot">·</li>
                     <li><a href="#contact">Contact</a></li>
+                    <li class="nav-dot">·</li>
                     <li><a href="#interests">Interests</a></li>
                     <li class="theme-toggle-btn" title="Digital Abyss">
                         <button class="theme-toggle-icon" aria-label="Switch theme">
@@ -37,7 +41,7 @@
                 <div class="intro-flex">
                     <h1 class="big-intro">Hey, it's Henry <span class="wave" role="img" aria-label="waving hand">👋</span></h1>
                     <h2 class="intro-main" id="typing-text"></h2>
-                    <button class="contact-btn prominent-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Get in Touch <i class="fas fa-paper-plane contact-btn-icon"></i></button>
+                    <button class="contact-btn prominent-btn" data-text="Get in Touch" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});"><span>Get in Touch <i class="fas fa-paper-plane contact-btn-icon"></i></span></button>
                 </div>
                 <div class="scroll-down-arrow">
                     <i class="fas fa-chevron-down"></i>
@@ -57,18 +61,27 @@
                         <h2>About Me</h2>
                         <div class="section-line"></div>
                     </div>
-                    <p>
-                        Hi there! My name is Henry Vu. I'm currently a graduate student in Computer Science at <a href="https://engineering.utdallas.edu/" target="_blank">&#64;UTDallas</a>, specializing in Intelligent Systems. Previously, I received my B.Sc. Honors in Computer Science at <a href="https://www.ualberta.ca/en/computing-science/index.html" target="_blank">&#64;UAlberta</a>.
-                    </p>
-                    <p>
-                        My interest math in early in competitions. I have always enjoyed modeling real-world problems in rigorous mathematical language, seeing the underlying structure, and translating that structure into computational solutions. 
-                    </p>
-                    <p>
-                        Fast forward to the present, I have had the privilege to work with and learn from some of the most brilliant people during my time at UAlberta and UTDallas, diving deep into areas like online optimization, reinforcement learning, and deep learning.
-                    </p>
-                    <p>
-                        Currently, I'm developing lightweight semantic segmentation models for medical imaging at Thormed Innovation, and working on my M.Sc. thesis. I'm always excited to connect with fellow researchers and students interested in machine learning!
-                    </p>
+                    <div class="about-paragraph fade-in-paragraph">
+                        <h3 class="about-paragraph-title">Academic Journey</h3>
+                        <p>
+                            Hi there! My name is Henry Vu. I'm currently a graduate student in Computer Science at <a href="https://engineering.utdallas.edu/" target="_blank">&#64;UTDallas</a>, specializing in Intelligent Systems. Previously, I received my B.Sc. Honors in Computer Science at <a href="https://www.ualberta.ca/en/computing-science/index.html" target="_blank">&#64;UAlberta</a>.
+                        </p>
+                    </div>
+                    <div class="about-paragraph fade-in-paragraph">
+                        <h3 class="about-paragraph-title">Research & Experience</h3>
+                        <p>
+                            My interest in math started early in competitions. I have always enjoyed modeling real-world problems in rigorous mathematical language, seeing the underlying structure, and translating that structure into computational solutions.
+                        </p>
+                        <p>
+                            Fast forward to the present, I have had the privilege to work with and learn from some of the most brilliant people during my time at UAlberta and UTDallas, diving deep into areas like online optimization, reinforcement learning, and deep learning.
+                        </p>
+                    </div>
+                    <div class="about-paragraph fade-in-paragraph">
+                        <h3 class="about-paragraph-title">Current Focus</h3>
+                        <p>
+                            Currently, I'm developing lightweight semantic segmentation models for medical imaging at Thormed Innovation, and working on my M.Sc. thesis. I'm always excited to connect with fellow researchers and students interested in machine learning!
+                        </p>
+                    </div>
                 </div>
                 <div class="about-image">
                     <div class="profile-image">
@@ -245,6 +258,17 @@
 
     <footer>
         <div class="container">
+            <nav class="footer-nav">
+                <a href="#about">About</a>
+                <span class="footer-divider">·</span>
+                <a href="#experience">Experience</a>
+                <span class="footer-divider">·</span>
+                <a href="#projects">Projects</a>
+                <span class="footer-divider">·</span>
+                <a href="#contact">Contact</a>
+                <span class="footer-divider">·</span>
+                <a href="#interests">Interests</a>
+            </nav>
             <div class="social-links">
                 <a href="https://github.com/HenryVu27" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
