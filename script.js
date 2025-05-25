@@ -85,7 +85,7 @@ function playfulTypingAnimation() {
                     phase = 'deleting';
                     charIndex = baseText.length + wrongText.length;
                     type();
-                }, 600);
+                }, 1);
                 element.textContent = currentText;
                 return;
             }
@@ -114,11 +114,11 @@ function playfulTypingAnimation() {
         
         element.textContent = currentText;
         
-        let speed = 55;
+        let speed = 1;
         if (phase === 'deleting') {
-            speed = 50;
+            speed = 1;
         } else if (phase === 'typing-correct') {
-            speed = 60;
+            speed = 1;
         }
         
         setTimeout(type, speed);
@@ -211,7 +211,8 @@ if (contactForm) {
 const themes = [
     { key: 'digital-abyss', name: 'Digital Abyss' },
     { key: 'morning-fog', name: 'Morning Fog' },
-    { key: 'sakura-garden', name: 'Sakura Garden' }
+    { key: 'sakura-garden', name: 'Sakura Garden' },
+    { key: 'misty-woods', name: 'Misty Woods' }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
