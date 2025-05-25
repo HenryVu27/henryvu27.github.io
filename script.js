@@ -206,8 +206,8 @@ if (contactForm) {
 // Theme switching functionality
 // For now, only one theme, but code is ready for more
 const themes = [
-    { key: 'neon-light', name: 'Neon Light' },
-    { key: 'sophisticated', name: 'Sophisticated' }
+    { key: 'digital-abyss', name: 'Digital Abyss' },
+    { key: 'morning-fog', name: 'Morning Fog' }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedIndex = themes.findIndex(t => t.key === savedTheme);
     currentThemeIndex = savedIndex !== -1 ? savedIndex : 0;
     root.setAttribute('data-theme', themes[currentThemeIndex].key);
-    if (themeToggleLi) themeToggleLi.title = `Theme: ${themes[currentThemeIndex].name}`;
+    if (themeToggleLi) themeToggleLi.title = `${themes[currentThemeIndex].name}`;
 
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
@@ -230,10 +230,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const theme = themes[currentThemeIndex];
             root.setAttribute('data-theme', theme.key);
             localStorage.setItem('theme', theme.key);
-            if (themeToggleLi) themeToggleLi.title = `Theme: ${theme.name}`;
+            if (themeToggleLi) themeToggleLi.title = `${theme.name}`;
             // Animate icon
             themeToggleBtn.classList.add('spinning');
-            setTimeout(() => themeToggleBtn.classList.remove('spinning'), 600);
+            setTimeout(() => {
+                themeToggleBtn.classList.remove('spinning');
+                themeToggleBtn.blur();
+            }, 600);
         });
     }
 });
@@ -245,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     let dpr = window.devicePixelRatio || 1;
     let width = 0, height = 0;
-    const PARTICLE_COUNT = 32;
+    const PARTICLE_COUNT = 46;
     const PARTICLE_RADIUS = 2.2;
     const LINE_DIST = 110;
     function getColors() {

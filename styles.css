@@ -37,6 +37,12 @@
     --accent-color-rgb: 236, 201, 75;
     --plexus-particle-color: rgba(0, 240, 194, 0.18);
     --plexus-line-color: rgba(0, 240, 194, 0.13);
+    --theme-toggle-icon-color: #fff;
+    --theme-toggle-glow: rgba(0,240,194,0.45);
+    --subtitle-color: var(--secondary-color);
+    --button-bg: var(--primary-color);
+    --button-border-color: var(--primary-color);
+    --button-hover-text-color: #fff;
 }
 
 * {
@@ -132,7 +138,7 @@ header {
 .theme-toggle-icon {
     background: none;
     border: none;
-    color: var(--primary-color);
+    color: var(--theme-toggle-icon-color);
     font-size: 1.6rem;
     cursor: pointer;
     padding: 0.5rem;
@@ -143,16 +149,25 @@ header {
     z-index: 1;
 }
 
-.theme-toggle-icon:focus,
 .theme-toggle-icon:hover {
-    background: rgba(0, 240, 194, 0.12);
-    box-shadow: 0 0 0 4px rgba(0, 240, 194, 0.15);
-    color: var(--primary-color);
+    background: var(--theme-toggle-glow);
+    box-shadow: 0 0 0 3px var(--theme-toggle-glow), 0 0 8px 2px var(--theme-toggle-glow);
+    color: var(--theme-toggle-icon-color);
+}
+
+.theme-toggle-icon:focus {
+    outline: none;
+    box-shadow: none;
+    background: none;
+}
+
+.theme-toggle-icon:focus-visible {
+    outline: 2px solid var(--theme-toggle-glow);
+    outline-offset: 2px;
 }
 
 .theme-toggle-icon.spinning {
     animation: spin-palette 0.6s cubic-bezier(0.4,0,0.2,1);
-    box-shadow: 0 0 12px 2px var(--primary-color), 0 0 0 4px rgba(0,240,194,0.15);
 }
 
 @keyframes spin-palette {
@@ -597,7 +612,7 @@ a:hover, a:focus {
 }
 
 .intro-main {
-    color: var(--secondary-color);
+    color: var(--subtitle-color);
     font-size: 2.2rem;
     font-weight: 400;
     margin-left: 2px;
@@ -714,19 +729,17 @@ a:hover, a:focus {
     padding: 0.6rem 1.8rem;
     font-size: 1.1rem;
     color: var(--primary-color);
-    background: transparent;
-    border: 2px solid var(--primary-color);
+    background: var(--button-bg);
+    border: 2px solid var(--button-border-color);
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.2s ease, color 0.2s;
     margin-top: 0.5rem;
     font-weight: 500;
 }
 
-.contact-btn:hover {
-    background: var(--primary-color);
-    color: var(--bg-color);
-    transform: translateY(-1px);
+.contact-btn:hover, .contact-btn:focus {
+    color: var(--button-hover-text-color);
 }
 
 .contact-btn:active {
@@ -980,9 +993,9 @@ a:hover, a:focus {
 }
 
 .prominent-btn {
-    background: var(--primary-color);
-    color: var(--light-text);
-    border: 2px solid var(--primary-color);
+    background: var(--button-bg);
+    color: var(--accent-text);
+    border: 2px solid var(--button-border-color);
     font-weight: 600;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
     padding: 0.8rem 2.2rem;
@@ -993,11 +1006,7 @@ a:hover, a:focus {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    transition: background 0.25s ease-out,
-                color 0.25s ease-out,
-                border-color 0.25s ease-out,
-                box-shadow 0.25s ease-out,
-                transform 0.25s ease-out;
+    transition: all 0.2s ease, color 0.2s;
 }
 
 .prominent-btn .contact-btn-icon {
@@ -1006,11 +1015,7 @@ a:hover, a:focus {
 }
 
 .prominent-btn:hover, .prominent-btn:focus {
-    background: var(--button-hover-bg);
-    color: var(--button-hover-text);
-    border-color: var(--button-hover-border);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-    transform: translateY(-3px);
+    color: var(--button-hover-text-color);
 }
 
 .prominent-btn:active {
@@ -1257,14 +1262,14 @@ input::placeholder, textarea::placeholder {
 
 /* Remove theme preview styles */
 .theme-preview,
-.theme-preview.neon-light,
+.theme-preview.digital-abyss,
 .theme-preview.dark,
 .theme-preview.light {
     display: none;
 }
 
 /* Theme Variables */
-:root[data-theme="neon-light"] {
+:root[data-theme="digital-abyss"] {
     --bg-color: #0e0e0e;
     --text-color: #ffffff;
     --primary-color: #00f0c2;
@@ -1274,29 +1279,12 @@ input::placeholder, textarea::placeholder {
     --border-color: #63b3ed;
     --plexus-particle-color: rgba(0, 240, 194, 0.18);
     --plexus-line-color: rgba(0, 240, 194, 0.13);
+    --button-bg: #008c7a;
+    --button-border-color: #00f0c2;
+    --button-hover-text-color: #fff;
 }
 
-:root[data-theme="dark"] {
-    --bg-color: #1a1a1a;
-    --text-color: #e2e8f0;
-    --primary-color: #4299e1;
-    --secondary-color: #a0aec0;
-    --accent-color: #48bb78;
-    --card-bg: #2d3748;
-    --border-color: #4a5568;
-}
-
-:root[data-theme="light"] {
-    --bg-color: #f7fafc;
-    --text-color: #2d3748;
-    --primary-color: #3182ce;
-    --secondary-color: #4a5568;
-    --accent-color: #38a169;
-    --card-bg: #ffffff;
-    --border-color: #e2e8f0;
-}
-
-:root[data-theme="sophisticated"] {
+:root[data-theme="morning-fog"] {
     --bg-color: #efecea;
     --text-color: #79726e;
     --primary-color: #3a3c49;
@@ -1325,6 +1313,11 @@ input::placeholder, textarea::placeholder {
     --shadow: 0 6px 15px rgba(58,60,73,0.1);
     --plexus-particle-color: rgba(58, 60, 73, 0.18);
     --plexus-line-color: rgba(58, 60, 73, 0.13);
+    --theme-toggle-icon-color: #79726e;
+    --theme-toggle-glow: rgba(172, 162, 150, 0.35);
+    --subtitle-color: #79726e;
+    --button-border-color: #b0b0b0;
+    --button-hover-text-color: #222;
 }
 
 body {
@@ -1372,4 +1365,12 @@ button {
     height: auto;
     display: inline-flex;
     align-items: center;
+}
+
+.contact-btn:hover, .contact-btn:focus, .prominent-btn:hover, .prominent-btn:focus {
+    background: var(--button-hover-bg);
+    color: var(--button-hover-text-color);
+    border-color: var(--button-hover-border);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    transform: translateY(-3px);
 }
