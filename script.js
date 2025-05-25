@@ -210,7 +210,8 @@ if (contactForm) {
 // For now, only one theme, but code is ready for more
 const themes = [
     { key: 'digital-abyss', name: 'Digital Abyss' },
-    { key: 'morning-fog', name: 'Morning Fog' }
+    { key: 'morning-fog', name: 'Morning Fog' },
+    { key: 'sakura-garden', name: 'Sakura Garden' }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -408,4 +409,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.01 });
     observer.observe(intro);
+})();
+
+// Flowing Timeline Animation
+(function() {
+    const items = document.querySelectorAll('.timeline-item');
+    if (!items.length) return;
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.18 });
+    items.forEach(item => observer.observe(item));
 })();
