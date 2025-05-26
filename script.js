@@ -85,7 +85,7 @@ function playfulTypingAnimation() {
                     phase = 'deleting';
                     charIndex = baseText.length + wrongText.length;
                     type();
-                }, 600);
+                }, 300);
                 element.textContent = currentText;
                 return;
             }
@@ -445,4 +445,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.18 });
     items.forEach(item => observer.observe(item));
+})();
+
+// Fade-in for project blocks
+(function() {
+    const projects = document.querySelectorAll('.fade-in-project');
+    if (!projects.length) return;
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry, idx) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, idx * 120); // Staggered fade-in
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    projects.forEach(p => observer.observe(p));
+})();
+
+// Other Projects CTA navigation
+(function() {
+  const cta = document.querySelector('.other-projects-cta');
+  if (!cta) return;
+  cta.addEventListener('click', () => {
+    window.location.href = 'projects.html';
+  });
+  cta.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      window.location.href = 'projects.html';
+    }
+  });
 })();

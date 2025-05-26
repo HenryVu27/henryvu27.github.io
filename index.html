@@ -143,7 +143,7 @@
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-content">
-                            <h3>Undergraduate Researcher - Online Learning <a href="https://www.amii.ca/" target="_blank">&#64;Amii</a></h3>
+                            <h3>Undergraduate Researcher - Online Learning <a href="https://www.amii.ca/" target="_blank"><b>&#64;Amii</b></a></h3>
                             <p class="date">Apr 2022 - May 2023</p>
                             <ul>
                                 <li><b>Online Learning</b>: Researched and implemented algorithms for online optimization problems such as online conversion, knapsack, and bipartite matching using the online <b>primal-dual</b> framework. 
@@ -162,35 +162,80 @@
                     <div class="section-line"></div>
                 </div>
                 <div class="projects-grid">
-                    <a class="project-card-link" href="https://github.com/HenryVu27/EEG-Multimodal-Decoding" target="_blank">
-                        <div class="project-card">
-                            <h3>EEG Decoding using Multi-Modal Approach</h3>
-                            <p class="project-desc">A framework for decoding EEG signals using multi-modal neural networks.</p>
+                    <div class="project-block fade-in-project">
+                        <img class="project-image" src="assets/eeg-project.webp" alt="EEG Decoding Project Screenshot">
+                        <div class="project-content">
+                            <h3 class="project-title">EEG Decoding: a Multi-Modal Approach</h3>
+                            <p class="project-why"> Dealing with noisy and complex brain signals (EEG) requires robust analysis. This project developed a novel EEG feature extraction framework, combining <b>convolution</b> for local patterns and <b>self-attention</b> for global context. The extracted EEG features were then strategically combined with word embeddings  from different LLMs to achieve consistent improvements in classification accuracy.</p>
+                            <div class="project-tech">
+                                <span class="tech-item">PyTorch</span>
+                                <span class="tech-item">MATLAB</span>
+                                <span class="tech-item">HuggingFace</span>
+                            </div>
                             <div class="project-links">
-                                <i class="fab fa-github"></i>
-                                <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf" target="_blank" onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i></a>
+                                <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i></a>
                             </div>
                         </div>
-                    </a>
-                    <a class="project-card-link" href="https://github.com/HenryVu27/PoliticalSarcasm" target="_blank">
-                        <div class="project-card">
-                            <h3>Modeling Political Sarcasm</h3>
-                            <p class="project-desc">An in-depth analysis of classic and modern NLP methods for detecting political sarcasm in text.</p>
+                    </div>
+                    <div class="project-block fade-in-project">
+                        <img class="project-image" src="assets/sarcasm-project.webp" alt="Political Sarcasm Project Screenshot">
+                        <div class="project-content">
+                            <h3 class="project-title">Modeling Political Sarcasm</h3>
+                            <p class="project-why">Political sarcasm in online text is incredibly subtle, relying heavily on nuanced language and context rather than tone. This project focused on building accurate detection models using  advanced feature engineering and fine-tuned <b>DistilRoBERTa</b> to better understand and identify sarcasm in political discussions.</p>
+                            <div class="project-tech">
+                                <span class="tech-item">PyTorch</span>
+                                <span class="tech-item">NLTK</span>
+                                <span class="tech-item">spaCy</span>
+                                <span class="tech-item">scikit-learn</span>
+                            </div>
                             <div class="project-links">
-                                <i class="fab fa-github"></i>
-                                <a href="https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf" target="_blank" onclick="event.stopPropagation();"><i class="fas fa-file-pdf"></i></a>
+                                <a href="https://github.com/HenryVu27/PoliticalSarcasm" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i></a>
                             </div>
                         </div>
-                    </a>
-                    <a class="project-card-link" href="https://github.com/HenryVu27/devHack2024" target="_blank">
-                        <div class="project-card">
-                            <h3>UManitoba Navigator</h3>
-                            <p class="project-desc">A campus navigation system using Dijkstra's algorithm for optimal routing.</p>
+                    </div>
+                    <div class="project-block fade-in-project">
+                        <img class="project-image" src="assets/navigator-project.webp" alt="UManitoba Navigator Project Screenshot">
+                        <div class="project-content">
+                            <h3 class="project-title">UManitoba Navigator</h3>
+                            <p class="project-why">Creating an efficient navigation system for a large campus, with hidden pedestrian paths and tunnels, like UManitoba solves a practical user problem. This project built a functional web application featuring a detailed map derived from OpenStreetMap data and implemented <b>Dijkstra's algorithm</b> to find truly optimal travel routes.</p>
+                            <div class="project-tech">
+                                <span class="tech-item">Python</span>
+                                <span class="tech-item">FastAPI</span>
+                                <span class="tech-item">React</span>
+                                <span class="tech-item">HTML/CSS</span>
+                            </div>
                             <div class="project-links">
-                                <i class="fab fa-github"></i>
+                                <a href="https://github.com/HenryVu27/devHack2024" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
-                    </a>
+                    </div>
+                    <div class="project-block fade-in-project">
+                        <img class="project-image" src="assets/habit-project.webp" alt="HabiTrak Android App Screenshot">
+                        <div class="project-content">
+                            <h3 class="project-title">HabiTrak</h3>
+                            <p class="project-why">Building consistent habits can be difficult, requiring diligent tracking and self-discipline. HabiTrak is an Android application designed to help users overcome this challenge by providing a straightforward platform to log, track, and visualize their daily habit progress.</p>
+                            <div class="project-tech">
+                                <span class="tech-item">Java</span>
+                                <span class="tech-item">Android Studio</span>
+                                <span class="tech-item">Firebase</span>
+                                <span class="tech-item">Google Maps API</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/CMPUT301F21T34/HabiTrak" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="other-projects-cta" tabindex="0" role="button">
+                    <span class="cta-text">Other Projects</span>
+                    <span class="cta-arrow" aria-hidden="true">
+                        <svg width="32" height="12" viewBox="0 0 32 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="0" y1="6" x2="28" y2="6" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="22,2 28,6 22,10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
                 </div>
             </div>
         </section>
