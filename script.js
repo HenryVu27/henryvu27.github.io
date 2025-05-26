@@ -236,14 +236,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const root = document.documentElement;
     let currentThemeIndex = 0;
 
-    // Always default to digital-abyss unless user has previously selected a theme
+    // Always default to morning-fog unless user has previously selected a theme
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme && themes.some(t => t.key === savedTheme)) {
         currentThemeIndex = themes.findIndex(t => t.key === savedTheme);
     } else {
-        currentThemeIndex = 0; // digital-abyss is first in the array
-        root.setAttribute('data-theme', themes[0].key);
-        localStorage.setItem('theme', themes[0].key);
+        currentThemeIndex = 1; // morning-fog is second in the array
+        root.setAttribute('data-theme', themes[1].key);
+        localStorage.setItem('theme', themes[1].key);
     }
     root.setAttribute('data-theme', themes[currentThemeIndex].key);
     if (themeToggleLi) themeToggleLi.title = `${themes[currentThemeIndex].name}`;
