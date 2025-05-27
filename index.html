@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Henry Vu - Personal Website</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Henry Vu - Computer Science Graduate Student specializing in Intelligent Systems, Machine Learning, and Computer Vision. Explore my projects, experience, and research work.">
+    <meta name="keywords" content="Henry Vu, Computer Science, Machine Learning, Computer Vision, UTDallas, UAlberta, AI Research, Software Development">
+    <meta name="author" content="Henry Vu">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJESH4V1MQ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-G-PJESH4V1MQ');
+        gtag('config', 'G-PJESH4V1MQ');
     </script>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
 </head>
 <body class="light-mode">
     <canvas id="plexus-bg"></canvas>
@@ -172,7 +181,7 @@
                 </div>
                 <div class="projects-grid">
                     <div class="project-block fade-in-project">
-                        <img class="project-image" src="assets/eeg-project.webp" alt="EEG Decoding Project Screenshot">
+                        <img class="project-image" src="assets/eeg-project.webp" alt="EEG Decoding Project: Visualization of brain signal processing and classification">
                         <div class="project-content">
                             <h3 class="project-title">EEG Decoding: a Multi-Modal Approach</h3>
                             <p class="project-why"> Dealing with noisy and complex brain signals (EEG) requires robust analysis. This project developed a novel EEG feature extraction framework, combining <b>convolution</b> for local patterns and <b>self-attention</b> for global context. The extracted EEG features were then strategically combined with word embeddings  from different LLMs to achieve consistent improvements in classification accuracy.</p>
@@ -188,7 +197,7 @@
                         </div>
                     </div>
                     <div class="project-block fade-in-project">
-                        <img class="project-image" src="assets/sarcasm-project.webp" alt="Political Sarcasm Project Screenshot">
+                        <img class="project-image" src="assets/sarcasm-project.webp" alt="Political Sarcasm Detection Project: Text analysis and classification interface">
                         <div class="project-content">
                             <h3 class="project-title">Modeling Political Sarcasm</h3>
                             <p class="project-why">Political sarcasm in online text is incredibly subtle, relying heavily on nuanced language and context rather than tone. This project focused on building accurate detection models using  advanced feature engineering and fine-tuned <b>DistilRoBERTa</b> to better understand and identify sarcasm in political discussions.</p>
@@ -205,7 +214,7 @@
                         </div>
                     </div>
                     <div class="project-block fade-in-project">
-                        <img class="project-image" src="assets/navigator-project.webp" alt="UManitoba Navigator Project Screenshot">
+                        <img class="project-image" src="assets/navigator-project.webp" alt="UManitoba Navigator: Interactive campus map with route planning interface">
                         <div class="project-content">
                             <h3 class="project-title">UManitoba Navigator</h3>
                             <p class="project-why">Creating an efficient navigation system for a large campus, with hidden pedestrian paths and tunnels, like UManitoba solves a practical user problem. This project built a full-stack web application featuring a detailed map derived from OpenStreetMap data and implemented <b>Dijkstra's algorithm</b> to find truly optimal travel routes.</p>
@@ -221,7 +230,7 @@
                         </div>
                     </div>
                     <div class="project-block fade-in-project">
-                        <img class="project-image" src="assets/habit-project.webp" alt="HabiTrak Android App Screenshot">
+                        <img class="project-image" src="assets/habit-project.webp" alt="HabiTrak Android App: Habit tracking and progress visualization interface">
                         <div class="project-content">
                             <h3 class="project-title">HabiTrak</h3>
                             <p class="project-why">Building consistent habits can be difficult, requiring diligent tracking and self-discipline. HabiTrak is an Android application designed to help users overcome this challenge by providing a straightforward platform to log, track, and visualize their daily habit progress.</p>
@@ -237,7 +246,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="other-projects-cta" tabindex="0" role="button">
+                <div class="other-projects-cta" tabindex="0" role="button" aria-label="View more projects">
                     <span class="cta-text">Other Projects</span>
                     <span class="cta-arrow" aria-hidden="true">
                         <svg width="32" height="12" viewBox="0 0 32 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -295,9 +304,9 @@
                 <a href="#contact">Contact</a>
             </nav>
             <div class="social-links">
-                <a href="https://github.com/HenryVu27" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://x.com/HenryVu65366184" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/HenryVu27" target="_blank" title="GitHub" aria-label="Visit my GitHub profile"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" title="LinkedIn" aria-label="Visit my LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/HenryVu65366184" target="_blank" title="Twitter" aria-label="Visit my Twitter profile"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
     </footer>
