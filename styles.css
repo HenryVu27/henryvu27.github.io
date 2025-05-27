@@ -1,56 +1,53 @@
+/* Base Font Variables */
+:root {
+    --font-primary: 'Neue Montreal', 'Montserrat', 'Inter', Arial, sans-serif;
+    --font-heading: 'Georgia', 'Times New Roman', Times, serif;
+    --font-system: -apple-system, system-ui, sans-serif;
+}
+
+/* Optimize Theme Variables */
 :root[data-theme="digital-abyss"] {
-    /* === Background Colors === */
-    --bg-color: #0e0e0e;                      /* Main background */
-    --card-bg: #1a1a1a;                       /* Card and container backgrounds */
-    --nav-bg: rgba(26, 32, 44, 0.5);          /* Navigation bar background */
-    --hover-bg: #1a1a1a;                      /* Hovered background for inputs/buttons */
-
-    /* === Text Colors === */
-    --text-color: #ffffff;                    /* Main text */
-    --big-intro: #cbd5e0;                     /* Large intro text */
-    --heading-color: var(--big-intro);        /* Section headings */
-    --subtitle-color: var(--secondary-color); /* Subtitles */
-    --muted-text: #8892b0;                    /* Muted/secondary text */
-    --light-text: #fefee3;                    /* Light text (on dark bg) */
-    --date-color: #bfc9d1;                    /* Dates in timeline */
-    --list-text: #aab8cf;                     /* List items */
-    --cursor-color: #c5d1e0;                  /* Typing cursor */
-    --error-color: #ff6b6b;                   /* Error messages */
-
-    /* === Button Colors === */
-    --button-bg: #008c7a;                     /* Button background */
-    --button-text-color: #0e0e0e;             /* Button text */
-    --button-hover: #024a70;                  /* Button hover color (border/bg) */
-    --button-active: #024a70;                 /* Button active/pressed */
-    --button-hover-bg: #025a85;               /* Button hover background */
-    --button-hover-border: #025a85;           /* Button hover border */
-    --button-hover-text-color: #cbd5e0;       /* Button hover text */
-    --button-border-color: var(--button-hover); /* Button border */
-
-    /* === Border Colors === */
-    --border-color: #63b3ed;                  /* Card and section borders */
-    --input-border: #222;                     /* Input border */
-
-    /* === Accent Colors === */
-    --primary-color: #00f0c2;                 /* Primary accent (buttons, highlights) */
-    --secondary-color: #b0b0b0;               /* Secondary accent */
-    --accent-color: #ecc94b;                  /* Accent (decorative, lines, etc.) */
-    --accent-bg: #00f0c2;                     /* Accent background */
-
-    /* === Input Colors === */
-    --input-bg: #181818;                      /* Input background */
-
-    /* === Effects & Shadows === */
-    --shadow: 0 6px 15px rgba(0,0,0,0.25);    /* Card shadow */
-    --plexus-particle-color: rgba(0, 240, 194, 0.18); /* Plexus effect */
-    --plexus-line-color: rgba(0, 240, 194, 0.13);     /* Plexus effect */
-    --theme-toggle-icon-color: #fff;                  /* Theme toggle icon */
-    --theme-toggle-glow: rgba(0,240,194,0.45);        /* Theme toggle glow */
-
-    /* === Timeline Colors === */
-    --timeline-title-color: var(--big-intro);         /* Timeline title */
-    --timeline-desc-color: var(--subtitle-color);     /* Timeline description */
-    --emphasis-color: var(--primary-color);           /* Emphasis text */
+    /* Core Colors */
+    --bg-color: #0e0e0e;
+    --text-color: #ffffff;
+    --primary-color: #00f0c2;
+    --secondary-color: #b0b0b0;
+    --accent-color: #ecc94b;
+    
+    /* Derived Colors */
+    --card-bg: #1a1a1a;
+    --nav-bg: rgba(26, 32, 44, 0.5);
+    --hover-bg: var(--card-bg);
+    --border-color: #63b3ed;
+    --input-bg: #181818;
+    --input-border: #222;
+    
+    /* Text Colors */
+    --big-intro: #cbd5e0;
+    --heading-color: var(--big-intro);
+    --subtitle-color: var(--secondary-color);
+    --muted-text: #8892b0;
+    --light-text: #fefee3;
+    --date-color: #bfc9d1;
+    --list-text: #aab8cf;
+    --cursor-color: #c5d1e0;
+    --error-color: #ff6b6b;
+    
+    /* Button Colors */
+    --button-bg: #008c7a;
+    --button-text: #0e0e0e;
+    --button-hover: #024a70;
+    --button-active: var(--button-hover);
+    --button-hover-bg: #025a85;
+    --button-hover-border: var(--button-hover-bg);
+    --button-hover-text: #cbd5e0;
+    
+    /* Effects */
+    --shadow: 0 6px 15px rgba(0,0,0,0.25);
+    --plexus-particle: rgba(0, 240, 194, 0.18);
+    --plexus-line: rgba(0, 240, 194, 0.13);
+    --theme-toggle-icon: #fff;
+    --theme-toggle-glow: rgba(0,240,194,0.45);
 }
 
 :root[data-theme="morning-fog"] {
@@ -76,6 +73,7 @@
     --button-active: #3a3c49;
     --button-hover-bg: #d43245c5;
     --button-hover-border: var(--button-hover-bg);
+    --button-hover-text-color: var(--big-intro);
     --button-hover-text-color: var(--big-intro);
     --button-bg: #494b5c;
     --shadow: 0 6px 15px rgba(58,60,73,0.1);
@@ -292,7 +290,7 @@
 }
 
 body {
-    font-family: 'Neue Montreal', 'Montserrat', 'Inter', Arial, sans-serif;
+    font-family: var(--font-primary);
     line-height: 1.6;
     color: var(--text-color);
     background: var(--bg-color);
@@ -393,7 +391,7 @@ header {
     color: var(--text-color);
     font-weight: 500;
     font-size: 1rem;
-    transition: color 0.3s;
+    transition: color 0.2s ease-out;
     padding: 0.5rem 0;
 }
 
@@ -464,7 +462,8 @@ header {
     background-clip: padding-box;
     background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    will-change: transform;
 }
 
 .profile-image:hover .profile-pic {
@@ -478,8 +477,8 @@ header {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
     color: var(--text-color);
-    font-family: inherit;
     font-weight: 500;
 }
 
@@ -523,7 +522,7 @@ h2 {
     height: 0;
     background-color: var(--primary-color);
     border-radius: 2px;
-    transition: height 0.7s cubic-bezier(0.4,0,0.2,1);
+    transition: height 0.5s ease-out;
     z-index: 1;
 }
 .timeline-item.visible::before {
@@ -538,7 +537,7 @@ h2 {
     color: var(--text-color);
     opacity: 0;
     transform: translateX(-30px) scale(0.95);
-    transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s cubic-bezier(0.4,0,0.2,1);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow 0.3s ease-out;
 }
 .timeline-item.visible .timeline-content {
     opacity: 1;
@@ -616,7 +615,7 @@ footer {
     color: var(--text-color);
     font-size: 1.5rem;
     margin: 0 1rem;
-    transition: color 0.3s;
+    transition: color 0.2s ease-out, transform 0.2s ease-out;
 }
 
 .social-links a:hover {
@@ -634,7 +633,7 @@ a {
     color: var(--primary-color);
     text-decoration: none;
     position: relative;
-    transition: color 0.2s;
+    transition: color 0.2s ease-out;
 }
 
 a:visited {
@@ -649,7 +648,7 @@ a::after {
     width: 0;
     height: 2px;
     background: currentColor;
-    transition: width 0.3s cubic-bezier(0.4,0,0.2,1);
+    transition: width 0.2s ease-out;
 }
 
 a:hover::after, a:focus::after {
@@ -731,14 +730,8 @@ a:hover, a:focus {
 }
 
 @keyframes fadeSlideUp {
-    0% {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: none; }
 }
 
 /* Waving hand */
@@ -757,14 +750,12 @@ a:hover, a:focus {
 }
 
 @keyframes wave-hand {
-    0% { transform: rotate(0deg); }
-    10% { transform: rotate(10deg); } 
-    20% { transform: rotate(-8deg); } 
+    0%, 100% { transform: rotate(0deg); }
+    10% { transform: rotate(10deg); }
+    20% { transform: rotate(-8deg); }
     30% { transform: rotate(10deg); }
-    40% { transform: rotate(-4deg); } 
-    50% { transform: rotate(5deg); } 
-    60% { transform: rotate(0deg); } 
-    100% { transform: rotate(0deg); } 
+    40% { transform: rotate(-4deg); }
+    50% { transform: rotate(5deg); }
 }
 
 .wave:hover {
@@ -818,7 +809,7 @@ a:hover, a:focus {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    transition: transform 0.2s ease, color 0.2s, background 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s ease-out, color 0.2s ease-out, background 0.2s ease-out, box-shadow 0.2s ease-out;
     position: relative;
     overflow: hidden;
     background: var(--button-bg);
@@ -959,7 +950,7 @@ a:hover, a:focus {
     padding: 0.6rem 0.9rem 0.5rem 0.9rem;
     margin-bottom: 0.08rem;
     box-shadow: none;
-    transition: border-color 0.2s, background 0.2s;
+    transition: border-color 0.2s ease-out, background 0.2s ease-out;
 }
 
 .input-group input:focus,
@@ -1011,10 +1002,8 @@ a:hover, a:focus {
 .fade-in-section {
     opacity: 0;
     transform: translateY(80px);
-    transition: opacity 1.2s cubic-bezier(0.23, 1, 0.32, 1), transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     will-change: opacity, transform;
-    backface-visibility: hidden;
-    transform: translateZ(0);
 }
 
 .fade-in-section.is-visible {
@@ -1038,7 +1027,7 @@ a:hover, a:focus {
     transform: translateX(-50%);
     font-size: clamp(1.5rem, 2.2vw, 2.2rem);
     color: var(--text-color);
-    animation: bounceDown 2s infinite;
+    animation: bounceDown 2s ease-in-out infinite;
     cursor: pointer;
     opacity: 0.85;
     transition: opacity 0.3s, color 0.3s;
@@ -1135,12 +1124,12 @@ input::placeholder, textarea::placeholder {
 .theme-toggle-icon {
     background: none;
     border: none;
-    color: var(--theme-toggle-icon-color);
+    color: var(--theme-toggle-icon);
     font-size: 1.6rem;
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 50%;
-    transition: transform 0.2s, color 0.2s, box-shadow 0.2s, background 0.2s;
+    transition: transform 0.2s ease-out, color 0.2s ease-out, box-shadow 0.2s ease-out, background 0.2s ease-out;
     outline: none;
     position: relative;
     z-index: 1;
@@ -1152,7 +1141,7 @@ input::placeholder, textarea::placeholder {
 .theme-toggle-icon:hover {
     background: var(--theme-toggle-glow);
     box-shadow: 0 0 0 3px var(--theme-toggle-glow), 0 0 8px 2px var(--theme-toggle-glow);
-    color: var(--theme-toggle-icon-color);
+    color: var(--theme-toggle-icon);
 }
 
 .theme-toggle-icon:focus {
@@ -1203,6 +1192,7 @@ input::placeholder, textarea::placeholder {
 }
 
 body {
+    font-family: var(--font-primary);
     font-family: 'Inter', 'Montserrat', Arial, sans-serif;
 }
 
@@ -1254,7 +1244,7 @@ button {
     color: var(--button-hover-text-color);
     border-color: var(--button-hover-border);
     box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 .about-paragraph {
@@ -1320,7 +1310,7 @@ button {
     text-decoration: none;
     font-weight: 500;
     font-size: 1.05rem;
-    transition: color 0.2s;
+    transition: color 0.2s ease-out;
     margin: 0 0.1rem;
 }
 .footer-nav a:hover {
@@ -1381,7 +1371,7 @@ button {
   border-radius: 16px;
   box-shadow: var(--shadow);
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease-out;
   opacity: 0;
   transform: translateY(60px) scale(0.97);
   will-change: opacity, transform;
@@ -1461,7 +1451,7 @@ button {
 .project-links a {
   color: var(--primary-color);
   font-size: 1.35rem;
-  transition: transform 0.2s, color 0.2s;
+  transition: transform 0.2s ease-out, color 0.2s ease-out;
 }
 .project-links a:hover {
   color: var(--accent-color);
@@ -1546,7 +1536,7 @@ button {
   color: var(--primary-color);
   font-size: 1.25rem;
   margin-right: 0.7rem;
-  transition: color 0.2s, transform 0.2s;
+  transition: color 0.2s ease-out, transform 0.2s ease-out;
 }
 .archive-table a:hover {
   color: var(--accent-color);
@@ -1611,7 +1601,7 @@ button {
   color: var(--primary-color);
   text-decoration: none;
   border-bottom: 2px solid transparent;
-  transition: color 0.18s, border-bottom 0.18s;
+  transition: color 0.18s ease-out, border-bottom 0.18s ease-out;
 }
 .archive-project-link:hover, .archive-project-link:focus {
   color: var(--accent-color);
@@ -1633,7 +1623,7 @@ button {
   padding: 0;
   cursor: pointer;
   color: var(--primary-color);
-  transition: transform 0.18s, color 0.18s;
+  transition: transform 0.18s ease-out, color 0.18s ease-out;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1743,4 +1733,42 @@ button {
         width: 16px;
         height: 16px;
     }
+}
+
+/* Image Loading Optimizations */
+img {
+    content-visibility: auto;
+    contain: size layout paint;
+}
+
+.profile-pic {
+    content-visibility: auto;
+    contain: size layout paint;
+    will-change: transform;
+}
+
+.project-image {
+    content-visibility: auto;
+    contain: size layout paint;
+    will-change: transform;
+    background: var(--card-bg);
+    transition: opacity 0.3s ease-out;
+}
+
+.project-image[loading="lazy"] {
+    opacity: 0;
+}
+
+.project-image.loaded {
+    opacity: 1;
+}
+
+/* Add loading animation for images */
+@keyframes imageLoad {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.image-loading {
+    animation: imageLoad 0.3s ease-out;
 }

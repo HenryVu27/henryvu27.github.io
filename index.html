@@ -11,6 +11,28 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/favicon.png">
+    <!-- Add loading placeholder styles -->
+    <style>
+        .image-placeholder {
+            background: var(--card-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        .image-placeholder::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            animation: loading 1.5s infinite;
+        }
+        @keyframes loading {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJESH4V1MQ"></script>
     <script>
@@ -102,7 +124,7 @@
                 </div>
                 <div class="about-image">
                     <div class="profile-image">
-                        <img class="profile-pic" src="assets/pp.jpg" alt="Henry Vu">
+                        <img class="profile-pic" src="assets/pp.jpg" alt="Henry Vu" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -181,7 +203,7 @@
                 </div>
                 <div class="projects-grid">
                     <div class="project-block fade-in-project">
-                        <img class="project-image" src="assets/eeg-project.webp" alt="EEG Decoding Project: Visualization of brain signal processing and classification">
+                        <img class="project-image" src="assets/eeg-project.webp" alt="EEG Decoding Project: Visualization of brain signal processing and classification" loading="lazy" decoding="async">
                         <div class="project-content">
                             <h3 class="project-title">EEG Decoding: a Multi-Modal Approach</h3>
                             <p class="project-why"> Dealing with noisy and complex brain signals (EEG) requires robust analysis. This project developed a novel EEG feature extraction framework, combining <b>convolution</b> for local patterns and <b>self-attention</b> for global context. The extracted EEG features were then strategically combined with word embeddings  from different LLMs to achieve consistent improvements in classification accuracy.</p>
@@ -197,7 +219,7 @@
                         </div>
                     </div>
                     <div class="project-block fade-in-project">
-                        <img class="project-image" src="assets/sarcasm-project.webp" alt="Political Sarcasm Detection Project: Text analysis and classification interface">
+                        <img class="project-image" src="assets/sarcasm-project.webp" alt="Political Sarcasm Detection Project: Text analysis and classification interface" loading="lazy" decoding="async">
                         <div class="project-content">
                             <h3 class="project-title">Modeling Political Sarcasm</h3>
                             <p class="project-why">Political sarcasm in online text is incredibly subtle, relying heavily on nuanced language and context rather than tone. This project focused on building accurate detection models using  advanced feature engineering and fine-tuned <b>DistilRoBERTa</b> to better understand and identify sarcasm in political discussions.</p>
@@ -214,10 +236,10 @@
                         </div>
                     </div>
                     <div class="project-block fade-in-project">
-                        <img class="project-image" src="assets/navigator-project.webp" alt="UManitoba Navigator: Interactive campus map with route planning interface">
+                        <img class="project-image" src="assets/navigator-project.webp" alt="UManitoba Navigator: Interactive campus map with route planning interface" loading="lazy" decoding="async">
                         <div class="project-content">
                             <h3 class="project-title">UManitoba Navigator</h3>
-                            <p class="project-why">Creating an efficient navigation system for a large campus, with hidden pedestrian paths and tunnels, like UManitoba solves a practical user problem. This project built a full-stack web application featuring a detailed map derived from OpenStreetMap data and implemented <b>Dijkstra's algorithm</b> to find truly optimal travel routes.</p>
+                            <p class="project-why">Creating an efficient navigation system for a large campus, with hidden pedestrian paths and tunnels, like UManitoba solves a practical user problem. This project built a <b>full-stack</b> web application featuring a detailed map derived from OpenStreetMap data and implemented <b>Dijkstra's algorithm</b> to find truly optimal travel routes.</p>
                             <div class="project-tech">
                                 <span class="tech-item">Python</span>
                                 <span class="tech-item">FastAPI</span>
@@ -230,10 +252,10 @@
                         </div>
                     </div>
                     <div class="project-block fade-in-project">
-                        <img class="project-image" src="assets/habit-project.webp" alt="HabiTrak Android App: Habit tracking and progress visualization interface">
+                        <img class="project-image" src="assets/habit-project.webp" alt="HabiTrak Android App: Habit tracking and progress visualization interface" loading="lazy" decoding="async">
                         <div class="project-content">
                             <h3 class="project-title">HabiTrak</h3>
-                            <p class="project-why">Building consistent habits can be difficult, requiring diligent tracking and self-discipline. HabiTrak is an Android application designed to help users overcome this challenge by providing a straightforward platform to log, track, and visualize their daily habit progress.</p>
+                            <p class="project-why">Building consistent habits can be difficult, requiring diligent tracking and self-discipline. HabiTrak is an <b>Android</b> application designed to help users overcome this challenge by providing a straightforward platform to log, track, and visualize their daily habit progress.</p>
                             <div class="project-tech">
                                 <span class="tech-item">Java</span>
                                 <span class="tech-item">Android Studio</span>
@@ -312,5 +334,36 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Handle lazy loaded images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            
+            if ('loading' in HTMLImageElement.prototype) {
+                // Browser supports native lazy loading
+                lazyImages.forEach(img => {
+                    img.addEventListener('load', function() {
+                        this.classList.add('loaded');
+                    });
+                });
+            } else {
+                // Fallback for browsers that don't support lazy loading
+                const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.add('loaded');
+                            observer.unobserve(img);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(img => {
+                    lazyLoadObserver.observe(img);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
