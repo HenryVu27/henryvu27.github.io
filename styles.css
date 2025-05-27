@@ -1797,7 +1797,6 @@ button {
   color: var(--primary-color);
 }
 
-/* Remove old .cta-line and .other-projects-link styles */
 .cta-line, .other-projects-link-container, .other-projects-link .other-projects-text, .line-arrow { display: none !important; }
 
 .archive-table th, .archive-table td {
