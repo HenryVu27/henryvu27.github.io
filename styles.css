@@ -372,7 +372,19 @@ header {
 .logo {
     flex: 0 0 auto;
     height: 35px;
-    width: auto;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.logo-text {
+    color: var(--big-intro);
+    font-family: 'Inter', 'Montserrat', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: -0.5px;
 }
 
 .logo img {
