@@ -1689,7 +1689,7 @@ button {
   letter-spacing: 0.01em;
 }
 .archive-subtitle {
-  color: var(--primary-color);
+  color: var(--text-color);
   font-size: 1.1rem;
   margin-bottom: 2.5rem;
   font-family: 'Inter', 'Montserrat', Arial, sans-serif;
