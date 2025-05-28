@@ -399,6 +399,11 @@ header {
     color: var(--primary-color);
 }
 
+.nav-links a.active {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
 .resume-btn {
     display: none;
 }

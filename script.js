@@ -17,7 +17,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.nav-links a');
 
-window.addEventListener('scroll', () => {
+function updateActiveNavLink() {
     let current = '';
     
     sections.forEach(section => {
@@ -35,7 +35,38 @@ window.addEventListener('scroll', () => {
             link.classList.add('active');
         }
     });
-});
+}
+
+// Handle hash navigation on page load
+function handleHashNavigation() {
+    const hash = window.location.hash.slice(1); // Remove the '#'
+    if (hash) {
+        const targetSection = document.getElementById(hash);
+        if (targetSection) {
+            // Set the active state immediately
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === hash) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to the section
+            setTimeout(() => {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
+        }
+    }
+}
+
+window.addEventListener('scroll', updateActiveNavLink);
+
+// Handle hash navigation on page load and hash changes
+window.addEventListener('load', handleHashNavigation);
+window.addEventListener('hashchange', handleHashNavigation);
 
 // Fade-in on scroll for sections
 const fadeSections = document.querySelectorAll('.fade-in-section');
