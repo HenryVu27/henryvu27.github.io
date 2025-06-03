@@ -258,7 +258,8 @@ const themes = [
     { key: 'sakura-garden', name: 'Sakura Garden' },
     { key: 'misty-woods', name: 'Misty Woods' },
     { key: 'forest-frost', name: 'Forest Frost' },
-    { key: 'green-wilder', name: 'Green Wilder' }
+    { key: 'green-wilder', name: 'Green Wilder' },
+    { key: 'piano-symphony', name: 'Piano Symphony' }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {

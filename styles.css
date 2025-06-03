@@ -283,6 +283,59 @@
     --about-desc-color: var(--subtitle-color);
 }
 
+:root[data-theme="piano-symphony"] {
+    /* === Background Colors === */
+    --bg-color: #242529;                       /* Dark charcoal (stronger contrast) */
+    --card-bg: #353563;                        /* Deep indigo (less saturated) */
+    --nav-bg: rgba(36, 37, 41, 0.85);           /* Semi-transparent dark for navbar */
+    --hover-bg: #6b3b2d;                       /* Warm brick red (hover state) */
+
+    /* === Text Colors === */
+    --text-color: #e8e6e3;                     /* Soft off-white (better readability) */
+    --big-intro: #f8d8b0;                      /* Warm ivory-peach for large headings */
+    --heading-color: var(--big-intro);         /* Section headings */
+    --subtitle-color: #d99a48;                 /* Muted orange-gold for subheadings */
+    --muted-text: #89a8c1;                     /* Muted steel-blue for tertiary text */
+    --light-text: #ffffff;                     /* Pure white for highlights */
+    --date-color: var(--muted-text);           /* Dates in timeline */
+    --list-text: var(--text-color);            /* List items */
+    --cursor-color: var(--primary-color);      /* Blinking cursor */
+    --error-color: #bf2e38;                    /* Deep crimson for errors */
+
+    /* === Button Colors === */
+    --button-bg: var(--primary-color);         /* Primary button background */
+    --button-text-color: #242529;              /* Dark text on bright button */
+    --button-hover-bg: #d88c3c;                /* Rich amber hover */
+    --button-hover-border: var(--button-hover-bg);
+    --button-hover-text-color: var(--light-text);
+    --button-active: #00756a;                  /* Deep teal for active state */
+
+    /* === Border Colors === */
+    --border-color: #2979b5;                   /* Strong cerulean for borders */
+    --input-border: var(--subtitle-color);     /* Orange-gold input border */
+
+    /* === Accent Colors === */
+    --primary-color: #f8d8b0;                  /* Ivory-peach accent */
+    --secondary-color: #d88c3c;                /* Amber accent */
+    --accent-color: #2979b5;                   /* Cerulean blue for highlights */
+
+    /* === Input Colors === */
+    --input-bg: #353563;                       /* Indigo input background */
+
+    /* === Effects & Shadows === */
+    --shadow: 0 6px 15px rgba(36, 37, 41, 0.25);
+    --plexus-particle-color: rgba(88, 142, 188, 0.18); /* Softer sky blue */
+    --plexus-line-color: rgba(88, 142, 188, 0.13);
+    --theme-toggle-icon-color: var(--text-color);
+    --theme-toggle-glow: rgba(248, 216, 176, 0.25);    /* Glow from ivory-peach */
+
+    /* === Timeline Colors === */
+    --timeline-title-color: var(--big-intro);
+    --timeline-desc-color: var(--subtitle-color);
+    --about-desc-color: var(--subtitle-color);
+}
+
+
 * {
     margin: 0;
     padding: 0;
