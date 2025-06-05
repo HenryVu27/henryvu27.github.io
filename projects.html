@@ -260,7 +260,7 @@
       // Inherit theme from localStorage (same as index.html)
       (function() {
         const themes = [
-          'digital-abyss', 'morning-fog', 'sakura-garden', 'misty-woods', 'green-wilder'
+          'digital-abyss', 'morning-fog', 'sakura-garden', 'misty-woods', 'green-wilder', 'piano-symphony'
         ];
         const root = document.documentElement;
         const savedTheme = localStorage.getItem('theme');
@@ -279,7 +279,8 @@
           { key: 'morning-fog', name: 'Morning Fog' },
           { key: 'sakura-garden', name: 'Sakura Garden' },
           { key: 'misty-woods', name: 'Misty Woods' },
-          { key: 'green-wilder', name: 'Green Wilder' }
+          { key: 'green-wilder', name: 'Green Wilder' },
+          { key: 'piano-symphony', name: 'Piano Symphony' }
         ];
         const themeToggleBtn = document.querySelector('.theme-toggle-icon');
         const themeToggleLi = document.querySelector('.theme-toggle-btn');

@@ -13,29 +13,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add active class to navigation links on scroll
-const sections = document.querySelectorAll('section');
+// Navigation links - only hover effects, no scroll-based active states
 const navLinks = document.querySelectorAll('.nav-links a');
-
-function updateActiveNavLink() {
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.scrollY >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
-    });
-}
 
 // Handle hash navigation on page load
 function handleHashNavigation() {
@@ -43,12 +22,9 @@ function handleHashNavigation() {
     if (hash) {
         const targetSection = document.getElementById(hash);
         if (targetSection) {
-            // Set the active state immediately
+            // Clear all active states for hash navigation - only use hover effects
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === hash) {
-                    link.classList.add('active');
-                }
             });
             
             // Scroll to the section
@@ -57,12 +33,17 @@ function handleHashNavigation() {
                     behavior: 'smooth',
                     block: 'start'
                 });
+                
+                // Clear the hash after a short delay to prevent sticky active states
+                setTimeout(() => {
+                    if (window.location.hash) {
+                        history.replaceState(null, null, window.location.pathname);
+                    }
+                }, 1000);
             }, 100);
         }
     }
 }
-
-window.addEventListener('scroll', updateActiveNavLink);
 
 // Handle hash navigation on page load and hash changes
 window.addEventListener('load', handleHashNavigation);
