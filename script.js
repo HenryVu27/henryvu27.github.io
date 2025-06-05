@@ -257,7 +257,6 @@ const themes = [
     { key: 'morning-fog', name: 'Morning Fog' },
     { key: 'sakura-garden', name: 'Sakura Garden' },
     { key: 'misty-woods', name: 'Misty Woods' },
-    { key: 'forest-frost', name: 'Forest Frost' },
     { key: 'green-wilder', name: 'Green Wilder' },
     { key: 'piano-symphony', name: 'Piano Symphony' }
 ];
