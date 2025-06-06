@@ -279,15 +279,21 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Plexus/Particle Network Background for Intro Section
-(function() {
+const PlexusAnimation = (function() {
     const canvas = document.getElementById('plexus-bg');
-    if (!canvas) return;
+    if (!canvas) return { pause: () => {}, resume: () => {} };
+    
     const ctx = canvas.getContext('2d');
     let dpr = window.devicePixelRatio || 1;
     let width = 0, height = 0;
     const PARTICLE_COUNT = 46;
     const PARTICLE_RADIUS = 2.2;
     const LINE_DIST = 110;
+    let particles = [];
+    let mouse = { x: null, y: null };
+    let animationId = null;
+    let isRunning = false;
+    
     function getColors() {
         const styles = getComputedStyle(document.documentElement);
         return {
@@ -295,8 +301,6 @@ document.addEventListener('DOMContentLoaded', () => {
             line: styles.getPropertyValue('--plexus-line-color').trim() || 'rgba(0,240,194,0.13)'
         };
     }
-    let particles = [];
-    let mouse = { x: null, y: null };
 
     function resize() {
         width = window.innerWidth;
@@ -365,6 +369,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function animate() {
+        if (!isRunning) return;
+        
         for (const p of particles) {
             p.x += p.vx;
             p.y += p.vy;
@@ -382,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         draw();
-        requestAnimationFrame(animate);
+        animationId = requestAnimationFrame(animate);
     }
 
     function onMouseMove(e) {
@@ -390,24 +396,54 @@ document.addEventListener('DOMContentLoaded', () => {
         mouse.x = (e.clientX - rect.left) * (width / rect.width);
         mouse.y = (e.clientY - rect.top) * (height / rect.height);
     }
+    
     function onMouseLeave() {
         mouse.x = null;
         mouse.y = null;
     }
 
     window.addEventListener('resize', () => {
-        resize();
-        createParticles();
+        if (isRunning) {
+            resize();
+            createParticles();
+        }
     });
     canvas.addEventListener('mousemove', onMouseMove);
     canvas.addEventListener('mouseleave', onMouseLeave);
 
-    // Initial setup
+    // Initialize
     setTimeout(() => {
         resize();
         createParticles();
-        animate();
+        start();
     }, 100);
+
+    function start() {
+        if (!isRunning) {
+            isRunning = true;
+            animate();
+        }
+    }
+
+    function pause() {
+        isRunning = false;
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+    }
+
+    function resume() {
+        if (!isRunning) {
+            start();
+        }
+    }
+
+    // Return public API
+    return {
+        pause,
+        resume
+    };
 })();
 
 // Fade-in for About Me paragraphs
@@ -481,12 +517,116 @@ document.addEventListener('DOMContentLoaded', () => {
   const cta = document.querySelector('.other-projects-cta');
   if (!cta) return;
   cta.addEventListener('click', () => {
-    window.location.href = 'projects.html';
+    navigateToProjects();
   });
   cta.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      window.location.href = 'projects.html';
+      navigateToProjects();
     }
   });
 })();
+
+// SPA Routing System
+const Router = {
+    currentPage: 'home',
+    homeObservers: [], // Store observers for home page
+    
+    init() {
+        // Handle initial route
+        this.handleRoute();
+        
+        // Listen for browser back/forward buttons
+        window.addEventListener('popstate', () => {
+            this.handleRoute();
+        });
+    },
+    
+    handleRoute() {
+        const path = window.location.pathname;
+        const hash = window.location.hash;
+        
+        // Determine which page to show
+        if (path.includes('/projects') || hash === '#projects-archive') {
+            this.showPage('projects');
+        } else {
+            this.showPage('home');
+        }
+    },
+    
+    showPage(page) {
+        const homeContent = document.getElementById('home-content');
+        const projectsContent = document.getElementById('projects-archive-content');
+        const plexusCanvas = document.getElementById('plexus-bg');
+        
+        if (page === 'projects') {
+            // Show projects page
+            homeContent.style.display = 'none';
+            projectsContent.style.display = 'block';
+            plexusCanvas.style.display = 'none'; // Hide plexus on projects page
+            document.title = 'Project Archive - Henry Vu';
+            this.currentPage = 'projects';
+            
+            // Pause plexus animation to improve performance
+            if (PlexusAnimation) {
+                PlexusAnimation.pause();
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+        } else {
+            // Show home page
+            homeContent.style.display = 'block';
+            projectsContent.style.display = 'none';
+            plexusCanvas.style.display = 'block'; // Show plexus on home page
+            document.title = 'Henry Vu - Personal Website';
+            this.currentPage = 'home';
+            
+            // Resume plexus animation
+            if (PlexusAnimation) {
+                PlexusAnimation.resume();
+            }
+        }
+    },
+    
+    navigateTo(page, section = null) {
+        if (page === 'projects') {
+            // Navigate to projects page
+            history.pushState({ page: 'projects' }, 'Project Archive - Henry Vu', '/projects');
+            this.showPage('projects');
+        } else if (page === 'home') {
+            // Navigate to home page
+            const url = section ? `/#${section}` : '/';
+            history.pushState({ page: 'home', section }, 'Henry Vu - Personal Website', url);
+            this.showPage('home');
+            
+            // Scroll to section if specified
+            if (section) {
+                setTimeout(() => {
+                    const targetSection = document.getElementById(section);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 100);
+            }
+        }
+    }
+};
+
+// Global navigation functions
+function navigateToProjects() {
+    Router.navigateTo('projects');
+}
+
+function navigateToHome(section = null) {
+    Router.navigateTo('home', section);
+}
+
+// Initialize router on DOM load
+document.addEventListener('DOMContentLoaded', () => {
+    Router.init();
+});

@@ -1778,3 +1778,17 @@ img {
 .image-loading {
     animation: imageLoad 0.3s ease-out;
 }
+
+/* SPA Page Content Containers */
+.page-content {
+    width: 100%;
+    transition: opacity 0.3s ease-out;
+}
+
+.page-content[style*="display: none"] {
+    opacity: 0;
+}
+
+.page-content[style*="display: block"] {
+    opacity: 1;
+}
