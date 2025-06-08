@@ -3,7 +3,7 @@ Allow: /
 
 # Allow specific files
 Allow: /index.html
-Allow: /projects.html
+Allow: /projects
 Allow: /styles.css
 Allow: /script.js
 Allow: /assets/
