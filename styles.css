@@ -708,6 +708,7 @@ a:hover, a:focus {
     margin-bottom: 2rem;
     letter-spacing: 1px;
     line-height: 1.1;
+    text-align: left;
 }
 
 .intro-main {
