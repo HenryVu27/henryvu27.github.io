@@ -127,57 +127,6 @@
     --about-desc-color: var(--subtitle-color);
 }
 
-:root[data-theme="misty-woods"] {
-    /* === Background Colors === */
-    --bg-color: #b6cdc7;                      /* Main background */
-    --card-bg: #e5e6e1;                       /* Card and container backgrounds */
-    --nav-bg: rgba(181, 205, 199, 0.85);      /* Navigation bar background */
-    --hover-bg: #d8e0dc;                      /* Hovered background for inputs/buttons */
-
-    /* === Text Colors === */
-    --text-color: #293535;                    /* Main text */
-    --big-intro: #293535;                     /* Large intro text */
-    --heading-color: var(--big-intro);        /* Section headings */
-    --subtitle-color: #556e68;                /* Subtitles */
-    --muted-text: #7c9e9d;                    /* Muted/secondary text */
-    --light-text: #293535;                    /* Light text (on dark bg) */
-    --date-color: var(--muted-text);          /* Dates in timeline */
-    --list-text: var(--text-color);           /* List items */
-    --cursor-color: var(--primary-color);     /* Typing cursor */
-    --error-color: #c86464;                   /* Error messages */
-
-    /* === Button Colors === */
-    --button-bg: var(--primary-color);        /* Button background */
-    --button-text-color: #e5e6e1;             /* Button text */
-    --button-hover-bg: #e5e6e1;               /* Button hover background */
-    --button-hover-border: var(--button-hover-bg); /* Button hover border */
-    --button-hover-text-color: var(--big-intro);       /* Button hover text */
-    --button-active: #7c9e9d;                 /* Button active/pressed */
-
-    /* === Border Colors === */
-    --border-color: #7c9e9d;                  /* Card and section borders */
-    --input-border: var(--secondary-color);   /* Input border */
-
-    /* === Accent Colors === */
-    --primary-color: #556e68;                 /* Primary accent (buttons, highlights) */
-    --secondary-color: #7c9e9d;               /* Secondary accent */
-    --accent-color: #293535;                  /* Accent (decorative, lines, etc.) */
-
-    /* === Input Colors === */
-    --input-bg: #e5e6e1;                      /* Input background */
-
-    /* === Effects & Shadows === */
-    --shadow: 0 6px 15px rgba(41, 53, 53, 0.15); /* Card shadow */
-    --plexus-particle-color: rgba(85, 110, 104, 0.18); /* Plexus effect */
-    --plexus-line-color: rgba(85, 110, 104, 0.13);     /* Plexus effect */
-    --theme-toggle-icon-color: var(--text-color);       /* Theme toggle icon */
-    --theme-toggle-glow: rgba(85, 110, 104, 0.25);     /* Theme toggle glow */
-
-    /* === Timeline Colors === */
-    --timeline-title-color: var(--big-intro);           /* Timeline title */
-    --timeline-desc-color: var(--subtitle-color);       /* Timeline description */
-    --about-desc-color: var(--subtitle-color);
-}
 
 :root[data-theme="green-wilder"] {
     /* === Background Colors === */
@@ -509,87 +458,223 @@ h2 {
 /* Timeline */
 .timeline {
     position: relative;
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
+    padding: 2rem 0 2rem 3rem;
+}
+
+/* Vertical line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        transparent 0%, 
+        var(--border-color) 10%, 
+        var(--border-color) 90%, 
+        transparent 100%);
 }
 
 .timeline-item {
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
     position: relative;
-    padding-left: 2rem;
 }
 
+/* Timeline dot */
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 2px;
-    height: 0;
-    background-color: var(--primary-color);
-    border-radius: 2px;
-    transition: height 0.5s ease-out;
-    z-index: 1;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background-color: var(--card-bg);
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 2;
 }
-.timeline-item.visible::before {
-    height: 100%;
+
+.timeline-item:hover::before {
+    background-color: var(--primary-color);
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* Hide the date wrapper - dates will be inline */
+.timeline-date-wrapper {
+    display: none;
+}
+
+/* Year markers - subtle */
+.timeline-year {
+    position: relative;
+    margin-bottom: 1.5rem;
+    margin-left: -6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    opacity: 0.8;
+    text-align: right;
+    width: 4rem;
+    padding-right: 1rem;
+}
+
+/* Subtle horizontal bar for years */
+.timeline-year::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 0.8rem;
+    height: 2px;
+    background-color: var(--primary-color);
+    opacity: 0.4;
 }
 
 .timeline-content {
-    background-color: var(--card-bg);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+    flex: 1;
+    background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg-color) 100%);
+    padding: 2rem;
+    border-radius: 16px;
     color: var(--text-color);
     opacity: 0;
     transform: translateX(-30px) scale(0.95);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out, box-shadow 0.3s ease-out;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
 }
+
+.timeline-item:nth-child(even) .timeline-content {
+    transform: translateX(30px) scale(0.95);
+}
+
 .timeline-item.visible .timeline-content {
     opacity: 1;
     transform: translateX(0) scale(1);
-    box-shadow: 0 6px 24px 0 rgba(0,0,0,0.13);
+}
+
+/* Gradient border effect */
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--primary-color), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.timeline-content:hover::before {
+    opacity: 1;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
 .timeline-content h3 {
     color: var(--timeline-title-color);
     opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.5s 0.1s, transform 0.5s 0.1s;
+    transform: translateY(20px);
+    transition: all 0.6s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    position: relative;
 }
+
 .timeline-item.visible .timeline-content h3 {
     opacity: 1;
     transform: translateY(0);
 }
 
-.timeline-content .date {
-    font-style: italic;
-    font-size: 0.90em;
-    color: var(--date-color);
-    margin-bottom: 1.1em;
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.5s 0.25s, transform 0.5s 0.25s;
+/* Animated accent bar */
+.timeline-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    transition: width 0.6s 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+
+.timeline-item.visible .timeline-content h3::after {
+    width: 60px;
+}
+
+/* Date styling */
+.timeline-content .date {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--date-color);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .timeline-item.visible .timeline-content .date {
     opacity: 1;
     transform: translateY(0);
 }
 
+.timeline-content ul {
+    margin-top: 0.5rem;
+    position: relative;
+}
+
 .timeline-content ul li {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s, transform 0.5s;
+    transform: translateX(-20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 0.8rem;
+    line-height: 1.7;
+    position: relative;
+    padding-left: 0;
 }
+
+/* Remove custom bullets to fix double bullet issue */
+.timeline-content ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+.timeline-content ul li {
+    list-style-type: disc;
+}
+
+.timeline-content ul li::marker {
+    color: var(--primary-color);
+}
+
 .timeline-item.visible .timeline-content ul li {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0) rotate(0deg);
 }
-.timeline-item.visible .timeline-content ul li:nth-child(1) { transition-delay: 0.35s; }
-.timeline-item.visible .timeline-content ul li:nth-child(2) { transition-delay: 0.48s; }
-.timeline-item.visible .timeline-content ul li:nth-child(3) { transition-delay: 0.61s; }
-.timeline-item.visible .timeline-content ul li:nth-child(4) { transition-delay: 0.74s; }
-.timeline-item.visible .timeline-content ul li:nth-child(5) { transition-delay: 0.87s; }
+
+.timeline-item.visible .timeline-content ul li:nth-child(1) { transition-delay: 0.4s; }
+.timeline-item.visible .timeline-content ul li:nth-child(2) { transition-delay: 0.5s; }
+.timeline-item.visible .timeline-content ul li:nth-child(3) { transition-delay: 0.6s; }
+.timeline-item.visible .timeline-content ul li:nth-child(4) { transition-delay: 0.7s; }
+.timeline-item.visible .timeline-content ul li:nth-child(5) { transition-delay: 0.8s; }
 
 .intro-description,
 .timeline-content ul,
@@ -816,7 +901,7 @@ a:hover, a:focus {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    transition: transform 0.2s ease-out, color 0.2s ease-out, background 0.2s ease-out, box-shadow 0.2s ease-out;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
     background: var(--button-bg);
@@ -827,28 +912,53 @@ a:hover, a:focus {
     z-index: 1;
     padding: 0.8rem 2.2rem;
     font-size: 1.1rem;
-    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+    border: 1px solid transparent;
 }
 
 .contact-btn::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 0%;
-    background: var(--button-hover-bg);
-    z-index: 2;
-    transition: width 0.35s cubic-bezier(0.4,0,0.2,1);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, var(--button-hover-bg), var(--button-bg));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
 }
 
 .contact-btn:hover::before, .contact-btn:focus::before {
-    width: 100%;
+    opacity: 0.9;
 }
+
+/* Alternative subtle fade animation - uncomment to use instead of ripple effect
+.contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--button-hover-bg);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.contact-btn:hover::before, .contact-btn:focus::before {
+    opacity: 1;
+    width: auto;
+    height: auto;
+}
+*/
 
 .contact-btn span {
     position: relative;
-    z-index: 3;
+    z-index: 1;
     display: inline-block;
-    transition: color 0.2s;
+    transition: color 0.3s ease;
 }
 
 .contact-btn::after {
@@ -857,13 +967,18 @@ a:hover, a:focus {
 
 .contact-btn i {
     position: relative;
-    z-index: 3;
-    transition: color 0.2s;
+    z-index: 1;
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform-origin: center;
+}
+
+.contact-btn:hover span {
+    color: var(--button-hover-text-color);
 }
 
 .contact-btn:hover i, .contact-btn:focus i {
     color: var(--button-hover-text-color);
-    transition: color 0.2s 0.12s;
+    transform: translateX(2px) rotate(-15deg);
 }
 
 .contact-btn:active {
@@ -1025,7 +1140,6 @@ a:hover, a:focus {
 
 .contact-btn-icon {
     font-size: 0.9em;
-    transition: transform 0.25s ease-out;
 }
 .scroll-down-arrow {
     position: absolute;
@@ -1247,11 +1361,10 @@ button {
 }
 
 .contact-btn:hover, .contact-btn:focus {
-    background: var(--button-hover-bg);
     color: var(--button-hover-text-color);
-    border-color: var(--button-hover-border);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 20px rgba(108, 92, 231, 0.25);
     transform: translateY(-2px);
+    border-color: rgba(108, 92, 231, 0.3);
 }
 
 .about-paragraph {

@@ -237,7 +237,6 @@ const themes = [
     { key: 'digital-abyss', name: 'Digital Abyss' },
     { key: 'morning-fog', name: 'Morning Fog' },
     { key: 'sakura-garden', name: 'Sakura Garden' },
-    { key: 'misty-woods', name: 'Misty Woods' },
     { key: 'green-wilder', name: 'Green Wilder' },
     { key: 'piano-symphony', name: 'Piano Symphony' }
 ];
@@ -564,7 +563,7 @@ const Router = {
             homeContent.style.display = 'none';
             projectsContent.style.display = 'block';
             plexusCanvas.style.display = 'none'; // Hide plexus on projects page
-            document.title = 'Project Archive - Henry Vu';
+            document.title = 'Project Archive - Henry Vu | Dallas UTDallas CS Graduate';
             this.currentPage = 'projects';
             
             // Pause plexus animation to improve performance
@@ -580,7 +579,7 @@ const Router = {
             homeContent.style.display = 'block';
             projectsContent.style.display = 'none';
             plexusCanvas.style.display = 'block'; // Show plexus on home page
-            document.title = 'Henry Vu - Personal Website';
+            document.title = 'Henry Vu - Dallas Computer Science Graduate Student at UTDallas | ML & AI Portfolio';
             this.currentPage = 'home';
             
             // Resume plexus animation
@@ -593,12 +592,12 @@ const Router = {
     navigateTo(page, section = null) {
         if (page === 'projects') {
             // Navigate to projects page
-            history.pushState({ page: 'projects' }, 'Project Archive - Henry Vu', '/projects');
+            history.pushState({ page: 'projects' }, 'Project Archive - Henry Vu | Dallas UTDallas CS Graduate', '/projects');
             this.showPage('projects');
         } else if (page === 'home') {
             // Navigate to home page
             const url = section ? `/#${section}` : '/';
-            history.pushState({ page: 'home', section }, 'Henry Vu - Personal Website', url);
+            history.pushState({ page: 'home', section }, 'Henry Vu - Dallas Computer Science Graduate Student at UTDallas | ML & AI Portfolio', url);
             this.showPage('home');
             
             // Scroll to section if specified
