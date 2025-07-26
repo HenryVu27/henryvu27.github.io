@@ -1487,11 +1487,11 @@ button {
 .project-block {
   display: flex;
   flex-direction: column;
-  background: var(--card-bg);
+  background: linear-gradient(135deg, var(--card-bg) 0%, var(--bg-color) 100%);
   border-radius: 16px;
-  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
   overflow: hidden;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease-out;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
   transform: translateY(60px) scale(0.97);
   will-change: opacity, transform;
@@ -1500,12 +1500,40 @@ button {
   position: relative;
   min-height: 440px;
   backface-visibility: hidden;
-  transform: translateZ(0);
 }
+
 .project-block.visible {
   opacity: 1;
-  transform: none;
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.13);
+  transform: translateY(0) scale(1);
+}
+
+/* Gradient border effect on hover */
+.project-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--primary-color), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.project-block:hover::before {
+  opacity: 1;
+}
+
+.project-block:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border-color: var(--primary-color);
 }
 .project-image {
   width: 100%;
@@ -1523,6 +1551,7 @@ button {
   position: relative;
   min-height: 270px;
   padding-bottom: 4.2rem;
+  z-index: 1;
 }
 .project-title {
   font-size: 1.45rem;
