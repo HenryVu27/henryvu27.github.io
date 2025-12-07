@@ -219,7 +219,7 @@
                         <div class="about-paragraph fade-in-paragraph">
                             <h3 class="about-paragraph-title">Current Focus</h3>
                             <p>
-                                Currently, I'm developing lightweight semantic segmentation models for medical imaging at Thormed Innovation, and working on my Master's thesis. I'm always excited to connect with fellow researchers and students interested in math, stats, ML or CS!
+                                Currently, I'm building voice-to-voice RAG systems and multimodal XR applications at eXRealityAI, developing lightweight segmentation models for medical imaging at ThorMed Innovation, and working on my Master's thesis. I'm always excited to connect with fellow researchers and students interested in math, stats, ML or CS!
                             </p>
                             <p>
                                 <a href="ML_Resume_Online.pdf" target="_blank"><i>My Resume</i> <i class="fas fa-file-pdf"></i></a>
@@ -244,13 +244,24 @@
                         <div class="timeline-year">2025</div>
                         <div class="timeline-item">
                             <div class="timeline-content">
-                                <h3>Computer Vision Intern <a href="#" onclick="event.preventDefault()"><b>@Thormed Innovation</b></a></h3>
+                                <h3>AR/ML Developer <a href="#" onclick="event.preventDefault()"><b>@eXRealityAI</b></a></h3>
+                                <p class="date">Aug 2025</p>
+                                <ul>
+                                    <li>Built voice-to-voice <b>RAG</b> system (Whisper STT → hybrid retrieval with BM25 + FAISS → Mistral-7B-q4 → Kokoro TTS) achieving sub-10s latency with local inference on NVIDIA Jetson Orin AGX.</li>
+                                    <li>Engineered NLP pipeline with EmbeddingGemma-300m, BAAI cross-encoder reranking, query rewriting, and intent-aware retrieval reducing processing by <b>40-70%</b>.</li>
+                                    <li>Integrated <b>Gemini 2.5</b> with structured JSON schema and context-aware prompt engineering, orchestrating stateful multimodal workflows combining <b>YOLOv9</b> and <b>Wit.ai</b> voice input across 2 XR applications.</li>
+                                    <li>Mentored development teams on <b>LLM API</b> integration and prompt engineering for Meta Quest applications.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Computer Vision Engineer <a href="#" onclick="event.preventDefault()"><b>@ThorMed Innovation</b></a></h3>
                                 <p class="date">Feb 2025 - Present</p>
                                 <ul>
-                                    <li>Developed lightweight semantic segmentation models in <b>LiteRT</b> for efficient and automated bladder volume calculation.</li>
-                                    <li>Fine-tuned <b>SAMUS</b> and knowledge distilled onto a <b>8M param</b> U-Net-based model, achieving Dice <b>&ge; 90%</b> and Hausdorff Distance <b>&le; 10mm</b>.</li>
-                                    <li>Performed model quantization and inference optimization to reduce model size and improve runtime efficiency, preserving up to <b>98%</b> of accuracy.</li>
-                                    <li>Leveraged <b>Python</b> and <b>OpenCV</b> to extract bladder ultrasound images from video and applied the <b>SAMUS</b> model to generate segmentation masks, addressing data scarcity.</li>
+                                    <li>Led domain-aligned transfer learning for <a href="https://reporter.nih.gov/search/EM1hhC5LGEi-t5lzJQuLFQ/project-details/11251173" target="_blank">NIH-funded</a> bladder segmentation project. Pretrained <b>U-Net</b> and <b>SimSiam SSL</b> encoders on <b>9.2K</b> thyroid/breast ultrasound images, achieving <b>95.99%</b> Dice on downstream task.</li>
+                                    <li>Enabled edge deployment via <b>4-bit PTQ</b> with <b>7x robustness improvement</b> over ImageNet initialization.</li>
+                                    <li>Built automated data pipeline with <b>PyTorch</b> and <b>OpenCV</b>: extracted, preprocessed, and segmented <b>486 clinical images</b> from ultrasound videos with augmentation and quality validation frameworks.</li>
                                 </ul>
                             </div>
                         </div>
