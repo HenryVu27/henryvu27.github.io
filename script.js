@@ -278,50 +278,79 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Plexus/Particle Network Background for Intro Section
+// Optimized for performance across all platforms
 const PlexusAnimation = (function() {
     const canvas = document.getElementById('plexus-bg');
     if (!canvas) return { pause: () => {}, resume: () => {} };
-    
-    const ctx = canvas.getContext('2d');
-    let dpr = window.devicePixelRatio || 1;
+
+    // Use low-latency context for better performance
+    const ctx = canvas.getContext('2d', {
+        alpha: true,
+        desynchronized: true  // Reduces latency on supported browsers
+    });
+
+    // Limit DPR to 1.5 for performance (high-DPI screens are expensive)
+    let dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     let width = 0, height = 0;
-    const PARTICLE_COUNT = 46;
-    const PARTICLE_RADIUS = 2.2;
-    const LINE_DIST = 110;
+    const PARTICLE_RADIUS = 2;
+    const LINE_DIST = 90;  // Shorter connection distance = fewer lines
+    const LINE_DIST_SQ = LINE_DIST * LINE_DIST;
     let particles = [];
     let mouse = { x: null, y: null };
     let animationId = null;
     let isRunning = false;
-    
+    let isTabVisible = true;
+    let lastFrameTime = 0;
+    const TARGET_FPS = 24;  // Smooth enough, easy on CPU
+    const FRAME_INTERVAL = 1000 / TARGET_FPS;
+
+    // Cache colors to avoid repeated getComputedStyle calls
+    let cachedColors = null;
+    let colorCacheTime = 0;
+    const COLOR_CACHE_DURATION = 500;
+
+    // Mouse move throttling (~20 updates/sec is plenty)
+    let lastMouseMove = 0;
+    const MOUSE_THROTTLE = 50;
+
     function getColors() {
+        const now = Date.now();
+        if (cachedColors && (now - colorCacheTime) < COLOR_CACHE_DURATION) {
+            return cachedColors;
+        }
         const styles = getComputedStyle(document.documentElement);
-        return {
+        cachedColors = {
             particle: styles.getPropertyValue('--plexus-particle-color').trim() || 'rgba(0,240,194,0.18)',
             line: styles.getPropertyValue('--plexus-line-color').trim() || 'rgba(0,240,194,0.13)'
         };
+        colorCacheTime = now;
+        return cachedColors;
     }
 
     function resize() {
         width = window.innerWidth;
-        height = Math.max(document.body.scrollHeight, window.innerHeight);
+        height = window.innerHeight;
         canvas.width = width * dpr;
         canvas.height = height * dpr;
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
         ctx.setTransform(1, 0, 0, 1, 0, 0);
         ctx.scale(dpr, dpr);
     }
 
     function randomVel() {
-        return (Math.random() - 0.5) * 0.18;
+        return (Math.random() - 0.5) * 0.14;  // Gentle movement
     }
 
     function getParticleCount() {
-        // 1 particle per 20,000 px², min 32, max 180
-        return Math.max(32, Math.min(180, Math.floor((width * height) / 20000)));
+        // ~1 particle per 45,000 px², capped at 30 max
+        return Math.max(12, Math.min(30, Math.floor((width * height) / 45000)));
     }
 
     function createParticles() {
         particles = [];
-        for (let i = 0; i < getParticleCount(); i++) {
+        const count = getParticleCount();
+        for (let i = 0; i < count; i++) {
             particles.push({
                 x: Math.random() * width,
                 y: Math.random() * height,
@@ -335,82 +364,127 @@ const PlexusAnimation = (function() {
     function draw() {
         ctx.clearRect(0, 0, width, height);
         const colors = getColors();
-        // Draw lines
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const a = particles[i], b = particles[j];
-                const dx = a.x - b.x, dy = a.y - b.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < LINE_DIST) {
-                    ctx.save();
-                    ctx.globalAlpha = 1;
-                    ctx.strokeStyle = colors.line;
-                    ctx.beginPath();
+        const len = particles.length;
+
+        // Draw lines - batch all into single path
+        ctx.strokeStyle = colors.line;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        for (let i = 0; i < len; i++) {
+            const a = particles[i];
+            for (let j = i + 1; j < len; j++) {
+                const b = particles[j];
+                const dx = a.x - b.x;
+                const dy = a.y - b.y;
+                const distSq = dx * dx + dy * dy;
+                if (distSq < LINE_DIST_SQ) {
                     ctx.moveTo(a.x, a.y);
                     ctx.lineTo(b.x, b.y);
-                    ctx.stroke();
-                    ctx.restore();
                 }
             }
         }
-        // Draw particles
-        for (const p of particles) {
-            ctx.save();
-            ctx.globalAlpha = 1;
-            ctx.beginPath();
+        ctx.stroke();
+
+        // Draw all particles in single path (more efficient)
+        ctx.fillStyle = colors.particle;
+        ctx.beginPath();
+        for (let i = 0; i < len; i++) {
+            const p = particles[i];
+            ctx.moveTo(p.x + p.r, p.y);
             ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
-            ctx.fillStyle = colors.particle;
-            ctx.shadowColor = colors.particle;
-            ctx.shadowBlur = 6;
-            ctx.fill();
-            ctx.restore();
         }
+        ctx.fill();
     }
 
-    function animate() {
-        if (!isRunning) return;
-        
-        for (const p of particles) {
+    function animate(currentTime) {
+        if (!isRunning || !isTabVisible) return;
+
+        animationId = requestAnimationFrame(animate);
+
+        // Frame rate limiting
+        const elapsed = currentTime - lastFrameTime;
+        if (elapsed < FRAME_INTERVAL) return;
+        lastFrameTime = currentTime - (elapsed % FRAME_INTERVAL);
+
+        const len = particles.length;
+        const hasMouseInteraction = mouse.x !== null && mouse.y !== null;
+
+        for (let i = 0; i < len; i++) {
+            const p = particles[i];
             p.x += p.vx;
             p.y += p.vy;
+
             // Bounce off edges
             if (p.x < 0 || p.x > width) p.vx *= -1;
             if (p.y < 0 || p.y > height) p.vy *= -1;
-            // Gentle mouse repulsion
-            if (mouse.x !== null && mouse.y !== null) {
-                const dx = p.x - mouse.x, dy = p.y - mouse.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 80) {
-                    p.vx += dx / dist * 0.03;
-                    p.vy += dy / dist * 0.03;
+
+            // Gentle mouse repulsion (skip sqrt using fast inverse sqrt approximation)
+            if (hasMouseInteraction) {
+                const dx = p.x - mouse.x;
+                const dy = p.y - mouse.y;
+                const distSq = dx * dx + dy * dy;
+                if (distSq < 6400 && distSq > 1) {
+                    // Fast approximation: use distSq directly instead of sqrt
+                    const force = 0.03 / Math.sqrt(distSq);
+                    p.vx += dx * force;
+                    p.vy += dy * force;
                 }
             }
         }
         draw();
-        animationId = requestAnimationFrame(animate);
     }
 
     function onMouseMove(e) {
+        // Throttle mouse move events
+        const now = performance.now();
+        if (now - lastMouseMove < MOUSE_THROTTLE) return;
+        lastMouseMove = now;
+
         const rect = canvas.getBoundingClientRect();
         mouse.x = (e.clientX - rect.left) * (width / rect.width);
         mouse.y = (e.clientY - rect.top) * (height / rect.height);
     }
-    
+
     function onMouseLeave() {
         mouse.x = null;
         mouse.y = null;
     }
 
-    window.addEventListener('resize', () => {
-        if (isRunning) {
-            resize();
-            createParticles();
+    // Pause animation when tab is hidden (CRITICAL for battery/performance)
+    function handleVisibilityChange() {
+        if (document.hidden) {
+            isTabVisible = false;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+            }
+        } else {
+            isTabVisible = true;
+            if (isRunning && !animationId) {
+                lastFrameTime = performance.now();
+                animationId = requestAnimationFrame(animate);
+            }
         }
-    });
-    canvas.addEventListener('mousemove', onMouseMove);
-    canvas.addEventListener('mouseleave', onMouseLeave);
+    }
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
-    // Initialize
+    // Debounced resize handler
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        if (resizeTimeout) clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (isRunning) {
+                resize();
+                createParticles();
+            }
+        }, 150);
+    });
+
+    // Use document for mouse tracking (more reliable than canvas with pointer-events: none)
+    document.addEventListener('mousemove', onMouseMove, { passive: true });
+    document.addEventListener('mouseleave', onMouseLeave, { passive: true });
+
+    // Initialize with slight delay to not block page load
     setTimeout(() => {
         resize();
         createParticles();
@@ -420,7 +494,11 @@ const PlexusAnimation = (function() {
     function start() {
         if (!isRunning) {
             isRunning = true;
-            animate();
+            isTabVisible = !document.hidden;
+            if (isTabVisible) {
+                lastFrameTime = performance.now();
+                animationId = requestAnimationFrame(animate);
+            }
         }
     }
 
