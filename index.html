@@ -133,6 +133,10 @@
             100% { transform: translateX(100%); }
         }
     </style>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJESH4V1MQ"></script>
     <script>
@@ -146,8 +150,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
 </head>
-<body class="light-mode">
-    <canvas id="plexus-bg"></canvas>
+<body>
     <header>
         <nav>
             <div class="nav-content">
@@ -162,9 +165,9 @@
                     <li><a href="#projects">Projects</a></li>
                     <li class="nav-dot">·</li>
                     <li><a href="#contact">Contact</a></li>
-                    <li class="theme-toggle-btn" title="Digital Abyss">
-                        <button class="theme-toggle-icon" aria-label="Switch theme">
-                            <i class="fas fa-palette"></i>
+                    <li class="theme-toggle-btn">
+                        <button class="theme-toggle-icon" aria-label="Toggle dark mode">
+                            <i class="fas fa-moon"></i>
                         </button>
                     </li>
                 </ul>
@@ -180,7 +183,7 @@
             <section id="intro" class="section intro-section fade-in-section">
                 <div class="container intro-container left-intro">
                     <div class="intro-flex">
-                        <h1 class="big-intro">Hey, it's Henry<span class="wave" role="img" aria-label="waving hand">👋</span></h1>
+                        <h1 class="big-intro">Hey, it's Henry</h1>
                         <h2 class="intro-main" id="typing-text"></h2>
                         <button class="contact-btn" data-text="Get in Touch" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});"><span>Get in Touch <i class="fas fa-paper-plane contact-btn-icon"></i></span></button>
                     </div>
@@ -202,33 +205,32 @@
                             <div class="section-line"></div>
                         </div>
                         <div class="about-paragraph fade-in-paragraph">
-                            <h3 class="about-paragraph-title">Academic Journey</h3>
                             <p>
-                                Hi there! My name is Henry Vu. I'm currently a graduate student in Computer Science <a href="https://engineering.utdallas.edu/" target="_blank">&#64;UTDallas</a>, specializing in Intelligent Systems. Previously, I received my B.Sc. Honors in Computer Science <a href="https://www.ualberta.ca/en/computing-science/index.html" target="_blank">&#64;UAlberta</a>.
-                            </p>
-                        </div>
-                        <div class="about-paragraph fade-in-paragraph">
-                            <h3 class="about-paragraph-title">Research & Experience</h3>
-                            <p>
-                                My interest in math started early in local competitions. I've always enjoyed modeling real-world problems in rigorous mathematical language, seeing the underlying structure, and translating that structure into computational solutions.
+                                My interest in math started early through local competitions and olympiad prep. What stuck wasn't the contest tricks but the process of taking messy problems, stripping them to structure, and finding where the leverage is.
                             </p>
                             <p>
-                                Fast forward to the present, I've had the privilege to work with and learn from some of the most brilliant people during my time in college, diving deep into areas like online optimization, reinforcement learning, and deep learning.
+                                For a while I leaned into theory, spending time at <a href="https://www.amii.ca/" target="_blank">Amii</a> working on online algorithms and multi-armed bandits. For online algorithms, the focus was on making them both robust to worst-case inputs and consistent when machine-learned predictions are accurate. For bandits, it was studying exploration-exploitation tradeoffs and regret bounds across stochastic, adversarial, markovian, and restless settings.
                             </p>
-                        </div>
-                        <div class="about-paragraph fade-in-paragraph">
-                            <h3 class="about-paragraph-title">Current Focus</h3>
                             <p>
-                                Currently, I'm building voice-to-voice RAG systems and multimodal XR applications at eXRealityAI, developing lightweight segmentation models for medical imaging at ThorMed Innovation, and working on my Master's thesis. I'm always excited to connect with fellow researchers and students interested in math, stats, ML or CS!
+                                Over time I got more interested in the gap between clean theoretical properties and systems that actually run on constrained hardware. Currently I'm a founding ML engineer at <a href="https://exreality.ai/" target="_blank">eXRealityAI</a> building agentic voice systems and multimodal XR applications.
+                            </p>
+                            <p>
+                                I write occasionally at <a href="https://www.henryvu.blog/" target="_blank">henryvu.blog</a>.
                             </p>
                             <p>
                                 <a href="ML_Resume_Online.pdf" target="_blank"><i>My Resume</i> <i class="fas fa-file-pdf"></i></a>
                             </p>
                         </div>
+                        <div class="about-paragraph fade-in-paragraph">
+                            <h3 class="about-paragraph-title">Outside of this</h3>
+                            <p>
+                                Piano, cooking, catching up with DeepSeek papers, and the occasional competitive TFT session.
+                            </p>
+                        </div>
                     </div>
                     <div class="about-image">
                         <div class="profile-image">
-                            <img class="profile-pic" src="assets/ppp.jpeg" alt="Henry Vu - Dallas Computer Science Graduate Student at UTDallas" loading="lazy" decoding="async">
+                            <img class="profile-pic" src="assets/ppp.webp" alt="Henry Vu - Dallas Computer Science Graduate Student at UTDallas" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -244,7 +246,7 @@
                         <div class="timeline-year">2025</div>
                         <div class="timeline-item">
                             <div class="timeline-content">
-                                <h3>AR/ML Developer <a href="#" onclick="event.preventDefault()"><b>@eXRealityAI</b></a></h3>
+                                <h3>AR/ML Developer <a href="https://exreality.ai/" target="_blank"><b>@eXRealityAI</b></a></h3>
                                 <p class="date">Aug 2025</p>
                                 <ul>
                                     <li>Built voice-to-voice <b>RAG</b> system (Whisper STT → hybrid retrieval with BM25 + FAISS → Mistral-7B-q4 → Kokoro TTS) achieving sub-10s latency with local inference on NVIDIA Jetson Orin AGX.</li>
@@ -321,10 +323,26 @@
                     </div>
                     <div class="projects-grid">
                         <div class="project-block fade-in-project">
+                            <img class="project-image" src="assets/thormed-project.webp" alt="ThorMed Bladder Segmentation Project by Henry Vu: Medical ultrasound image segmentation for edge deployment" loading="lazy" decoding="async">
+                            <div class="project-content">
+                                <h3 class="project-title">Ultrasound Bladder Segmentation</h3>
+                                <p class="project-why">This is an <a href="https://reporter.nih.gov/search/EM1hhC5LGEi-t5lzJQuLFQ/project-details/11251173" target="_blank">NIH-funded</a> bladder segmentation project with limited data and edge deployment constraints. I pretrained <b>U-Net</b> encoders on 9.2K thyroid/breast images, achieving <b>7x improvement</b> in 4-bit quantization robustness for deployment on portable devices.</p>
+                                <div class="project-tech">
+                                    <span class="tech-item">SSL</span>
+                                    <span class="tech-item">OpenCV</span>
+                                    <span class="tech-item">Model Quantization</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/HenryVu27/ThorMed" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                                    <a href="https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-block fade-in-project">
                             <img class="project-image" src="assets/eeg-project.webp" alt="EEG Decoding Project by Henry Vu: Brain signal processing and classification research" loading="lazy" decoding="async">
                             <div class="project-content">
                                 <h3 class="project-title">EEG Decoding: a Multi-Modal Approach</h3>
-                                <p class="project-why"> Dealing with noisy and complex brain signals (EEG) requires robust analysis. This project developed a novel EEG feature extraction framework, combining <b>convolution</b> for local patterns and <b>self-attention</b> for global context. The extracted EEG features were then strategically combined with word embeddings  from different LLMs to achieve consistent improvements in classification accuracy.</p>
+                                <p class="project-why">This project developed a novel EEG feature extraction framework for decoding noisy brain signals, combining <b>convolution</b> for local patterns and <b>self-attention</b> for global context. The extracted features were then fused with LLM word embeddings to achieve consistent improvements in classification accuracy.</p>
                                 <div class="project-tech">
                                     <span class="tech-item">PyTorch</span>
                                     <span class="tech-item">MATLAB</span>
@@ -340,9 +358,9 @@
                             <img class="project-image" src="assets/sarcasm-project.webp" alt="Political Sarcasm Detection Project by Henry Vu: NLP text analysis interface" loading="lazy" decoding="async">
                             <div class="project-content">
                                 <h3 class="project-title">Modeling Political Sarcasm</h3>
-                                <p class="project-why">Political sarcasm in online text is incredibly subtle, relying heavily on nuanced language and context rather than tone. This project focused on building accurate detection models using  advanced feature engineering and fine-tuned <b>DistilRoBERTa</b> to better understand and identify sarcasm in political discussions.</p>
+                                <p class="project-why">Political sarcasm in online text is incredibly subtle, relying heavily on nuanced language and context rather than tone. This project focused on building accurate detection models using feature engineering for semantic pattern recognition, and fine-tuned <b>DistilRoBERTa</b> to better identify political sarcasm.</p>
                                 <div class="project-tech">
-                                    <span class="tech-item">PyTorch</span>
+                                    <span class="tech-item">NLP</span>
                                     <span class="tech-item">NLTK</span>
                                     <span class="tech-item">spaCy</span>
                                     <span class="tech-item">scikit-learn</span>
@@ -357,7 +375,7 @@
                             <img class="project-image" src="assets/tft-project.webp" alt="TFT Rolling Calculator by Henry Vu: Teamfight Tactics probability calculator" loading="lazy" decoding="async">
                             <div class="project-content">
                                 <h3 class="project-title">TFT Rolling Odds Calculator</h3>
-                                <p class="project-why">This project focused on building a website for calculating the probability of rolling a specific champion in Teamfight Tactics. The calculation uses <b>Markov Chain</b> to model the probability, where each state represents the probability of having an X number of a specific champion.</p>
+                                <p class="project-why">Above Grandmaster level, TFT becomes a game of calculated risks where small knowledge edges are increasingly valuable. I built this tool to calculate the odds of finding a specific champion based on level, pool size, and gold using <b>Markov Chains</b>, where each state represents the likelihood of finding X copies of that unit.</p>
                                 <div class="project-tech">
                                     <span class="tech-item">HTML/CSS</span>
                                     <span class="tech-item">JavaScript</span>
@@ -368,41 +386,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="project-block fade-in-project">
-                            <img class="project-image" src="assets/navigator-project.webp" alt="UManitoba Navigator by Henry Vu: Campus navigation web application" loading="lazy" decoding="async">
-                            <div class="project-content">
-                                <h3 class="project-title">UManitoba Navigator</h3>
-                                <p class="project-why">Creating an efficient navigation system for a large campus, with hidden pedestrian paths and tunnels, like UManitoba solves a practical user problem. This project built a <b>full-stack</b> web application featuring a detailed map derived from OpenStreetMap data and implemented <b>Dijkstra's algorithm</b> to find truly optimal travel routes.</p>
-                                <div class="project-tech">
-                                    <span class="tech-item">Python</span>
-                                    <span class="tech-item">FastAPI</span>
-                                    <span class="tech-item">React</span>
-                                    <span class="tech-item">HTML/CSS</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://github.com/HenryVu27/devHack2024" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-block fade-in-project">
-                            <img class="project-image" src="assets/habit-project.webp" alt="HabiTrak Android App by Henry Vu: Habit tracking mobile application" loading="lazy" decoding="async">
-                            <div class="project-content">
-                                <h3 class="project-title">HabiTrak</h3>
-                                <p class="project-why">Building consistent habits can be difficult, requiring diligent tracking and self-discipline. HabiTrak is an <b>Android</b> application designed to help users overcome this challenge by providing a straightforward platform to log, track, and visualize their daily habit progress.</p>
-                                <div class="project-tech">
-                                    <span class="tech-item">Java</span>
-                                    <span class="tech-item">Android Studio</span>
-                                    <span class="tech-item">Firebase</span>
-                                    <span class="tech-item">Google Maps API</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://github.com/CMPUT301F21T34/HabiTrak" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="other-projects-cta" tabindex="0" role="button" aria-label="View more projects">
-                        <span class="cta-text">Other Projects</span>
+                        <span class="cta-text">more projects</span>
                         <span class="cta-arrow" aria-hidden="true">
                             <svg width="32" height="12" viewBox="0 0 32 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <line x1="0" y1="6" x2="28" y2="6" stroke="currentColor" stroke-width="2"/>
@@ -416,7 +402,7 @@
             <section id="contact" class="section contact-section fade-in-section">
                 <div class="container">
                     <div class="section-heading">
-                        <h2>Say hello <span class="wave" role="img" aria-label="waving hand">👋</span></h2>
+                        <h2>Get in Touch</h2>
                         <div class="section-line"></div>
                     </div>
                     <div class="contact-card">
