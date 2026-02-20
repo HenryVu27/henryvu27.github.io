@@ -293,45 +293,46 @@ h2 {
     padding: 2rem 0 2rem 3rem;
 }
 
-/* Vertical line */
+/* Vertical line - thin and subtle */
 .timeline::before {
     content: '';
     position: absolute;
     left: 15px;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, 
-        transparent 0%, 
-        var(--border-color) 10%, 
-        var(--border-color) 90%, 
+    width: 1px;
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        var(--border-color) 10%,
+        var(--border-color) 90%,
         transparent 100%);
+    opacity: 0.5;
 }
 
 .timeline-item {
-    margin-bottom: 3.5rem;
+    margin-bottom: 2.5rem;
     position: relative;
 }
 
-/* Timeline dot */
+/* Timeline dot - small, filled */
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -24px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 12px;
-    height: 12px;
-    background-color: var(--card-bg);
-    border: 2px solid var(--primary-color);
+    left: -22px;
+    top: 0.45rem;
+    width: 7px;
+    height: 7px;
+    background-color: var(--primary-color);
+    border: none;
     border-radius: 50%;
     transition: all 0.3s ease;
     z-index: 2;
+    opacity: 0.7;
 }
 
 .timeline-item:hover::before {
-    background-color: var(--primary-color);
-    transform: translateY(-50%) scale(1.2);
+    opacity: 1;
+    transform: scale(1.4);
 }
 
 /* Hide the date wrapper - dates will be inline */
@@ -339,16 +340,16 @@ h2 {
     display: none;
 }
 
-/* Year markers - subtle */
+/* Year markers - minimal */
 .timeline-year {
     position: relative;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     margin-left: -6rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    letter-spacing: 1px;
-    opacity: 0.8;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted-text);
+    letter-spacing: 2px;
+    opacity: 0.5;
     text-align: right;
     width: 4rem;
     padding-right: 1rem;
@@ -360,17 +361,17 @@ h2 {
     position: absolute;
     right: 0;
     top: 50%;
-    width: 0.8rem;
-    height: 2px;
-    background-color: var(--primary-color);
-    opacity: 0.4;
+    width: 0.5rem;
+    height: 1px;
+    background-color: var(--muted-text);
+    opacity: 0.3;
 }
 
 .timeline-content {
     flex: 1;
-    background: var(--card-bg);
-    padding: 1.75rem;
-    border-radius: 12px;
+    background: none;
+    padding: 0;
+    border-radius: 0;
     color: var(--text-color);
     opacity: 0;
     transform: translateY(16px);
@@ -384,53 +385,69 @@ h2 {
 }
 
 .timeline-content:hover {
-    box-shadow: var(--shadow);
+    box-shadow: none;
 }
 
 .timeline-content h3 {
     color: var(--timeline-title-color);
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.35rem;
     letter-spacing: -0.01em;
 }
 
 /* Date styling */
 .timeline-content .date {
     display: inline-block;
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     color: var(--date-color);
-    margin-bottom: 0.75rem;
-    font-weight: 500;
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
 }
 
 .timeline-content ul {
-    margin-top: 0.5rem;
-    list-style-type: disc;
-    padding-left: 1.5rem;
+    margin-top: 0.25rem;
+    list-style-type: none;
+    padding-left: 0;
 }
 
 .timeline-content ul li {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.35rem;
     line-height: 1.6;
+    font-size: 0.9rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.timeline-content ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 3px;
+    height: 3px;
+    background: var(--muted-text);
+    border-radius: 50%;
+    opacity: 0.4;
 }
 
 .timeline-content ul li::marker {
-    color: var(--primary-color);
+    color: transparent;
 }
 
 .intro-description,
 .timeline-content ul,
 .timeline-content li {
     color: var(--timeline-desc-color);
-    margin-bottom: 0.5em;
+    margin-bottom: 0.4em;
     font-weight: 300;
     text-align: left;
 }
 
 .timeline-content b,
 .timeline-content strong {
-    font-weight: bold;
+    font-weight: 600;
     color: var(--primary-color);
 }
 
