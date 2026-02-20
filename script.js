@@ -318,125 +318,54 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach(item => observer.observe(item));
 })();
 
-// Fade-in for project blocks
+// Fade-in for project cards
 (function() {
-    const projects = document.querySelectorAll('.fade-in-project');
+    const projects = document.querySelectorAll('.project-card.fade-in-project');
     if (!projects.length) return;
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach((entry, idx) => {
             if (entry.isIntersecting) {
                 setTimeout(() => {
                     entry.target.classList.add('visible');
-                }, idx * 120); // Staggered fade-in
+                }, idx * 50);
                 obs.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1 });
     projects.forEach(p => observer.observe(p));
 })();
 
-// Other Projects CTA navigation
+// Filter tabs
 (function() {
-  const cta = document.querySelector('.other-projects-cta');
-  if (!cta) return;
-  cta.addEventListener('click', () => {
-    navigateToProjects();
-  });
-  cta.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      navigateToProjects();
-    }
-  });
-})();
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const projectCards = document.querySelectorAll('.project-card');
+    if (!filterTabs.length) return;
 
-// SPA Routing System
-const Router = {
-    currentPage: 'home',
-    homeObservers: [], // Store observers for home page
-    
-    init() {
-        // Handle initial route
-        this.handleRoute();
-        
-        // Listen for browser back/forward buttons
-        window.addEventListener('popstate', () => {
-            this.handleRoute();
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const filter = tab.dataset.filter;
+
+            // Update active tab
+            filterTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Filter cards with animation
+            let visibleIndex = 0;
+            projectCards.forEach(card => {
+                const show = filter === 'all' || card.dataset.category === filter;
+                if (show) {
+                    card.classList.remove('hidden');
+                    card.style.animation = 'none';
+                    card.offsetHeight; // trigger reflow
+                    card.style.animation = '';
+                    card.style.animationDelay = `${visibleIndex * 40}ms`;
+                    card.classList.add('card-animate');
+                    visibleIndex++;
+                } else {
+                    card.classList.add('hidden');
+                    card.classList.remove('card-animate');
+                }
+            });
         });
-    },
-    
-    handleRoute() {
-        const path = window.location.pathname;
-        const hash = window.location.hash;
-        
-        // Determine which page to show
-        if (path.includes('/projects') || hash === '#projects-archive') {
-            this.showPage('projects');
-        } else {
-            this.showPage('home');
-        }
-    },
-    
-    showPage(page) {
-        const homeContent = document.getElementById('home-content');
-        const projectsContent = document.getElementById('projects-archive-content');
-
-        if (page === 'projects') {
-            // Show projects page
-            homeContent.style.display = 'none';
-            projectsContent.style.display = 'block';
-            document.title = 'Project Archive - Henry Vu | Dallas UTDallas CS Graduate';
-            this.currentPage = 'projects';
-
-            // Scroll to top
-            window.scrollTo(0, 0);
-
-        } else {
-            // Show home page
-            homeContent.style.display = 'block';
-            projectsContent.style.display = 'none';
-            document.title = 'Henry Vu - Dallas Computer Science Graduate Student at UTDallas | ML & AI Portfolio';
-            this.currentPage = 'home';
-        }
-    },
-    
-    navigateTo(page, section = null) {
-        if (page === 'projects') {
-            // Navigate to projects page
-            history.pushState({ page: 'projects' }, 'Project Archive - Henry Vu | Dallas UTDallas CS Graduate', '/projects');
-            this.showPage('projects');
-        } else if (page === 'home') {
-            // Navigate to home page
-            const url = section ? `/#${section}` : '/';
-            history.pushState({ page: 'home', section }, 'Henry Vu - Dallas Computer Science Graduate Student at UTDallas | ML & AI Portfolio', url);
-            this.showPage('home');
-            
-            // Scroll to section if specified
-            if (section) {
-                setTimeout(() => {
-                    const targetSection = document.getElementById(section);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }, 100);
-            }
-        }
-    }
-};
-
-// Global navigation functions
-function navigateToProjects() {
-    Router.navigateTo('projects');
-}
-
-function navigateToHome(section = null) {
-    Router.navigateTo('home', section);
-}
-
-// Initialize router on DOM load
-document.addEventListener('DOMContentLoaded', () => {
-    Router.init();
-});
+    });
+})();

@@ -103,7 +103,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Projects",
-          "item": "https://henryvu27.github.io/projects"
+          "item": "https://henryvu27.github.io/#projects"
         }
       ]
     }
@@ -118,51 +118,9 @@
       "url": "https://henryvu27.github.io/"
     }
     </script>
-    <!-- SPA redirect handler (works with 404.html for GitHub Pages) -->
-    <script>
-        (function(){
-            var redirect = sessionStorage.redirect;
-            delete sessionStorage.redirect;
-            if (redirect && redirect !== location.href) {
-                history.replaceState(null, null, redirect);
-            }
-        })();
-        // Also handle /?/ style redirects from 404.html
-        (function(){
-            var l = window.location;
-            if (l.search[1] === '/') {
-                var decoded = l.search.slice(1).split('&').map(function(s){
-                    return s.replace(/~and~/g, '&');
-                }).join('?');
-                window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
-            }
-        })();
-    </script>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/favicon.png">
-    <!-- Add loading placeholder styles -->
-    <style>
-        .image-placeholder {
-            background: var(--card-bg);
-            position: relative;
-            overflow: hidden;
-        }
-        .image-placeholder::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-            animation: loading 1.5s infinite;
-        }
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-    </style>
     <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -345,80 +303,294 @@
                         <h2>Projects I've Worked On</h2>
                         <div class="section-line"></div>
                     </div>
-                    <div class="projects-grid">
-                        <div class="project-block fade-in-project">
-                            <img class="project-image" src="assets/thormed-project.webp" alt="ThorMed Bladder Segmentation Project by Henry Vu: Medical ultrasound image segmentation for edge deployment" loading="lazy" decoding="async">
-                            <div class="project-content">
-                                <h3 class="project-title">Ultrasound Bladder Segmentation</h3>
-                                <p class="project-why">This is an <a href="https://reporter.nih.gov/search/EM1hhC5LGEi-t5lzJQuLFQ/project-details/11251173" target="_blank">NIH-funded</a> bladder segmentation project with limited data and edge deployment constraints. I pretrained <b>U-Net</b> encoders on 9.2K thyroid/breast images, achieving <b>7x improvement</b> in 4-bit quantization robustness for deployment on portable devices.</p>
-                                <div class="project-tech">
-                                    <span class="tech-item">SSL</span>
-                                    <span class="tech-item">OpenCV</span>
-                                    <span class="tech-item">Model Quantization</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://github.com/HenryVu27/ThorMed" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    <a href="https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-block fade-in-project">
-                            <img class="project-image" src="assets/eeg-project.webp" alt="EEG Decoding Project by Henry Vu: Brain signal processing and classification research" loading="lazy" decoding="async">
-                            <div class="project-content">
-                                <h3 class="project-title">EEG Decoding: a Multi-Modal Approach</h3>
-                                <p class="project-why">This project developed a novel EEG feature extraction framework for decoding noisy brain signals, combining <b>convolution</b> for local patterns and <b>self-attention</b> for global context. The extracted features were then fused with LLM word embeddings to achieve consistent improvements in classification accuracy.</p>
-                                <div class="project-tech">
-                                    <span class="tech-item">PyTorch</span>
-                                    <span class="tech-item">MATLAB</span>
-                                    <span class="tech-item">HuggingFace</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-block fade-in-project">
-                            <img class="project-image" src="assets/sarcasm-project.webp" alt="Political Sarcasm Detection Project by Henry Vu: NLP text analysis interface" loading="lazy" decoding="async">
-                            <div class="project-content">
-                                <h3 class="project-title">Modeling Political Sarcasm</h3>
-                                <p class="project-why">Political sarcasm in online text is incredibly subtle, relying heavily on nuanced language and context rather than tone. This project focused on building accurate detection models using feature engineering for semantic pattern recognition, and fine-tuned <b>DistilRoBERTa</b> to better identify political sarcasm.</p>
-                                <div class="project-tech">
-                                    <span class="tech-item">NLP</span>
-                                    <span class="tech-item">NLTK</span>
-                                    <span class="tech-item">spaCy</span>
-                                    <span class="tech-item">scikit-learn</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://github.com/HenryVu27/PoliticalSarcasm" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    <a href="https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-block fade-in-project">
-                            <img class="project-image" src="assets/tft-project.webp" alt="TFT Rolling Calculator by Henry Vu: Teamfight Tactics probability calculator" loading="lazy" decoding="async">
-                            <div class="project-content">
-                                <h3 class="project-title">TFT Rolling Odds Calculator</h3>
-                                <p class="project-why">Above Grandmaster level, TFT becomes a game of calculated risks where small knowledge edges are increasingly valuable. I built this tool to calculate the odds of finding a specific champion based on level, pool size, and gold using <b>Markov Chains</b>, where each state represents the likelihood of finding X copies of that unit.</p>
-                                <div class="project-tech">
-                                    <span class="tech-item">HTML/CSS</span>
-                                    <span class="tech-item">JavaScript</span>
-                                    <span class="tech-item">Chart.js</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="https://github.com/HenryVu27/TFT-Rolling-Calculator" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">All</button>
+                        <button class="filter-tab" data-filter="ml-ai">ML & AI</button>
+                        <button class="filter-tab" data-filter="web">Web</button>
+                        <button class="filter-tab" data-filter="theory">Theory</button>
+                        <button class="filter-tab" data-filter="systems">Systems</button>
                     </div>
-                    <div class="other-projects-cta" tabindex="0" role="button" aria-label="View more projects">
-                        <span class="cta-text">more projects</span>
-                        <span class="cta-arrow" aria-hidden="true">
-                            <svg width="32" height="12" viewBox="0 0 32 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="0" y1="6" x2="28" y2="6" stroke="currentColor" stroke-width="2"/>
-                                <polyline points="22,2 28,6 22,10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </span>
+                    <div class="projects-grid">
+                        <div class="project-card fade-in-project" data-category="ml-ai">
+                            <span class="card-year">2026</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/Suspect-Detection" target="_blank">Agentic Framework for Suspect Detection</a></h3>
+                            <p class="card-desc">Multi-agent pipeline using LangGraph and Gemini for automated suspect identification from surveillance data.</p>
+                            <div class="card-tech">
+                                <span>Python</span>
+                                <span>LangGraph</span>
+                                <span>Gemini</span>
+                                <span>FastAPI</span>
+                                <span>FAISS</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/Suspect-Detection" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="web">
+                            <span class="card-year">2026</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/BTSIM" target="_blank">BTS Concert Ticket Buying Simulator</a></h3>
+                            <p class="card-desc">Interactive web simulator recreating the BTS concert ticket buying experience with real-time queue mechanics.</p>
+                            <div class="card-tech">
+                                <span>HTML/CSS</span>
+                                <span>JavaScript</span>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/BTSIM" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="web">
+                            <span class="card-year">2026</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/Valentine" target="_blank">Valentine Surprise</a></h3>
+                            <p class="card-desc">A fun interactive Valentine's Day web experience with animations and surprises.</p>
+                            <div class="card-tech">
+                                <span>HTML/CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/Valentine" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="ml-ai">
+                            <span class="card-year">2025</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/ThorMed" target="_blank">Ultrasound Bladder Segmentation</a></h3>
+                            <p class="card-desc">NIH-funded project: pretrained U-Net encoders on 9.2K ultrasound images, achieving 7x robustness improvement in 4-bit quantization for edge deployment.</p>
+                            <div class="card-tech">
+                                <span>SSL</span>
+                                <span>OpenCV</span>
+                                <span>Model Quantization</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/ThorMed" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="ml-ai">
+                            <span class="card-year">2025</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/PoliticalSarcasm" target="_blank">Modeling Political Sarcasm</a></h3>
+                            <p class="card-desc">Detection models using feature engineering and fine-tuned DistilRoBERTa to identify subtle political sarcasm in online text.</p>
+                            <div class="card-tech">
+                                <span>PyTorch</span>
+                                <span>NLTK</span>
+                                <span>spaCy</span>
+                                <span>scikit-learn</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/PoliticalSarcasm" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="ml-ai">
+                            <span class="card-year">2025</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/TFT-Rolling-Calculator" target="_blank">TFT Rolling Odds Calculator</a></h3>
+                            <p class="card-desc">Probability calculator using Markov Chains to compute champion finding odds based on level, pool size, and gold.</p>
+                            <div class="card-tech">
+                                <span>HTML/CSS</span>
+                                <span>JavaScript</span>
+                                <span>Chart.js</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/TFT-Rolling-Calculator" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="ml-ai">
+                            <span class="card-year">2025</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/Polyps-Segmentation" target="_blank">Polyps & Breast Ultrasound Segmentation</a></h3>
+                            <p class="card-desc">Attention U-Net for medical image segmentation on polyps and breast ultrasound datasets.</p>
+                            <div class="card-tech">
+                                <span>PyTorch</span>
+                                <span>OpenCV</span>
+                                <span>scikit-learn</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/Polyps-Segmentation" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="theory">
+                            <span class="card-year">2025</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/Geometric-Set-Cover" target="_blank">A Survey of Geometric Set Cover</a></h3>
+                            <p class="card-desc">Survey of approximation algorithms and PTAS approaches for the geometric set cover problem.</p>
+                            <div class="card-tech">
+                                <span>Greedy</span>
+                                <span>Approximation Algorithm</span>
+                                <span>PTAS</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/Geometric-Set-Cover" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/HenryVu27/Geometric-Set-Cover/blob/main/HenryVu_Project_CG%20(1).pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="web">
+                            <span class="card-year">2024</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/henryvu27.github.io" target="_blank">This Web Portfolio</a></h3>
+                            <p class="card-desc">Personal portfolio with theme switching, smooth animations, and responsive design.</p>
+                            <div class="card-tech">
+                                <span>HTML/CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/henryvu27.github.io" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="web">
+                            <span class="card-year">2024</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/devHack2024" target="_blank">UManitoba Navigator</a></h3>
+                            <p class="card-desc">Hackathon project: campus navigation app with Python FastAPI backend and React frontend.</p>
+                            <div class="card-tech">
+                                <span>Python</span>
+                                <span>FastAPI</span>
+                                <span>React</span>
+                                <span>HTML/CSS</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/devHack2024" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="ml-ai">
+                            <span class="card-year">2023</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/ViT-and-Contrastive-Learning" target="_blank">ViT and Contrastive Representation Learning</a></h3>
+                            <p class="card-desc">Vision Transformer with contrastive representation learning for image classification.</p>
+                            <div class="card-tech">
+                                <span>PyTorch Metric Learning</span>
+                                <span>NumPy</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/ViT-and-Contrastive-Learning" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="ml-ai">
+                            <span class="card-year">2023</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/VAE-and-Diffusion-for-FashionMNIST" target="_blank">VAE and Diffusion for FashionMNIST</a></h3>
+                            <p class="card-desc">Variational autoencoders and diffusion models for generating FashionMNIST images.</p>
+                            <div class="card-tech">
+                                <span>PyTorch</span>
+                                <span>NumPy</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/VAE-and-Diffusion-for-FashionMNIST" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="ml-ai">
+                            <span class="card-year">2023</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning/blob/main/project/MABs.ipynb" target="_blank">Yahoo's News Recommendation with MABs</a></h3>
+                            <p class="card-desc">Multi-armed bandit algorithms applied to Yahoo's news article recommendation dataset.</p>
+                            <div class="card-tech">
+                                <span>Bandits Algorithms</span>
+                                <span>NumPy</span>
+                                <span>Matplotlib</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning/blob/main/project/MABs.ipynb" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="ml-ai">
+                            <span class="card-year">2023</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding" target="_blank">EEG Decoding: a Multi-Modal Approach</a></h3>
+                            <p class="card-desc">Novel EEG feature extraction combining convolution and self-attention, fused with LLM embeddings for brain signal classification.</p>
+                            <div class="card-tech">
+                                <span>PyTorch</span>
+                                <span>MATLAB</span>
+                                <span>HuggingFace</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="ml-ai">
+                            <span class="card-year">2022</span>
+                            <h3 class="card-title"><a href="javascript:void(0)">Gomoku Solver</a></h3>
+                            <p class="card-desc">AI game engine using alpha-beta pruning and minimax search for Gomoku.</p>
+                            <div class="card-tech">
+                                <span>Python</span>
+                                <span>Alpha-Beta Pruning</span>
+                                <span>Minimax</span>
+                            </div>
+                            <div class="card-links"></div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="theory">
+                            <span class="card-year">2022</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning/tree/main/online_learning" target="_blank">Online Algorithms: Seminar Slides</a></h3>
+                            <p class="card-desc">Research seminar slides on online algorithms and online convex optimization.</p>
+                            <div class="card-tech">
+                                <span>Online Algorithms</span>
+                                <span>Online Convex Optimization</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning/blob/main/online_learning/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="web">
+                            <span class="card-year">2021</span>
+                            <h3 class="card-title"><a href="https://github.com/CMPUT301F21T34/HabiTrak" target="_blank">HabiTrak</a></h3>
+                            <p class="card-desc">Android habit tracking app with Firebase backend and Google Maps integration.</p>
+                            <div class="card-tech">
+                                <span>Java</span>
+                                <span>Android Studio</span>
+                                <span>Firebase</span>
+                                <span>Google Maps API</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/CMPUT301F21T34/HabiTrak" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="ml-ai">
+                            <span class="card-year">2021</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/Toronto-Data-Analysis" target="_blank">Toronto Neighbourhoods Data Analysis</a></h3>
+                            <p class="card-desc">Spatial clustering analysis of Toronto neighbourhoods using Foursquare API and web scraping.</p>
+                            <div class="card-tech">
+                                <span>NumPy</span>
+                                <span>Pandas</span>
+                                <span>BeautifulSoup</span>
+                                <span>Foursquare API</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/Toronto-Data-Analysis" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="systems">
+                            <span class="card-year">2020</span>
+                            <h3 class="card-title"><a href="javascript:void(0)">Sudoku Solver</a></h3>
+                            <p class="card-desc">Arduino-based Sudoku solver using backtracking algorithms on embedded hardware.</p>
+                            <div class="card-tech">
+                                <span>C++</span>
+                                <span>Arduino</span>
+                            </div>
+                            <div class="card-links"></div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="systems">
+                            <span class="card-year">2020</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/Edmonton-Restaurant-Route-Finder" target="_blank">Edmonton Restaurant Finder</a></h3>
+                            <p class="card-desc">Arduino pathfinding system for optimal routes to Edmonton restaurants on a map display.</p>
+                            <div class="card-tech">
+                                <span>C++</span>
+                                <span>Arduino</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/Edmonton-Restaurant-Route-Finder" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="theory">
+                            <span class="card-year">2019</span>
+                            <h3 class="card-title"><a href="javascript:void(0)">Encrypted Arduino Communication</a></h3>
+                            <p class="card-desc">RSA-encrypted serial communication between Arduino boards using fast modular arithmetic.</p>
+                            <div class="card-tech">
+                                <span>C++</span>
+                                <span>Arduino</span>
+                                <span>RSA</span>
+                            </div>
+                            <div class="card-links"></div>
+                        </div>
+                        <div class="project-card fade-in-project" data-category="theory">
+                            <span class="card-year">2019</span>
+                            <h3 class="card-title"><a href="javascript:void(0)">Huffman Coding for File Compression</a></h3>
+                            <p class="card-desc">File compression tool implementing Huffman coding for efficient data encoding.</p>
+                            <div class="card-tech">
+                                <span>Python</span>
+                                <span>Huffman Coding</span>
+                            </div>
+                            <div class="card-links"></div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -456,232 +628,6 @@
                 </div>
             </section>
         </div>
-
-        <!-- Projects Archive Page Content -->
-        <div id="projects-archive-content" class="page-content" style="display: none;">
-            <button class="return-btn" aria-label="Return to home" onclick="navigateToHome()">
-                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <polyline points="24,8 12,18 24,28" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-            <section class="section archive-section fade-in-section">
-                <div class="container">
-                    <h1 class="archive-title">Project List</h1>
-                    <div class="archive-subtitle">A collection of things I've worked on</div>
-                    <div class="archive-table-wrapper">
-                        <table class="archive-table">
-                            <colgroup>
-                              <col style="width: 10%">
-                              <col style="width: 32%">
-                              <col style="width: 15%">
-                              <col style="width: 28%">
-                              <col style="width: 15%">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>Year</th>
-                                    <th>Title</th>
-                                    <th>Topic</th>
-                                    <th>Tech</th>
-                                    <th>Link</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>2026</td>
-                                    <td><a href="https://github.com/HenryVu27/Suspect-Detection" target="_blank" class="archive-project-link"><strong>Agentic Framework for Suspect Detection</strong></a></td>
-                                    <td>AI</td>
-                                    <td>Python, LangGraph, Gemini, FastAPI, FAISS</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/Suspect-Detection" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2026</td>
-                                    <td><a href="https://github.com/HenryVu27/BTSIM" target="_blank" class="archive-project-link"><strong>BTS Concert Ticket Buying Simulator</strong></a></td>
-                                    <td>WebDev</td>
-                                    <td>HTML/CSS, JavaScript, Node.js</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/BTSIM" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2026</td>
-                                    <td><a href="https://github.com/HenryVu27/Valentine" target="_blank" class="archive-project-link"><strong>Valentine Surprise</strong></a></td>
-                                    <td>WebDev</td>
-                                    <td>HTML/CSS, JavaScript</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/Valentine" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2025</td>
-                                    <td><a href="https://github.com/HenryVu27/PoliticalSarcasm" target="_blank" class="archive-project-link"><strong>Modeling Political Sarcasm</strong></a></td>
-                                    <td>NLP</td>
-                                    <td>PyTorch, NLTK, spaCy, scikit-learn</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/PoliticalSarcasm" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                        <a href="https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2025</td>
-                                    <td><a href="https://henryvu27.github.io/TFT-Rolling-Calculator/" target="_blank" class="archive-project-link"><strong>Teamfight Tactics Rolling Odds Calculator</strong></a></td>
-                                    <td>Stats</td>
-                                    <td>HTML/CSS, JavaScript</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/TFT-Rolling-Calculator" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>   
-                                </tr>
-                                <tr>
-                                    <td>2025</td>
-                                    <td><a href="https://github.com/HenryVu27/Polyps-Segmentation" target="_blank" class="archive-project-link"><strong>Polyps and Breast Ultrasound Segmentation with Attention U-Net</strong></a></td>
-                                    <td>CV</td>
-                                    <td>PyTorch, OpenCV, scikit-learn</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/Polyps-Segmentation" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2025</td>
-                                    <td><a href="https://github.com/HenryVu27/Geometric-Set-Cover" target="_blank" class="archive-project-link"><strong>A Survey of the Geometric Set Cover Problem</strong></a></td>
-                                    <td>TCS</td>
-                                    <td>Greedy, Approximation Algorithm, PTAS</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/Geometric-Set-Cover" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                        <a href="https://github.com/HenryVu27/Geometric-Set-Cover/blob/main/HenryVu_Project_CG%20(1).pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2024</td>
-                                    <td><a href="/" target="_blank" class="archive-project-link"><strong>This Web Portfolio</strong></a></td>
-                                    <td>WebDev</td>
-                                    <td>HTML/CSS, JavaScript</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/henryvu27.github.io" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2024</td>
-                                    <td><a href="https://github.com/HenryVu27/devHack2024" target="_blank" class="archive-project-link"><strong>UManitoba Navigator</strong></a></td>
-                                    <td>WebDev</td>
-                                    <td>Python, FastAPI, React, HTML/CSS</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/devHack2024" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2023</td>
-                                    <td><a href="https://github.com/HenryVu27/ViT-and-Contrastive-Learning" target="_blank" class="archive-project-link"><strong>ViT and Contrastive Representation Learning</strong></a></td>
-                                    <td>CV</td>
-                                    <td>PyTorch Metric Learning, NumPy</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/ViT-and-Contrastive-Learning" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2023</td>
-                                    <td><a href="https://github.com/HenryVu27/VAE-and-Diffusion-for-FashionMNIST" target="_blank" class="archive-project-link"><strong>VAE and Diffusion Models for FashionMNIST</strong></a></td>
-                                    <td>CV</td>
-                                    <td>PyTorch, NumPy</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/VAE-and-Diffusion-for-FashionMNIST" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2023</td>
-                                    <td><a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning/blob/main/project/MABs.ipynb" target="_blank" class="archive-project-link"><strong>Yahoo's News Recommendation with MABs</strong></a></td>
-                                    <td>RL</td>
-                                    <td>Bandits Algorithms, NumPy, Matplotlib</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning/blob/main/project/MABs.ipynb" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2023</td>
-                                    <td><a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding" target="_blank" class="archive-project-link"><strong>EEG Decoding: a Multi-Modal Approach</strong></a></td>
-                                    <td>CV/NLP</td>
-                                    <td>PyTorch, MATLAB, HuggingFace</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                        <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf" target="_blank" title="Paper"><i class="fas fa-file-pdf"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2022</td>
-                                    <td><a href="" target="_blank" class="archive-project-link"><strong>Gomoku Solver</strong></a></td>
-                                    <td>AI</td>
-                                    <td>Python, Alpha-Beta Pruning, Minimax</td>
-                                    <td>
-                                        <a href="" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2022</td>
-                                    <td><a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning/tree/main/online_learning" target="_blank" class="archive-project-link"><strong>Online Algorithms: Seminar Slides</strong></a></td>
-                                    <td>TCS</td>
-                                    <td>Online Algorithms, Online Convex Optimization</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning/blob/main/online_learning/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2021</td>
-                                    <td><a href="https://github.com/CMPUT301F21T34/HabiTrak" target="_blank" class="archive-project-link"><strong>HabiTrak</strong></a></td>
-                                    <td>App</td>
-                                    <td>Java, Android Studio, Firebase, Google Maps API</td>
-                                    <td>
-                                        <a href="https://github.com/CMPUT301F21T34/HabiTrak" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2021</td>
-                                    <td><a href="https://github.com/HenryVu27/Toronto-Data-Analysis" target="_blank" class="archive-project-link"><strong>Toronto Neighbourhoods Spatial Data Analysis</strong></a></td>
-                                    <td>DL</td>
-                                    <td>Numpy, Pandas, BeautifulSoup, Foursquare API</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/Toronto-Data-Analysis" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2020</td>
-                                    <td><a href="" target="_blank" class="archive-project-link"><strong>Sudoku Solver</strong></a></td>
-                                    <td>Arduino</td>
-                                    <td>C++, Arduino</td>
-                                    <td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2020</td>
-                                    <td><a href="https://github.com/HenryVu27/Edmonton-Restaurant-Route-Finder" target="_blank" class="archive-project-link"><strong>Edmonton Restaurant Finder</strong></a></td>
-                                    <td>Arduino</td>
-                                    <td>C++, Arduino</td>
-                                    <td>
-                                        <a href="https://github.com/HenryVu27/Edmonton-Restaurant-Route-Finder" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2019</td>
-                                    <td><a href="" target="_blank" class="archive-project-link"><strong>Encrypted Arduino Communication</strong></a></td>
-                                    <td>RSA</td>
-                                    <td>C++, Arduino, fast modmul, fast modexp</td>
-                                    <td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>2019</td>
-                                    <td><a href="" target="_blank" class="archive-project-link"><strong>Huffman Coding for File Compression</strong></a></td>
-                                    <td>TCS</td>
-                                    <td>Python, Huffman coding</td>
-                                    <td>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-        </div>
     </main>
 
     <footer>
@@ -704,36 +650,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Handle lazy loaded images
-        document.addEventListener('DOMContentLoaded', function() {
-            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-            
-            if ('loading' in HTMLImageElement.prototype) {
-                // Browser supports native lazy loading
-                lazyImages.forEach(img => {
-                    img.addEventListener('load', function() {
-                        this.classList.add('loaded');
-                    });
-                });
-            } else {
-                // Fallback for browsers that don't support lazy loading
-                const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            img.src = img.dataset.src;
-                            img.classList.add('loaded');
-                            observer.unobserve(img);
-                        }
-                    });
-                });
-
-                lazyImages.forEach(img => {
-                    lazyLoadObserver.observe(img);
-                });
-            }
-        });
-    </script>
 </body>
 </html>
