@@ -1309,18 +1309,39 @@ button {
   display: none;
 }
 
-/* Animation for fade-in-project */
-.fade-in-project {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-  will-change: opacity, transform;
-}
-.fade-in-project.visible {
-  opacity: 1;
-  transform: none;
+/* Show More Button */
+.show-more-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 1.5rem auto 0;
+  padding: 0.5rem 1.4rem;
+  background: none;
+  border: 1.5px solid var(--border-color);
+  border-radius: 999px;
+  color: var(--primary-color);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s ease-out, color 0.2s ease-out;
 }
 
+.show-more-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--accent-color);
+}
+
+.show-more-btn.expanded .show-more-icon {
+  transform: rotate(180deg);
+}
+
+.show-more-icon {
+  transition: transform 0.25s ease-out;
+}
+
+/* Card entrance animation */
 @keyframes cardFadeIn {
   from {
     opacity: 0;

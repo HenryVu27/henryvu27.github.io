@@ -318,54 +318,95 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach(item => observer.observe(item));
 })();
 
-// Fade-in for project cards
+// Project grid: filter tabs + show more/less
 (function() {
-    const projects = document.querySelectorAll('.project-card.fade-in-project');
-    if (!projects.length) return;
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const projectCards = document.querySelectorAll('.project-card');
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    if (!projectCards.length) return;
+
+    const VISIBLE_COUNT = 6;
+    let expanded = false;
+
+    function updateGrid() {
+        const activeTab = document.querySelector('.filter-tab.active');
+        const filter = activeTab ? activeTab.dataset.filter : 'all';
+        let visibleIndex = 0;
+        let totalMatching = 0;
+
+        projectCards.forEach(card => {
+            const matches = filter === 'all' || card.dataset.category === filter;
+            if (!matches) {
+                card.classList.add('hidden');
+                card.classList.remove('card-animate');
+                return;
+            }
+            totalMatching++;
+            if (!expanded && totalMatching > VISIBLE_COUNT) {
+                card.classList.add('hidden');
+                card.classList.remove('card-animate');
+                return;
+            }
+            card.classList.remove('hidden');
+            card.style.animation = 'none';
+            card.offsetHeight;
+            card.style.animation = '';
+            card.style.animationDelay = `${visibleIndex * 40}ms`;
+            card.classList.add('card-animate');
+            visibleIndex++;
+        });
+
+        // Update show more button
+        if (showMoreBtn) {
+            if (totalMatching <= VISIBLE_COUNT) {
+                showMoreBtn.style.display = 'none';
+            } else {
+                showMoreBtn.style.display = '';
+                const text = showMoreBtn.querySelector('.show-more-text');
+                if (expanded) {
+                    text.textContent = 'show less';
+                    showMoreBtn.classList.add('expanded');
+                } else {
+                    const remaining = totalMatching - VISIBLE_COUNT;
+                    text.textContent = `show more (${remaining})`;
+                    showMoreBtn.classList.remove('expanded');
+                }
+            }
+        }
+    }
+
+    // Filter tab clicks
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            filterTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            expanded = false;
+            updateGrid();
+        });
+    });
+
+    // Show more/less toggle
+    if (showMoreBtn) {
+        showMoreBtn.addEventListener('click', () => {
+            expanded = !expanded;
+            updateGrid();
+        });
+    }
+
+    // Initial render — show first 6 with fade-in
     const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry, idx) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, idx * 50);
+                updateGrid();
                 obs.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
-    projects.forEach(p => observer.observe(p));
-})();
 
-// Filter tabs
-(function() {
-    const filterTabs = document.querySelectorAll('.filter-tab');
-    const projectCards = document.querySelectorAll('.project-card');
-    if (!filterTabs.length) return;
-
-    filterTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const filter = tab.dataset.filter;
-
-            // Update active tab
-            filterTabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-
-            // Filter cards with animation
-            let visibleIndex = 0;
-            projectCards.forEach(card => {
-                const show = filter === 'all' || card.dataset.category === filter;
-                if (show) {
-                    card.classList.remove('hidden');
-                    card.style.animation = 'none';
-                    card.offsetHeight; // trigger reflow
-                    card.style.animation = '';
-                    card.style.animationDelay = `${visibleIndex * 40}ms`;
-                    card.classList.add('card-animate');
-                    visibleIndex++;
-                } else {
-                    card.classList.add('hidden');
-                    card.classList.remove('card-animate');
-                }
-            });
-        });
-    });
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+        observer.observe(projectsSection);
+    } else {
+        updateGrid();
+    }
 })();
