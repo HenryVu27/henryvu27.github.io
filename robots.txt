@@ -1,17 +1,7 @@
 User-agent: *
 Allow: /
 
-# Allow specific files
-Allow: /index.html
-Allow: /projects
-Allow: /styles.css
-Allow: /script.js
-Allow: /assets/
-Allow: /ML_Resume_Online.pdf
-
-# Disallow any temporary or development files
 Disallow: /.git/
 Disallow: /README.md
 
-# Sitemap location
-Sitemap: https://henryvu27.github.io/sitemap.xml 
+Sitemap: https://henryvu27.github.io/sitemap.xml
