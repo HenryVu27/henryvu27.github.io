@@ -66,13 +66,14 @@ fadeSections.forEach(section => {
     fadeInObserver.observe(section);
 });
 
-// Scroll down arrow functionality
-document.querySelector('.scroll-down-arrow').addEventListener('click', () => {
-    document.getElementById('about').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
-});
+// Scroll triggers
+function smoothScrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.querySelector('.scroll-down-arrow').addEventListener('click', () => smoothScrollTo('about'));
+document.querySelector('.intro-flex .contact-btn').addEventListener('click', () => smoothScrollTo('contact'));
 
 // Playful typing animation
 function playfulTypingAnimation() {
@@ -195,7 +196,7 @@ if (contactForm) {
                     formStatus.textContent = 'Message sent!';
                     formStatus.style.opacity = '0';
                     formStatus.style.transition = 'opacity 0.6s';
-                    formStatus.style.color = '#7ed6a7';
+                    formStatus.style.color = 'var(--accent-color)';
                     formStatus.style.fontSize = '1.2rem';
                     formStatus.style.fontWeight = '600';
                     formStatus.style.marginTop = '2.5rem';
@@ -210,7 +211,7 @@ if (contactForm) {
         } catch (err) {
             contactForm.style.opacity = '1';
             formStatus.textContent = 'Could not send message. Please try again later.';
-            formStatus.style.color = '#e57373';
+            formStatus.style.color = 'var(--error-color)';
             formStatus.style.fontWeight = '600';
             formStatus.style.marginTop = '1.5rem';
             formStatus.style.textAlign = 'center';
@@ -241,10 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme && themes.some(t => t.key === savedTheme)) {
         currentThemeIndex = themes.findIndex(t => t.key === savedTheme);
-    } else {
-        currentThemeIndex = 0; // morning-fog (light) is default
-        root.setAttribute('data-theme', themes[0].key);
-        localStorage.setItem('theme', themes[0].key);
     }
     root.setAttribute('data-theme', themes[currentThemeIndex].key);
 
@@ -273,9 +270,11 @@ document.addEventListener('DOMContentLoaded', () => {
 (function() {
     const paragraphs = document.querySelectorAll('.about-paragraph.fade-in-paragraph');
     if (!paragraphs.length) return;
+    const paragraphList = Array.from(paragraphs);
     const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach((entry, idx) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
+                const idx = paragraphList.indexOf(entry.target);
                 setTimeout(() => {
                     entry.target.classList.add('visible');
                 }, idx * 180); // Staggered fade-in

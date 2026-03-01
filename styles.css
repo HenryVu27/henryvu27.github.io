@@ -2,7 +2,6 @@
 :root {
     --font-primary: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-heading: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-system: -apple-system, system-ui, sans-serif;
 }
 
 /* Theme Variables - Light Theme (Morning Fog) */
@@ -218,9 +217,6 @@ header {
     font-weight: 600;
 }
 
-.resume-btn {
-    display: none;
-}
 
 /* Sections */
 .section, .about-section, .contact-section {
@@ -228,7 +224,7 @@ header {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: transparent !important;
+    background: transparent;
 }
 
 #about {
@@ -578,15 +574,6 @@ a:hover, a:focus {
 }
 
 
-@keyframes bounceDown {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(10px);
-    }
-}
-
 .section-heading {
     display: flex;
     align-items: center;
@@ -597,7 +584,7 @@ a:hover, a:focus {
 
 .section-heading h2 {
     color: var(--heading-color);
-    font-size: 1.5rem !important;
+    font-size: 1.5rem;
     font-weight: 500;
     font-family: var(--font-heading);
     margin: 0;
@@ -657,27 +644,6 @@ a:hover, a:focus {
 .contact-btn:hover::before, .contact-btn:focus::before {
     opacity: 0.9;
 }
-
-/* Alternative subtle fade animation - uncomment to use instead of ripple effect
-.contact-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--button-hover-bg);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 0;
-}
-
-.contact-btn:hover::before, .contact-btn:focus::before {
-    opacity: 1;
-    width: auto;
-    height: auto;
-}
-*/
 
 .contact-btn span {
     position: relative;
@@ -908,11 +874,6 @@ a:hover, a:focus {
     }
 }
 
-@keyframes fadeInScrollText {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 0.85; transform: translateY(0); }
-}
-
 .section-divider {
     width: 100vw;
     margin: 0;
@@ -977,7 +938,7 @@ input::placeholder, textarea::placeholder {
 .theme-toggle-icon {
     background: none;
     border: none;
-    color: var(--theme-toggle-icon);
+    color: var(--theme-toggle-icon-color);
     font-size: 1.6rem;
     cursor: pointer;
     padding: 0.5rem;
@@ -994,7 +955,7 @@ input::placeholder, textarea::placeholder {
 .theme-toggle-icon:hover {
     background: var(--theme-toggle-glow);
     box-shadow: 0 0 0 3px var(--theme-toggle-glow), 0 0 8px 2px var(--theme-toggle-glow);
-    color: var(--theme-toggle-icon);
+    color: var(--theme-toggle-icon-color);
 }
 
 .theme-toggle-icon:focus {
@@ -1036,33 +997,6 @@ input::placeholder, textarea::placeholder {
 }
 
 
-/* Contact Form Button Specific Styles */
-.contact-form .submit-btn {
-    background: var(--primary-color);
-    color: var(--button-text-color);
-    border: none;
-    border-radius: 8px;
-    font-family: var(--font-primary);
-    font-weight: 500;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
-    box-shadow: none;
-    padding: 1rem 2rem;
-    height: 3.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-}
-
-.contact-form .submit-btn:hover {
-    background: var(--button-hover-bg);
-    color: var(--button-text-color);
-    box-shadow: 0 6px 18px 0 rgba(0,0,0,0.18);
-    transform: scale(1.01);
-}
-
 /* Reset general button styles */
 button {
     background: none;
@@ -1075,9 +1009,9 @@ button {
 
 .contact-btn:hover, .contact-btn:focus {
     color: var(--button-hover-text-color);
-    box-shadow: 0 4px 20px rgba(108, 92, 231, 0.25);
+    box-shadow: 0 4px 20px rgba(139, 37, 0, 0.25);
     transform: translateY(-2px);
-    border-color: rgba(108, 92, 231, 0.3);
+    border-color: rgba(139, 37, 0, 0.3);
 }
 
 .about-paragraph {
@@ -1176,7 +1110,7 @@ button {
 }
 
 .submit-btn i.submitted {
-  color: #7ed6a7;
+  color: var(--accent-color);
 }
 
 /* Filter Tabs */
@@ -1230,7 +1164,8 @@ button {
   border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 1.2rem 1.3rem;
-  transition: transform 0.2s ease-out, border-color 0.2s ease-out, opacity 0.3s ease-out;
+  opacity: 0;
+  transition: opacity 0.25s ease-out, transform 0.2s ease-out, border-color 0.2s ease-out;
   position: relative;
   min-width: 0;
 }
@@ -1348,12 +1283,6 @@ button {
   transition: transform 0.25s ease-out;
 }
 
-/* Card fade transition */
-.project-card {
-  opacity: 0;
-  transition: opacity 0.25s ease-out, transform 0.2s ease-out, border-color 0.2s ease-out;
-}
-
 .project-card.card-visible {
   opacity: 1;
 }
@@ -1361,13 +1290,6 @@ button {
 
 /* Media Queries */
 @media (max-width: 900px) {
-    /* Navigation */
-    .resume-btn {
-        margin: 1rem 0 0 0;
-        width: 100%;
-        text-align: center;
-    }
-
     /* Projects */
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1412,14 +1334,3 @@ button {
     }
 }
 
-/* Image Loading Optimizations */
-img {
-    content-visibility: auto;
-    contain: size layout paint;
-}
-
-.profile-pic {
-    content-visibility: auto;
-    contain: size layout paint;
-    will-change: transform;
-}
