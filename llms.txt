@@ -1,0 +1,70 @@
+# Henry Vu
+
+> Computer Science graduate student at UT Dallas specializing in ML Systems (MLSys).
+> Founding ML engineer at eXRealityAI. Research focus: efficient LLM serving,
+> computer vision, and reinforcement learning. Based in Dallas, Texas.
+
+## About
+
+Henry Vu is a Computer Science graduate student at the University of Texas at Dallas,
+focusing on Machine Learning Systems (MLSys) — making LLM/GenAI serving and training
+more efficient. He graduated summa cum laude from the University of Alberta, where he
+was awarded the Alberta Graduate Excellence Scholarship (AGES).
+
+He is a founding ML engineer at eXRealityAI, building agentic voice systems and
+multimodal XR applications. He is also a computer vision engineer at ThorMed Innovation,
+working on NIH-funded medical imaging research (bladder segmentation using self-supervised
+learning and model quantization for edge deployment).
+
+Previously, he conducted research at Amii (Alberta Machine Intelligence Institute) on
+online algorithms and multi-armed bandits, developing algorithms that are both robust
+to worst-case inputs and consistent when given good predictions.
+
+## Links
+
+- [Portfolio](https://henryvu.io/)
+- [Blog](https://www.henryvu.blog/)
+- [GitHub](https://github.com/HenryVu27)
+- [LinkedIn](https://www.linkedin.com/in/henry-vu27/)
+- [Twitter/X](https://x.com/HenryVu27)
+
+## Current Roles
+
+- **Founding ML Engineer at eXRealityAI** (Aug 2025): Voice-to-voice RAG system,
+  multimodal XR workflows with Gemini 2.5 and YOLOv9, NLP pipeline with
+  EmbeddingGemma and BAAI cross-encoder reranking
+- **Computer Vision Engineer at ThorMed Innovation** (Feb 2025-Present): NIH-funded
+  bladder segmentation, U-Net + SimSiam SSL pretraining on 9.2K ultrasound images,
+  95.99% Dice score, 4-bit PTQ with 7x robustness improvement
+- **Teaching Assistant at UT Dallas** (Jan 2025-Present): Algorithms & Data Structures
+
+## Research & Writing
+
+- [AI Engineering: What Fills the Context Window](https://www.henryvu.blog/) — Deep-dive on context engineering for LLM applications
+- [Multi-Armed Bandits: Foundations](https://www.henryvu.blog/) — Technical foundations of bandit algorithms
+- [Ultrasound Bladder Segmentation (ISBI Paper)](https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf) — NIH-funded research on SSL pretraining for medical image segmentation
+- [Modeling Political Sarcasm](https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf) — DistilRoBERTa fine-tuning for sarcasm detection
+- [EEG Decoding: A Multi-Modal Approach](https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf) — Convolution + self-attention fused with LLM embeddings for brain signal classification
+- [A Survey of Geometric Set Cover](https://github.com/HenryVu27/Geometric-Set-Cover/blob/main/HenryVu_Project_CG%20(1).pdf) — Approximation algorithms and PTAS approaches
+
+## Notable Projects
+
+- **Agentic Framework for Suspect Detection**: Multi-agent pipeline using LangGraph and Gemini for automated suspect identification
+- **Yahoo News Recommendation with MABs**: Multi-armed bandit algorithms for news article recommendation
+- **ViT and Contrastive Representation Learning**: Vision Transformer with contrastive learning for image classification
+- **VAE and Diffusion for FashionMNIST**: Generative models using variational autoencoders and diffusion
+- **TFT Rolling Odds Calculator**: Markov Chain probability calculator for Teamfight Tactics
+
+## Expertise
+
+- **ML Systems (MLSys)**: Efficient LLM/GenAI serving and training, model quantization, edge deployment
+- **Computer Vision**: Medical image segmentation, U-Net, SimSiam SSL, YOLOv9, OpenCV
+- **Reinforcement Learning**: Multi-armed bandits (UCB, Exp3, Thompson Sampling, Gittins Index), online algorithms
+- **AI Engineering**: RAG systems, context engineering, agentic workflows, LLM API integration
+- **NLP**: Sarcasm detection, transformer fine-tuning, embedding models, cross-encoder reranking
+- **Deep Learning**: PyTorch, Vision Transformers, VAEs, diffusion models, contrastive learning
+
+## Education
+
+- **M.S. Computer Science** — University of Texas at Dallas (2024-Present)
+- **B.Sc. Computing Science** — University of Alberta (Summa Cum Laude, AGES Scholar)

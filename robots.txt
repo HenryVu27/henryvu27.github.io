@@ -4,4 +4,7 @@ Allow: /
 Disallow: /.git/
 Disallow: /README.md
 
-Sitemap: https://henryvu27.github.io/sitemap.xml
+Sitemap: https://henryvu.io/sitemap.xml
+
+# AI/LLM content
+# See https://henryvu.io/llms.txt for AI-readable content
