@@ -1,24 +1,28 @@
 # Henry Vu
 
-> Computer Science graduate student at UT Dallas specializing in ML Systems (MLSys).
-> Founding ML engineer at eXRealityAI. Research focus: efficient LLM serving,
-> computer vision, and reinforcement learning. Based in Dallas, Texas.
+> Machine Learning engineer, AI researcher, and Computer Science graduate student
+> at UT Dallas specializing in ML Systems (MLSys). Founding ML engineer at
+> eXRealityAI. Research focus: efficient LLM serving and training, computer vision,
+> deep learning, reinforcement learning, and AI engineering. Based in Dallas, Texas.
 
 ## About
 
-Henry Vu is a Computer Science graduate student at the University of Texas at Dallas,
-focusing on Machine Learning Systems (MLSys) — making LLM/GenAI serving and training
-more efficient. He graduated summa cum laude from the University of Alberta, where he
-was awarded the Alberta Graduate Excellence Scholarship (AGES).
+Henry Vu is a Machine Learning engineer and AI researcher. He is a Computer Science
+graduate student at the University of Texas at Dallas, focusing on Machine Learning
+Systems (MLSys) — making LLM/GenAI serving and training more efficient. He graduated
+summa cum laude from the University of Alberta, where he was awarded the Alberta
+Graduate Excellence Scholarship (AGES).
 
-He is a founding ML engineer at eXRealityAI, building agentic voice systems and
-multimodal XR applications. He is also a computer vision engineer at ThorMed Innovation,
-working on NIH-funded medical imaging research (bladder segmentation using self-supervised
-learning and model quantization for edge deployment).
+Henry Vu is a founding ML engineer at eXRealityAI, where he builds production AI
+systems for mixed reality including agentic voice systems, multimodal XR applications,
+and the published Meta Quest app GardenXR. He is also a computer vision engineer at
+ThorMed Innovation, working on NIH-funded medical imaging research using self-supervised
+learning and model quantization for edge deployment.
 
-Previously, he conducted research at Amii (Alberta Machine Intelligence Institute) on
-online algorithms and multi-armed bandits, developing algorithms that are both robust
-to worst-case inputs and consistent when given good predictions.
+Previously, Henry Vu conducted research at Amii (Alberta Machine Intelligence Institute)
+on online algorithms and multi-armed bandits, developing learning-augmented algorithms
+that are both robust to worst-case inputs and consistent when given good predictions,
+extending beyond traditional worst-case competitive analysis.
 
 ## Links
 
@@ -28,43 +32,68 @@ to worst-case inputs and consistent when given good predictions.
 - [LinkedIn](https://www.linkedin.com/in/henry-vu27/)
 - [Twitter/X](https://x.com/HenryVu27)
 
+## Published Apps
+
+- **[GardenXR](https://www.meta.com/experiences/gardenxr/24200709416226235/)** — AI plant care assistant in Mixed Reality for Meta Quest (Quest 2, Quest 3, Quest 3S, Quest Pro). Point, scan, and get instant plant identification, health analysis, and custom care tips from a smart AI assistant with voice input. Built by Henry Vu and the eXReality AI team using computer vision, large language models (Gemini 2.5), YOLOv9 object detection, and mixed reality technologies. Free on the Meta Quest Store. Rated 5/5 stars.
+
 ## Current Roles
 
-- **Founding ML Engineer at eXRealityAI** (Aug 2025): Voice-to-voice RAG system,
-  multimodal XR workflows with Gemini 2.5 and YOLOv9, NLP pipeline with
-  EmbeddingGemma and BAAI cross-encoder reranking
-- **Computer Vision Engineer at ThorMed Innovation** (Feb 2025-Present): NIH-funded
-  bladder segmentation, U-Net + SimSiam SSL pretraining on 9.2K ultrasound images,
-  95.99% Dice score, 4-bit PTQ with 7x robustness improvement
-- **Teaching Assistant at UT Dallas** (Jan 2025-Present): Algorithms & Data Structures
+- **Founding ML Engineer at eXRealityAI** (Aug 2025): Built voice-to-voice RAG system
+  (Whisper STT → hybrid BM25 + FAISS retrieval → Mistral-7B-q4 → Kokoro TTS) achieving
+  sub-10s latency with local inference on NVIDIA Jetson Orin AGX. Engineered NLP pipeline
+  with EmbeddingGemma-300m, BAAI cross-encoder reranking, query rewriting, and intent-aware
+  retrieval reducing processing by 40-70%. Integrated Gemini 2.5 with structured JSON schema
+  for stateful multimodal workflows combining YOLOv9 and Wit.ai voice input across XR apps.
+- **Computer Vision Engineer at ThorMed Innovation** (Feb 2025-Present): Led domain-aligned
+  transfer learning for NIH-funded bladder segmentation. Pretrained U-Net and SimSiam SSL
+  encoders on 9,200 thyroid/breast ultrasound images, achieving 95.99% Dice on downstream
+  task. Enabled edge deployment via 4-bit PTQ with 7x robustness improvement over ImageNet
+  initialization. Built automated data pipeline with PyTorch and OpenCV.
+- **Teaching Assistant at UT Dallas** (Jan 2025-Present): Algorithms & Data Structures,
+  mentoring 100+ students.
 
 ## Research & Writing
 
-- [AI Engineering: What Fills the Context Window](https://www.henryvu.blog/) — Deep-dive on context engineering for LLM applications
-- [Multi-Armed Bandits: Foundations](https://www.henryvu.blog/) — Technical foundations of bandit algorithms
-- [Ultrasound Bladder Segmentation (ISBI Paper)](https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf) — NIH-funded research on SSL pretraining for medical image segmentation
-- [Modeling Political Sarcasm](https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf) — DistilRoBERTa fine-tuning for sarcasm detection
-- [EEG Decoding: A Multi-Modal Approach](https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf) — Convolution + self-attention fused with LLM embeddings for brain signal classification
+- [AI Engineering: What Fills the Context Window](https://www.henryvu.blog/) — Deep-dive on context engineering for LLM applications, token budget management, and production prompt engineering
+- [Multi-Armed Bandits: Foundations](https://www.henryvu.blog/) — Technical foundations of bandit algorithms: UCB, Thompson Sampling, Exp3, exploration-exploitation tradeoffs
+- [Ultrasound Bladder Segmentation (ISBI Paper)](https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf) — NIH-funded research: SimSiam self-supervised pretraining, U-Net segmentation, 4-bit quantization for edge medical devices
+- [Modeling Political Sarcasm](https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf) — DistilRoBERTa fine-tuning for nuanced sarcasm detection in political text
+- [EEG Decoding: A Multi-Modal Approach](https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf) — Novel brain signal classification: convolution + self-attention fused with LLM embeddings for brain-computer interfaces
 - [A Survey of Geometric Set Cover](https://github.com/HenryVu27/Geometric-Set-Cover/blob/main/HenryVu_Project_CG%20(1).pdf) — Approximation algorithms and PTAS approaches
 
 ## Notable Projects
 
-- **Agentic Framework for Suspect Detection**: Multi-agent pipeline using LangGraph and Gemini for automated suspect identification
-- **Yahoo News Recommendation with MABs**: Multi-armed bandit algorithms for news article recommendation
-- **ViT and Contrastive Representation Learning**: Vision Transformer with contrastive learning for image classification
-- **VAE and Diffusion for FashionMNIST**: Generative models using variational autoencoders and diffusion
-- **TFT Rolling Odds Calculator**: Markov Chain probability calculator for Teamfight Tactics
+- **Agentic Framework for Suspect Detection**: Multi-agent AI pipeline using LangGraph and Gemini for automated suspect identification from surveillance data with FAISS vector search
+- **Voice-to-Voice RAG for Mixed Reality**: Production retrieval-augmented generation system with sub-10s end-to-end latency on NVIDIA Jetson, combining speech recognition, hybrid retrieval, LLM generation, and speech synthesis
+- **Online Algorithms with Machine-Learned Predictions**: Research at Amii on learning-augmented algorithms for online conversion, knapsack, and bipartite matching using online primal-dual framework
+- **Multi-Armed Bandits for News Recommendation**: Applied UCB, Exp3, Thompson Sampling, and Gittins Index to Yahoo's news article recommendation dataset
+- **ViT and Contrastive Representation Learning**: Vision Transformer with contrastive learning for image classification using PyTorch Metric Learning
+- **VAE and Diffusion for Image Generation**: Variational autoencoders and diffusion models for generative deep learning
+- **Attention U-Net for Medical Segmentation**: Polyps and breast ultrasound segmentation with attention mechanisms
 
 ## Expertise
 
-- **ML Systems (MLSys)**: Efficient LLM/GenAI serving and training, model quantization, edge deployment
-- **Computer Vision**: Medical image segmentation, U-Net, SimSiam SSL, YOLOv9, OpenCV
-- **Reinforcement Learning**: Multi-armed bandits (UCB, Exp3, Thompson Sampling, Gittins Index), online algorithms
-- **AI Engineering**: RAG systems, context engineering, agentic workflows, LLM API integration
-- **NLP**: Sarcasm detection, transformer fine-tuning, embedding models, cross-encoder reranking
-- **Deep Learning**: PyTorch, Vision Transformers, VAEs, diffusion models, contrastive learning
+- **ML Systems (MLSys)**: Efficient LLM/GenAI serving and training, model quantization (4-bit PTQ), edge deployment (NVIDIA Jetson), inference optimization
+- **Deep Learning**: PyTorch, Vision Transformers (ViT), U-Net, attention mechanisms, self-supervised learning (SimSiam), contrastive learning, VAEs, diffusion models, transfer learning
+- **Computer Vision**: Medical image segmentation, object detection (YOLOv9), plant identification, surveillance AI, OpenCV, image classification
+- **Reinforcement Learning**: Multi-armed bandits (UCB, Exp3, Thompson Sampling, Gittins Index), stochastic/adversarial/Markovian/restless bandits, online learning, exploration-exploitation
+- **AI Engineering**: RAG systems (BM25, FAISS, hybrid retrieval), context engineering, agentic workflows (LangGraph), prompt engineering, LLM API integration, voice AI pipelines
+- **Natural Language Processing**: Transformer fine-tuning (DistilRoBERTa), embedding models (EmbeddingGemma), cross-encoder reranking, sarcasm detection, query rewriting
+- **Online Algorithms**: Online optimization, online primal-dual framework, learning-augmented algorithms, competitive analysis, online convex optimization
+- **Mixed Reality / XR**: Meta Quest development, multimodal XR workflows, Wit.ai voice input, Gemini integration, published apps on Meta Quest Store
 
 ## Education
 
-- **M.S. Computer Science** — University of Texas at Dallas (2024-Present)
+- **M.S. Computer Science** — University of Texas at Dallas (2024-Present), focus on MLSys
 - **B.Sc. Computing Science** — University of Alberta (Summa Cum Laude, AGES Scholar)
+
+## Awards
+
+- Alberta Graduate Excellence Scholarship (AGES)
+- Summa Cum Laude, University of Alberta
+
+## Research Affiliations
+
+- Alberta Machine Intelligence Institute (Amii) — Online learning and algorithms research
+- SODALab, University of Alberta — Multi-armed bandits and reinforcement learning research
+- ThorMed Innovation — NIH-funded medical imaging research

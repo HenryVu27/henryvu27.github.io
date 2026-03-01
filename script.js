@@ -338,21 +338,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const matches = filter === 'all' || card.dataset.category === filter;
             if (!matches) {
                 card.classList.add('hidden');
-                card.classList.remove('card-animate');
+                card.classList.remove('card-visible');
                 return;
             }
             totalMatching++;
             if (!expanded && totalMatching > VISIBLE_COUNT) {
                 card.classList.add('hidden');
-                card.classList.remove('card-animate');
+                card.classList.remove('card-visible');
                 return;
             }
             card.classList.remove('hidden');
-            card.style.animation = 'none';
-            card.offsetHeight;
-            card.style.animation = '';
-            card.style.animationDelay = `${visibleIndex * 40}ms`;
-            card.classList.add('card-animate');
+            requestAnimationFrame(() => {
+                card.classList.add('card-visible');
+            });
             visibleIndex++;
         });
 
