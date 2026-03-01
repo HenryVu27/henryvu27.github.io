@@ -15,7 +15,7 @@
     <!-- Open Graph Meta Tags (for social media sharing) -->
     <meta property="og:title" content="Henry Vu - ML Engineer & AI Researcher | eXRealityAI | UT Dallas">
     <meta property="og:description" content="Henry Vu is a Machine Learning engineer and AI researcher. Founding ML engineer at eXRealityAI. CS grad student at UT Dallas specializing in MLSys, deep learning, computer vision, and reinforcement learning.">
-    <meta property="og:image" content="https://henryvu.io/assets/pp.jpg">
+    <meta property="og:image" content="https://henryvu.io/assets/og-image.png">
     <meta property="og:url" content="https://henryvu.io/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Henry Vu - Dallas CS Graduate Student">
@@ -26,7 +26,7 @@
     <meta name="twitter:creator" content="@HenryVu27">
     <meta name="twitter:title" content="Henry Vu - ML Engineer & AI Researcher | eXRealityAI | UT Dallas">
     <meta name="twitter:description" content="Machine Learning engineer and AI researcher. Founding ML engineer at eXRealityAI. Specializing in MLSys, deep learning, computer vision, and reinforcement learning.">
-    <meta name="twitter:image" content="https://henryvu.io/assets/pp.jpg">
+    <meta name="twitter:image" content="https://henryvu.io/assets/og-image.png">
     <meta name="twitter:url" content="https://henryvu.io/">
     <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#6c5ce7">
@@ -378,7 +378,8 @@
           "headline": "AI Engineering Part 1: What Fills the Context Window",
           "description": "A deep-dive into context engineering for LLM applications — understanding what fills the context window, how to manage token budgets, and engineering effective prompts for production AI systems.",
           "author": {"@type": "Person", "name": "Henry Vu"},
-          "url": "https://www.henryvu.blog/",
+          "url": "https://www.henryvu.blog/series/ai-engineering/part1.html",
+          "datePublished": "2026-02-24",
           "about": ["AI Engineering", "Context Engineering", "LLMs", "Prompt Engineering", "RAG Systems", "Token Management"]
         },
         {
@@ -386,8 +387,66 @@
           "headline": "Multi-Armed Bandits Part 1: Foundations",
           "description": "Technical foundations of multi-armed bandit algorithms including UCB, Thompson Sampling, and the exploration-exploitation tradeoff. Covers stochastic and adversarial settings with theoretical analysis.",
           "author": {"@type": "Person", "name": "Henry Vu"},
-          "url": "https://www.henryvu.blog/",
+          "url": "https://www.henryvu.blog/series/bandits/part1.html",
+          "datePublished": "2026-02-24",
           "about": ["Reinforcement Learning", "Multi-Armed Bandits", "UCB", "Thompson Sampling", "Exploration-Exploitation", "Online Learning"]
+        }
+      ]
+    }
+    </script>
+    <!-- FAQ structured data for rich snippets and GEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is Henry Vu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Henry Vu is a Machine Learning engineer and AI researcher, currently a Computer Science graduate student at the University of Texas at Dallas (UT Dallas) specializing in ML Systems (MLSys). He is a founding ML engineer at eXRealityAI building production AI systems for mixed reality, and a computer vision engineer at ThorMed Innovation working on NIH-funded medical imaging research. He graduated summa cum laude from the University of Alberta."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Henry Vu research?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Henry Vu's research spans ML Systems (efficient LLM/GenAI serving and training), computer vision (medical image segmentation using self-supervised learning), reinforcement learning (multi-armed bandits across stochastic, adversarial, and restless settings), and AI engineering (RAG systems, context engineering, agentic workflows). He has authored papers on ultrasound bladder segmentation, political sarcasm detection, EEG decoding, and geometric set cover."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does Henry Vu work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Henry Vu is a founding ML engineer at eXRealityAI, where he builds agentic voice systems and multimodal XR applications including the published Meta Quest app GardenXR. He is also a computer vision engineer at ThorMed Innovation working on NIH-funded bladder segmentation research, and a teaching assistant at UT Dallas for Algorithms and Data Structures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What has Henry Vu built?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Notable systems include a voice-to-voice RAG system achieving sub-10 second latency on NVIDIA Jetson (Whisper STT, hybrid BM25+FAISS retrieval, Mistral-7B, Kokoro TTS), the GardenXR app (5/5 stars on Meta Quest Store), NIH-funded medical imaging pipelines achieving 95.99% Dice score with 7x robustness improvement in 4-bit quantization, multi-agent AI systems using LangGraph, and 30+ technical projects spanning ML, web, and systems."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where did Henry Vu study?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Henry Vu graduated summa cum laude from the University of Alberta with a B.Sc. in Computing Science, where he was awarded the Alberta Graduate Excellence Scholarship (AGES). He is currently pursuing an M.S. in Computer Science at the University of Texas at Dallas, focusing on Machine Learning Systems (MLSys)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Henry Vu's blog about?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Henry Vu writes deep-dive technical content at henryvu.blog about AI engineering (context engineering for LLMs, RAG systems, agent architectures), ML systems (inference optimization, serving infrastructure), and reinforcement learning (multi-armed bandits, exploration-exploitation tradeoffs). His writing is aimed at practitioners who build real ML systems."
+          }
         }
       ]
     }
@@ -472,7 +531,7 @@
                                 Over time I got more drawn to the gap between theory and practice, building things that actually work on real hardware, which is what brought me to where I am now.
                             </p>
                             <p>
-                                I write occasionally at <a href="https://www.henryvu.blog/" target="_blank">henryvu.blog</a>.
+                                I write occasionally at <a href="https://www.henryvu.blog/" target="_blank">henryvu.blog</a>. Recent posts: <a href="https://www.henryvu.blog/series/ai-engineering/part1.html" target="_blank">Context Engineering for LLMs</a>, <a href="https://www.henryvu.blog/series/bandits/part1.html" target="_blank">Multi-Armed Bandits: Foundations</a>.
                             </p>
                             <p>
                                 <a href="ML_Resume_Online.pdf" target="_blank"><i>My Resume</i> <i class="fas fa-file-pdf"></i></a>
@@ -593,6 +652,21 @@
                             </div>
                             <div class="card-links">
                                 <a href="https://github.com/HenryVu27/Suspect-Detection" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-card" data-category="ml-ai">
+                            <span class="card-year">2026</span>
+                            <h3 class="card-title"><a href="https://github.com/HenryVu27/ADHDAgent" target="_blank">ADHD Coaching Agent</a></h3>
+                            <p class="card-desc">Parent-facing ADHD coaching chatbot using a ReAct agent architecture with hybrid RAG, multi-layer safety guardrails, and 4-tier memory.</p>
+                            <div class="card-tech">
+                                <span>Python</span>
+                                <span>LangGraph</span>
+                                <span>Gemini</span>
+                                <span>FastAPI</span>
+                                <span>Qdrant</span>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://github.com/HenryVu27/ADHDAgent" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                         <div class="project-card" data-category="web">
