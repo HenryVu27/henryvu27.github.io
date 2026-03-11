@@ -697,7 +697,7 @@ a:hover, a:focus {
 .about-text {
     flex: 2 1 350px;
     min-width: 300px;
-    text-align: justify;
+    text-align: left;
 }
 
 .about-text p {
