@@ -51,7 +51,7 @@ Add "Life" to the main nav bar in `index.html`:
 
 ### Category Pages (`life/food.html`, `life/wine.html`, `life/piano.html`)
 
-All three share the same layout template with content-specific variations.
+All three share the same layout template with content-specific variations. Each page includes the full site header/nav and theme toggle (same as landing page). Nav links on Life pages use full paths (e.g., `index.html#about`) since they're on separate pages from `index.html`.
 
 **Header Area:**
 - "← Back to Life" link at top-left, styled in `--accent-color`
