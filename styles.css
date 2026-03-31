@@ -39,6 +39,7 @@
     --timeline-desc-color: var(--subtitle-color);
     --emphasis-color: var(--primary-color);
     --about-desc-color: var(--subtitle-color);
+    --wine-color: #722040;
 }
 
 /* Theme Variables - Dark Theme (Piano Symphony) */
@@ -90,6 +91,7 @@
     --timeline-title-color: var(--big-intro);
     --timeline-desc-color: var(--subtitle-color);
     --about-desc-color: var(--subtitle-color);
+    --wine-color: #c4607a;
 }
 
 
@@ -1288,6 +1290,188 @@ button {
 }
 
 
+/* ===== Life Section ===== */
+
+/* Landing page */
+.life-landing {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 8rem 2rem 6rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.life-landing h2 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: var(--heading-color);
+    margin-bottom: 1.5rem;
+}
+
+.life-narrative {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+.life-narrative a {
+    font-weight: 500;
+    position: relative;
+    text-decoration: none;
+}
+
+.life-narrative a.life-link-food {
+    color: var(--accent-color);
+}
+
+.life-narrative a.life-link-wine {
+    color: var(--wine-color);
+}
+
+.life-narrative a.life-link-piano {
+    color: var(--primary-color);
+}
+
+.life-hint {
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    font-style: italic;
+    margin-top: 1.5rem;
+}
+
+/* Category pages */
+.life-category {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 8rem 2rem 6rem;
+}
+
+.life-back {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.life-back::after {
+    display: none;
+}
+
+.life-category h2 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: var(--heading-color);
+    margin-bottom: 0.4rem;
+}
+
+.life-category .life-tagline {
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    margin-bottom: 2.5rem;
+}
+
+/* Entries */
+.life-entries {
+    display: flex;
+    flex-direction: column;
+}
+
+.life-entry {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-color);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.life-entry:last-child {
+    border-bottom: none;
+}
+
+.life-entry.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.life-entry:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.life-entry-media {
+    flex: 1;
+    min-width: 0;
+}
+
+.life-entry-media img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.life-entry-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.life-entry-location {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.25rem;
+}
+
+.life-entry-title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--heading-color);
+    letter-spacing: -0.02em;
+    margin: 0 0 0.5rem;
+}
+
+.life-entry-review {
+    font-size: 0.88rem;
+    color: var(--text-color);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.life-entry-rating {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+/* Video embed */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
 /* Media Queries */
 @media (max-width: 900px) {
     /* Projects */
@@ -1331,6 +1515,21 @@ button {
     }
     .project-card {
         padding: 1rem 1.1rem;
+    }
+
+    /* Life */
+    .life-entry {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .life-entry:nth-child(even) {
+        flex-direction: column;
+    }
+    .life-landing {
+        padding: 6rem 1.5rem 4rem;
+    }
+    .life-category {
+        padding: 6rem 1.5rem 4rem;
     }
 }
 
