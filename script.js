@@ -407,3 +407,22 @@ document.addEventListener('DOMContentLoaded', () => {
         updateGrid();
     }
 })();
+
+// Life entries: fade-in on scroll
+(function() {
+    const entries = document.querySelectorAll('.life-entry');
+    if (!entries.length) return;
+    const entryList = Array.from(entries);
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const idx = entryList.indexOf(entry.target);
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, idx * 180);
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.18 });
+    entryList.forEach(e => observer.observe(e));
+})();
