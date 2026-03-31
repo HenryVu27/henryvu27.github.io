@@ -412,17 +412,18 @@ document.addEventListener('DOMContentLoaded', () => {
 (function() {
     const entries = document.querySelectorAll('.life-entry');
     if (!entries.length) return;
-    const entryList = Array.from(entries);
+    let visibleCount = 0;
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const idx = entryList.indexOf(entry.target);
+                const delay = visibleCount * 180;
+                visibleCount++;
                 setTimeout(() => {
                     entry.target.classList.add('visible');
-                }, idx * 180);
+                }, delay);
                 obs.unobserve(entry.target);
             }
         });
     }, { threshold: 0.18 });
-    entryList.forEach(e => observer.observe(e));
+    document.querySelectorAll('.life-entry').forEach(e => observer.observe(e));
 })();
