@@ -1,245 +1,176 @@
-# Henry Vu - Full Profile & Portfolio
+# Henry Vu (full)
 
-> Machine Learning engineer, AI researcher, and Computer Science graduate student at
-> the University of Texas at Dallas (UT Dallas / UTD) specializing in ML Systems (MLSys).
-> Founding ML engineer at eXRealityAI. Based in Dallas, Texas.
-> Newsletter with 50,000+ readers on AI research and engineering.
+Founding machine learning engineer at eXRealityAI in Dallas, Texas, and an M.Sc. student in
+Computer Science at the University of Texas at Dallas, expected Summer 2027. This file is the
+complete text of https://henryvu.io/ for language models and search engines.
 
-> This is the comprehensive version of Henry Vu's profile. For a summary, see: https://henryvu.io/llms.txt
+## Links
 
----
-
-## Identity
-
-- Full Name: Henry Vu
-- Online Handle: HenryVu27
-- Location: Dallas, Texas, USA
-- Current Title: Computer Science Graduate Student, ML Engineer
 - Portfolio: https://henryvu.io/
 - Blog: https://www.henryvu.blog/
 - GitHub: https://github.com/HenryVu27
 - LinkedIn: https://www.linkedin.com/in/henry-vu27/
-- X/Twitter: https://x.com/HenryVu27
+- X: https://x.com/HenryVu27
+- Resume: https://henryvu.io/Henry_Vu_Resume.pdf
 
----
+## About
 
-## Biography
+Hey, I'm Henry. I'm the founding machine learning engineer at eXRealityAI in Dallas, where I've
+been the first engineer since 2025, and I'm finishing my M.Sc. in Computer Science at UT Dallas,
+expected Summer 2027. Before that I did my B.Sc. Honors in Computing Science at the University of
+Alberta.
 
-Henry Vu is a Machine Learning engineer and AI researcher. He is a Computer Science graduate student at the University of Texas at Dallas, focusing on Machine Learning Systems (MLSys), making LLM and GenAI serving and training more efficient. He graduated summa cum laude from the University of Alberta, where he was awarded the Alberta Graduate Excellence Scholarship (AGES).
+At eXReality I build the parts of an AI product that decide whether it can be trusted: the
+knowledge graph behind a Meta Quest 3 repair app for an automotive pilot, the retrieval layer that
+finds the right procedure for a technician's question, and the evaluation harness that scores it
+in CI. I also work on inference at the edge, running voice and vision models locally on NVIDIA
+Jetson and Apple silicon, and I shipped GardenXR to the Meta Horizon Store. On the research side,
+I work with Dr. Katherine Brown at UT Dallas on NIH-funded ultrasound segmentation, getting models
+small and robust enough to run on portable hardware.
 
-Henry is a founding ML engineer at eXRealityAI, where he builds production AI systems for mixed reality including agentic voice systems, multimodal XR applications, and the published Meta Quest app GardenXR. He is also a computer vision engineer at ThorMed Innovation, working on NIH-funded medical imaging research using self-supervised learning and model quantization for edge deployment on medical devices.
+I got into this through math competitions. The tricks were fun, but what stuck was learning to
+take a messy problem and find the angle that cracks it. That led me to research at Amii on online
+algorithms and bandits, and over time toward the gap between theory and things that actually run.
+I write about that at henryvu.blog.
 
-Previously, Henry conducted research at Amii (Alberta Machine Intelligence Institute) on online algorithms and multi-armed bandits, developing learning-augmented algorithms that are both robust to worst-case inputs and consistent when given good predictions, extending beyond traditional worst-case competitive analysis. He also conducted multi-armed bandit research at SODALab, University of Alberta, studying stochastic, adversarial, Markovian, and restless bandit settings.
+## Where I've worked
 
-Henry got into math early through competitions and olympiad prep. The contest background led him to theoretical CS research, and eventually to the intersection of theory and practice: building production ML systems that work on real hardware.
+### Founding Machine Learning Engineer at eXRealityAI, Aug 2025 to now
 
-He writes technical deep-dives at henryvu.blog, covering AI engineering, context engineering for LLMs, multi-armed bandits, and ML systems.
+- Built the knowledge graph and retrieval layer behind a Meta Quest 3 automotive repair app for an
+  OEM pilot, and the evaluation harness that scores it in CI. On an expert-written test set it puts
+  the correct procedure first 92 percent of the time.
+- Built a voice-to-voice assistant that runs entirely on an NVIDIA Jetson Orin: Whisper for speech
+  in, hybrid BM25 and FAISS retrieval, a quantized Mistral 7B, and Kokoro for speech out.
+- Multimodal XR workflows on Gemini, YOLOv9, and Wit.ai voice input across two applications, and a
+  retrieval pipeline (EmbeddingGemma, cross-encoder reranking, query rewriting) that cut retrieval
+  work by roughly half.
+- Shipped GardenXR to the Meta Horizon Store, traced a run of bad production answers to a vendor
+  proxy that was silently dropping images, and mentored the team on LLM integration.
 
----
+### Computer Vision Engineer at ThorMed Innovation, Feb 2025 to now
+
+- Modeling lead on an NIH-funded project to segment the bladder in clinical ultrasound, so patients
+  can be monitored without a catheter.
+- Pretrained U-Net and SimSiam encoders on 9.2K ultrasound images before fine-tuning, reaching
+  96 percent Dice.
+- Got the model onto portable hardware with 4-bit quantization, where the domain-pretrained weights
+  held up about seven times better than ImageNet weights, and built the pipeline that extracts and
+  cleans frames from clinical ultrasound video.
+
+### Teaching Assistant at UT Dallas, Jan 2025 to now
+
+- Algorithms and data structures: weekly office hours, seminar and exam material, and technical
+  reviews for more than a hundred students.
+
+### Undergraduate Research Assistant at SODALab, Dec 2023 to May 2024
+
+- A theoretical and empirical survey of multi-armed bandits across stochastic, adversarial,
+  Markovian, and restless settings, with Dr. Xiaoqi Tan.
+- Simulations comparing UCB, Exp3, Thompson sampling, and the Gittins index.
+
+### Teaching Assistant at the University of Alberta, Sep 2023 to May 2024
+
+- Algorithms and data structures for a few hundred students: office hours, weekly problem-solving
+  sessions, and grading.
+
+### Undergraduate Researcher, Online Learning, at Amii, Apr 2022 to May 2023
+
+- Online optimization with the primal-dual framework: conversion, knapsack, and bipartite matching
+  problems where decisions are made before all the input arrives.
+- Algorithms that use machine-learned predictions to beat worst-case bounds when the predictions
+  are good, without losing the guarantees when they are not.
+
+## Projects
+
+- DatDai. A question-answering assistant over Vietnamese land law, live on Cloud Run. Every answer
+  cites the exact article and clause, an amendment graph pulls in the decrees that later changed a
+  clause, and a citation verifier checks each cited article against what was actually retrieved,
+  with no extra model call. Python, Gemini, Qdrant, Langfuse, Cloud Run.
+  https://github.com/HenryVu27/Urban
+- ADHD Coaching Agent. A coaching chatbot for parents of children with ADHD: a LangGraph ReAct agent
+  between two guardrail gates, hybrid retrieval with a local cross-encoder reranker, four-tier
+  memory, and an evaluation package with LLM judges and pairwise comparisons. Python, LangGraph,
+  Qdrant, ONNX. https://github.com/HenryVu27/ADHDAgent
+- GardenXR. A mixed-reality gardening app for Meta Quest, published on the Meta Horizon Store after
+  passing review for restricted camera access. Twenty thousand people used it in the first two
+  days. Unity, C#, Gemini. https://www.meta.com/experiences/gardenxr/24200709416226235/
+- Ultrasound Bladder Segmentation. NIH-funded work with UT Dallas Bioengineering: self-supervised
+  pretraining on 9.2K ultrasound images, then 4-bit quantization for portable devices, with a paper
+  on making the models small and robust. PyTorch, SimSiam, U-Net.
+  https://github.com/HenryVu27/ThorMed and
+  https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf
+- ML Interview Practice. LeetCode-style practice for ML coding interviews that runs entirely in the
+  browser: real CPython with numpy through Pyodide, no backend, no build step. Built in eight days
+  before an interview and used for real. JavaScript, Pyodide, CodeMirror.
+  https://henryvu.io/MLInterviewPractice/ and https://github.com/HenryVu27/MLInterviewPractice
+- Agentic Framework for Suspect Detection. Multi-agent pipeline using LangGraph and Gemini for
+  automated suspect identification from surveillance data. Python, LangGraph, Gemini, FAISS.
+  https://github.com/HenryVu27/Suspect-Detection
+- StitchKit. Turns a client's logo into a machine-ready embroidery stitch file for a one-person
+  shop whose only computer is an older iPhone: phone-first, entirely in Vietnamese, with preflight
+  checks because a bad file perforates leather for good. Python, FastAPI, Ink/Stitch, Swift.
+- VoiceBridge. Real-time Vietnamese-to-Russian speech translation over push-to-talk, a two-day
+  proof of concept for a director who needed to talk across a language barrier. FastAPI, Deepgram,
+  DeepL. https://github.com/HenryVu27/voice-agent
+- EEG Decoding: a Multi-Modal Approach. EEG signal classification that fuses convolutional features
+  and self-attention with language-model embeddings, with a paper.
+  https://github.com/HenryVu27/EEG-Multimodal-Decoding
+- Modeling Political Sarcasm. Detection models using feature engineering and a fine-tuned
+  DistilRoBERTa to identify subtle political sarcasm in online text.
+  https://github.com/HenryVu27/PoliticalSarcasm
+- Multi-armed Bandits and Online Learning. Survey, simulations, and seminar slides from the Amii and
+  SODALab work. https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning
+- Polyps and Breast Ultrasound Segmentation. Attention U-Net for medical image segmentation on
+  polyps and breast ultrasound datasets. https://github.com/HenryVu27/Polyps-Segmentation
+- A Survey of Geometric Set Cover. Approximation algorithms and PTAS approaches for the geometric
+  set cover problem. https://github.com/HenryVu27/Geometric-Set-Cover
+
+### Earlier work
+
+BTS Concert Ticket Buying Simulator (2026), Valentine Surprise (2026), TFT Rolling Odds
+Calculator (2025), This Web Portfolio (2024), UManitoba Navigator (2024), ViT and Contrastive
+Representation Learning (2023), VAE and Diffusion for FashionMNIST (2023), Yahoo's News
+Recommendation with MABs (2023), Gomoku Solver (2022), Online Algorithms seminar slides (2022),
+HabiTrak (2021), Toronto Neighbourhoods Data Analysis (2021), Sudoku Solver (2020), Edmonton
+Restaurant Finder (2020), Encrypted Arduino Communication (2019), Huffman Coding for File
+Compression (2019).
 
 ## Education
 
-### M.S. Computer Science — University of Texas at Dallas (2024-Present)
-- Focus: Machine Learning Systems (MLSys)
-- Research: Efficient LLM serving and training, GenAI inference optimization
-- Teaching Assistant for Algorithms and Data Structures (100+ students)
+- M.Sc. Computer Science, University of Texas at Dallas, expected Summer 2027.
+- B.Sc. Computing Science with Honors, University of Alberta, 2019 to 2024, summa cum laude.
 
-### B.Sc. Computing Science — University of Alberta (Graduated)
-- Honors: Summa Cum Laude
-- Scholarship: Alberta Graduate Excellence Scholarship (AGES)
-- Research: Online algorithms and multi-armed bandits at Amii and SODALab
-- Teaching Assistant for Algorithms and Data Structures (300+ students)
+## Frequently asked
 
----
+Who is Henry Vu? The founding machine learning engineer at eXRealityAI in Dallas and an M.Sc.
+student in Computer Science at the University of Texas at Dallas, expected Summer 2027. He also
+works as a computer vision engineer at ThorMed Innovation on NIH-funded medical imaging, and
+graduated summa cum laude from the University of Alberta.
 
-## Professional Experience
+What does Henry Vu work on? Knowledge graphs, retrieval, and evaluation for LLM products; voice
+and vision models running at the edge on NVIDIA Jetson; mixed reality apps for Meta Quest; and
+self-supervised learning and quantization for medical ultrasound segmentation. Earlier, online
+algorithms and multi-armed bandits at Amii and SODALab.
 
-### Founding ML Engineer — eXRealityAI (Aug 2025-Present)
-Building production AI systems for mixed reality applications.
+Where does Henry Vu work? eXRealityAI, where he is the founding machine learning engineer;
+ThorMed Innovation, as a computer vision engineer on NIH-funded bladder segmentation; and UT
+Dallas, as a teaching assistant for algorithms and data structures.
 
-Key accomplishments:
-- Built voice-to-voice RAG system: Whisper STT → hybrid retrieval (BM25 + FAISS) → Mistral-7B-q4 → Kokoro TTS, achieving sub-10 second end-to-end latency with fully local inference on NVIDIA Jetson Orin AGX
-- Engineered NLP pipeline with EmbeddingGemma-300m, BAAI cross-encoder reranking, query rewriting, and intent-aware retrieval, reducing processing by 40-70%
-- Integrated Gemini 2.5 with structured JSON schema for stateful multimodal workflows combining YOLOv9 object detection and Wit.ai voice input across 2 XR applications
-- Published GardenXR on Meta Quest Store (5/5 star rating): AI plant care assistant using computer vision, LLMs, and mixed reality
-- Mentored development teams on LLM API integration and prompt engineering
+What has Henry Vu built? The knowledge graph, retrieval layer, and CI evaluation harness behind a
+Meta Quest 3 automotive repair app; a voice-to-voice assistant that runs entirely on an NVIDIA
+Jetson Orin; GardenXR, published on the Meta Horizon Store; DatDai, a Vietnamese land-law
+assistant on Cloud Run with a citation verifier; an ADHD coaching agent with guardrails and an
+evaluation suite; and ML Interview Practice, a browser-only Python practice site.
 
-### Computer Vision Engineer — ThorMed Innovation (Feb 2025-Present)
-Working on NIH-funded medical imaging research.
+Where did Henry Vu study? B.Sc. in Computing Science with Honors, summa cum laude, from the
+University of Alberta, and an M.Sc. in Computer Science at the University of Texas at Dallas,
+expected Summer 2027.
 
-Key accomplishments:
-- Led domain-aligned transfer learning for bladder segmentation project
-- Pretrained U-Net and SimSiam SSL encoders on 9,200 thyroid/breast ultrasound images
-- Achieved 95.99% Dice score on downstream bladder segmentation task
-- Enabled edge deployment via 4-bit post-training quantization with 7x robustness improvement over ImageNet initialization
-- Built automated data pipeline with PyTorch and OpenCV: extracted, preprocessed, and segmented 486 clinical images from ultrasound videos
+What is Henry Vu's blog about? Deep-dive technical content at henryvu.blog about AI engineering
+(context engineering for LLMs, RAG systems, agent architectures), ML systems, and reinforcement
+learning (multi-armed bandits), aimed at practitioners who build real ML systems.
 
-### Undergraduate Research Assistant — SODALab, University of Alberta (Dec 2023 - May 2024)
-Multi-armed bandit research supervised by Dr. Xiaoqi Tan.
-- Conducted theoretical and empirical survey of multi-armed bandit problems
-- Studied stochastic, adversarial, Markovian, and restless bandit settings
-- Implemented and compared UCB, Exp3, Thompson Sampling, and Gittins Index algorithms
-- Applied bandit algorithms to Yahoo's news article recommendation dataset
+## Get in touch
 
-### Undergraduate Researcher — Amii, Alberta Machine Intelligence Institute (Apr 2022 - May 2023)
-Online learning and algorithms research.
-- Researched online optimization: online conversion, knapsack, and bipartite matching
-- Used the online primal-dual framework for algorithm design
-- Studied learning-augmented algorithms incorporating machine-learned predictions
-- Developed algorithms that are both robust to worst-case inputs and consistent with good predictions
-
-### Teaching Assistant — University of Alberta (Sep 2023 - May 2024)
-- Mentored 300+ students in Algorithms and Data Structures
-- Held weekly office hours, prepared seminar and exam materials
-
----
-
-## Published Apps
-
-### GardenXR — Meta Quest Store
-- URL: https://www.meta.com/experiences/gardenxr/24200709416226235/
-- Platform: Meta Quest (Quest 2, Quest 3, Quest 3S, Quest Pro)
-- Rating: 5/5 stars
-- Price: Free
-- Description: AI plant care assistant in Mixed Reality. Point, scan, and get instant plant identification, health analysis, and custom care tips from a smart AI assistant with voice input.
-- Tech: Computer vision, Gemini 2.5 LLM, YOLOv9 object detection, Wit.ai voice input, mixed reality
-- Built by Henry Vu and the eXReality AI team
-
----
-
-## Research & Papers
-
-### Domain-Aligned Transfer Learning for Ultrasound Bladder Segmentation
-- Funding: NIH (National Institutes of Health)
-- Paper: https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf
-- Topics: Self-supervised learning, SimSiam pretraining, U-Net segmentation, 4-bit post-training quantization, edge deployment, medical imaging, transfer learning
-- Key results: 95.99% Dice score, 7x robustness improvement in quantized model
-
-### Modeling Political Sarcasm with DistilRoBERTa
-- Paper: https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf
-- Topics: NLP, sarcasm detection, transformer fine-tuning, DistilRoBERTa, text classification
-- Approach: Combined feature engineering with fine-tuned DistilRoBERTa for nuanced sarcasm detection in political text
-
-### EEG Decoding: A Multi-Modal Approach Using Transformers and LLM Embeddings
-- Paper: https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf
-- Topics: Brain-computer interfaces, EEG decoding, transformers, multi-modal learning, LLM embeddings, signal processing
-- Approach: Novel brain signal classification combining convolutional feature extraction with self-attention, fused with large language model embeddings
-
-### A Survey of Geometric Set Cover
-- Paper: https://github.com/HenryVu27/Geometric-Set-Cover/blob/main/HenryVu_Project_CG%20(1).pdf
-- Topics: Computational geometry, approximation algorithms, PTAS, set cover problem
-
----
-
-## Blog Posts (henryvu.blog)
-
-### What Fills the Context Window: A Guide to Context Engineering
-- URL: https://www.henryvu.blog/series/ai-engineering/part1.html
-- Series: AI Engineering (Part 1 of 5)
-- Read time: 25 minutes
-- Topics: Context engineering for LLMs, the seven components of a context window, four strategies (write, select, compress, isolate), failure modes, token budgets, production prompt engineering
-- Key insight: Most agent failures are context failures. The challenge shifts from "how do I phrase this instruction" to "what information does the model need to see right now."
-- References the 166-page survey by Mei et al. (arXiv:2507.13334, analyzing 1,411 papers) which formalizes context engineering as a constrained optimization problem.
-
-### Multi-Armed Bandits: Foundations
-- URL: https://www.henryvu.blog/series/bandits/part1.html
-- Series: Multi-Armed Bandits (Part 1 of 3)
-- Topics: Exploration-exploitation tradeoff, regret, stochastic bandits, concentration inequalities, Explore-then-Commit, Upper Confidence Bound (UCB) algorithms
-- Includes interactive visualizations
-
----
-
-## All Projects
-
-### ML & AI Projects
-1. **Agentic Framework for Suspect Detection** (2026): Multi-agent AI pipeline using LangGraph and Gemini for automated suspect identification from surveillance data with FAISS vector search. GitHub: https://github.com/HenryVu27/Suspect-Detection
-2. **Ultrasound Bladder Segmentation** (2025): NIH-funded. Pretrained U-Net encoders on 9.2K ultrasound images, 7x robustness improvement in 4-bit quantization. GitHub: https://github.com/HenryVu27/ThorMed
-3. **Modeling Political Sarcasm** (2025): DistilRoBERTa fine-tuning for sarcasm detection. GitHub: https://github.com/HenryVu27/PoliticalSarcasm
-4. **TFT Rolling Odds Calculator** (2025): Probability calculator using Markov Chains for champion finding odds. GitHub: https://github.com/HenryVu27/TFT-Rolling-Calculator
-5. **Polyps & Breast Ultrasound Segmentation** (2025): Attention U-Net for medical image segmentation. GitHub: https://github.com/HenryVu27/Polyps-Segmentation
-6. **ViT and Contrastive Representation Learning** (2023): Vision Transformer with contrastive learning. GitHub: https://github.com/HenryVu27/ViT-and-Contrastive-Learning
-7. **VAE and Diffusion for FashionMNIST** (2023): Generative deep learning. GitHub: https://github.com/HenryVu27/VAE-and-Diffusion-for-FashionMNIST
-8. **Yahoo's News Recommendation with MABs** (2023): Applied UCB, Exp3, Thompson Sampling, Gittins Index. GitHub: https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning
-9. **EEG Decoding** (2023): Multi-modal brain signal classification. GitHub: https://github.com/HenryVu27/EEG-Multimodal-Decoding
-10. **Gomoku Solver** (2022): AI game engine using alpha-beta pruning and minimax search
-11. **Toronto Neighbourhoods Data Analysis** (2021): Spatial clustering using Foursquare API. GitHub: https://github.com/HenryVu27/Toronto-Data-Analysis
-
-### Web & App Projects
-1. **BTS Concert Ticket Buying Simulator** (2026): Interactive web simulator with real-time queue mechanics. GitHub: https://github.com/HenryVu27/BTSIM
-2. **Valentine Surprise** (2026): Interactive Valentine's Day web experience. GitHub: https://github.com/HenryVu27/Valentine
-3. **UManitoba Navigator** (2024): Hackathon campus navigation app with FastAPI and React. GitHub: https://github.com/HenryVu27/devHack2024
-4. **HabiTrak** (2021): Android habit tracking app with Firebase and Google Maps. GitHub: https://github.com/CMPUT301F21T34/HabiTrak
-
-### Theory & Systems Projects
-1. **A Survey of Geometric Set Cover** (2025): Approximation algorithms and PTAS. GitHub: https://github.com/HenryVu27/Geometric-Set-Cover
-2. **Online Algorithms Seminar Slides** (2022): Online algorithms and online convex optimization. GitHub: https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning
-3. **Edmonton Restaurant Finder** (2020): Arduino pathfinding system. GitHub: https://github.com/HenryVu27/Edmonton-Restaurant-Route-Finder
-4. **Encrypted Arduino Communication** (2019): RSA-encrypted serial communication between Arduino boards
-5. **Huffman Coding for File Compression** (2019): File compression implementing Huffman coding
-
----
-
-## Technical Expertise
-
-### ML Systems (MLSys)
-Efficient LLM/GenAI serving and training, model quantization (4-bit post-training quantization), edge deployment (NVIDIA Jetson Orin AGX), inference optimization, production ML pipelines
-
-### Deep Learning
-PyTorch, Vision Transformers (ViT), U-Net architectures, attention mechanisms, self-supervised learning (SimSiam), contrastive learning, variational autoencoders (VAE), diffusion models, transfer learning
-
-### Computer Vision
-Medical image segmentation (ultrasound, polyps, breast), object detection (YOLOv9), plant identification, surveillance AI, OpenCV, image classification
-
-### Reinforcement Learning
-Multi-armed bandits (UCB, Exp3, Thompson Sampling, Gittins Index), stochastic/adversarial/Markovian/restless bandits, online learning, exploration-exploitation tradeoffs
-
-### AI Engineering
-RAG systems (BM25, FAISS, hybrid retrieval), context engineering, agentic workflows (LangGraph), prompt engineering, LLM API integration (Gemini, Mistral), voice AI pipelines (Whisper, Kokoro TTS)
-
-### Natural Language Processing
-Transformer fine-tuning (DistilRoBERTa), embedding models (EmbeddingGemma-300m), cross-encoder reranking (BAAI), sarcasm detection, query rewriting, intent classification
-
-### Online Algorithms
-Online optimization, online primal-dual framework, learning-augmented algorithms, competitive analysis, online convex optimization, algorithms beyond worst-case analysis
-
-### Mixed Reality / XR
-Meta Quest development, multimodal XR workflows, Wit.ai voice input, Gemini integration, published apps on Meta Quest Store
-
-### Programming Languages & Tools
-Python, C++, Java, JavaScript, HTML/CSS, PyTorch, TensorFlow, HuggingFace, NumPy, Pandas, scikit-learn, FAISS, LangGraph, FastAPI, Node.js, Arduino, MATLAB
-
----
-
-## Awards & Honors
-
-- Alberta Graduate Excellence Scholarship (AGES)
-- Summa Cum Laude, University of Alberta
-
-## Research Affiliations
-
-- Alberta Machine Intelligence Institute (Amii): Online learning and algorithms research
-- SODALab, University of Alberta: Multi-armed bandits and reinforcement learning research under Dr. Xiaoqi Tan
-- ThorMed Innovation: NIH-funded medical imaging research
-- eXRealityAI: Production AI systems for mixed reality
-
----
-
-## Frequently Asked Questions
-
-Q: Who is Henry Vu?
-A: Henry Vu is a Machine Learning engineer and AI researcher, currently a Computer Science graduate student at UT Dallas specializing in MLSys. He is a founding ML engineer at eXRealityAI building production AI systems for mixed reality, and a computer vision engineer at ThorMed Innovation working on NIH-funded medical imaging research. He graduated summa cum laude from the University of Alberta.
-
-Q: What does Henry Vu research?
-A: Henry Vu's research spans ML Systems (efficient LLM serving and training), computer vision (medical image segmentation with self-supervised learning), reinforcement learning (multi-armed bandits across stochastic, adversarial, and restless settings), and AI engineering (RAG systems, context engineering, agentic workflows).
-
-Q: Where did Henry Vu study?
-A: Henry Vu graduated summa cum laude from the University of Alberta with a B.Sc. in Computing Science, where he was awarded the Alberta Graduate Excellence Scholarship (AGES). He is currently pursuing an M.S. in Computer Science at the University of Texas at Dallas, focusing on Machine Learning Systems.
-
-Q: What has Henry Vu built?
-A: Notable systems include a voice-to-voice RAG system achieving sub-10s latency on NVIDIA Jetson, the GardenXR app (5/5 stars on Meta Quest Store), NIH-funded medical imaging pipelines achieving 95.99% Dice score, and multi-agent AI systems using LangGraph. He has 30+ technical projects spanning ML, web, and systems.
-
-Q: What is Henry Vu's blog about?
-A: Henry Vu writes deep-dive technical content at henryvu.blog about AI engineering (context engineering for LLMs, RAG systems, agent architectures), ML systems (inference optimization, serving infrastructure), and reinforcement learning (multi-armed bandits, exploration-exploitation). His newsletter has 50,000+ readers.
-
-Q: How can I contact Henry Vu?
-A: Through his portfolio contact form at henryvu.io, on X/Twitter at @HenryVu27, on LinkedIn at linkedin.com/in/henry-vu27, or on GitHub at github.com/HenryVu27.
+Contact form at https://henryvu.io/#contact. GitHub, LinkedIn, and X links above.
