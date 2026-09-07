@@ -1,6 +1,6 @@
 # Henry Vu
 
-> Founding machine learning engineer at eXRealityAI in Dallas, Texas, and an M.Sc. student
+> Machine learning engineer at eXRealityAI in Dallas, Texas, and an M.Sc. student
 > in Computer Science at the University of Texas at Dallas (expected Summer 2027).
 > Knowledge graphs, retrieval, and evaluation for a Meta Quest repair app; voice and vision
 > models at the edge; GardenXR on the Meta Horizon Store; NIH-funded ultrasound segmentation.
@@ -18,8 +18,8 @@
 
 ## About
 
-Henry Vu is the founding machine learning engineer at eXRealityAI in Dallas, where he has
-been the first engineer since 2025, and is finishing an M.Sc. in Computer Science at UT Dallas,
+Henry Vu is a machine learning engineer at eXRealityAI in Dallas, where he was the first
+engineer, and is finishing an M.Sc. in Computer Science at UT Dallas,
 expected Summer 2027. Before that he did a B.Sc. Honors in Computing Science at the University
 of Alberta, graduating summa cum laude.
 
@@ -36,7 +36,8 @@ bandits, and over time moved toward the gap between theory and things that actua
 
 ## Where he has worked
 
-- Founding Machine Learning Engineer, eXRealityAI, Dallas, Aug 2025 to now. Knowledge graph,
+- Founding Machine Learning Engineer, eXRealityAI, Dallas, Aug 2025 to now. Owns XR Auto Service
+  (hands-free repair guidance on a headset) and Smart DVI (AI-guided vehicle inspections). Knowledge graph,
   retrieval layer, and CI evaluation harness for a Meta Quest 3 automotive repair app (correct
   procedure ranked first 92 percent of the time on an expert-written test set); a voice-to-voice
   assistant running entirely on NVIDIA Jetson Orin (Whisper, hybrid BM25 and FAISS retrieval,
@@ -54,6 +55,10 @@ bandits, and over time moved toward the gap between theory and things that actua
 
 ## Projects
 
+- XR Auto Service: hands-free, step-by-step diagnostics and repair guidance for technicians on a
+  headset, at eXRealityAI. https://exreality.ai/xr-auto-service.php
+- Smart DVI: AI-guided vehicle inspection with hands-free photo and video capture, voice input, and
+  an advisor-ready report, at eXRealityAI. https://exreality.ai/smartdvi.php
 - DatDai: question answering over Vietnamese land law, live on Cloud Run, with an amendment graph
   and a citation verifier. https://github.com/HenryVu27/DatDai
 - ADHD Coaching Agent: LangGraph ReAct agent with guardrail gates, hybrid retrieval, four-tier

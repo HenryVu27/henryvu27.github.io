@@ -52,7 +52,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 .skip { position: absolute; left: -999px; top: 0; padding: .5em 1em; background: var(--raised); color: var(--ink); z-index: 100; }
 .skip:focus { left: 12px; top: 12px; }
-.sc, .rh, .hero-where, .hero-links, .when, .entry-dates, .tags, .colophon, .earlier-toggle, .theme-toggle, .year, .links {
+.sc, .rh, .hero-where, .hero-links, .when, .entry-dates, .colophon, .earlier-toggle, .theme-toggle, .year {
   font-family: var(--fsc); letter-spacing: .1em; font-size: 15px;
 }
 
@@ -78,7 +78,7 @@ body::after {
 /* ---------- Running head ---------- */
 .rh {
   position: absolute; top: 0; left: 0; right: 0; z-index: 3;
-  display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+  display: flex; justify-content: flex-end; align-items: baseline; gap: 24px;
   max-width: var(--col); margin: 0 auto; padding: 22px var(--pad) 14px;
   color: rgba(241,228,205,.82);
 }
@@ -114,15 +114,15 @@ body::after {
 /* ---------- Page and sections ---------- */
 .page { max-width: var(--col); margin: 0 auto; padding: 0 var(--pad); animation: rise .45s cubic-bezier(.23,1,.32,1) both; }
 @keyframes rise { from { opacity: 0; transform: translateY(6px); } }
-.sec { padding-top: 48px; scroll-margin-top: 24px; }
-.sec h2 { font-family: var(--fd); font-weight: 400; font-size: 36px; line-height: 1.1; margin-bottom: 20px; }
+.sec { padding-top: 36px; scroll-margin-top: 24px; }
+.sec h2 { font-family: var(--fd); font-weight: 400; font-size: 36px; line-height: 1.1; margin-bottom: 16px; }
 .prose { max-width: 62ch; }
 .prose p + p { margin-top: .9em; }
-.dinkus { text-align: center; font-family: var(--forn); font-size: 1.35em; line-height: 1; color: var(--gold); opacity: .75; margin: 52px 0 4px; }
+.dinkus { text-align: center; font-family: var(--forn); font-size: 1.35em; line-height: 1; color: var(--gold); opacity: .75; margin: 40px 0 0; }
 
 /* ---------- Work ---------- */
 .work { list-style: none; margin: 0; padding: 0; }
-.work > li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 20px; padding: 18px 0; border-top: 1px solid var(--rule); }
+.work > li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 20px; padding: 14px 0; border-top: 1px solid var(--rule); }
 .work > li:last-child { border-bottom: 1px solid var(--rule); }
 .when { color: var(--gold); opacity: .85; padding-top: .3em; }
 .entry h3 { font-family: var(--fb); font-weight: 500; font-size: 1.05em; line-height: 1.3; }
@@ -134,21 +134,20 @@ body::after {
 .entry li { position: relative; padding-left: 1rem; color: var(--text-2); font-size: .95em; line-height: 1.5; margin-bottom: .35em; }
 .entry li::before { content: ""; position: absolute; left: 0; top: .72em; width: 3px; height: 3px; border-radius: 50%; background: var(--muted); opacity: .6; }
 
-/* ---------- Projects ---------- */
-.proj { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
-.proj > li { padding: 14px 0; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 4px; }
-.proj h3 { font-family: var(--fb); font-weight: 500; font-size: 1.02em; line-height: 1.3; }
-.proj h3 a { text-decoration: none; }
-.proj h3 a:hover { text-decoration: underline; }
-.proj p { color: var(--text-2); font-size: .9em; }
-.tags, .links { color: var(--muted); letter-spacing: .06em; font-size: 14px; }
-.links a { margin-right: 1em; }
-.earlier-toggle { display: block; margin: 20px 0 0; padding: 8px 0; color: var(--link); border-bottom: 1px solid transparent; }
+/* ---------- Projects: a contents page ---------- */
+.toc { list-style: none; margin: 0; padding: 0; }
+.toc li { display: flex; align-items: baseline; gap: .55em; padding: 7px 0; }
+.toc .t { font-weight: 500; flex-shrink: 0; color: var(--ink); }
+.toc .t a { text-decoration: none; }
+.toc .t a:hover { text-decoration: underline; }
+.toc i { color: var(--text-2); font-size: .92em; min-width: 0; }
+.toc i:empty { display: none; }
+.toc .leader { flex: 1; min-width: 28px; border-bottom: 1px dotted var(--border); opacity: .55; transform: translateY(-.3em); }
+.toc .year { flex-shrink: 0; color: var(--muted); }
+.toc .also { flex-shrink: 0; font-family: var(--fsc); letter-spacing: .08em; font-size: 14px; margin-left: .4em; }
+.earlier-toggle { display: block; margin: 16px 0 0; padding: 6px 0; color: var(--link); border-bottom: 1px solid transparent; }
 .earlier-toggle:hover { border-bottom-color: currentColor; }
-.earlier { list-style: none; margin: 12px 0 0; padding: 0; }
-.earlier li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-top: 1px solid var(--rule); font-size: .95em; }
-.earlier li:last-child { border-bottom: 1px solid var(--rule); }
-.earlier .year { color: var(--muted); flex-shrink: 0; }
+#earlier { margin-top: 10px; }
 
 /* ---------- Contact ---------- */
 .contact-note { color: var(--text-2); font-style: italic; margin-bottom: 20px; }
@@ -173,7 +172,7 @@ body::after {
 #form-status.error { color: var(--accent); }
 
 /* ---------- Colophon ---------- */
-.colophon { text-align: center; padding: 64px var(--pad) 40px; color: var(--muted); line-height: 2; }
+.colophon { text-align: center; padding: 56px var(--pad) 40px; color: var(--muted); line-height: 2; }
 .colophon p { margin: 0; }
 .social { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; }
 .social a { color: inherit; text-decoration: none; }
@@ -207,7 +206,10 @@ body::after {
   .rh { flex-direction: column; align-items: flex-start; gap: 10px; }
   .rh-nav { gap: 18px; }
   .work > li { grid-template-columns: 1fr; gap: 4px; }
-  .proj { grid-template-columns: 1fr; }
+  .toc li { flex-wrap: wrap; row-gap: 0; }
+  .toc .leader { display: none; }
+  .toc i { flex-basis: 100%; order: 3; }
+  .toc .year { margin-left: auto; }
   .life-entry, .life-entry:nth-child(even) { flex-direction: column; gap: 16px; }
 }
 @media (max-width: 480px) { .hero { min-height: 520px; } .sec h2 { font-size: 32px; } }
