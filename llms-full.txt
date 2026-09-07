@@ -1,6 +1,6 @@
 # Henry Vu (full)
 
-Machine learning engineer at eXRealityAI in Dallas, Texas (its first engineer), and an M.Sc. student in
+Machine learning engineer at eXRealityAI in Dallas, Texas, and an M.Sc. student in
 Computer Science at the University of Texas at Dallas, expected Summer 2027. This file is the
 complete text of https://henryvu.io/ for language models and search engines.
 
@@ -15,24 +15,20 @@ complete text of https://henryvu.io/ for language models and search engines.
 
 ## About
 
-Hey, I'm Henry. I'm a machine learning engineer at eXRealityAI in Dallas, where I was the first
-engineer, and I'm finishing my M.Sc. in Computer Science at UT Dallas,
+Hey, I'm Henry. I'm a machine learning engineer at eXRealityAI in Dallas, and I'm finishing my M.Sc. in Computer Science at UT Dallas,
 expected Summer 2027. Before that I did my B.Sc. Honors in Computing Science at the University of
 Alberta.
 
-At eXReality I build the spatial AI platform behind XR Auto Service and Smart DVI, two products
-for auto shops, end to end apart from the backend cloud plumbing. The platform puts an agent on the
-technician's headset. It sees what they see, walks them through a diagnosis or an inspection one
-step at a time, answers questions from a repair knowledge graph, and writes up the result for the
-service advisor. I also work on inference at the edge, running voice and vision models locally on NVIDIA
+At eXReality I build XR Auto Service and Smart DVI, a spatial AI platform for auto shops. It puts
+an agent on a technician's headset that guides them through a repair or an inspection and answers
+questions from a repair knowledge graph. I also work on inference at the edge, running voice and vision models locally on NVIDIA
 Jetson and Apple silicon, and I shipped GardenXR to the Meta Horizon Store. On the research side,
 I work with Dr. Katherine Brown at UT Dallas on NIH-funded ultrasound segmentation, getting models
 small and robust enough to run on portable hardware.
 
-I got into this through math competitions. The tricks were fun, but what stuck was learning to
-take a messy problem and find the angle that cracks it. That led me to research at Amii on online
-algorithms and bandits, and over time toward the gap between theory and things that actually run.
-I write about that at henryvu.blog.
+On the research side I work with Dr. Katherine Brown at UT Dallas on NIH-funded ultrasound
+segmentation, and earlier I did online algorithms and bandits at Amii. I write about all of this
+at henryvu.blog.
 
 ## Where I've worked
 
@@ -85,8 +81,7 @@ I write about that at henryvu.blog.
 ## Projects
 
 - XR Auto Service. Hands-free, step-by-step diagnostics and repair guidance for automotive
-  technicians on a headset, which Henry built end to end at eXRealityAI apart from the backend cloud
-  infrastructure. https://exreality.ai/xr-auto-service.php
+  technicians on a headset, built by Henry at eXRealityAI. https://exreality.ai/xr-auto-service.php
 - Smart DVI. AI-guided digital vehicle inspection with hands-free photo and video capture, voice
   input, and an advisor-ready report, built at eXRealityAI. https://exreality.ai/smartdvi.php
 - DatDai. A question-answering assistant over Vietnamese land law, live on Cloud Run. Every answer
@@ -149,7 +144,7 @@ Compression (2019).
 
 ## Frequently asked
 
-Who is Henry Vu? A machine learning engineer at eXRealityAI in Dallas, its first engineer, and an M.Sc.
+Who is Henry Vu? A machine learning engineer at eXRealityAI in Dallas and an M.Sc.
 student in Computer Science at the University of Texas at Dallas, expected Summer 2027. He also
 works as a computer vision engineer at ThorMed Innovation on NIH-funded medical imaging, and
 graduated summa cum laude from the University of Alberta.
@@ -159,7 +154,7 @@ and vision models running at the edge on NVIDIA Jetson; mixed reality apps for M
 self-supervised learning and quantization for medical ultrasound segmentation. Earlier, online
 algorithms and multi-armed bandits at Amii and SODALab.
 
-Where does Henry Vu work? eXRealityAI, where he was the first engineer and builds XR Auto Service and Smart DVI end to end;
+Where does Henry Vu work? eXRealityAI, where he builds XR Auto Service and Smart DVI;
 ThorMed Innovation, as a computer vision engineer on NIH-funded bladder segmentation; and UT
 Dallas, as a teaching assistant for algorithms and data structures.
 
