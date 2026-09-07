@@ -50,7 +50,7 @@
       var open = earlier.hidden;
       earlier.hidden = !open;
       earlierBtn.setAttribute('aria-expanded', String(open));
-      earlierBtn.textContent = open ? 'Hide earlier work' : 'Show earlier work';
+      earlierBtn.textContent = open ? 'Show fewer projects' : 'Show all projects';
     });
   }
 

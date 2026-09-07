@@ -1,6 +1,6 @@
 # Henry Vu (full)
 
-Founding machine learning engineer at eXRealityAI in Dallas, Texas, and an M.Sc. student in
+Machine learning engineer at eXRealityAI in Dallas, Texas (its first engineer), and an M.Sc. student in
 Computer Science at the University of Texas at Dallas, expected Summer 2027. This file is the
 complete text of https://henryvu.io/ for language models and search engines.
 
@@ -15,8 +15,8 @@ complete text of https://henryvu.io/ for language models and search engines.
 
 ## About
 
-Hey, I'm Henry. I'm the founding machine learning engineer at eXRealityAI in Dallas, where I've
-been the first engineer since 2025, and I'm finishing my M.Sc. in Computer Science at UT Dallas,
+Hey, I'm Henry. I'm a machine learning engineer at eXRealityAI in Dallas, where I was the first
+engineer, and I'm finishing my M.Sc. in Computer Science at UT Dallas,
 expected Summer 2027. Before that I did my B.Sc. Honors in Computing Science at the University of
 Alberta.
 
@@ -83,6 +83,11 @@ I write about that at henryvu.blog.
 
 ## Projects
 
+- XR Auto Service. Hands-free, step-by-step diagnostics and repair guidance for automotive
+  technicians on a headset, built at eXRealityAI; Henry owns the knowledge graph, retrieval, and
+  evaluation behind it. https://exreality.ai/xr-auto-service.php
+- Smart DVI. AI-guided digital vehicle inspection with hands-free photo and video capture, voice
+  input, and an advisor-ready report, built at eXRealityAI. https://exreality.ai/smartdvi.php
 - DatDai. A question-answering assistant over Vietnamese land law, live on Cloud Run. Every answer
   cites the exact article and clause, an amendment graph pulls in the decrees that later changed a
   clause, and a citation verifier checks each cited article against what was actually retrieved,
@@ -143,7 +148,7 @@ Compression (2019).
 
 ## Frequently asked
 
-Who is Henry Vu? The founding machine learning engineer at eXRealityAI in Dallas and an M.Sc.
+Who is Henry Vu? A machine learning engineer at eXRealityAI in Dallas, its first engineer, and an M.Sc.
 student in Computer Science at the University of Texas at Dallas, expected Summer 2027. He also
 works as a computer vision engineer at ThorMed Innovation on NIH-funded medical imaging, and
 graduated summa cum laude from the University of Alberta.
@@ -153,7 +158,7 @@ and vision models running at the edge on NVIDIA Jetson; mixed reality apps for M
 self-supervised learning and quantization for medical ultrasound segmentation. Earlier, online
 algorithms and multi-armed bandits at Amii and SODALab.
 
-Where does Henry Vu work? eXRealityAI, where he is the founding machine learning engineer;
+Where does Henry Vu work? eXRealityAI, where he was the first engineer and works on XR Auto Service and Smart DVI;
 ThorMed Innovation, as a computer vision engineer on NIH-funded bladder segmentation; and UT
 Dallas, as a teaching assistant for algorithms and data structures.
 
