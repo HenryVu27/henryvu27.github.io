@@ -1,7 +1,7 @@
 # Lamplight Redesign, Design Spec
 
 Date: 2026-09-07
-Status: awaiting Henry's review
+Status: approved 2026-09-07 with two corrections (enrolled through Summer 2027; the portfolio is the complete record, the resume is the space-limited one)
 Mockup: https://claude.ai/code/artifact/9226cb6d-7f36-4d6f-ac57-d12293697731 (Direction B, revised)
 
 ## 1. Goal
@@ -23,21 +23,21 @@ Henry chose Direction B ("Lamplight") from three mocked directions and asked for
 | Scroll reveals, typing animation, bouncing chevron, hide-on-scroll header | Gone |
 | Font Awesome | Dropped. Social links become text in small caps; the theme toggle becomes the word "Night" or "Day" |
 
-## 3. Open decisions, with the default the build will use
+## 3. Content principle and settled decisions
 
-Henry can change any of these by replying; otherwise the default ships.
+**The resume is space-limited; the portfolio is the complete record.** Where the resume omits something real, the site keeps it. Where the resume is newer and more accurate (titles, the eXRealityAI story, the ThorMed numbers), the site adopts it and adds the rest.
 
-1. **Default theme.** Default: night (walnut). Day (vellum) is one click away and persists in localStorage.
-2. **Grad student or graduate.** The resume (newest source) prints M.Sc. Sep 2024 to May 2026; an older interview note says Summer 2027. Default: follow the resume and stop saying "grad student" anywhere. About text will say "I did my M.Sc. at UT Dallas". If Henry is still enrolled, one sentence changes.
-3. **UT Dallas and UAlberta teaching roles.** Not on the resume. Default: drop from the timeline.
-4. **Amii and SODALab.** The resume folds them into one Amii entry, Apr 2022 to May 2024. Default: one entry, with Dr. Xiaoqi Tan credited in the text.
-5. **Edge inference claims (Jetson, Apple MLX, voice RAG).** Absent from the resume. Default: drop from the timeline and About; the eXRealityAI story becomes knowledge graph, retrieval and evaluation, GardenXR.
-6. **The typing joke ("sentient sand").** Default: retired; the subtitle is the static line "I'm exploring how to build machines that can learn."
-7. **GardenXR figure.** Default: "twenty thousand people used it in the first two days" (two sources agree). The "5/5 stars, one rating" claim is removed.
-8. **Project pruning.** Default tiers in section 6. Ten old school projects are dropped from the page entirely.
-9. **StitchKit.** No GitHub remote yet. Default: listed in the second tier without a link, described as engineering for one non-technical operator. Feature it once it is pushed.
-10. **DatDai repo name.** The remote is `HenryVu27/Urban`. Default: link to it as is (GitHub redirects after a rename).
-11. **OEM name.** Default: "an OEM pilot", matching the current resume.
+1. **Default theme.** Night (walnut). Day (vellum) is one click away and persists in localStorage.
+2. **Enrollment.** Henry is enrolled in the M.Sc. at UT Dallas through Summer 2027 on a lighter course load. The site says so, and the structured data keeps the student affiliation alongside the job title.
+3. **Teaching roles.** Both stay: UT Dallas (Jan 2025 to now) and University of Alberta (Sep 2023 to May 2024).
+4. **Amii and SODALab.** Two entries, as on the current site: Amii (Apr 2022 to May 2023) and SODALab with Dr. Xiaoqi Tan (Dec 2023 to May 2024).
+5. **Edge inference work.** Stays. The eXRealityAI entry carries both the resume's knowledge-graph, retrieval, evaluation, and GardenXR story and the earlier voice RAG on Jetson Orin, the XR workflows, and the retrieval pipeline work.
+6. **The typing joke ("sentient sand").** Retired; the subtitle is the static line "I'm exploring how to build machines that can learn."
+7. **GardenXR figure.** "Twenty thousand people used it in the first two days" (two sources agree). The "5/5 stars, one rating" claim is removed.
+8. **Projects.** Nothing is dropped. Three tiers: Featured and More in the catalogue, Earlier collapsed behind one control.
+9. **StitchKit.** No GitHub remote yet, so it is listed without a link. Feature it once it is pushed.
+10. **DatDai repo name.** The remote is `HenryVu27/Urban`; link to it as is (GitHub redirects after a rename).
+11. **OEM name.** "An OEM pilot", matching the current resume.
 12. **Blog index.** Out of scope for this pass. A follow-up should give it the same running head, small caps, and dinkus.
 
 ## 4. Visual system
@@ -137,9 +137,9 @@ All copy below is final unless an open decision in section 3 changes it. Voice: 
 
 ### About
 
-Hey, I'm Henry. I'm the founding machine learning engineer at [eXRealityAI](https://exreality.ai/) in Dallas, where I've been the first engineer since 2025. Before that I did my B.Sc. Honors in Computing Science at the University of Alberta, and my M.Sc. in Computer Science at UT Dallas.
+Hey, I'm Henry. I'm the founding machine learning engineer at [eXRealityAI](https://exreality.ai/) in Dallas, where I've been the first engineer since 2025, and I'm finishing my M.Sc. in Computer Science at UT Dallas, expected Summer 2027. Before that I did my B.Sc. Honors in Computing Science at the University of Alberta.
 
-At eXReality I build the parts of an AI product that decide whether it can be trusted: the knowledge graph behind a Meta Quest 3 repair app for an automotive pilot, the retrieval layer that finds the right procedure for a technician's question, and the evaluation harness that scores it in CI. I also shipped [GardenXR](https://www.meta.com/experiences/gardenxr/24200709416226235/) to the Meta Horizon Store. On the research side, I work with [Dr. Katherine Brown](https://be.utdallas.edu/people/faculty/katherine-brown/) at UT Dallas on NIH-funded ultrasound segmentation, getting models small and robust enough to run on portable hardware.
+At eXReality I build the parts of an AI product that decide whether it can be trusted: the knowledge graph behind a Meta Quest 3 repair app for an automotive pilot, the retrieval layer that finds the right procedure for a technician's question, and the evaluation harness that scores it in CI. I also work on inference at the edge, running voice and vision models locally on NVIDIA Jetson and Apple silicon, and I shipped [GardenXR](https://www.meta.com/experiences/gardenxr/24200709416226235/) to the Meta Horizon Store. On the research side, I work with [Dr. Katherine Brown](https://be.utdallas.edu/people/faculty/katherine-brown/) at UT Dallas on NIH-funded ultrasound segmentation, getting models small and robust enough to run on portable hardware.
 
 I got into this through math competitions. The tricks were fun, but what stuck was learning to take a messy problem and find the angle that cracks it. That led me to research at [Amii](https://www.amii.ca/) on online algorithms and bandits, and over time toward the gap between theory and things that actually run. I write about that at [henryvu.blog](https://www.henryvu.blog/).
 
@@ -147,14 +147,32 @@ I got into this through math competitions. The tricks were fun, but what stuck w
 
 ### Where I've worked
 
-**2025 to now. Founding Machine Learning Engineer at eXRealityAI.**
-Built the knowledge graph and retrieval layer behind a Meta Quest 3 automotive repair app for an OEM pilot, and the evaluation harness that scores it in CI: on an expert-written test set it puts the correct procedure first 92 percent of the time. Shipped GardenXR to the Meta Horizon Store, and traced a run of bad production answers to a vendor proxy that was silently dropping images.
+Each entry: year in the small-caps column, title with the organization in italic, the date range in small caps under the title, then two to four plain sentences as a list with the small dot marker. Year markers: 2025, 2024, 2023, 2022.
 
-**2025 to now. Computer Vision Engineer at ThorMed Innovation.**
-Modeling lead on an NIH-funded project to segment the bladder in clinical ultrasound, so patients can be monitored without a catheter. Pretrained U-Net and SimSiam encoders on 9.2K ultrasound images, then got the model onto portable hardware with 4-bit quantization, where the domain-pretrained weights held up about seven times better than ImageNet weights.
+**2025. Founding Machine Learning Engineer at eXRealityAI. Aug 2025 to now.**
+- Built the knowledge graph and retrieval layer behind a Meta Quest 3 automotive repair app for an OEM pilot, and the evaluation harness that scores it in CI. On an expert-written test set it puts the correct procedure first 92 percent of the time.
+- Built a voice-to-voice assistant that runs entirely on an NVIDIA Jetson Orin: Whisper for speech in, hybrid BM25 and FAISS retrieval, a quantized Mistral 7B, and Kokoro for speech out.
+- Multimodal XR workflows on Gemini, YOLOv9, and Wit.ai voice input across two applications, and a retrieval pipeline (EmbeddingGemma, cross-encoder reranking, query rewriting) that cut retrieval work by roughly half.
+- Shipped GardenXR to the Meta Horizon Store, traced a run of bad production answers to a vendor proxy that was silently dropping images, and mentored the team on LLM integration.
 
-**2022 to 2024. Research Assistant at Amii.**
-Online optimization with the primal-dual framework, and algorithms that use machine-learned predictions without giving up worst-case guarantees. Surveyed and benchmarked bandit algorithms (UCB, Exp3, Gittins index) across adversarial, Markovian, and restless settings with Dr. Xiaoqi Tan.
+**2025. Computer Vision Engineer at ThorMed Innovation. Feb 2025 to now.**
+- Modeling lead on an NIH-funded project to segment the bladder in clinical ultrasound, so patients can be monitored without a catheter.
+- Pretrained U-Net and SimSiam encoders on 9.2K ultrasound images before fine-tuning, reaching 96 percent Dice.
+- Got the model onto portable hardware with 4-bit quantization, where the domain-pretrained weights held up about seven times better than ImageNet weights, and built the pipeline that extracts and cleans frames from clinical ultrasound video.
+
+**2025. Teaching Assistant at UT Dallas. Jan 2025 to now.**
+- Algorithms and data structures: weekly office hours, seminar and exam material, and technical reviews for more than a hundred students.
+
+**2024. Undergraduate Research Assistant at SODALab. Dec 2023 to May 2024.**
+- A theoretical and empirical survey of multi-armed bandits across stochastic, adversarial, Markovian, and restless settings, with Dr. Xiaoqi Tan.
+- Simulations comparing UCB, Exp3, Thompson sampling, and the Gittins index.
+
+**2023. Teaching Assistant at the University of Alberta. Sep 2023 to May 2024.**
+- Algorithms and data structures for a few hundred students: office hours, weekly problem-solving sessions, and grading.
+
+**2022. Undergraduate Researcher, Online Learning, at Amii. Apr 2022 to May 2023.**
+- Online optimization with the primal-dual framework: conversion, knapsack, and bipartite matching problems where decisions are made before all the input arrives.
+- Algorithms that use machine-learned predictions to beat worst-case bounds when the predictions are good, without losing the guarantees when they are not.
 
 ### Projects
 
@@ -175,15 +193,15 @@ Three tiers. Featured and More render in the two-column catalogue; Earlier is a 
 - **VoiceBridge.** Real-time Vietnamese-to-Russian speech translation over push-to-talk, a two-day proof of concept for a director who needed to talk across a language barrier. Tags: FastAPI, Deepgram, DeepL. Link: github.com/HenryVu27/voice-agent
 - **EEG Decoding: a Multi-Modal Approach.** Existing card text. Link unchanged.
 - **Modeling Political Sarcasm.** Existing card text. Link unchanged.
-- **Multi-armed Bandits and Online Learning.** Survey, simulations, and seminar slides from the Amii work. Link: github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning
+- **Multi-armed Bandits and Online Learning.** Survey, simulations, and seminar slides from the Amii and SODALab work. Link: github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning
+- **Polyps and Breast Ultrasound Segmentation.** Existing card text. Link unchanged.
+- **A Survey of Geometric Set Cover.** Existing card text. Links unchanged.
 
-**Earlier (collapsed)**
+**Earlier (collapsed behind "Show earlier work")**
 
-One line each, existing text: Polyps and Breast Ultrasound Segmentation; A Survey of Geometric Set Cover; ViT and Contrastive Representation Learning; VAE and Diffusion for FashionMNIST; Yahoo's News Recommendation with MABs; TFT Rolling Odds Calculator; Online Algorithms seminar slides.
+One line each, existing text and links, newest first: ViT and Contrastive Representation Learning; VAE and Diffusion for FashionMNIST; Yahoo's News Recommendation with MABs; TFT Rolling Odds Calculator; Online Algorithms seminar slides; BTS Concert Ticket Buying Simulator; Valentine Surprise; This Web Portfolio; UManitoba Navigator; HabiTrak; Toronto Neighbourhoods Data Analysis; Gomoku Solver; Sudoku Solver; Edmonton Restaurant Finder; Encrypted Arduino Communication; Huffman Coding.
 
-**Dropped**
-
-This Web Portfolio, BTS Concert Ticket Buying Simulator, Valentine Surprise, UManitoba Navigator, HabiTrak, Toronto Neighbourhoods Data Analysis, Gomoku Solver, Sudoku Solver, Encrypted Arduino Communication, Huffman Coding.
+Nothing is dropped.
 
 ### Get in touch
 
@@ -198,8 +216,8 @@ GitHub, LinkedIn, X, Blog.
 ## 6. Head, SEO, structured data
 
 - `<title>`: Henry Vu, Machine Learning Engineer in Dallas
-- Meta description and og/twitter descriptions: "Henry Vu is the founding machine learning engineer at eXRealityAI in Dallas. Knowledge graphs, retrieval and evaluation for a Meta Quest repair app; GardenXR on the Meta Horizon Store; NIH-funded ultrasound segmentation at UT Dallas."
-- JSON-LD Person: `jobTitle` "Founding Machine Learning Engineer"; `worksFor` eXRealityAI and ThorMed Innovation; `alumniOf` University of Alberta and UT Dallas; `hasOccupation` rewritten to match the timeline. Remove `aggregateRating`, the "5/5 stars" FAQ answer, "30+ technical projects", "Alberta Graduate Excellence Scholarship", and every "AI researcher" or "graduate student" claim. Keep the FAQ block but rewrite each answer from the copy above.
+- Meta description and og/twitter descriptions: "Henry Vu is the founding machine learning engineer at eXRealityAI in Dallas and an M.Sc. student at UT Dallas. Knowledge graphs, retrieval and evaluation for a Meta Quest repair app; voice and vision models at the edge; GardenXR on the Meta Horizon Store; NIH-funded ultrasound segmentation."
+- JSON-LD Person: `jobTitle` "Founding Machine Learning Engineer"; `worksFor` eXRealityAI, ThorMed Innovation, and UT Dallas (teaching assistant); `affiliation` UT Dallas (M.Sc. student, expected 2027); `alumniOf` University of Alberta only; `hasOccupation` rewritten to match the timeline. Remove `aggregateRating`, the "5/5 stars" FAQ answer, "30+ technical projects", "Alberta Graduate Excellence Scholarship", and every "AI researcher" or "graduate student" claim. Keep the FAQ block but rewrite each answer from the copy above.
 - `theme-color`: `#1f1811`.
 - `og:image`: regenerate `assets/og-image.png` from the new hero (painting, name in IM Fell English) at 1200 by 630.
 - `sitemap.xml` and `llms.txt`: drop the Life URLs, refresh the summary text. `llms-full.txt` regenerated from the new copy.
