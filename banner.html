@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>X Banner - 1500x500</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #333;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .banner {
+    width: 1500px;
+    height: 500px;
+    background: #1c1b19;
+    position: relative;
+    overflow: hidden;
+  }
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+</head>
+<body>
+<div class="banner">
+  <svg viewBox="0 0 1500 500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Subtle grid fragments -->
+    <g stroke="#e8e2d8" fill="none" opacity="0.04">
+      <!-- Horizontal grid lines -->
+      <line x1="0" y1="100" x2="1500" y2="100" stroke-width="0.5"/>
+      <line x1="0" y1="200" x2="1500" y2="200" stroke-width="0.5"/>
+      <line x1="0" y1="300" x2="1500" y2="300" stroke-width="0.5"/>
+      <line x1="0" y1="400" x2="1500" y2="400" stroke-width="0.5"/>
+      <!-- Vertical grid lines -->
+      <line x1="300" y1="0" x2="300" y2="500" stroke-width="0.5"/>
+      <line x1="600" y1="0" x2="600" y2="500" stroke-width="0.5"/>
+      <line x1="900" y1="0" x2="900" y2="500" stroke-width="0.5"/>
+      <line x1="1200" y1="0" x2="1200" y2="500" stroke-width="0.5"/>
+    </g>
+
+    <!-- Scattered thin diagonal lines - right side cluster -->
+    <g stroke="#e8e2d8" fill="none" stroke-width="0.8">
+      <line x1="950" y1="60" x2="1120" y2="180" opacity="0.12"/>
+      <line x1="1000" y1="40" x2="1200" y2="160" opacity="0.08"/>
+      <line x1="1100" y1="90" x2="1300" y2="240" opacity="0.10"/>
+      <line x1="1050" y1="150" x2="1250" y2="320" opacity="0.06"/>
+      <line x1="1200" y1="60" x2="1400" y2="200" opacity="0.09"/>
+      <line x1="1150" y1="180" x2="1350" y2="350" opacity="0.07"/>
+    </g>
+
+    <!-- Scattered thin diagonal lines - left-center cluster -->
+    <g stroke="#e8e2d8" fill="none" stroke-width="0.8">
+      <line x1="400" y1="280" x2="580" y2="420" opacity="0.10"/>
+      <line x1="450" y1="300" x2="650" y2="440" opacity="0.07"/>
+      <line x1="350" y1="320" x2="520" y2="460" opacity="0.08"/>
+      <line x1="500" y1="250" x2="700" y2="390" opacity="0.06"/>
+    </g>
+
+    <!-- Thin horizontal lines - architectural feel -->
+    <g stroke="#e8e2d8" fill="none" stroke-width="0.6">
+      <line x1="800" y1="140" x2="1050" y2="140" opacity="0.15"/>
+      <line x1="820" y1="155" x2="980" y2="155" opacity="0.10"/>
+      <line x1="700" y1="350" x2="900" y2="350" opacity="0.12"/>
+      <line x1="720" y1="365" x2="850" y2="365" opacity="0.08"/>
+      <line x1="200" y1="120" x2="380" y2="120" opacity="0.10"/>
+      <line x1="210" y1="135" x2="340" y2="135" opacity="0.07"/>
+    </g>
+
+    <!-- Small dots scattered -->
+    <g fill="#e8e2d8">
+      <!-- Right area dots -->
+      <circle cx="1120" cy="180" r="2" opacity="0.18"/>
+      <circle cx="1300" cy="240" r="1.5" opacity="0.12"/>
+      <circle cx="1200" cy="160" r="1.5" opacity="0.10"/>
+      <circle cx="1400" cy="200" r="2" opacity="0.14"/>
+      <circle cx="950" cy="60" r="1.5" opacity="0.10"/>
+      <circle cx="1050" cy="300" r="1.8" opacity="0.08"/>
+      <!-- Center dots -->
+      <circle cx="750" cy="250" r="1.5" opacity="0.10"/>
+      <circle cx="680" cy="190" r="1.2" opacity="0.08"/>
+      <circle cx="820" cy="310" r="1.2" opacity="0.08"/>
+      <!-- Left area dots -->
+      <circle cx="400" cy="280" r="1.5" opacity="0.12"/>
+      <circle cx="580" cy="420" r="2" opacity="0.15"/>
+      <circle cx="350" cy="180" r="1.2" opacity="0.08"/>
+      <circle cx="200" cy="120" r="1.5" opacity="0.10"/>
+      <circle cx="150" cy="380" r="1.2" opacity="0.06"/>
+    </g>
+
+    <!-- Vermillion accent marks - sparse, intentional -->
+    <g fill="#8b2500">
+      <circle cx="1120" cy="180" r="3" opacity="0.55"/>
+      <circle cx="580" cy="420" r="2.5" opacity="0.45"/>
+      <circle cx="950" cy="60" r="2" opacity="0.35"/>
+      <circle cx="200" cy="120" r="2.5" opacity="0.40"/>
+      <circle cx="1400" cy="200" r="2" opacity="0.30"/>
+    </g>
+
+    <!-- Vermillion accent lines at intersections -->
+    <g stroke="#8b2500" fill="none" stroke-width="1">
+      <line x1="1115" y1="175" x2="1125" y2="185" opacity="0.30"/>
+      <line x1="575" y1="415" x2="585" y2="425" opacity="0.25"/>
+    </g>
+
+    <!-- Fine geometric fragments - partial rectangles -->
+    <g stroke="#e8e2d8" fill="none" stroke-width="0.5">
+      <!-- Partial rectangle top-right -->
+      <polyline points="1050,80 1050,120 1090,120" opacity="0.10"/>
+      <!-- Partial rectangle center -->
+      <polyline points="700,220 700,260 740,260" opacity="0.08"/>
+      <!-- Partial rectangle bottom-left -->
+      <polyline points="300,360 300,400 340,400" opacity="0.08"/>
+      <!-- Partial rectangle far right -->
+      <polyline points="1350,280 1350,320 1390,320" opacity="0.06"/>
+    </g>
+
+    <!-- Small cross marks -->
+    <g stroke="#e8e2d8" stroke-width="0.6">
+      <line x1="1250" y1="97" x2="1250" y2="107" opacity="0.12"/>
+      <line x1="1245" y1="102" x2="1255" y2="102" opacity="0.12"/>
+      <line x1="650" y1="147" x2="650" y2="157" opacity="0.10"/>
+      <line x1="645" y1="152" x2="655" y2="152" opacity="0.10"/>
+      <line x1="480" y1="197" x2="480" y2="207" opacity="0.08"/>
+      <line x1="475" y1="202" x2="485" y2="202" opacity="0.08"/>
+    </g>
+
+    <!-- Subtle arc fragments -->
+    <g stroke="#e8e2d8" fill="none" stroke-width="0.5">
+      <path d="M 900 100 A 80 80 0 0 1 960 160" opacity="0.08"/>
+      <path d="M 550 350 A 60 60 0 0 0 600 400" opacity="0.06"/>
+      <path d="M 1300 300 A 50 50 0 0 1 1340 340" opacity="0.07"/>
+    </g>
+
+    <!-- Very subtle noise/texture dots -->
+    <g fill="#e8e2d8" opacity="0.04">
+      <circle cx="100" cy="50" r="1"/>
+      <circle cx="250" cy="450" r="1"/>
+      <circle cx="500" cy="100" r="1"/>
+      <circle cx="750" cy="450" r="1"/>
+      <circle cx="1000" cy="400" r="1"/>
+      <circle cx="1350" cy="450" r="1"/>
+      <circle cx="1450" cy="100" r="1"/>
+      <circle cx="50" cy="250" r="1"/>
+      <circle cx="1480" cy="350" r="1"/>
+      <circle cx="600" cy="50" r="1"/>
+      <circle cx="850" cy="50" r="1"/>
+      <circle cx="1100" cy="450" r="1"/>
+    </g>
+  </svg>
+</div>
+</body>
+</html>
