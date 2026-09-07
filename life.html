@@ -1,43 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="night">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life - Henry Vu</title>
     <meta name="description" content="Food, wine, and piano — things Henry Vu enjoys outside of code.">
     <link rel="canonical" href="https://henryvu.io/life.html">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(t==='morning-fog')t='day';if(t==='piano-symphony')t='night';if(t==='day'||t==='night')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&text=%E2%9D%A6%E2%9D%A7%E2%98%99%E2%98%9E&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=6">
 </head>
-<body>
-    <header>
-        <nav>
-            <div class="nav-content">
-                <a href="index.html" class="logo" style="text-decoration:none;">
-                    <span class="logo-text">HV</span>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="index.html#about">About</a></li>
-                    <li class="nav-dot">·</li>
-                    <li><a href="index.html#experience">Experience</a></li>
-                    <li class="nav-dot">·</li>
-                    <li><a href="index.html#projects">Projects</a></li>
-                    <li class="nav-dot">·</li>
-                    <li><a href="life.html">Life</a></li>
-                    <li class="nav-dot">·</li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li class="theme-toggle-btn">
-                        <button class="theme-toggle-icon" aria-label="Toggle dark mode">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                    </li>
-                </ul>
-            </div>
+<body class="life-page">
+    <header class="rh">
+        <a class="rh-name" href="index.html">Henry Vu</a>
+        <nav class="rh-nav" aria-label="Sections">
+            <a href="index.html#about">About</a>
+            <a href="index.html#work">Work</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#contact">Contact</a>
+            <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="true">Day</button>
         </nav>
     </header>
 
@@ -56,27 +40,16 @@
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <nav class="footer-nav">
-                <a href="index.html#about">About</a>
-                <span class="footer-divider">·</span>
-                <a href="index.html#experience">Experience</a>
-                <span class="footer-divider">·</span>
-                <a href="index.html#projects">Projects</a>
-                <span class="footer-divider">·</span>
-                <a href="life.html">Life</a>
-                <span class="footer-divider">·</span>
-                <a href="index.html#contact">Contact</a>
-            </nav>
-            <div class="social-links">
-                <a href="https://github.com/HenryVu27" target="_blank" title="GitHub" aria-label="Visit my GitHub profile"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" title="LinkedIn" aria-label="Visit my LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                <a href="https://x.com/HenryVu27" target="_blank" title="Twitter" aria-label="Visit my Twitter profile"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
+    <footer class="colophon">
+        <p>Set in IM Fell English and Crimson Pro</p>
+        <p class="social">
+            <a href="https://github.com/HenryVu27" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://x.com/HenryVu27" target="_blank" rel="noopener">X</a>
+            <a href="https://www.henryvu.blog/" target="_blank" rel="noopener">Blog</a>
+        </p>
     </footer>
 
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>
