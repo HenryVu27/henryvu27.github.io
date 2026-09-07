@@ -87,7 +87,7 @@ I write about that at henryvu.blog.
   cites the exact article and clause, an amendment graph pulls in the decrees that later changed a
   clause, and a citation verifier checks each cited article against what was actually retrieved,
   with no extra model call. Python, Gemini, Qdrant, Langfuse, Cloud Run.
-  https://github.com/HenryVu27/Urban
+  https://github.com/HenryVu27/DatDai
 - ADHD Coaching Agent. A coaching chatbot for parents of children with ADHD: a LangGraph ReAct agent
   between two guardrail gates, hybrid retrieval with a local cross-encoder reranker, four-tier
   memory, and an evaluation package with LLM judges and pairwise comparisons. Python, LangGraph,

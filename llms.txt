@@ -55,7 +55,7 @@ bandits, and over time moved toward the gap between theory and things that actua
 ## Projects
 
 - DatDai: question answering over Vietnamese land law, live on Cloud Run, with an amendment graph
-  and a citation verifier. https://github.com/HenryVu27/Urban
+  and a citation verifier. https://github.com/HenryVu27/DatDai
 - ADHD Coaching Agent: LangGraph ReAct agent with guardrail gates, hybrid retrieval, four-tier
   memory, and an evaluation package. https://github.com/HenryVu27/ADHDAgent
 - GardenXR: mixed-reality gardening app for Meta Quest on the Meta Horizon Store.
