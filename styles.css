@@ -90,7 +90,7 @@ body::after {
 
 /* ---------- Hero ---------- */
 .hero {
-  position: relative; min-height: 85vh; min-height: 85svh;
+  position: relative; min-height: 78vh; min-height: 78svh;
   display: flex; align-items: flex-end;
   background: #17120d url("assets/scholar.jpg") center 28% / cover no-repeat;
 }
@@ -102,11 +102,11 @@ body::after {
   background: linear-gradient(to bottom, rgba(18,12,7,.25) 0%, rgba(18,12,7,.52) 55%, rgba(18,12,7,.66) 100%);
   border-bottom: 1px solid var(--rule);
 }
-.hero-inner { position: relative; z-index: 2; width: 100%; max-width: var(--col); margin: 0 auto; padding: 200px var(--pad) 44px; }
-.hero-title { font-family: var(--fd); font-weight: 400; font-size: clamp(50px, 7vw, 72px); line-height: 1; color: #f7ecd8; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
-.hero-sub { font-style: italic; font-size: 24px; color: rgba(247,236,216,.92); margin: 14px 0 12px; max-width: 30ch; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
-.hero-where { color: rgba(241,228,205,.78); letter-spacing: .12em; }
-.hero-links { margin-top: 22px; display: flex; gap: 28px; letter-spacing: .12em; font-size: 16px; }
+.hero-inner { position: relative; z-index: 2; width: 100%; max-width: var(--col); margin: 0 auto; padding: 140px var(--pad) 52px; }
+.hero-title { font-family: var(--fd); font-weight: 400; font-size: clamp(56px, 7.5vw, 96px); line-height: 1; color: #f7ecd8; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
+.hero-sub { font-style: italic; font-size: clamp(22px, 2vw, 30px); color: rgba(247,236,216,.92); margin: 16px 0 12px; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
+.hero-where { color: rgba(241,228,205,.78); letter-spacing: .12em; font-size: 16px; }
+.hero-links { margin-top: 24px; display: flex; gap: 28px; letter-spacing: .12em; font-size: 17px; }
 .hero-links a { color: #e6c98a; text-decoration: none; }
 .hero-links a:hover { text-decoration: underline; }
 .hand { font-family: var(--forn); letter-spacing: 0; margin-right: .3em; }
@@ -202,7 +202,7 @@ body::after {
 @media (max-width: 760px) {
   body { font-size: 18px; }
   .hero { min-height: 70vh; min-height: 70svh; }
-  .hero-inner { padding-top: 150px; }
+  .hero-inner { padding-top: 140px; }
   .rh { flex-direction: column; align-items: flex-start; gap: 10px; }
   .rh-nav { gap: 18px; }
   .work > li { grid-template-columns: 1fr; gap: 4px; }
