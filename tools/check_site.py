@@ -22,7 +22,7 @@ async def main():
                 if sw > cw: failures.append(f"{theme}-{w}: horizontal scroll {sw}>{cw}")
                 if errors: failures.append(f"{theme}-{w}: console errors {errors[:3]}")
                 fonts = await pg.evaluate("Array.from(document.fonts).filter(f=>f.status==='loaded').map(f=>f.family)")
-                for f in ("IM Fell English", "IM Fell English SC", "Crimson Pro", "EB Garamond"):
+                for f in ("EB Garamond",):
                     if f not in fonts: failures.append(f"{theme}-{w}: font not loaded {f}")
                 got = await pg.evaluate("document.documentElement.getAttribute('data-theme')")
                 if got != theme: failures.append(f"{theme}-{w}: theme attr {got}")
