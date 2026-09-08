@@ -55,7 +55,7 @@ at henryvu.blog.
   held up about seven times better than ImageNet weights, and built the pipeline that extracts and
   cleans frames from clinical ultrasound video.
 
-### Teaching Assistant at UT Dallas, Jan 2025 to now
+### Teaching Assistant at UT Dallas, Jan 2025 to May 2025
 
 - Algorithms and data structures: weekly office hours, seminar and exam material, and technical
   reviews for more than a hundred students.

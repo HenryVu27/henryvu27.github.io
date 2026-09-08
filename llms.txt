@@ -43,7 +43,7 @@ segmentation, getting models small and robust enough to run on portable hardware
 - Computer Vision Engineer, ThorMed Innovation, Dallas, Feb 2025 to now. Modeling lead on an
   NIH-funded project to segment the bladder in clinical ultrasound. U-Net and SimSiam pretraining
   on 9.2K ultrasound images, 96 percent Dice, 4-bit quantization for portable hardware.
-- Teaching Assistant, UT Dallas, Jan 2025 to now. Algorithms and data structures.
+- Teaching Assistant, UT Dallas, Jan 2025 to May 2025. Algorithms and data structures.
 - Undergraduate Research Assistant, SODALab, University of Alberta, Dec 2023 to May 2024.
   Survey and simulations of multi-armed bandits with Dr. Xiaoqi Tan.
 - Teaching Assistant, University of Alberta, Sep 2023 to May 2024. Algorithms and data structures.
