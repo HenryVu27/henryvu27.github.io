@@ -55,7 +55,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .skip:focus { left: 12px; top: 12px; }
 
 /* real small caps from the self-hosted file */
-.rh, .hero-where, .hero-links, .entry-dates, .colophon, .earlier-toggle, .theme-toggle, .year, .toc .also, .field label, .send {
+.rh, .hero-where, .entry-dates, .colophon, .earlier-toggle, .theme-toggle, .year, .toc .also, .field label, .send {
   font-variant-caps: small-caps; letter-spacing: .08em; font-size: 18px;
 }
 
@@ -95,10 +95,6 @@ body::after {
 .hero-title { font-size: clamp(38px, 5vw, 56px); line-height: 1.1; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); }
 .hero-sub { font-style: italic; font-size: clamp(19px, 1.6vw, 23px); color: var(--text-2); margin: 20px 0 12px; }
 .hero-where { color: var(--muted); }
-.hero-links { margin-top: 26px; display: flex; gap: 32px; justify-content: center; }
-.hero-links a { color: var(--ink); text-decoration: none; }
-.hero-links a:hover { text-decoration: underline; }
-.hand { font-variant-caps: normal; letter-spacing: 0; margin-right: .3em; }
 
 /* ---------- Page and sections ---------- */
 .page { max-width: var(--col); margin: 0 auto; padding: 0 var(--pad); animation: rise .45s cubic-bezier(.23,1,.32,1) both; }
