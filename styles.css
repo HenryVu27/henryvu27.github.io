@@ -94,10 +94,8 @@ body::before {
 .entry h3 a { text-decoration: none; }
 .entry h3 a:hover { text-decoration: underline; }
 .entry-dates { display: block; color: var(--muted); font-size: 17px; margin-top: 3px; }
-.entry summary { position: relative; list-style: none; cursor: pointer; }
+.entry summary { list-style: none; cursor: pointer; }
 .entry summary::-webkit-details-marker { display: none; }
-.entry summary::before { content: "+"; position: absolute; left: -1.1em; top: .05em; color: var(--muted); font-size: .9em; transition: transform .2s ease; }
-.entry[open] summary::before { transform: rotate(45deg); }
 .entry summary:hover .role { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .16em; text-decoration-color: color-mix(in oklab, currentColor 40%, transparent); }
 .entry summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
