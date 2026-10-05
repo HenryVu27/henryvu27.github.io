@@ -1,8 +1,15 @@
 /* henryvu.io: set like the inside of a Penguin Classics paperback. One Garamond, cream paper, black ink. */
 
 /* ---------- Type: self-hosted so real small caps and old-style figures work ---------- */
-@font-face { font-family: "EB Garamond"; src: url("assets/fonts/ebgaramond-roman.woff2") format("woff2"); font-weight: 400 800; font-style: normal; font-display: swap; }
-@font-face { font-family: "EB Garamond"; src: url("assets/fonts/ebgaramond-italic.woff2") format("woff2"); font-weight: 400 800; font-style: italic; font-display: swap; }
+/* Static Latin subsets built by tools/subset_fonts.py; only 400 is preloaded. */
+@font-face { font-family: "EB Garamond"; src: url("assets/fonts/ebgaramond-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("assets/fonts/ebgaramond-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "EB Garamond"; src: url("assets/fonts/ebgaramond-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+/* Times New Roman scaled to Garamond's width and line metrics, so the swap does not move text */
+@font-face { font-family: "Garamond Fallback"; src: local("Times New Roman"), local("TimesNewRomanPSMT"); font-style: normal;
+  size-adjust: 95.2%; ascent-override: 105.8%; descent-override: 31.3%; line-gap-override: 0%; }
+@font-face { font-family: "Garamond Fallback"; src: local("Times New Roman Italic"), local("TimesNewRomanPS-ItalicMT"); font-style: italic;
+  size-adjust: 95.2%; ascent-override: 105.8%; descent-override: 31.3%; line-gap-override: 0%; }
 
 /* ---------- Tokens ---------- */
 :root {
@@ -16,7 +23,7 @@
   color-scheme: light;
 }
 :root {
-  --fb: "EB Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --fb: "EB Garamond", "Garamond Fallback", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --col: 680px;
   --pad: clamp(20px, 4vw, 40px);
 }
@@ -75,8 +82,7 @@ body::before {
 .hero-where { color: var(--muted); margin-top: 18px; }
 
 /* ---------- Page and sections ---------- */
-.page { max-width: var(--col); margin: 0 auto; padding: 0 var(--pad); animation: rise .45s cubic-bezier(.23,1,.32,1) both; }
-@keyframes rise { from { opacity: 0; transform: translateY(6px); } }
+.page { max-width: var(--col); margin: 0 auto; padding: 0 var(--pad); }
 .sec { padding-top: 44px; scroll-margin-top: 24px; }
 .sec h2 { text-align: center; font-size: 21px; letter-spacing: .2em; text-transform: uppercase; margin: 0 0 28px; }
 .prose p { text-align: justify; hyphens: auto; hyphenate-limit-chars: 7 3 3; -webkit-hyphenate-limit-before: 3; -webkit-hyphenate-limit-after: 3; }
@@ -185,6 +191,5 @@ body::before {
 @keyframes vt-out { to { opacity: 0; } }
 @keyframes vt-in { from { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .page { animation: none; }
   html { scroll-behavior: auto; }
 }

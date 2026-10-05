@@ -1,9 +1,15 @@
 """Render the site with Playwright and check the things a reviewer would check by hand."""
-import asyncio, sys, os
+import asyncio, sys, os, threading, functools
+from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from playwright.async_api import async_playwright
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "tools", "shots"); os.makedirs(OUT, exist_ok=True)
-URL = "file://" + os.path.join(ROOT, "index.html")
+# Served over http, not file://, because a crossorigin font preload is blocked from a null origin.
+class Quiet(SimpleHTTPRequestHandler):
+    def log_message(self, *a): pass
+server = ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(Quiet, directory=ROOT))
+threading.Thread(target=server.serve_forever, daemon=True).start()
+URL = f"http://127.0.0.1:{server.server_port}/index.html"
 
 async def main():
     failures = []
