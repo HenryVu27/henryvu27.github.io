@@ -34,6 +34,10 @@ at henryvu.blog.
 
 ### Founding Machine Learning Engineer at eXRealityAI, Aug 2025 to now
 
+- Took Smart DVI to production with auto-repair shops: a Meta Quest 3 inspection app that grades
+  every photo with AI, runs agents on the headset, takes voice notes offline, scans VINs, reads
+  OBD-II over Bluetooth, and signs in with a hardware-backed device key. Then read its production
+  data to find where technicians' findings were getting lost, and shipped the fixes.
 - Built the knowledge graph and retrieval layer behind a Meta Quest 3 automotive repair app for an
   OEM pilot, and the evaluation harness that scores it in CI. On an expert-written test set it puts
   the correct procedure first 92 percent of the time.

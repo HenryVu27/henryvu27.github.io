@@ -34,7 +34,9 @@ segmentation, getting models small and robust enough to run on portable hardware
 
 - Founding Machine Learning Engineer, eXRealityAI, Dallas, Aug 2025 to now. Builds XR Auto Service
   (an agent on the technician's headset for diagnosis and repair) and Smart DVI (hands-free AI-guided
-  inspections) end to end. Knowledge graph,
+  inspections) end to end. Smart DVI is in production with auto-repair shops: AI grading of every
+  photo, agents on the headset, offline voice, VIN scanning, OBD-II over Bluetooth, and
+  hardware-backed device sign-in. Knowledge graph,
   retrieval layer, and CI evaluation harness for a Meta Quest 3 automotive repair app (correct
   procedure ranked first 92 percent of the time on an expert-written test set); a voice-to-voice
   assistant running entirely on NVIDIA Jetson Orin (Whisper, hybrid BM25 and FAISS retrieval,
