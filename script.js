@@ -1,33 +1,6 @@
-// henryvu.io: theme, anchors, contact form, earlier-work disclosure. No scroll effects.
+// henryvu.io: anchors, contact form, earlier-work disclosure. No scroll effects.
 (function () {
   'use strict';
-  var root = document.documentElement;
-
-  // ---- Theme ----
-  function currentTheme() { return root.getAttribute('data-theme') === 'day' ? 'day' : 'night'; }
-  function applyTheme(next) {
-    root.setAttribute('data-theme', next);
-    try { localStorage.setItem('theme', next); } catch (e) {}
-    var btn = document.getElementById('theme-toggle');
-    if (btn) { btn.textContent = next === 'night' ? 'Day' : 'Night'; btn.setAttribute('aria-pressed', String(next === 'night')); }
-  }
-  // Migrate old keys; the inline head script already set the attribute for first paint.
-  try {
-    var saved = localStorage.getItem('theme');
-    if (saved === 'morning-fog') saved = 'day';
-    if (saved === 'piano-symphony') saved = 'night';
-    if (saved === 'day' || saved === 'night') applyTheme(saved); else applyTheme(currentTheme());
-  } catch (e) { applyTheme(currentTheme()); }
-
-  var toggle = document.getElementById('theme-toggle');
-  if (toggle) {
-    toggle.addEventListener('click', function () {
-      var next = currentTheme() === 'night' ? 'day' : 'night';
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (document.startViewTransition && !reduce) document.startViewTransition(function () { applyTheme(next); });
-      else applyTheme(next);
-    });
-  }
 
   // ---- Same-page anchors (smooth unless reduced motion) ----
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {

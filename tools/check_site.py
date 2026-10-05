@@ -9,10 +9,9 @@ async def main():
     failures = []
     async with async_playwright() as p:
         b = await p.chromium.launch()
-        for theme in ("night", "day"):
+        for theme in ("day",):
             for w in (390, 820, 1440):
                 ctx = await b.new_context(viewport={"width": w, "height": 900})
-                await ctx.add_init_script(f"localStorage.setItem('theme','{theme}')")
                 pg = await ctx.new_page(); errors = []
                 pg.on("pageerror", lambda e: errors.append(str(e)))
                 pg.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
@@ -24,11 +23,10 @@ async def main():
                 fonts = await pg.evaluate("Array.from(document.fonts).filter(f=>f.status==='loaded').map(f=>f.family)")
                 for f in ("EB Garamond",):
                     if f not in fonts: failures.append(f"{theme}-{w}: font not loaded {f}")
-                got = await pg.evaluate("document.documentElement.getAttribute('data-theme')")
-                if got != theme: failures.append(f"{theme}-{w}: theme attr {got}")
-                if w == 1440 and theme == "night":
-                    await pg.click("#theme-toggle"); await pg.wait_for_timeout(400)
-                    if await pg.evaluate("localStorage.getItem('theme')") != "day": failures.append("toggle did not persist day")
+                if w == 1440:
+                    if await pg.evaluate("document.querySelectorAll('.work details[open]').length"): failures.append("work entries not collapsed")
+                    await pg.click(".work details summary .role")
+                    if not await pg.evaluate("document.querySelector('.work details').open"): failures.append("work entry did not open")
                     await pg.click("#earlier-toggle")
                     if await pg.evaluate("document.getElementById('earlier').hidden"): failures.append("earlier did not open")
                     await pg.click("#contactForm .send")

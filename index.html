@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="night">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,24 +21,13 @@
     <meta name="twitter:title" content="Henry Vu, Machine Learning Engineer in Dallas">
     <meta name="twitter:description" content="Machine learning engineer at eXRealityAI. XR Auto Service and Smart DVI for auto shops; knowledge graphs, retrieval, and evaluation; voice and vision models at the edge; GardenXR on the Meta Horizon Store; NIH-funded ultrasound segmentation at UT Dallas.">
     <meta name="twitter:image" content="https://henryvu.io/assets/og-image.png">
-    <meta name="theme-color" content="#1f1811">
+    <meta name="theme-color" content="#f3eee3">
     <meta name="geo.region" content="US-TX">
     <meta name="geo.placename" content="Dallas">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/favicon.png">
-    <script>
-      // Apply the saved theme before first paint so there is no flash.
-      (function () {
-        try {
-          var t = localStorage.getItem('theme');
-          if (t === 'morning-fog') t = 'day';
-          if (t === 'piano-symphony') t = 'night';
-          if (t === 'day' || t === 'night') document.documentElement.setAttribute('data-theme', t);
-        } catch (e) {}
-      })();
-    </script>
-    <link rel="stylesheet" href="styles.css?v=11">
+    <link rel="stylesheet" href="styles.css?v=12">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJESH4V1MQ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -277,13 +266,11 @@
                 <a href="#work">Work</a>
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
-                <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="true">Day</button>
             </nav>
         </div>
         <div class="hero-inner">
             <h1 class="hero-title">Henry Vu</h1>
-            <p class="hero-sub">I'm exploring how to build machines that can learn.</p>
-            <p class="hero-where">Machine learning engineer in Dallas</p>
+            <p class="hero-where">Machine learning engineer</p>
         </div>
     </header>
 
@@ -305,9 +292,8 @@
             <h2 id="work-h">Where I've worked</h2>
             <ol class="work">
                 <li>
-                    <div class="entry">
-                        <h3><span class="role">Founding Machine Learning Engineer</span><span class="org"><a href="https://exreality.ai/" target="_blank" rel="noopener">eXRealityAI</a></span></h3>
-                        <span class="entry-dates">Aug 2025 to now</span>
+                    <details class="entry">
+                        <summary><h3><span class="role">Founding Machine Learning Engineer</span><span class="org"><a href="https://exreality.ai/" target="_blank" rel="noopener">eXRealityAI</a></span></h3><span class="entry-dates">Aug 2025 to now</span></summary>
                         <ul>
                             <li>Built XR Auto Service end to end, a Meta Quest 3 app that guides a technician through a repair, from the headset app and the agent behind it to the knowledge graph, retrieval, and the evaluation harness in CI. Piloted with an OEM; on an expert-written test set it puts the correct procedure first 92 percent of the time.</li>
                             <li>Took Smart DVI to production with auto-repair shops: a Meta Quest 3 inspection app that grades every photo with AI, runs agents on the headset, takes voice notes offline, scans VINs, reads OBD-II over Bluetooth, and signs in with a hardware-backed device key. Then read its production data to find where technicians' findings were getting lost, and shipped the fixes.</li>
@@ -315,56 +301,51 @@
                             <li>Multimodal XR workflows on Gemini, YOLOv9, and Wit.ai voice input across two applications, and a retrieval pipeline (EmbeddingGemma, cross-encoder reranking, query rewriting) that cut retrieval work by roughly half.</li>
                             <li>Shipped GardenXR to the Meta Horizon Store, traced a run of bad production answers to a vendor proxy that was silently dropping images, and mentored the team on LLM integration.</li>
                         </ul>
-                    </div>
+                    </details>
                 </li>
                 <li>
-                    <div class="entry">
-                        <h3><span class="role">Computer Vision Engineer</span><span class="org">ThorMed Innovation</span></h3>
-                        <span class="entry-dates">Feb 2025 to now</span>
+                    <details class="entry">
+                        <summary><h3><span class="role">Computer Vision Engineer</span><span class="org">ThorMed Innovation</span></h3><span class="entry-dates">Feb 2025 to now</span></summary>
                         <ul>
                             <li>Modeling lead on an NIH-funded project to segment the bladder in clinical ultrasound, so patients can be monitored without a catheter.</li>
                             <li>Pretrained U-Net and SimSiam encoders on 9.2K ultrasound images before fine-tuning, reaching 96 percent Dice.</li>
                             <li>Got the model onto portable hardware with 4-bit quantization, where the domain-pretrained weights held up about seven times better than ImageNet weights, and built the pipeline that extracts and cleans frames from clinical ultrasound video.</li>
                         </ul>
-                    </div>
+                    </details>
                 </li>
                 <li>
-                    <div class="entry">
-                        <h3><span class="role">Teaching Assistant</span><span class="org"><a href="https://engineering.utdallas.edu/" target="_blank" rel="noopener">UT Dallas</a></span></h3>
-                        <span class="entry-dates">Jan 2025 to May 2025</span>
+                    <details class="entry">
+                        <summary><h3><span class="role">Teaching Assistant</span><span class="org"><a href="https://engineering.utdallas.edu/" target="_blank" rel="noopener">UT Dallas</a></span></h3><span class="entry-dates">Jan 2025 to May 2025</span></summary>
                         <ul>
                             <li>Algorithms and data structures: weekly office hours, seminar and exam material, and technical reviews for more than a hundred students.</li>
                         </ul>
-                    </div>
+                    </details>
                 </li>
                 <li>
-                    <div class="entry">
-                        <h3><span class="role">Undergraduate Research Assistant</span><span class="org"><a href="https://sodalab.ca/" target="_blank" rel="noopener">SODALab</a></span></h3>
-                        <span class="entry-dates">Dec 2023 to May 2024</span>
+                    <details class="entry">
+                        <summary><h3><span class="role">Undergraduate Research Assistant</span><span class="org"><a href="https://sodalab.ca/" target="_blank" rel="noopener">SODALab</a></span></h3><span class="entry-dates">Dec 2023 to May 2024</span></summary>
                         <ul>
                             <li>A theoretical and empirical survey of multi-armed bandits across stochastic, adversarial, Markovian, and restless settings, with <a href="https://xiaoqitan.org/" target="_blank" rel="noopener">Dr. Xiaoqi Tan</a>.</li>
                             <li>Simulations comparing UCB, Exp3, Thompson sampling, and the Gittins index.</li>
                         </ul>
-                    </div>
+                    </details>
                 </li>
                 <li>
-                    <div class="entry">
-                        <h3><span class="role">Teaching Assistant</span><span class="org"><a href="https://www.ualberta.ca/en/computing-science/index.html" target="_blank" rel="noopener">University of Alberta</a></span></h3>
-                        <span class="entry-dates">Sep 2023 to May 2024</span>
+                    <details class="entry">
+                        <summary><h3><span class="role">Teaching Assistant</span><span class="org"><a href="https://www.ualberta.ca/en/computing-science/index.html" target="_blank" rel="noopener">University of Alberta</a></span></h3><span class="entry-dates">Sep 2023 to May 2024</span></summary>
                         <ul>
                             <li>Algorithms and data structures for a few hundred students: office hours, weekly problem-solving sessions, and grading.</li>
                         </ul>
-                    </div>
+                    </details>
                 </li>
                 <li>
-                    <div class="entry">
-                        <h3><span class="role">Undergraduate Researcher, Online Learning</span><span class="org"><a href="https://www.amii.ca/" target="_blank" rel="noopener">Amii</a></span></h3>
-                        <span class="entry-dates">Apr 2022 to May 2023</span>
+                    <details class="entry">
+                        <summary><h3><span class="role">Undergraduate Researcher, Online Learning</span><span class="org"><a href="https://www.amii.ca/" target="_blank" rel="noopener">Amii</a></span></h3><span class="entry-dates">Apr 2022 to May 2023</span></summary>
                         <ul>
                             <li>Online optimization with the primal-dual framework: conversion, knapsack, and bipartite matching problems where decisions are made before all the input arrives.</li>
                             <li>Algorithms that use machine-learned predictions to beat worst-case bounds when the predictions are good, without losing the guarantees when they are not.</li>
                         </ul>
-                    </div>
+                    </details>
                 </li>
             </ol>
         </section>
@@ -374,29 +355,29 @@
         <section class="sec" id="projects" aria-labelledby="projects-h">
             <h2 id="projects-h">Projects</h2>
             <ol class="toc">
-                <li><span class="t"><a href="https://exreality.ai/xr-auto-service.php" target="_blank" rel="noopener">XR Auto Service</a></span><span class="meta"><span class="year">2025</span></span><i>an agent on the technician's headset for diagnosis and repair</i></li>
-                <li><span class="t"><a href="https://exreality.ai/smartdvi.php" target="_blank" rel="noopener">Smart DVI</a></span><span class="meta"><span class="year">2025</span></span><i>hands-free AI-guided inspections with automatic reports</i></li>
-                <li><span class="t"><a href="https://github.com/HenryVu27/DatDai" target="_blank" rel="noopener">DatDai</a></span><span class="meta"><span class="year">2026</span></span><i>question answering over Vietnamese land law, with a citation verifier</i></li>
-                <li><span class="t"><a href="https://github.com/HenryVu27/ADHDAgent" target="_blank" rel="noopener">ADHD Coaching Agent</a></span><span class="meta"><span class="year">2026</span></span><i>a guarded LangGraph agent with its own evaluation suite</i></li>
-                <li><span class="t"><a href="https://www.meta.com/experiences/gardenxr/24200709416226235/" target="_blank" rel="noopener">GardenXR</a></span><span class="meta"><span class="year">2025</span></span><i>mixed-reality gardening on the Meta Horizon Store</i></li>
-                <li><span class="t"><a href="https://github.com/HenryVu27/ThorMed" target="_blank" rel="noopener">Ultrasound Bladder Segmentation</a></span><span class="meta"><span class="year">2025</span> <a href="https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf" target="_blank" rel="noopener">Paper</a></span><i>NIH-funded, quantized for portable devices</i></li>
-                <li><span class="t"><a href="https://henryvu.io/MLInterviewPractice/" target="_blank" rel="noopener">ML Interview Practice</a></span><span class="meta"><span class="year">2026</span> <a href="https://github.com/HenryVu27/MLInterviewPractice" target="_blank" rel="noopener">Source</a></span><i>Python interview practice that runs in the browser</i></li>
-                <li><span class="t"><a href="https://github.com/HenryVu27/Suspect-Detection" target="_blank" rel="noopener">Agentic Framework for Suspect Detection</a></span><span class="meta"><span class="year">2026</span></span><i>LangGraph and Gemini over surveillance data</i></li>
+                <li><span class="t"><a href="https://exreality.ai/xr-auto-service.php" target="_blank" rel="noopener">XR Auto Service</a></span><span class="meta"><span class="year">2025</span></span></li>
+                <li><span class="t"><a href="https://exreality.ai/smartdvi.php" target="_blank" rel="noopener">Smart DVI</a></span><span class="meta"><span class="year">2025</span></span></li>
+                <li><span class="t"><a href="https://github.com/HenryVu27/DatDai" target="_blank" rel="noopener">DatDai</a></span><span class="meta"><span class="year">2026</span></span></li>
+                <li><span class="t"><a href="https://github.com/HenryVu27/ADHDAgent" target="_blank" rel="noopener">ADHD Coaching Agent</a></span><span class="meta"><span class="year">2026</span></span></li>
+                <li><span class="t"><a href="https://www.meta.com/experiences/gardenxr/24200709416226235/" target="_blank" rel="noopener">GardenXR</a></span><span class="meta"><span class="year">2025</span></span></li>
+                <li><span class="t"><a href="https://github.com/HenryVu27/ThorMed" target="_blank" rel="noopener">Ultrasound Bladder Segmentation</a></span><span class="meta"><span class="year">2025</span> <a href="https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf" target="_blank" rel="noopener">Paper</a></span></li>
+                <li><span class="t"><a href="https://henryvu.io/MLInterviewPractice/" target="_blank" rel="noopener">ML Interview Practice</a></span><span class="meta"><span class="year">2026</span> <a href="https://github.com/HenryVu27/MLInterviewPractice" target="_blank" rel="noopener">Source</a></span></li>
+                <li><span class="t"><a href="https://github.com/HenryVu27/Suspect-Detection" target="_blank" rel="noopener">Agentic Framework for Suspect Detection</a></span><span class="meta"><span class="year">2026</span></span></li>
             </ol>
             <button type="button" class="earlier-toggle" id="earlier-toggle" aria-expanded="false" aria-controls="earlier">Show all projects</button>
             <ol class="toc" id="earlier" hidden>
-                <li><span class="t">StitchKit</span><span class="meta"><span class="year">2026</span></span><i>embroidery digitizing for a one-person shop, phone-first, in Vietnamese</i></li>
-                <li><span class="t"><a href="https://github.com/HenryVu27/voice-agent" target="_blank" rel="noopener">VoiceBridge</a></span><span class="meta"><span class="year">2026</span></span><i>real-time Vietnamese to Russian speech translation</i></li>
+                <li><span class="t">StitchKit</span><span class="meta"><span class="year">2026</span></span></li>
+                <li><span class="t"><a href="https://github.com/HenryVu27/voice-agent" target="_blank" rel="noopener">VoiceBridge</a></span><span class="meta"><span class="year">2026</span></span></li>
                 <li><span class="t"><a href="https://github.com/HenryVu27/BTSIM" target="_blank" rel="noopener">BTS Concert Ticket Buying Simulator</a></span><span class="meta"><span class="year">2026</span></span></li>
                 <li><span class="t"><a href="https://github.com/HenryVu27/Valentine" target="_blank" rel="noopener">Valentine Surprise</a></span><span class="meta"><span class="year">2026</span></span></li>
-                <li><span class="t"><a href="https://github.com/HenryVu27/PoliticalSarcasm" target="_blank" rel="noopener">Modeling Political Sarcasm</a></span><span class="meta"><span class="year">2025</span> <a href="https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf" target="_blank" rel="noopener">Report</a></span><i>fine-tuned DistilRoBERTa on political text</i></li>
-                <li><span class="t"><a href="https://github.com/HenryVu27/Polyps-Segmentation" target="_blank" rel="noopener">Polyps and Breast Ultrasound Segmentation</a></span><span class="meta"><span class="year">2025</span></span><i>attention U-Net</i></li>
-                <li><span class="t"><a href="https://github.com/HenryVu27/Geometric-Set-Cover" target="_blank" rel="noopener">A Survey of Geometric Set Cover</a></span><span class="meta"><span class="year">2025</span></span><i>approximation algorithms and PTAS</i></li>
+                <li><span class="t"><a href="https://github.com/HenryVu27/PoliticalSarcasm" target="_blank" rel="noopener">Modeling Political Sarcasm</a></span><span class="meta"><span class="year">2025</span> <a href="https://github.com/HenryVu27/PoliticalSarcasm/blob/main/report.pdf" target="_blank" rel="noopener">Report</a></span></li>
+                <li><span class="t"><a href="https://github.com/HenryVu27/Polyps-Segmentation" target="_blank" rel="noopener">Polyps and Breast Ultrasound Segmentation</a></span><span class="meta"><span class="year">2025</span></span></li>
+                <li><span class="t"><a href="https://github.com/HenryVu27/Geometric-Set-Cover" target="_blank" rel="noopener">A Survey of Geometric Set Cover</a></span><span class="meta"><span class="year">2025</span></span></li>
                 <li><span class="t"><a href="https://github.com/HenryVu27/TFT-Rolling-Calculator" target="_blank" rel="noopener">TFT Rolling Odds Calculator</a></span><span class="meta"><span class="year">2025</span></span></li>
-                <li><span class="t"><a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning" target="_blank" rel="noopener">Multi-armed Bandits and Online Learning</a></span><span class="meta"><span class="year">2024</span></span><i>survey, simulations, and seminar slides</i></li>
+                <li><span class="t"><a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning" target="_blank" rel="noopener">Multi-armed Bandits and Online Learning</a></span><span class="meta"><span class="year">2024</span></span></li>
                 <li><span class="t"><a href="https://github.com/HenryVu27/henryvu27.github.io" target="_blank" rel="noopener">This Web Portfolio</a></span><span class="meta"><span class="year">2024</span></span></li>
                 <li><span class="t"><a href="https://github.com/HenryVu27/devHack2024" target="_blank" rel="noopener">UManitoba Navigator</a></span><span class="meta"><span class="year">2024</span></span></li>
-                <li><span class="t"><a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding" target="_blank" rel="noopener">EEG Decoding: a Multi-Modal Approach</a></span><span class="meta"><span class="year">2023</span> <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf" target="_blank" rel="noopener">Paper</a></span><i>transformers and language-model embeddings</i></li>
+                <li><span class="t"><a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding" target="_blank" rel="noopener">EEG Decoding: a Multi-Modal Approach</a></span><span class="meta"><span class="year">2023</span> <a href="https://github.com/HenryVu27/EEG-Multimodal-Decoding/blob/main/DecodingEEGusingTransformer.pdf" target="_blank" rel="noopener">Paper</a></span></li>
                 <li><span class="t"><a href="https://github.com/HenryVu27/ViT-and-Contrastive-Learning" target="_blank" rel="noopener">ViT and Contrastive Representation Learning</a></span><span class="meta"><span class="year">2023</span></span></li>
                 <li><span class="t"><a href="https://github.com/HenryVu27/VAE-and-Diffusion-for-FashionMNIST" target="_blank" rel="noopener">VAE and Diffusion for FashionMNIST</a></span><span class="meta"><span class="year">2023</span></span></li>
                 <li><span class="t"><a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning/blob/main/project/MABs.ipynb" target="_blank" rel="noopener">Yahoo's News Recommendation with MABs</a></span><span class="meta"><span class="year">2023</span></span></li>
@@ -449,6 +430,6 @@
         </p>
     </footer>
 
-    <script src="script.js?v=5"></script>
+    <script src="script.js?v=6"></script>
 </body>
 </html>
