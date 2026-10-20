@@ -65,7 +65,8 @@ robust enough for portable devices.
   NIH-funded project, with a paper. https://github.com/HenryVu27/ThorMed
 - ML Interview Practice: browser-only Python practice for ML coding interviews.
   https://henryvu.io/MLInterviewPractice/
-- Agentic Framework for Suspect Detection: LangGraph and Gemini multi-agent pipeline.
+- Agentic Framework for Suspect Detection: LangGraph multi-agent pipeline that flags gaps in
+  patient medical records.
   https://github.com/HenryVu27/Suspect-Detection
 - StitchKit: embroidery digitizing pipeline for a one-person shop, phone-first, in Vietnamese.
 - VoiceBridge: real-time Vietnamese-to-Russian speech translation proof of concept.

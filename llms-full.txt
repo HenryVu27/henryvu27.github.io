@@ -101,8 +101,9 @@ at henryvu.blog.
   browser: real CPython with numpy through Pyodide, no backend, no build step. JavaScript, Pyodide,
   CodeMirror.
   https://henryvu.io/MLInterviewPractice/ and https://github.com/HenryVu27/MLInterviewPractice
-- Agentic Framework for Suspect Detection. Multi-agent pipeline using LangGraph and Gemini for
-  automated suspect identification from surveillance data. Python, LangGraph, Gemini, FAISS.
+- Agentic Framework for Suspect Detection. Multi-agent LangGraph pipeline that reads patient
+  medical records to flag gaps such as medications without a documented diagnosis or abnormal labs
+  that suggest an undiagnosed condition. Python, LangGraph, Gemini, FAISS.
   https://github.com/HenryVu27/Suspect-Detection
 - StitchKit. Turns a client's logo into a machine-ready embroidery stitch file for a one-person
   shop whose only computer is an older iPhone: phone-first, entirely in Vietnamese, with preflight
