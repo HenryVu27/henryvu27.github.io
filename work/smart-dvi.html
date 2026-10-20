@@ -99,10 +99,10 @@
 
         <section class="sec essay" aria-labelledby="headset">
             <h2 id="headset">The headset app</h2>
-            <p>The app is built from reusable components, each behind a small interface. Bluetooth diagnostics, offline sync, voice, sign-in and the agent framework are all components that another product can pick up. The whole inspection works offline. Every write goes through a sync queue and reconciles when the network comes back.</p>
-            <p>Headsets sign in with keys held in the Android keystore and enroll by scanning a QR code. For headsets already in shops, I built remote diagnostics. Support can raise the log level from the server and pull a capture from a headset without touching it or shipping a build.</p>
+            <p>The whole inspection works offline and syncs when the headset reconnects. I built the app from reusable pieces, so features like Bluetooth diagnostics, voice and the agent framework can move to other products.</p>
+            <p>For headsets already in shops, I built remote diagnostics, so support can find a problem without touching the headset or shipping a new build.</p>
             <p>I built the dataset that turns the car&rsquo;s trouble codes into names a technician can read. It cross-checks public code lists that didn&rsquo;t copy one another and keeps the lineage of every title. It covers thousands of codes that used to show up bare.</p>
-            <p>Smart DVI used to be four separately built versions, one per product tier. I argued for a single app whose features come from backend configuration, and then did the migration. The app&rsquo;s logic now runs in standalone test harnesses without the game engine, so logic changes can be checked without a headset.</p>
+            <p>I also merged several separately built versions of the app into one. The app&rsquo;s logic runs in test harnesses without the game engine, so logic changes can be checked without a headset.</p>
         </section>
 
         <nav class="art-links" aria-label="Sources">
