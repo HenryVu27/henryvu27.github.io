@@ -40,7 +40,7 @@
         <section class="sec essay" aria-labelledby="app">
             <h2 id="app">The app</h2>
             <p>Smart DVI is a vehicle inspection app for the Meta Quest 3, and auto shops use it in production. The technician wears the headset while working through the shop&rsquo;s inspection checklist. They grade each item, take photos by looking at the part, and record notes by voice. The finished inspection goes to the service advisor as a repair order, and the customer approves or declines it line by line.</p>
-            <p>I&rsquo;m the lead engineer. I run the app&rsquo;s development, and I own its AI, which covers photo grading, the agents on the headset, VIN reading and speech.</p>
+            <p>I&rsquo;m the lead engineer. I run the app&rsquo;s development, and I own its AI, which covers photo grading, the agents on the headset, VIN reading and speech. I also write the specs the backend and web teams build from, citing the code behind each defect.</p>
 
             <figure class="fig wide" aria-labelledby="f1-title">
                 <div class="fig-head">
@@ -80,13 +80,29 @@
             </figure>
 
             <p>The readings run as agents on the headset. An agent runs when the technician takes a photo, records a note or connects to the car. Shops turn agents on per checklist item and choose whether each one fills in the answer or only suggests it. An agent never changes a value the technician entered, and it only suggests a reading it isn&rsquo;t confident about.</p>
-            <p>VIN reading takes a burst of frames and keeps the sharpest. It tries the barcode first. If that fails, a vision model reads the characters and marks the ones it isn&rsquo;t sure of, and the VIN&rsquo;s check digit is used to correct them.</p>
+            <p>VIN reading tries cheap methods before a model call. The headset takes a burst of frames and keeps the sharpest. It tries to decode the barcode on the full frame, then on a cropped, grayscale, contrast-boosted copy. Only if both fail does a vision model read the plate, and it has to return exactly seventeen characters, marking any it isn&rsquo;t sure of. The VIN&rsquo;s check digit then corrects those.</p>
         </section>
 
-        <section class="sec essay" aria-labelledby="test">
-            <h2 id="test">How I test changes</h2>
-            <p>Before I change how photos are graded, I build a test set from photos technicians have already graded and run the candidate models and prompts against it. The backend switches to whichever scores best. Technicians confirm every grade, because the same tests showed the model&rsquo;s confidence score doesn&rsquo;t predict when it&rsquo;s wrong.</p>
-            <p>I also write the specs the backend and web teams build from, and I spend time in shops watching technicians use the app.</p>
+        <section class="sec essay" aria-labelledby="grading">
+            <h2 id="grading">Photo grading</h2>
+            <p>Each photo gets one structured reply from a vision model. The reply holds the suggested grade and a separate verdict on whether the photo shows the item at all, so the relevance check costs no extra call and can&rsquo;t contradict the grade.</p>
+            <p>To choose the model and prompt, I built a test set from real inspection photos with two answer keys. One is the technician&rsquo;s own grade. The other is a blind grade, written against a fixed standard by a grader who never saw the technician&rsquo;s grade, notes or voice. I changed one thing at a time and scored each version against both keys, and the backend adopted the version that came out ahead.</p>
+            <p>The same tests turned up two things that shaped the product. The model&rsquo;s stated confidence doesn&rsquo;t predict when its grade is wrong, so technicians confirm every grade. And when I added false context to the request, such as an old note that contradicted the photo, accuracy fell sharply.</p>
+            <p>I also cut the wait between taking a photo and seeing its grade roughly in half. Sending smaller images removed a large share of the input with no loss in accuracy, and the reply now streams with the grade first.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="findings">
+            <h2 id="findings">Getting findings to the customer</h2>
+            <p>I went through production inspection data to find where technicians&rsquo; findings were getting lost before they reached the repair order. Two fixes came out of it. An item with a photo, clip, voice note or reading can no longer be marked complete without a grade, and the row tells the technician why. The app also checks at the car whether a photo actually shows the item.</p>
+            <p>I run the pilot in person. I sat with the technician using the app, wrote down what got in the way, traced each problem to its cause in the code and shipped the fixes.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="headset">
+            <h2 id="headset">The headset app</h2>
+            <p>The app is built from reusable components, each behind a small interface. Bluetooth diagnostics, offline sync, voice, sign-in and the agent framework are all components that another product can pick up. The whole inspection works offline. Every write goes through a sync queue and reconciles when the network comes back.</p>
+            <p>Headsets sign in with keys held in the Android keystore and enroll by scanning a QR code. For headsets already in shops, I built remote diagnostics. Support can raise the log level from the server and pull a capture from a headset without touching it or shipping a build.</p>
+            <p>I built the dataset that turns the car&rsquo;s trouble codes into names a technician can read. It cross-checks public code lists that didn&rsquo;t copy one another and keeps the lineage of every title. It covers thousands of codes that used to show up bare.</p>
+            <p>Smart DVI used to be four separately built versions, one per product tier. I argued for a single app whose features come from backend configuration, and then did the migration. The app&rsquo;s logic now runs in standalone test harnesses without the game engine, so logic changes can be checked without a headset.</p>
         </section>
 
         <nav class="art-links" aria-label="Sources">

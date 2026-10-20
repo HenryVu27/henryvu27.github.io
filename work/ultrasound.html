@@ -39,14 +39,14 @@
 
         <section class="sec essay" aria-labelledby="problem">
             <h2 id="problem">The problem</h2>
-            <p>Bladder volume tells a care team whether a patient is retaining urine. The standard way to measure it is a catheter, which carries a risk of infection. Ultrasound can do the job without one, if a model can outline the bladder reliably and run on the small device at the bedside.</p>
-            <p>There is no public bladder ultrasound dataset, so the model had to learn from 486 images labeled for this project. A model that small devices can run also has to survive having its weights compressed, and that turned out to be the harder constraint.</p>
+            <p>Bladder volume shows whether a patient is retaining urine. It&rsquo;s usually measured with a catheter, which risks infection. Ultrasound can measure it without one if a model can outline the bladder in the image, on a device small enough for the bedside.</p>
+            <p>No public bladder ultrasound dataset exists, so we worked from 486 images labeled for this project. A model that runs on a small device also needs its weights compressed.</p>
             <p>The paper is joint work with Andrew Vu, Dr. Eric Chou and Dr. Gregory Thoreson of Baylor University Medical Center, and Dr. Katherine Brown at UT Dallas.</p>
         </section>
 
         <section class="sec essay" aria-labelledby="labels">
             <h2 id="labels">Building the labels</h2>
-            <p>Outlining the bladder by hand on every frame is slow, so I built a <a href="https://github.com/HenryVu27/SAMUS---US-Masks-Generator" target="_blank" rel="noopener">pipeline</a> that drafts the labels first. It asks SAMUS, an ultrasound adaptation of Segment Anything, for a bladder mask on each frame and cleans the mask up. A radiologist then graded the masks by hand to make sure they were accurate before any model trained on them.</p>
+            <p>Outlining the bladder by hand on every frame is slow, so I built a <a href="https://github.com/HenryVu27/SAMUS---US-Masks-Generator" target="_blank" rel="noopener">pipeline</a> that drafts the labels. It runs SAMUS, an ultrasound version of Segment Anything, on each frame and cleans up the mask it returns. A radiologist then graded the masks by hand before any model trained on them.</p>
 
             <figure class="fig wide" aria-labelledby="f0-title">
                 <div class="fig-head">
@@ -67,8 +67,8 @@
         </section>
 
         <section class="sec essay" aria-labelledby="built">
-            <h2 id="built">What I built</h2>
-            <p>I trained U-Net segmentation models with four encoders, from ResNet34 down to the small MobileNetV2 and EfficientNet-B0. Before they saw a bladder, I pretrained each encoder on 9,204 thyroid and breast ultrasound images from the public US30K collection, which contains no bladder images at all, and compared that against the usual ImageNet starting point.</p>
+            <h2>The models</h2>
+            <p>I trained U-Net models with four encoders, from ResNet34 down to MobileNetV2 and EfficientNet-B0. Each encoder started either from ImageNet weights or from weights I pretrained on 9,204 thyroid and breast ultrasound images from the public US30K collection. US30K has no bladder images.</p>
 
             <figure class="fig wide" aria-labelledby="f1-title">
                 <div class="fig-head">
@@ -84,15 +84,15 @@
                     <div class="flow-arrow" aria-hidden="true"></div>
                     <div class="flow-node"><b>Score</b><span>97 held-out images</span></div>
                 </div>
-                <figcaption>The same pipeline runs from an ImageNet start and from an ultrasound start, for each of the four encoders.</figcaption>
+                <figcaption>Run once from each starting point, for all four encoders.</figcaption>
             </figure>
 
-            <p>To see what would survive on a small device, I quantized each trained model&rsquo;s weights to 8 and 4 bits without retraining, using symmetric per-channel quantization, and scored it again on the 97 held-out images with the Dice score, the overlap between the predicted outline and the sonographer&rsquo;s.</p>
+            <p>Then I quantized each trained model&rsquo;s weights to 8 and 4 bits without retraining and scored it again on 97 held-out images. The score is Dice, the overlap between the predicted outline and the labeled one.</p>
         </section>
 
         <section class="sec essay" aria-labelledby="showed">
             <h2 id="showed">What it showed</h2>
-            <p>At full precision the starting point barely matters. Every model lands between 95.4 and 96 percent Dice, and the best, a MobileNetV2 pretrained on ultrasound, reaches 96. At 8 bits nothing changes by more than a point. The difference appears at 4 bits.</p>
+            <p>At full precision the starting point barely matters. Every model scores between 95.4 and 96 percent Dice. At 8 bits nothing moves by more than a point. At 4 bits the ImageNet models fall far behind.</p>
 
             <figure class="fig wide dumb" aria-labelledby="f2-title">
                 <div class="fig-head">
@@ -160,12 +160,12 @@
                 <figcaption>From Tables 1 and 2 of the paper. Ultrasound start means supervised segmentation pretraining on the US30K subset.</figcaption>
             </figure>
 
-            <p>Models that started from ImageNet fell apart, EfficientNet-B0 down to 11 percent. Models that started from ultrasound kept 75 to 93 percent. Pretraining on the right kind of image left full-precision accuracy where it was and made the models far more robust to compression, which is the property a bedside device needs.</p>
+            <p>Models that started from ImageNet dropped as low as 11 percent, on EfficientNet-B0. Models that started from ultrasound kept between 75 and 93 percent.</p>
         </section>
 
         <section class="sec essay" aria-labelledby="busi">
-            <h2 id="busi">Breast ultrasound, scored on unseen images</h2>
-            <p>On the public BUSI breast ultrasound dataset I trained an <a href="https://github.com/HenryVu27/Polyps-Segmentation" target="_blank" rel="noopener">attention U-Net</a> and scored it on 156 test images that played no part in training or in choosing the checkpoint. Splitting the score by class shows where the error comes from.</p>
+            <h2>Breast ultrasound</h2>
+            <p>On the public BUSI breast ultrasound dataset, I trained an <a href="https://github.com/HenryVu27/Polyps-Segmentation" target="_blank" rel="noopener">attention U-Net</a> and tested it on 156 images it never saw during training or checkpoint selection.</p>
 
             <figure class="fig bars" aria-labelledby="f3-title">
                 <div class="fig-head">
@@ -179,12 +179,12 @@
                 <figcaption>A normal scan has no lesion, so it scores 1 only when the model draws nothing.</figcaption>
             </figure>
 
-            <p>Normal scans contain no lesion, and the model drew one anyway on more than half of them. Those false alarms account for a third of the Dice the model loses while making up a fifth of the test set, so the cheapest next gain is a better call on whether a lesion is there at all.</p>
+            <p>Normal scans have no lesion, but the model drew one on more than half of them. Those false alarms account for a third of the lost Dice, from a fifth of the test images.</p>
         </section>
 
         <section class="sec essay" aria-labelledby="next">
             <h2 id="next">Next</h2>
-            <p>Next is running the 4-bit models on the target hardware, where so far the compression is simulated, and checking predicted volumes against catheter measurements.</p>
+            <p>Next I want to run the 4-bit models on real hardware, since the compression so far is simulated, and check predicted volumes against catheter measurements.</p>
         </section>
 
         <nav class="art-links" aria-label="Sources">

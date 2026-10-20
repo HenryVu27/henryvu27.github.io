@@ -39,12 +39,12 @@
 
         <section class="sec essay" aria-labelledby="question">
             <h2 id="question">The question</h2>
-            <p>A bandit algorithm picks one of several options each round and sees the reward of only the one it picked. It has to balance trying options it knows little about against using the best one so far, and regret measures how much that balance costs against the best choice in hindsight. Online algorithms face the same pressure from another side. They decide before the input arrives, and a machine-learned prediction of what is coming can help, if the algorithm trusts it the right amount.</p>
+            <p>A bandit algorithm picks one of several options each round and sees the reward of only the one it picked. It has to balance trying options it knows little about against using the best one so far. Regret measures what that costs against the best choice in hindsight. Online algorithms have a related problem. They make each decision before the rest of the input arrives, and they can use a machine-learned prediction of what&rsquo;s coming.</p>
         </section>
 
         <section class="sec essay" aria-labelledby="studied">
             <h2 id="studied">What I studied</h2>
-            <p>Over two years I worked through bandits in five settings, from random rewards to an adversary that chooses them, and online algorithms that use predictions. I presented each topic as a seminar deck and wrote the derivations up in a <a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning/blob/main/Final%20Report.pdf" target="_blank" rel="noopener">report</a>. The original code was lost with an old computer, so I rebuilt it from those notes, and every algorithm is now tested against the guarantee it should meet.</p>
+            <p>Over two years I worked through bandits in five settings, from random rewards to an adversary that chooses them, and online algorithms that use predictions. I presented each topic as a seminar deck and wrote the derivations up in a <a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning/blob/main/Final%20Report.pdf" target="_blank" rel="noopener">report</a>. The original code was lost with an old computer, so I rebuilt it from those notes and tested every algorithm against its proven guarantee.</p>
 
             <figure class="fig" aria-labelledby="t1-title">
                 <div class="fig-head">
@@ -66,7 +66,7 @@
 
         <section class="sec essay" aria-labelledby="random">
             <h2 id="random">Random rewards</h2>
-            <p>When rewards are random draws, optimism works. UCB1 plays the arm whose average plus a confidence bonus is highest, so an arm keeps getting tried until the data rules it out. Explore-then-commit pays its whole exploration cost up front, and ε-greedy keeps exploring forever, so its regret never stops growing.</p>
+            <p>With random rewards, UCB1 plays the arm whose average plus a confidence bonus is highest, so every arm gets tried until the data rules it out. Explore-then-commit pays its whole exploration cost up front. ε-greedy never stops exploring, so its regret keeps growing.</p>
 
             <figure class="fig bars" aria-labelledby="f1-title">
                 <div class="fig-head">
@@ -84,7 +84,7 @@
 
         <section class="sec essay" aria-labelledby="adversary">
             <h2 id="adversary">An adversary</h2>
-            <p>Optimism breaks when the rewards are chosen against you. An adversary that pays only the arm the learner is least likely to pull can hold a deterministic rule like UCB1 at zero reward forever. Exp3 randomizes its choice and estimates every arm&rsquo;s reward from the one it sees, which keeps its regret under a bound that holds against any sequence.</p>
+            <p>An adversary that pays only the arm the learner is least likely to pull can hold a deterministic rule like UCB1 at zero reward. Exp3 picks arms at random from a weighted distribution and estimates every arm&rsquo;s reward from the one it sees, which keeps its regret under a bound that holds for any reward sequence.</p>
 
             <figure class="fig bars" aria-labelledby="f2-title">
                 <div class="fig-head">
@@ -97,7 +97,7 @@
                 <figcaption>Exp3&rsquo;s bound here is 401. UCB1&rsquo;s regret grows in a straight line.</figcaption>
             </figure>
 
-            <p>Exp3&rsquo;s guarantee holds on average, and individual runs can still go badly. On a table whose best arm switches, 8.8 percent of Exp3 runs ended above the bound. Exp3-IX adds implicit exploration, which caps what one unlucky round can cost an arm, and none of its runs crossed it.</p>
+            <p>Exp3&rsquo;s bound holds in expectation. On a table whose best arm switches, 8.8 percent of its runs ended above it. Exp3-IX adds implicit exploration, which caps what one unlucky round can cost an arm, and none of its runs crossed the bound.</p>
         </section>
 
         <section class="sec essay" aria-labelledby="context">
@@ -121,7 +121,7 @@
 
         <section class="sec essay" aria-labelledby="online">
             <h2 id="online">Online algorithms with predictions</h2>
-            <p>A prediction is worth using only if a wrong one cannot do much damage. The learning-augmented algorithms I studied take a trust parameter that trades how well they do with a perfect prediction, their consistency, against their worst case under any prediction, their robustness. In every case below the measured ratio met the proven bound exactly.</p>
+            <p>The learning-augmented algorithms take a trust parameter. It trades consistency, how well they do with a perfect prediction, against robustness, their worst case with any prediction. In every case below, the measured ratio matched the proven bound.</p>
 
             <figure class="fig" aria-labelledby="t2-title">
                 <div class="fig-head">

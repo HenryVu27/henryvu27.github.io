@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Question Answering over Vietnamese Land Law, Henry Vu</title>
+    <title>DatDai, Henry Vu</title>
     <meta name="description" content="DatDai answers land-law questions in Vietnamese from the statute text, follows each decree to the later decrees that amended it, and checks every article it cites against the passages it retrieved. Henry Vu's personal project, deployed on Google Cloud Run.">
     <meta name="author" content="Henry Vu">
     <link rel="canonical" href="https://henryvu.io/work/datdai.html">
@@ -33,19 +33,19 @@
 
     <main class="art" id="main">
         <header class="art-head">
-            <p class="kicker">DatDai &middot; personal project &middot; 2026</p>
-            <h1>Question Answering over Vietnamese Land Law</h1>
+            <p class="kicker">Personal project &middot; 2026</p>
+            <h1>DatDai</h1>
         </header>
 
         <section class="sec essay" aria-labelledby="problem">
             <h2 id="problem">The problem</h2>
-            <p>Vietnam passed a new Land Law in 2024. Decrees issued in 2025 and 2026 have since amended the decrees that put it into practice, and one of those amending decrees has itself been amended. Someone asking about land prices or compensation needs the clause in force today, with an article number they can look up.</p>
-            <p>A plain retrieval-augmented generation (RAG) chatbot handles this badly. A retriever that matches on wording will quote a clause that a later decree replaced, and the answer reads just as confidently. The model can also cite an article it never saw.</p>
+            <p>Vietnam passed a new Land Law in 2024. Decrees in 2025 and 2026 amended the decrees that implement it, and one amending decree has been amended again. Someone asking about land prices or compensation needs the clause that applies today, with an article number they can look up.</p>
+            <p>A plain retrieval-augmented generation (RAG) chatbot gets this wrong in two ways. It can quote a clause that a later decree replaced, and it can cite an article it never retrieved.</p>
         </section>
 
         <section class="sec essay" aria-labelledby="built">
             <h2 id="built">What I built</h2>
-            <p>DatDai answers from 11 documents, the 2024 Land Law and the ten decrees and resolutions that implement or amend it. I cut them into 4,366 chunks at article boundaries, breaking long articles at each clause. Each question then passes through five stages.</p>
+            <p>I built DatDai on my own. It answers from the 2024 Land Law and the ten decrees and resolutions that implement or amend it, split into 4,366 chunks at article boundaries, with long articles split again at each clause.</p>
 
             <figure class="fig wide" aria-labelledby="f1-title">
                 <div class="fig-head">
@@ -66,15 +66,16 @@
                 <figcaption>The planner can run several lookups at once. The citation check reads the finished answer and makes no model call.</figcaption>
             </figure>
 
-            <p>Retrieval runs dense and sparse search together in Qdrant and merges the two rankings with reciprocal rank fusion (RRF). A small Gemini model then scores each candidate passage between 0 and 1, and the top passages bring in the rest of their article so the generator sees whole provisions. The rewrite stage reads a short state kept for each conversation, so a follow-up such as &ldquo;case 3&rdquo; resolves to the third item of the previous answer.</p>
-            <p>An amendment graph records which decree amends or implements which. An index built by scanning the amending decrees links 24 amended articles to the chunks that rewrite them, and when a question asks how one decree changed another, the planner fetches those chunks alongside the search results. The citation verifier pulls every article reference out of the answer, with or without Vietnamese diacritics, and checks that each one appears in the retrieved passages. When one does not, the verifier logs it and appends a notice to the saved answer asking the reader to check the provisions it cites.</p>
+            <p>Search runs dense and keyword retrieval together in Qdrant and merges the two rankings with reciprocal rank fusion (RRF). A small Gemini model scores each candidate passage from 0 to 1, and the top passages are expanded to their full article. A follow-up like &ldquo;case 3&rdquo; resolves to the third item in the previous answer, using a short state kept for each conversation.</p>
+            <p>An amendment graph records which decree amends or implements which, and an index links 24 amended articles to the chunks that rewrite them. When a question asks how one decree changed another, the planner fetches those chunks along with the search results.</p>
+            <p>The citation verifier pulls every article reference out of the answer, with or without Vietnamese diacritics, and checks that each one appears in the retrieved passages. If one doesn&rsquo;t, it logs the miss and adds a note to the saved answer asking the reader to check the cited provisions.</p>
         </section>
 
         <section class="sec essay" aria-labelledby="checks">
             <h2 id="checks">How I check it</h2>
-            <p>Every answer built from retrieved passages goes through the citation check before it is saved. Each request is traced in Langfuse with one span per stage, and the trace carries scores that cost no model call, such as how many passages came back and the reranker&rsquo;s top score. Readers can rate an answer with a thumbs up or down, and the rating lands on the same trace.</p>
-            <p>To judge answer quality, I wrote a script that pulls recent traces and has Gemini 2.5 Flash act as a judge at temperature 0. It scores each answer from 0 to 1 on whether it is grounded in the retrieved passages, and separately on relevance and completeness, then writes the scores back onto the trace. The judge works on questions people actually asked. It skips traces that already carry a score, so a rerun scores only new traffic.</p>
-            <p>Before launch I audited the deployed service against its own design documents. The audit confirmed 6 of the 7 issues in my earlier hardening notes and found 14 more. The table shows the findings that decide whether the service stays up.</p>
+            <p>Each request is traced in Langfuse with one span per stage. The trace also records scores that need no model call, such as how many passages came back and the reranker&rsquo;s top score. Readers can rate an answer thumbs up or down, and the rating goes on the same trace.</p>
+            <p>For answer quality, a script pulls recent traces and has Gemini 2.5 Flash judge them at temperature 0. It scores each answer from 0 to 1 on grounding in the retrieved passages, relevance and completeness, and writes the scores back to the trace. Each run skips traces that already have scores.</p>
+            <p>Before launch I audited the deployed service against its design docs. The audit confirmed 6 of the 7 problems in my hardening notes and found 14 more. The table shows the ones that affect uptime, and what the code does now.</p>
 
             <figure class="fig" aria-labelledby="t1-title">
                 <div class="fig-head">
@@ -100,7 +101,7 @@
 
         <section class="sec essay" aria-labelledby="next">
             <h2 id="next">Next</h2>
-            <p>Next is a fixed set of questions with known answers that the deploy workflow scores on every push, so a release has to pass it before it ships. After that, the citation notice should appear while the answer streams, and the service should refuse to start without its vector store.</p>
+            <p>Next is a fixed set of questions with known answers, scored by the deploy workflow on every push. After that, I want the citation note to show while the answer streams, and the service to refuse to start without its vector store.</p>
         </section>
 
         <nav class="art-links" aria-label="Sources">

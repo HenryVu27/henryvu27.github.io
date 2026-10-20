@@ -39,7 +39,7 @@
 
         <section class="sec essay" aria-labelledby="what">
             <h2 id="what">What it does</h2>
-            <p>GardenXR is a mixed reality plant-care app. You look at a plant through the headset&rsquo;s passthrough view and capture it, and the app identifies the plant, checks its health and gives care tips. You can then ask follow-up questions by voice.</p>
+            <p>GardenXR is a mixed reality plant-care app for Meta Quest. You look at a plant through the headset and capture it, and the app tells you what it is, how healthy it looks and how to care for it. You can ask follow-up questions by voice. I worked on it from the first build through its release on the Meta Horizon Store.</p>
 
             <figure class="fig wide" aria-labelledby="f1-title">
                 <div class="fig-head">
@@ -58,9 +58,9 @@
         </section>
 
         <section class="sec essay" aria-labelledby="review">
-            <h2 id="review">Getting camera access through review</h2>
-            <p>Apps on Quest cannot see the camera feed by default. GardenXR depends on it, so before it could ship it had to pass Meta&rsquo;s review for restricted camera access. It passed, and the app is live on the store.</p>
-            <p>An early version also ran an object detector on the headset itself. It spread inference across frames so it never stalled rendering, and projected the user&rsquo;s pointing ray into the camera image to find the plant they meant. The released app identifies plants from a captured frame instead.</p>
+            <h2>Camera access</h2>
+            <p>Quest apps can&rsquo;t see the camera feed by default. GardenXR needs it, so it had to pass Meta&rsquo;s review for restricted camera access before it could ship. It passed and is live on the store.</p>
+            <p>An early version also ran an object detector on the headset. It spread the work across frames so rendering never stalled, and projected the user&rsquo;s pointing ray into the camera image to find the plant they meant. The released version identifies plants from a single captured frame.</p>
         </section>
 
         <nav class="art-links" aria-label="Sources">
