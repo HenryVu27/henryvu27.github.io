@@ -2,8 +2,8 @@
 
 > Machine learning engineer at eXRealityAI in Dallas, Texas, and an M.Sc. student
 > in Computer Science at the University of Texas at Dallas (expected Summer 2027).
-> Knowledge graphs, retrieval, and evaluation for a Meta Quest repair app; voice and vision
-> models at the edge; GardenXR on the Meta Horizon Store; NIH-funded ultrasound segmentation.
+> He leads engineering on Smart DVI, an AI vehicle-inspection app for Meta Quest, and works on
+> ultrasound segmentation at ThorMed Innovation.
 
 > For full detailed content, see: https://henryvu.io/llms-full.txt
 
@@ -24,27 +24,24 @@ of Alberta, graduating summa cum laude.
 
 At eXReality he builds XR Auto Service and Smart DVI, a spatial AI platform for auto shops. It
 puts an agent on a technician's headset that guides them through a repair or an inspection and
-answers questions from a repair knowledge graph. He also works on inference at the edge, running voice and vision models locally
-on NVIDIA Jetson and Apple silicon, and shipped GardenXR to the Meta Horizon Store. On the
-research side, he works with Dr. Katherine Brown at UT Dallas on NIH-funded ultrasound
-segmentation, getting models small and robust enough to run on portable hardware.
-
+answers questions from a repair knowledge graph. He leads engineering on Smart DVI and owns its
+AI layer, and he shipped GardenXR to the Meta Horizon Store. On the research side, he works with
+Dr. Katherine Brown at UT Dallas on NIH-funded ultrasound segmentation, making models small and
+robust enough for portable devices.
 
 ## Where he has worked
 
-- Founding Machine Learning Engineer, eXRealityAI, Dallas, Aug 2025 to now. Builds XR Auto Service
-  (an agent on the technician's headset for diagnosis and repair) and Smart DVI (hands-free AI-guided
-  inspections) end to end. Smart DVI is in production with auto-repair shops: AI grading of every
-  photo, agents on the headset, offline voice, VIN scanning, OBD-II over Bluetooth, and
-  hardware-backed device sign-in. Knowledge graph,
-  retrieval layer, and CI evaluation harness for a Meta Quest 3 automotive repair app (correct
-  procedure ranked first 92 percent of the time on an expert-written test set); a voice-to-voice
-  assistant running entirely on NVIDIA Jetson Orin (Whisper, hybrid BM25 and FAISS retrieval,
-  quantized Mistral 7B, Kokoro); multimodal XR workflows on Gemini, YOLOv9, and Wit.ai; shipped
-  GardenXR to the Meta Horizon Store.
+- Machine Learning Engineer, eXRealityAI, Dallas, Aug 2025 to now. Lead engineer on Smart DVI, a
+  Meta Quest 3 inspection app in production at auto-repair shops, owning its AI layer from photo
+  grading to the agents that run on the headset, VIN reading and voice. Built the evaluation behind
+  its photo grading, measured on real inspections. Built XR Auto Service end to end, including the
+  knowledge graph and retrieval behind its repair assistant. Shipped GardenXR to the Meta Horizon
+  Store and built an offline voice-to-voice assistant.
 - Computer Vision Engineer, ThorMed Innovation, Dallas, Feb 2025 to now. Modeling lead on an
-  NIH-funded project to segment the bladder in clinical ultrasound. U-Net and SimSiam pretraining
-  on 9.2K ultrasound images, 96 percent Dice, 4-bit quantization for portable hardware.
+  NIH-funded project to segment the bladder in clinical ultrasound. U-Net encoders pretrained on
+  9,204 thyroid and breast ultrasound images reach 96 percent Dice; under 4-bit weight
+  quantization they keep 75 to 93 percent Dice, while ImageNet-initialized ones fall to 11 to 71
+  percent.
 - Teaching Assistant, UT Dallas, Jan 2025 to May 2025. Algorithms and data structures.
 - Undergraduate Research Assistant, SODALab, University of Alberta, Dec 2023 to May 2024.
   Survey and simulations of multi-armed bandits with Dr. Xiaoqi Tan.
@@ -64,8 +61,8 @@ segmentation, getting models small and robust enough to run on portable hardware
   memory, and an evaluation package. https://github.com/HenryVu27/ADHDAgent
 - GardenXR: mixed-reality gardening app for Meta Quest on the Meta Horizon Store.
   https://www.meta.com/experiences/gardenxr/24200709416226235/
-- Ultrasound Bladder Segmentation: NIH-funded, self-supervised pretraining and 4-bit quantization,
-  with a paper. https://github.com/HenryVu27/ThorMed
+- Ultrasound Bladder Segmentation: domain-aligned pretraining and 4-bit quantization for an
+  NIH-funded project, with a paper. https://github.com/HenryVu27/ThorMed
 - ML Interview Practice: browser-only Python practice for ML coding interviews.
   https://henryvu.io/MLInterviewPractice/
 - Agentic Framework for Suspect Detection: LangGraph and Gemini multi-agent pipeline.

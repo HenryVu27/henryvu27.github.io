@@ -21,10 +21,8 @@ Alberta.
 
 At eXReality I build XR Auto Service and Smart DVI, a spatial AI platform for auto shops. It puts
 an agent on a technician's headset that guides them through a repair or an inspection and answers
-questions from a repair knowledge graph. I also work on inference at the edge, running voice and vision models locally on NVIDIA
-Jetson and Apple silicon, and I shipped GardenXR to the Meta Horizon Store. On the research side,
-I work with Dr. Katherine Brown at UT Dallas on NIH-funded ultrasound segmentation, getting models
-small and robust enough to run on portable hardware.
+questions from a repair knowledge graph. I lead engineering on Smart DVI and own its AI layer, and
+I shipped GardenXR to the Meta Horizon Store.
 
 On the research side I work with Dr. Katherine Brown at UT Dallas on NIH-funded ultrasound
 segmentation, and earlier I did online algorithms and bandits at Amii. I write about all of this
@@ -32,32 +30,26 @@ at henryvu.blog.
 
 ## Where I've worked
 
-### Founding Machine Learning Engineer at eXRealityAI, Aug 2025 to now
+### Machine Learning Engineer at eXRealityAI, Aug 2025 to now
 
-- Took Smart DVI to production with auto-repair shops: a Meta Quest 3 inspection app that grades
-  every photo with AI, runs agents on the headset, takes voice notes offline, scans VINs, reads
-  OBD-II over Bluetooth, and signs in with a hardware-backed device key. Then read its production
-  data to find where technicians' findings were getting lost, and shipped the fixes.
-- Built the knowledge graph and retrieval layer behind a Meta Quest 3 automotive repair app for an
-  OEM pilot, and the evaluation harness that scores it in CI. On an expert-written test set it puts
-  the correct procedure first 92 percent of the time.
-- Built a voice-to-voice assistant that runs entirely on an NVIDIA Jetson Orin: Whisper for speech
-  in, hybrid BM25 and FAISS retrieval, a quantized Mistral 7B, and Kokoro for speech out.
-- Multimodal XR workflows on Gemini, YOLOv9, and Wit.ai voice input across two applications, and a
-  retrieval pipeline (EmbeddingGemma, cross-encoder reranking, query rewriting) that cut retrieval
-  work by roughly half.
-- Shipped GardenXR to the Meta Horizon Store, traced a run of bad production answers to a vendor
-  proxy that was silently dropping images, and mentored the team on LLM integration.
+- Lead engineer on Smart DVI, a Meta Quest 3 inspection app in production at auto-repair shops. I
+  direct its development and own its AI layer, from photo grading to the agents that run on the
+  headset, VIN reading and voice.
+- Built the evaluation behind its photo grading, measuring models on real inspections and using
+  what that showed to decide what ships.
+- Built XR Auto Service end to end, a Meta Quest 3 app that guides a technician through a repair,
+  from the headset app to the knowledge graph and retrieval behind its assistant.
+- Shipped GardenXR to the Meta Horizon Store and built an offline voice-to-voice assistant.
 
 ### Computer Vision Engineer at ThorMed Innovation, Feb 2025 to now
 
 - Modeling lead on an NIH-funded project to segment the bladder in clinical ultrasound, so patients
   can be monitored without a catheter.
-- Pretrained U-Net and SimSiam encoders on 9.2K ultrasound images before fine-tuning, reaching
-  96 percent Dice.
-- Got the model onto portable hardware with 4-bit quantization, where the domain-pretrained weights
-  held up about seven times better than ImageNet weights, and built the pipeline that extracts and
-  cleans frames from clinical ultrasound video.
+- Pretrained U-Net encoders on 9,204 thyroid and breast ultrasound images, supervised and with
+  SimSiam, before fine-tuning on bladder images, reaching 96 percent Dice.
+- Quantized the models to 4-bit weights for portable ultrasound devices. Domain-pretrained encoders
+  kept 75 to 93 percent Dice, while ImageNet-initialized ones fell to 11 to 71 percent.
+- Built the pipeline that extracts and cleans frames from clinical ultrasound video.
 
 ### Teaching Assistant at UT Dallas, Jan 2025 to May 2025
 
@@ -98,16 +90,16 @@ at henryvu.blog.
   memory, and an evaluation package with LLM judges and pairwise comparisons. Python, LangGraph,
   Qdrant, ONNX. https://github.com/HenryVu27/ADHDAgent
 - GardenXR. A mixed-reality gardening app for Meta Quest, published on the Meta Horizon Store after
-  passing review for restricted camera access. Twenty thousand people used it in the first two
-  days. Unity, C#, Gemini. https://www.meta.com/experiences/gardenxr/24200709416226235/
-- Ultrasound Bladder Segmentation. NIH-funded work with UT Dallas Bioengineering: self-supervised
-  pretraining on 9.2K ultrasound images, then 4-bit quantization for portable devices, with a paper
-  on making the models small and robust. PyTorch, SimSiam, U-Net.
+  passing review for restricted camera access. Unity, C#.
+  https://www.meta.com/experiences/gardenxr/24200709416226235/
+- Ultrasound Bladder Segmentation. NIH-funded work with UT Dallas Bioengineering: domain-aligned
+  pretraining on 9,204 thyroid and breast ultrasound images, then 4-bit quantization for portable
+  devices, with a paper on making the models small and robust. PyTorch, SimSiam, U-Net.
   https://github.com/HenryVu27/ThorMed and
   https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf
 - ML Interview Practice. LeetCode-style practice for ML coding interviews that runs entirely in the
-  browser: real CPython with numpy through Pyodide, no backend, no build step. Built in eight days
-  before an interview and used for real. JavaScript, Pyodide, CodeMirror.
+  browser: real CPython with numpy through Pyodide, no backend, no build step. JavaScript, Pyodide,
+  CodeMirror.
   https://henryvu.io/MLInterviewPractice/ and https://github.com/HenryVu27/MLInterviewPractice
 - Agentic Framework for Suspect Detection. Multi-agent pipeline using LangGraph and Gemini for
   automated suspect identification from surveillance data. Python, LangGraph, Gemini, FAISS.
@@ -153,18 +145,16 @@ student in Computer Science at the University of Texas at Dallas, expected Summe
 works as a computer vision engineer at ThorMed Innovation on NIH-funded medical imaging, and
 graduated summa cum laude from the University of Alberta.
 
-What does Henry Vu work on? Knowledge graphs, retrieval, and evaluation for LLM products; voice
-and vision models running at the edge on NVIDIA Jetson; mixed reality apps for Meta Quest; and
-self-supervised learning and quantization for medical ultrasound segmentation. Earlier, online
-algorithms and multi-armed bandits at Amii and SODALab.
+What does Henry Vu work on? Knowledge graphs, retrieval, and evaluation for LLM products; AI and
+mixed reality apps for Meta Quest; and domain-aligned pretraining and quantization
+for medical ultrasound segmentation. Earlier, online algorithms and multi-armed bandits at Amii and
+SODALab.
 
-Where does Henry Vu work? eXRealityAI, where he builds XR Auto Service and Smart DVI;
-ThorMed Innovation, as a computer vision engineer on NIH-funded bladder segmentation; and UT
-Dallas, as a teaching assistant for algorithms and data structures.
+Where does Henry Vu work? eXRealityAI, where he leads engineering on Smart DVI and built XR Auto
+Service, and ThorMed Innovation, as a computer vision engineer on NIH-funded bladder segmentation.
 
-What has Henry Vu built? The knowledge graph, retrieval layer, and CI evaluation harness behind a
-Meta Quest 3 automotive repair app; a voice-to-voice assistant that runs entirely on an NVIDIA
-Jetson Orin; GardenXR, published on the Meta Horizon Store; DatDai, a Vietnamese land-law
+What has Henry Vu built? Smart DVI's AI layer and XR Auto Service at eXRealityAI; an offline
+voice-to-voice assistant; GardenXR, published on the Meta Horizon Store; DatDai, a Vietnamese land-law
 assistant on Cloud Run with a citation verifier; an ADHD coaching agent with guardrails and an
 evaluation suite; and ML Interview Practice, a browser-only Python practice site.
 

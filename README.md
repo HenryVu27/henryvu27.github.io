@@ -1,15 +1,11 @@
-# Henry Vu's Personal Website 👋
+# henryvu.io
 
-Welcome to my website repository.
-
-## Built With
-
-- HTML, CSS, JavaScript
+Source for Henry Vu's personal site, live at https://henryvu.io. Plain HTML, CSS and JavaScript,
+served by GitHub Pages with no build step.
 
 ## Contact
 
-Feel free to reach out through:
 - [LinkedIn](https://www.linkedin.com/in/henry-vu27/)
 - [GitHub](https://github.com/HenryVu27)
-- [Twitter](https://x.com/HenryVu65366184)
-- Or use the contact form on the website.
+- [X](https://x.com/HenryVu27)
+- The contact form on the site
