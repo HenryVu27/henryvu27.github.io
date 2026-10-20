@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XR Auto Service, Henry Vu</title>
-    <meta name="description" content="XR Auto Service guides an auto technician through a repair on a Meta Quest 3, hands-free. Henry Vu built it end to end, including the knowledge graph behind its assistant.">
+    <meta name="description" content="XR Auto Service shows auto technicians repair procedures on a Meta Quest 3, one step at a time. Henry Vu built it end to end, including the knowledge graph behind its assistant.">
     <meta name="author" content="Henry Vu">
     <link rel="canonical" href="https://henryvu.io/work/xr-auto-service.html">
     <meta property="og:title" content="XR Auto Service">
-    <meta property="og:description" content="Hands-free repair guidance on a headset, and the knowledge graph that answers a technician's questions about the car in front of them.">
+    <meta property="og:description" content="Repair procedures on a Meta Quest 3, one step at a time, with a voice assistant backed by a knowledge graph.">
     <meta property="og:image" content="https://henryvu.io/assets/og-image.png">
     <meta property="og:url" content="https://henryvu.io/work/xr-auto-service.html">
     <meta property="og:type" content="article">
@@ -18,7 +18,7 @@
     <link rel="icon" type="image/png" sizes="512x512" href="../assets/favicon.png">
     <link rel="preload" href="../assets/fonts/ebgaramond-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="../styles.css?v=14">
-    <link rel="stylesheet" href="../work.css?v=3">
+    <link rel="stylesheet" href="../work.css?v=4">
 </head>
 <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -35,64 +35,46 @@
         <header class="art-head">
             <p class="kicker">eXRealityAI &middot; 2025 to now</p>
             <h1>XR Auto Service</h1>
-            <p class="dek">Hands-free repair guidance on a headset, and the knowledge graph that answers a technician&rsquo;s questions about the car in front of them.</p>
         </header>
 
-        <dl class="facts">
-            <dt>Role</dt><dd>Built it end to end, from the headset app to the retrieval behind its assistant</dd>
-            <dt>Stack</dt><dd>Unity (C#), Python, knowledge graphs, hybrid retrieval, Meta Quest 3</dd>
-        </dl>
-
-        <section class="sec essay" aria-labelledby="problem">
-            <h2 id="problem">The problem</h2>
-            <p>Cars change faster than a technician can memorize them, and the people who know every system are few. A technician working on something unfamiliar looks the procedure up on a screen across the bay, walks back, and tries to remember the torque spec on the way. The expertise exists, in service documentation, but not where the work happens.</p>
+        <section class="sec essay" aria-labelledby="app">
+            <h2 id="app">The app</h2>
+            <p>XR Auto Service shows a technician repair procedures on a Meta Quest 3, one step at a time. Each step has reference photos and safety warnings, and the technician takes a photo when it&rsquo;s done. They can ask questions out loud without putting their tools down. The app works offline and syncs when the headset reconnects.</p>
+            <p>I built it end to end, from the headset app to the search behind the assistant.</p>
         </section>
 
-        <section class="sec essay" aria-labelledby="built">
-            <h2 id="built">What I built</h2>
-            <p>XR Auto Service puts the procedure on a Meta Quest 3. The technician is walked through a repair one step at a time, with reference photos, safety warnings and a confirmation photo at each step, and can ask a question out loud about the step they are on. The app works offline and syncs its records when the headset reconnects.</p>
-            <p>The answers come from a knowledge graph I built over licensed service information, filtered to the exact vehicle on the lift, so a question about one engine never pulls the procedure for another.</p>
+        <section class="sec essay" aria-labelledby="answers">
+            <h2 id="answers">Answering questions</h2>
+            <p>Answers come from a knowledge graph I built from licensed service data. It links procedures, parts and specs. Every search is filtered to the year, model and engine of the car on the lift. Search combines keyword matching with a walk along the graph&rsquo;s links.</p>
 
             <figure class="fig wide" aria-labelledby="f1-title">
                 <div class="fig-head">
-                    <span class="fig-title" id="f1-title">From a spoken question to an answer for this car</span>
+                    <span class="fig-title" id="f1-title">A spoken question</span>
                 </div>
                 <div class="flow">
-                    <div class="flow-node"><b>Question</b><span>spoken during a step</span></div>
+                    <div class="flow-node"><b>Question</b><span>asked during a step</span></div>
                     <div class="flow-arrow" aria-hidden="true"></div>
-                    <div class="flow-node"><b>Vehicle filter</b><span>year, model and engine of the car on the lift</span></div>
+                    <div class="flow-node"><b>Vehicle filter</b><span>year, model, engine</span></div>
                     <div class="flow-arrow" aria-hidden="true"></div>
-                    <div class="flow-node key"><b>Knowledge graph</b><span>procedures, parts and specifications</span></div>
+                    <div class="flow-node key"><b>Knowledge graph</b><span>procedures, parts, specs</span></div>
                     <div class="flow-arrow" aria-hidden="true"></div>
-                    <div class="flow-node"><b>Retrieval</b><span>keyword search and a walk through the graph</span></div>
+                    <div class="flow-node"><b>Search</b><span>keywords plus graph links</span></div>
                     <div class="flow-arrow" aria-hidden="true"></div>
-                    <div class="flow-node"><b>Answer</b><span>read aloud, with the source</span></div>
+                    <div class="flow-node"><b>Answer</b><span>read aloud, with its source</span></div>
                 </div>
             </figure>
+
+            <p>Before building search, I wrote a toolkit that pulls only service data the company has the rights to use. It records the source and license of every document, and each answer cites its source.</p>
         </section>
 
-        <section class="sec essay" aria-labelledby="data">
-            <h2 id="data">Data the company may use</h2>
-            <p>Before any of the retrieval, I built a toolkit that collects only service data the company is allowed to use, and records where every document came from and under what licence. That manifest is what makes the knowledge base usable in a product at all, and it means any answer can be traced back to its source.</p>
-        </section>
-
-        <section class="sec essay" aria-labelledby="works">
-            <h2 id="works">How I know it works</h2>
-            <p>Retrieval is scored automatically on every change, against questions that repair experts wrote with the procedure they expected, and a model judge grades the answers. When I tested the evaluation itself, it caught a broken ranker but could not separate several reasonable ones, so I use it as a guard against regressions rather than a leaderboard.</p>
+        <section class="sec essay" aria-labelledby="test">
+            <h2 id="test">Testing</h2>
+            <p>Every change to search runs against questions written by repair experts, each paired with the procedure they expected. A model also grades the answers. When I checked the test itself, it flagged a broken ranker but gave several reasonable rankers about the same score.</p>
         </section>
 
         <nav class="art-links" aria-label="Sources">
             <a href="https://exreality.ai/xr-auto-service.php" target="_blank" rel="noopener">Product page</a>
-            <a href="smart-dvi.html">Smart DVI</a>
         </nav>
     </main>
-
-    <footer class="colophon">
-        <p class="social">
-            <a href="../">henryvu.io</a>
-            <a href="https://github.com/HenryVu27" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" rel="noopener">LinkedIn</a>
-        </p>
-    </footer>
 </body>
 </html>

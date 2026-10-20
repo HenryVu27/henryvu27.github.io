@@ -18,7 +18,7 @@
     <link rel="icon" type="image/png" sizes="512x512" href="../assets/favicon.png">
     <link rel="preload" href="../assets/fonts/ebgaramond-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="../styles.css?v=14">
-    <link rel="stylesheet" href="../work.css?v=3">
+    <link rel="stylesheet" href="../work.css?v=4">
 </head>
 <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -35,24 +35,18 @@
         <header class="art-head">
             <p class="kicker">ThorMed Innovation and UT Dallas &middot; 2025 to now</p>
             <h1>Ultrasound Segmentation for Portable Devices</h1>
-            <p class="dek">Segmenting the bladder from 486 labeled images, and why the encoder&rsquo;s starting point decides whether the model survives 4-bit weights.</p>
         </header>
-
-        <dl class="facts">
-            <dt>Role</dt><dd>Computer vision engineer and modeling lead</dd>
-            <dt>With</dt><dd>Andrew Vu, Dr. Eric Chou, Dr. Gregory Thoreson and Dr. Katherine Brown</dd>
-            <dt>Stack</dt><dd>PyTorch, U-Net, segmentation_models_pytorch, Albumentations</dd>
-        </dl>
 
         <section class="sec essay" aria-labelledby="problem">
             <h2 id="problem">The problem</h2>
             <p>Bladder volume tells a care team whether a patient is retaining urine. The standard way to measure it is a catheter, which carries a risk of infection. Ultrasound can do the job without one, if a model can outline the bladder reliably and run on the small device at the bedside.</p>
             <p>There is no public bladder ultrasound dataset, so the model had to learn from 486 images labeled for this project. A model that small devices can run also has to survive having its weights compressed, and that turned out to be the harder constraint.</p>
+            <p>The paper is joint work with Andrew Vu, Dr. Eric Chou and Dr. Gregory Thoreson of Baylor University Medical Center, and Dr. Katherine Brown at UT Dallas.</p>
         </section>
 
         <section class="sec essay" aria-labelledby="labels">
             <h2 id="labels">Building the labels</h2>
-            <p>Outlining the bladder by hand on every frame is slow, so I built a pipeline that drafts the labels first. It asks SAMUS, an ultrasound adaptation of Segment Anything, for a bladder mask on each frame and cleans the mask up. A radiologist then graded the masks by hand to make sure they were accurate before any model trained on them.</p>
+            <p>Outlining the bladder by hand on every frame is slow, so I built a <a href="https://github.com/HenryVu27/SAMUS---US-Masks-Generator" target="_blank" rel="noopener">pipeline</a> that drafts the labels first. It asks SAMUS, an ultrasound adaptation of Segment Anything, for a bladder mask on each frame and cleans the mask up. A radiologist then graded the masks by hand to make sure they were accurate before any model trained on them.</p>
 
             <figure class="fig wide" aria-labelledby="f0-title">
                 <div class="fig-head">
@@ -171,7 +165,7 @@
 
         <section class="sec essay" aria-labelledby="busi">
             <h2 id="busi">Breast ultrasound, scored on unseen images</h2>
-            <p>On the public BUSI breast ultrasound dataset I trained an attention U-Net and scored it on 156 test images that played no part in training or in choosing the checkpoint. Splitting the score by class shows where the error comes from.</p>
+            <p>On the public BUSI breast ultrasound dataset I trained an <a href="https://github.com/HenryVu27/Polyps-Segmentation" target="_blank" rel="noopener">attention U-Net</a> and scored it on 156 test images that played no part in training or in choosing the checkpoint. Splitting the score by class shows where the error comes from.</p>
 
             <figure class="fig bars" aria-labelledby="f3-title">
                 <div class="fig-head">
@@ -195,18 +189,8 @@
 
         <nav class="art-links" aria-label="Sources">
             <a href="https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf" target="_blank" rel="noopener">Paper</a>
-            <a href="https://github.com/HenryVu27/ThorMed" target="_blank" rel="noopener">Bladder code</a>
-            <a href="https://github.com/HenryVu27/Polyps-Segmentation" target="_blank" rel="noopener">Breast ultrasound code</a>
-            <a href="https://github.com/HenryVu27/SAMUS---US-Masks-Generator" target="_blank" rel="noopener">Label pipeline</a>
+            <a href="https://github.com/HenryVu27/ThorMed" target="_blank" rel="noopener">Code</a>
         </nav>
     </main>
-
-    <footer class="colophon">
-        <p class="social">
-            <a href="../">henryvu.io</a>
-            <a href="https://github.com/HenryVu27" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" rel="noopener">LinkedIn</a>
-        </p>
-    </footer>
 </body>
 </html>

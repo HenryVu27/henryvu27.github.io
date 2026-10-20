@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart DVI, Henry Vu</title>
-    <meta name="description" content="Smart DVI is a Meta Quest 3 app that walks auto technicians through a vehicle inspection hands-free. Henry Vu leads its development and owns its AI layer.">
+    <meta name="description" content="Smart DVI is a vehicle inspection app for the Meta Quest 3, used in production by auto shops. Henry Vu is its lead engineer and owns its AI.">
     <meta name="author" content="Henry Vu">
     <link rel="canonical" href="https://henryvu.io/work/smart-dvi.html">
     <meta property="og:title" content="Smart DVI">
-    <meta property="og:description" content="A Meta Quest 3 app that walks auto technicians through a vehicle inspection hands-free, and the AI layer behind it.">
+    <meta property="og:description" content="A vehicle inspection app for the Meta Quest 3, used in production by auto shops.">
     <meta property="og:image" content="https://henryvu.io/assets/og-image.png">
     <meta property="og:url" content="https://henryvu.io/work/smart-dvi.html">
     <meta property="og:type" content="article">
@@ -18,7 +18,7 @@
     <link rel="icon" type="image/png" sizes="512x512" href="../assets/favicon.png">
     <link rel="preload" href="../assets/fonts/ebgaramond-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="../styles.css?v=14">
-    <link rel="stylesheet" href="../work.css?v=3">
+    <link rel="stylesheet" href="../work.css?v=4">
 </head>
 <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -35,103 +35,63 @@
         <header class="art-head">
             <p class="kicker">eXRealityAI &middot; 2025 to now</p>
             <h1>Smart DVI</h1>
-            <p class="dek">A Meta Quest 3 app that walks a technician through a vehicle inspection hands-free, and the AI layer I lead behind it.</p>
         </header>
 
-        <dl class="facts">
-            <dt>Role</dt><dd>Lead engineer. I direct development and own the AI layer.</dd>
-            <dt>Status</dt><dd>In production at auto-repair shops</dd>
-            <dt>Stack</dt><dd>Unity (C#), Python, SQL, vision-language models, on-device speech recognition</dd>
-        </dl>
-
-        <section class="sec essay" aria-labelledby="problem">
-            <h2 id="problem">The problem</h2>
-            <p>A digital vehicle inspection is the checklist a technician works through on every car that comes into a shop. Each item gets a grade, anything wrong gets a photo, and the write-up goes to the service advisor, who uses it to explain the repair to the customer. Done on a tablet, it means stopping work to take photos and type with dirty hands, and the result depends on who did it.</p>
-        </section>
-
-        <section class="sec essay" aria-labelledby="built">
-            <h2 id="built">What I built</h2>
-            <p>Smart DVI moves the inspection onto a headset. The technician sees the shop&rsquo;s own checklist in front of them, grades and photographs items without putting tools down, and dictates notes. Findings reach the advisor while the car is still on the lift. I lead the app&rsquo;s development and own its AI layer, the part that turns photos, speech and the car&rsquo;s own data into checklist answers.</p>
+        <section class="sec essay" aria-labelledby="app">
+            <h2 id="app">The app</h2>
+            <p>Smart DVI is a vehicle inspection app for the Meta Quest 3, and auto shops use it in production. The technician wears the headset while working through the shop&rsquo;s inspection checklist. They grade each item, take photos by looking at the part, and record notes by voice. The finished inspection goes to the service advisor as a repair order, and the customer approves or declines it line by line.</p>
+            <p>I&rsquo;m the lead engineer. I run the app&rsquo;s development, and I own its AI, which covers photo grading, the agents on the headset, VIN reading and speech.</p>
 
             <figure class="fig wide" aria-labelledby="f1-title">
                 <div class="fig-head">
-                    <span class="fig-title" id="f1-title">One inspection, start to finish</span>
+                    <span class="fig-title" id="f1-title">An inspection</span>
+                    <span class="fig-note">works offline, syncs later</span>
                 </div>
                 <div class="flow">
-                    <div class="flow-node"><b>Job assigned</b><span>the shop&rsquo;s own checklist</span></div>
+                    <div class="flow-node"><b>Job</b><span>assigned by the advisor</span></div>
                     <div class="flow-arrow" aria-hidden="true"></div>
-                    <div class="flow-node"><b>Capture</b><span>photos, voice notes, the car&rsquo;s trouble codes</span></div>
+                    <div class="flow-node"><b>Capture</b><span>grades, photos, voice notes, trouble codes</span></div>
                     <div class="flow-arrow" aria-hidden="true"></div>
-                    <div class="flow-node key"><b>AI layer</b><span>grades, readings and suggestions</span></div>
+                    <div class="flow-node key"><b>AI</b><span>suggested grades and readings</span></div>
                     <div class="flow-arrow" aria-hidden="true"></div>
-                    <div class="flow-node"><b>Technician</b><span>confirms or overrides</span></div>
+                    <div class="flow-node"><b>Review</b><span>the technician accepts or changes them</span></div>
                     <div class="flow-arrow" aria-hidden="true"></div>
-                    <div class="flow-node"><b>Repair order</b><span>to the advisor and the customer</span></div>
+                    <div class="flow-node"><b>Repair order</b><span>sent to the advisor</span></div>
                 </div>
-                <figcaption>The whole inspection works offline and syncs when the headset reconnects.</figcaption>
             </figure>
         </section>
 
         <section class="sec essay" aria-labelledby="ai">
-            <h2 id="ai">The AI layer</h2>
-            <p>Each kind of input gets its own handling, and in every case the technician has the last word.</p>
+            <h2 id="ai">What the AI does</h2>
 
-            <figure class="fig" aria-labelledby="t1-title">
-                <div class="fig-head">
-                    <span class="fig-title" id="t1-title">What the AI does with each input</span>
-                </div>
+            <figure class="fig">
                 <table class="tbl">
                     <thead>
-                        <tr><th class="l">Input</th><th class="l">What the AI does</th></tr>
+                        <tr><th class="l">Input</th><th class="l">What the AI does with it</th></tr>
                     </thead>
                     <tbody>
                         <tr><td class="l">Photo of an item</td><td class="l">Suggests a grade of pass, attention or fail</td></tr>
-                        <tr><td class="l">Photo of a gauge or label</td><td class="l">Reads odometers, tread depth, fluid levels, plates and stickers, through agents a shop switches on</td></tr>
-                        <tr><td class="l">VIN plate or barcode</td><td class="l">Reads the vehicle identification number and checks it</td></tr>
-                        <tr><td class="l">Voice</td><td class="l">Transcribes notes on the headset, with no network needed</td></tr>
-                        <tr><td class="l">Diagnostic port</td><td class="l">Reads the car&rsquo;s trouble codes over Bluetooth</td></tr>
+                        <tr><td class="l">Photo of a gauge or label</td><td class="l">Reads odometers, tread depth, fluid levels, plates and stickers</td></tr>
+                        <tr><td class="l">VIN plate or barcode</td><td class="l">Reads the VIN and checks it</td></tr>
+                        <tr><td class="l">Voice</td><td class="l">Transcribes notes on the headset, offline</td></tr>
+                        <tr><td class="l">Diagnostic port</td><td class="l">Reads trouble codes over Bluetooth</td></tr>
                     </tbody>
                 </table>
             </figure>
 
-            <p>I built those readings as small agents on the headset, which a shop switches on item by item. Each one wakes up when something happens in the inspection, such as a new photo, a voice note or a diagnostic session. The shop also decides whether an agent may fill in an answer or only suggest one, and an agent never overwrites what the technician entered. When an agent is unsure of a reading, it offers the value instead of writing it.</p>
-
-            <figure class="fig wide" aria-labelledby="f2-title">
-                <div class="fig-head">
-                    <span class="fig-title" id="f2-title">How an agent answers a checklist item</span>
-                </div>
-                <div class="flow">
-                    <div class="flow-node"><b>Event</b><span>a photo, a voice note or a diagnostic session</span></div>
-                    <div class="flow-arrow" aria-hidden="true"></div>
-                    <div class="flow-node"><b>Agent</b><span>reads the value it was built for</span></div>
-                    <div class="flow-arrow" aria-hidden="true"></div>
-                    <div class="flow-node"><b>Shop&rsquo;s rule</b><span>fill or suggest, set per item</span></div>
-                    <div class="flow-arrow" aria-hidden="true"></div>
-                    <div class="flow-node key"><b>Technician</b><span>keeps the last word</span></div>
-                </div>
-            </figure>
-
-            <p>Reading the vehicle identification number shows the approach in small. The headset takes a burst of frames and keeps the sharpest, tries the barcode first, and falls back to a vision model that marks the characters it is unsure of. The number&rsquo;s own check digit then repairs those characters, so a smudged plate still gives a valid number.</p>
+            <p>The readings run as agents on the headset. An agent runs when the technician takes a photo, records a note or connects to the car. Shops turn agents on per checklist item and choose whether each one fills in the answer or only suggests it. An agent never changes a value the technician entered, and it only suggests a reading it isn&rsquo;t confident about.</p>
+            <p>VIN reading takes a burst of frames and keeps the sharpest. It tries the barcode first. If that fails, a vision model reads the characters and marks the ones it isn&rsquo;t sure of, and the VIN&rsquo;s check digit is used to correct them.</p>
         </section>
 
-        <section class="sec essay" aria-labelledby="ships">
-            <h2 id="ships">How I decide what ships</h2>
-            <p>Changes to the AI start with measurement on real inspections. Before changing how photos are graded, I build an evaluation set from graded inspection photos and compare candidate models and prompts on it, and the result decides what the backend adopts. The same measurements decide where the AI may act alone and where it should only suggest, which is why photo grades stay suggestions the technician confirms.</p>
-            <p>Beyond the headset, I write the specifications the backend and web teams build against, citing the code behind each defect, and I spend time in the shop with the technicians using it.</p>
+        <section class="sec essay" aria-labelledby="test">
+            <h2 id="test">How I test changes</h2>
+            <p>Before I change how photos are graded, I build a test set from photos technicians have already graded and run the candidate models and prompts against it. The backend switches to whichever scores best. Technicians confirm every grade, because the same tests showed the model&rsquo;s confidence score doesn&rsquo;t predict when it&rsquo;s wrong.</p>
+            <p>I also write the specs the backend and web teams build from, and I spend time in shops watching technicians use the app.</p>
         </section>
 
         <nav class="art-links" aria-label="Sources">
             <a href="https://exreality.ai/smartdvi.php" target="_blank" rel="noopener">Product page</a>
-            <a href="xr-auto-service.html">XR Auto Service</a>
         </nav>
     </main>
-
-    <footer class="colophon">
-        <p class="social">
-            <a href="../">henryvu.io</a>
-            <a href="https://github.com/HenryVu27" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" rel="noopener">LinkedIn</a>
-        </p>
-    </footer>
 </body>
 </html>

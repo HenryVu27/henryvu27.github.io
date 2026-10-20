@@ -7,7 +7,7 @@
 }
 
 /* ---------- Head of the essay ---------- */
-.art { max-width: var(--col); margin: 0 auto; padding: 0 var(--pad); }
+.art { max-width: var(--col); margin: 0 auto; padding: 0 var(--pad) 80px; }
 .art-head { padding: 88px 0 0; text-align: center; }
 .kicker { color: var(--muted); font-variant-caps: small-caps; letter-spacing: .08em; font-size: 18px; }
 .art-head h1 { font-size: clamp(31px, 4.4vw, 42px); line-height: 1.15; margin-top: 12px; }
