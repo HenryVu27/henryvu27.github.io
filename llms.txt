@@ -74,6 +74,16 @@ robust enough for portable devices.
 - EEG Decoding, Modeling Political Sarcasm, Multi-armed Bandits and Online Learning, Polyps and
   Breast Ultrasound Segmentation, A Survey of Geometric Set Cover, and earlier coursework.
 
+## Project pages
+
+- Smart DVI: https://henryvu.io/work/smart-dvi.html
+- XR Auto Service: https://henryvu.io/work/xr-auto-service.html
+- Ultrasound segmentation for portable devices: https://henryvu.io/work/ultrasound.html
+- DatDai: https://henryvu.io/work/datdai.html
+- ADHD Coaching Agent: https://henryvu.io/work/adhd-agent.html
+- GardenXR: https://henryvu.io/work/gardenxr.html
+- Bandits and online algorithms: https://henryvu.io/work/bandits.html
+
 ## Education
 
 - M.Sc. Computer Science, University of Texas at Dallas, expected Summer 2027.

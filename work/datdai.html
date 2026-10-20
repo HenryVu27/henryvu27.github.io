@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Answering over Vietnamese Land Law, Henry Vu</title>
+    <meta name="description" content="DatDai answers land-law questions in Vietnamese from the statute text, follows each decree to the later decrees that amended it, and checks every article it cites against the passages it retrieved. Henry Vu's personal project, deployed on Google Cloud Run.">
+    <meta name="author" content="Henry Vu">
+    <link rel="canonical" href="https://henryvu.io/work/datdai.html">
+    <meta property="og:title" content="Question Answering over Vietnamese Land Law">
+    <meta property="og:description" content="An assistant that answers land-law questions in Vietnamese from the statute text and checks every article it cites against the passages it retrieved.">
+    <meta property="og:image" content="https://henryvu.io/assets/og-image.png">
+    <meta property="og:url" content="https://henryvu.io/work/datdai.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#f3eee3">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="512x512" href="../assets/favicon.png">
+    <link rel="preload" href="../assets/fonts/ebgaramond-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../styles.css?v=14">
+    <link rel="stylesheet" href="../work.css?v=3">
+</head>
+<body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="rh">
+        <nav class="rh-nav" aria-label="Site">
+            <a href="../">Henry Vu</a>
+            <a href="../#work">Work</a>
+            <a href="../#projects">Projects</a>
+        </nav>
+    </header>
+
+    <main class="art" id="main">
+        <header class="art-head">
+            <p class="kicker">DatDai &middot; personal project &middot; 2026</p>
+            <h1>Question Answering over Vietnamese Land Law</h1>
+            <p class="dek">An assistant that answers land-law questions in Vietnamese from the statute text and checks every article it cites against the passages it retrieved.</p>
+        </header>
+
+        <dl class="facts">
+            <dt>Role</dt><dd>Sole engineer, from parsing the statutes to deployment</dd>
+            <dt>Stack</dt><dd>Python, FastAPI, Gemini, Qdrant, Langfuse, Supabase Postgres, Google&nbsp;Cloud&nbsp;Run</dd>
+        </dl>
+
+        <section class="sec essay" aria-labelledby="problem">
+            <h2 id="problem">The problem</h2>
+            <p>Vietnam passed a new Land Law in 2024. Decrees issued in 2025 and 2026 have since amended the decrees that put it into practice, and one of those amending decrees has itself been amended. Someone asking about land prices or compensation needs the clause in force today, with an article number they can look up.</p>
+            <p>A plain retrieval-augmented generation (RAG) chatbot handles this badly. A retriever that matches on wording will quote a clause that a later decree replaced, and the answer reads just as confidently. The model can also cite an article it never saw.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="built">
+            <h2 id="built">What I built</h2>
+            <p>DatDai answers from 11 documents, the 2024 Land Law and the ten decrees and resolutions that implement or amend it. I cut them into 4,366 chunks at article boundaries, breaking long articles at each clause. Each question then passes through five stages.</p>
+
+            <figure class="fig wide" aria-labelledby="f1-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="f1-title">From a question to a checked answer</span>
+                    <span class="fig-note">every stage traced in Langfuse</span>
+                </div>
+                <div class="flow">
+                    <div class="flow-node"><b>Rewrite</b><span>a standalone question and search variants</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Plan</b><span>a model chooses the lookups</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Retrieve</b><span>hybrid search and the amendment graph</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Generate</b><span>a larger model for complex questions</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node key"><b>Check citations</b><span>each cited article against the retrieved text</span></div>
+                </div>
+                <figcaption>The planner can run several lookups at once. The citation check reads the finished answer and makes no model call.</figcaption>
+            </figure>
+
+            <p>Retrieval runs dense and sparse search together in Qdrant and merges the two rankings with reciprocal rank fusion (RRF). A small Gemini model then scores each candidate passage between 0 and 1, and the top passages bring in the rest of their article so the generator sees whole provisions. The rewrite stage reads a short state kept for each conversation, so a follow-up such as &ldquo;case 3&rdquo; resolves to the third item of the previous answer.</p>
+            <p>An amendment graph records which decree amends or implements which. An index built by scanning the amending decrees links 24 amended articles to the chunks that rewrite them, and when a question asks how one decree changed another, the planner fetches those chunks alongside the search results. The citation verifier pulls every article reference out of the answer, with or without Vietnamese diacritics, and checks that each one appears in the retrieved passages. When one does not, the verifier logs it and appends a notice to the saved answer asking the reader to check the provisions it cites.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="checks">
+            <h2 id="checks">How I check it</h2>
+            <p>Every answer built from retrieved passages goes through the citation check before it is saved. Each request is traced in Langfuse with one span per stage, and the trace carries scores that cost no model call, such as how many passages came back and the reranker&rsquo;s top score. Readers can rate an answer with a thumbs up or down, and the rating lands on the same trace.</p>
+            <p>To judge answer quality, I wrote a script that pulls recent traces and has Gemini 2.5 Flash act as a judge at temperature 0. It scores each answer from 0 to 1 on whether it is grounded in the retrieved passages, and separately on relevance and completeness, then writes the scores back onto the trace. The judge works on questions people actually asked. It skips traces that already carry a score, so a rerun scores only new traffic.</p>
+            <p>Before launch I audited the deployed service against its own design documents. The audit confirmed 6 of the 7 issues in my earlier hardening notes and found 14 more. The table shows the findings that decide whether the service stays up.</p>
+
+            <figure class="fig" aria-labelledby="t1-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="t1-title">What the audit found, and the code now</span>
+                    <span class="fig-note">audit of 6 March 2026</span>
+                </div>
+                <table class="tbl">
+                    <thead>
+                        <tr><th>Finding</th><th class="l">At audit</th><th class="l">Now</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Outside call timeouts</td><td class="l">none</td><td class="l">15 to 45 s</td></tr>
+                        <tr><td>Postgres connections</td><td class="l">6 to 8 a request</td><td class="l">pooled, max 5</td></tr>
+                        <tr><td>Rate limit</td><td class="l">none</td><td class="l">10 a minute</td></tr>
+                        <tr><td>Memory, concurrency</td><td class="l">1 GiB, 10</td><td class="l">2 GiB, 5</td></tr>
+                        <tr><td>Health check</td><td class="l">none</td><td class="l">startup probe</td></tr>
+                    </tbody>
+                </table>
+                <figcaption>At-audit values come from the audit report. Current values come from the code and the deploy workflow. The rate limit applies per client address.</figcaption>
+            </figure>
+
+        </section>
+
+        <section class="sec essay" aria-labelledby="next">
+            <h2 id="next">Next</h2>
+            <p>Next is a fixed set of questions with known answers that the deploy workflow scores on every push, so a release has to pass it before it ships. After that, the citation notice should appear while the answer streams, and the service should refuse to start without its vector store.</p>
+        </section>
+
+        <nav class="art-links" aria-label="Sources">
+            <a href="https://github.com/HenryVu27/DatDai" target="_blank" rel="noopener">Code</a>
+            <a href="https://github.com/HenryVu27/DatDai/blob/main/scripts/evaluate_rag.py" target="_blank" rel="noopener">Judge script</a>
+            <a href="https://github.com/HenryVu27/DatDai/blob/main/docs/plans/2026-03-06-deployment-audit-report.md" target="_blank" rel="noopener">Audit report</a>
+        </nav>
+    </main>
+
+    <footer class="colophon">
+        <p class="social">
+            <a href="../">henryvu.io</a>
+            <a href="https://github.com/HenryVu27" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" rel="noopener">LinkedIn</a>
+        </p>
+    </footer>
+</body>
+</html>

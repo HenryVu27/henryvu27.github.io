@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADHD Coaching Agent, Henry Vu</title>
+    <meta name="description" content="A coaching chatbot for parents of children with attention-deficit/hyperactivity disorder (ADHD) that keeps its agent between two safety gates, and the offline evaluation that decided how it searches. Henry Vu's personal project.">
+    <meta name="author" content="Henry Vu">
+    <link rel="canonical" href="https://henryvu.io/work/adhd-agent.html">
+    <meta property="og:title" content="ADHD Coaching Agent">
+    <meta property="og:description" content="A coaching chatbot for parents of children with ADHD that keeps its agent between two safety gates, and the offline evaluation that decided how it searches.">
+    <meta property="og:image" content="https://henryvu.io/assets/og-image.png">
+    <meta property="og:url" content="https://henryvu.io/work/adhd-agent.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#f3eee3">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="512x512" href="../assets/favicon.png">
+    <link rel="preload" href="../assets/fonts/ebgaramond-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../styles.css?v=14">
+    <link rel="stylesheet" href="../work.css?v=3">
+</head>
+<body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="rh">
+        <nav class="rh-nav" aria-label="Site">
+            <a href="../">Henry Vu</a>
+            <a href="../#work">Work</a>
+            <a href="../#projects">Projects</a>
+        </nav>
+    </header>
+
+    <main class="art" id="main">
+        <header class="art-head">
+            <p class="kicker">Personal project &middot; 2026</p>
+            <h1>ADHD Coaching Agent</h1>
+            <p class="dek">A coaching chatbot for parents that keeps its agent between two safety gates, and the offline evaluation that decided how it searches.</p>
+        </header>
+
+        <dl class="facts">
+            <dt>Role</dt><dd>Sole engineer</dd>
+            <dt>Stack</dt><dd>LangGraph, Gemini 2.5, Qdrant, FastEmbed, FastAPI, React</dd>
+        </dl>
+
+        <section class="sec essay" aria-labelledby="problem">
+            <h2 id="problem">The problem</h2>
+            <p>Parents of children with attention-deficit/hyperactivity disorder (ADHD) often need a concrete next step for a homework fight or a morning that has fallen apart, and they need it when no coach is around. A chatbot can answer at any hour, but it has to stay a coaching tool. It must not diagnose a child or advise on medication, and a parent who writes in crisis needs emergency resources at once.</p>
+            <p>Its advice also has to trace back to documents I can inspect, and every change to a prompt or a retriever has to be measured before a parent sees its effect.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="built">
+            <h2 id="built">What I built</h2>
+            <p>I built the coach as a LangGraph graph that puts a ReAct (reason and act) agent between two gates. The agent reasons in a loop and decides at each step whether to answer or call a tool. The input gate makes one structured call to Gemini 2.5 Flash that flags crisis and jailbreak attempts. A crisis message gets the 988 Suicide and Crisis Lifeline and 911 right away, and a jailbreak gets a refusal. Neither reaches the agent.</p>
+
+            <figure class="fig wide" aria-labelledby="f1-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="f1-title">One turn, from message to reply</span>
+                    <span class="fig-note">blocked messages stop at the first gate</span>
+                </div>
+                <div class="flow">
+                    <div class="flow-node"><b>Input gate</b><span>crisis and jailbreak check</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Context</b><span>profile, goals and memory</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node key"><b>ReAct agent</b><span>Gemini 2.5, retrieval as a tool</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Output gate</b><span>medication, diagnosis and scope</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Memory</b><span>updated after the reply</span></div>
+                </div>
+                <figcaption>The agent sees only messages that pass the input gate, and the parent sees only replies that pass the output gate.</figcaption>
+            </figure>
+
+            <p>The input gate&rsquo;s call also rates the message as simple or complex, which decides whether the agent runs on Gemini 2.5 Flash or Pro. Greetings and other plainly harmless messages skip the call when a small local embedding model finds them close to known harmless examples. The output gate makes a second structured call on the draft and swaps in a safe fallback whenever the draft crosses one of the lines above.</p>
+            <p>Memory has four tiers. SQLite keeps every message along with the family profile and goals, and a rolling summary condenses the conversation every five turns. An extractor adds facts about the child to the profile, and episodes record moments such as a parent reporting how a strategy went. These updates run in the background after the reply, so the parent never waits on them.</p>
+            <p>The knowledge base began as 100 curated documents, each a strategy or a piece of guidance with its source, and I later added 8,907 documents from research and education databases such as PubMed and ERIC. Search combines a semantic ranking from Gemini embeddings with a keyword ranking, then reranks the top ten with a cross-encoder that runs locally.</p>
+
+            <figure class="fig wide" aria-labelledby="f2-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="f2-title">Inside the knowledge-base search</span>
+                    <span class="fig-note">the evaluation below varies the rerank step</span>
+                </div>
+                <div class="flow">
+                    <div class="flow-node"><b>Query</b><span>written by the agent</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Hybrid search</b><span>dense and keyword vectors, filtered by the child&rsquo;s age</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Fuse</b><span>reciprocal rank fusion</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node key"><b>Rerank</b><span>local cross-encoder keeps 5 of 10</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Personalize</b><span>lifts what worked for this family</span></div>
+                </div>
+                <figcaption>Search returns short summaries, and the agent decides whether to open a full document or search again.</figcaption>
+            </figure>
+        </section>
+
+        <section class="sec essay" aria-labelledby="eval">
+            <h2 id="eval">How I know it works</h2>
+            <p>I built an offline evaluation package next to the agent. It writes its own retrieval test set from the knowledge base. A language model pulls statements out of each document and turns them into questions of six types, and a filter drops any question its source cannot answer or that repeats another. The harmless-message shortcut has its own set of 57 labeled messages, and its test fails if a single crisis or jailbreak message would take it.</p>
+            <p>For whole conversations, 50 synthetic parent personas drive the agent, and language-model judges score each turn on six dimensions, including empathy and boundary compliance. Pairwise judges compare two versions of the pipeline twice with the order swapped and call a tie when the verdicts disagree. The results below come from the retrieval evaluation.</p>
+            <p>The first retrieval run, on 36 questions over the 100 curated documents, split by question type. Direct lookups had a mean reciprocal rank (MRR) of 0.93, while reasoning questions, which need an inference the document does not state outright, scored 0.20. A revised rewriting prompt lifted reasoning to 0.60 and dropped the comparative question from 1.00 to 0.33. I took the rewriter out of the agent&rsquo;s path and let the agent decide when to search again. I then tried ColBERT, a model that compares query and document token by token, as a third ranking in the fusion in place of the cross-encoder.</p>
+
+            <figure class="fig wide dumb" aria-labelledby="f3-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="f3-title">MRR by question type</span>
+                    <span class="fig-note"><span class="swatch"></span>cross-encoder<span class="swatch key"></span>ColBERT</span>
+                </div>
+                <div class="row">
+                    <span class="label">Direct lookup</span>
+                    <div class="track" style="--a:92.86%; --b:96.43%">
+                        <span class="seg"></span>
+                        <span class="dot" style="--x:92.86%"></span><span class="val lo" style="--x:92.86%">0.93</span>
+                        <span class="dot key" style="--x:96.43%"></span><span class="val hi" style="--x:96.43%">0.96</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="label">Multi-part</span>
+                    <div class="track" style="--a:81.48%; --b:83.33%">
+                        <span class="seg"></span>
+                        <span class="dot key" style="--x:81.48%"></span><span class="val lo" style="--x:81.48%">0.81</span>
+                        <span class="dot" style="--x:83.33%"></span><span class="val hi" style="--x:83.33%">0.83</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="label">Reasoning</span>
+                    <div class="track" style="--a:20%; --b:86.67%">
+                        <span class="seg"></span>
+                        <span class="dot" style="--x:20%"></span><span class="val lo" style="--x:20%">0.20</span>
+                        <span class="dot key" style="--x:86.67%"></span><span class="val hi" style="--x:86.67%">0.87</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="label">Procedure</span>
+                    <div class="track" style="--a:83.33%; --b:100%">
+                        <span class="seg"></span>
+                        <span class="dot key" style="--x:83.33%"></span><span class="val lo" style="--x:83.33%">0.83</span>
+                        <span class="dot" style="--x:100%"></span><span class="val hi" style="--x:100%">1.00</span>
+                    </div>
+                </div>
+                <div class="axis" aria-hidden="true">
+                    <span style="--x:0%">0</span><span style="--x:25%">0.25</span><span style="--x:50%">0.50</span><span style="--x:75%">0.75</span><span style="--x:100%">1</span>
+                </div>
+                <figcaption>36 generated questions over the 100 curated documents. The rows hold 14, 9, 5 and 3 questions. One comparative question scored 1 under both, and four out-of-scope questions, which have no answer in the corpus, scored 0 under both. Over all 36, MRR rose from 0.71 to 0.80.</figcaption>
+            </figure>
+
+            <p>ColBERT put the right document first for four of the five reasoning questions, against one for the cross-encoder, and gave back a little on procedures and multi-part questions. Five questions is a small sample, so I treat this as a lead to test at scale. ColBERT is now a configuration option next to the cross-encoder.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="next">
+            <h2 id="next">Next</h2>
+            <p>Next is a retrieval test on the full corpus of 9,007 documents to choose between ColBERT and the cross-encoder, and judge runs over full persona conversations. I have also moved three of the four memory tiers into a Graphiti knowledge graph, and the runner that compares it with the four-tier version is written and waiting to run.</p>
+        </section>
+
+        <nav class="art-links" aria-label="Sources">
+            <a href="https://github.com/HenryVu27/ADHDAgent" target="_blank" rel="noopener">Code</a>
+            <a href="https://github.com/HenryVu27/ADHDAgent/tree/main/eval" target="_blank" rel="noopener">Evaluation package</a>
+        </nav>
+    </main>
+
+    <footer class="colophon">
+        <p class="social">
+            <a href="../">henryvu.io</a>
+            <a href="https://github.com/HenryVu27" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" rel="noopener">LinkedIn</a>
+        </p>
+    </footer>
+</body>
+</html>

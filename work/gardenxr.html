@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GardenXR, Henry Vu</title>
+    <meta name="description" content="GardenXR is a mixed reality plant-care app for Meta Quest, live on the Meta Horizon Store. Henry Vu built it at eXRealityAI and took it through Meta's review for camera access.">
+    <meta name="author" content="Henry Vu">
+    <link rel="canonical" href="https://henryvu.io/work/gardenxr.html">
+    <meta property="og:title" content="GardenXR">
+    <meta property="og:description" content="A mixed reality plant-care app for Meta Quest, live on the Meta Horizon Store.">
+    <meta property="og:image" content="https://henryvu.io/assets/og-image.png">
+    <meta property="og:url" content="https://henryvu.io/work/gardenxr.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#f3eee3">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="512x512" href="../assets/favicon.png">
+    <link rel="preload" href="../assets/fonts/ebgaramond-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../styles.css?v=14">
+    <link rel="stylesheet" href="../work.css?v=3">
+</head>
+<body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="rh">
+        <nav class="rh-nav" aria-label="Site">
+            <a href="../">Henry Vu</a>
+            <a href="../#work">Work</a>
+            <a href="../#projects">Projects</a>
+        </nav>
+    </header>
+
+    <main class="art" id="main">
+        <header class="art-head">
+            <p class="kicker">eXRealityAI &middot; 2025 to 2026</p>
+            <h1>GardenXR</h1>
+            <p class="dek">Point at a plant in your room, and an assistant on Meta Quest tells you what it is, how it is doing and what it needs.</p>
+        </header>
+
+        <dl class="facts">
+            <dt>Role</dt><dd>Engineer, from the first build through store release</dd>
+            <dt>Status</dt><dd>Live and free on the Meta Horizon Store</dd>
+            <dt>Stack</dt><dd>Unity (C#), Quest passthrough camera, vision-language models, voice input</dd>
+        </dl>
+
+        <section class="sec essay" aria-labelledby="what">
+            <h2 id="what">What it does</h2>
+            <p>GardenXR is a mixed reality plant-care app. You look at a plant through the headset&rsquo;s passthrough view and capture it, and the app identifies the plant, checks its health and gives care tips. You can then ask follow-up questions by voice.</p>
+
+            <figure class="fig wide" aria-labelledby="f1-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="f1-title">From looking at a plant to a care plan</span>
+                </div>
+                <div class="flow">
+                    <div class="flow-node"><b>Point</b><span>at a plant in the room</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node key"><b>Camera frame</b><span>from the passthrough view</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Vision model</b><span>identifies the plant and its condition</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Assistant</b><span>care tips and voice follow-ups</span></div>
+                </div>
+            </figure>
+        </section>
+
+        <section class="sec essay" aria-labelledby="review">
+            <h2 id="review">Getting camera access through review</h2>
+            <p>Apps on Quest cannot see the camera feed by default. GardenXR depends on it, so before it could ship it had to pass Meta&rsquo;s review for restricted camera access. It passed, and the app is live on the store.</p>
+            <p>An early version also ran an object detector on the headset itself. It spread inference across frames so it never stalled rendering, and projected the user&rsquo;s pointing ray into the camera image to find the plant they meant. The released app identifies plants from a captured frame instead.</p>
+        </section>
+
+        <nav class="art-links" aria-label="Sources">
+            <a href="https://www.meta.com/experiences/gardenxr/24200709416226235/" target="_blank" rel="noopener">Meta Horizon Store</a>
+            <a href="smart-dvi.html">Smart DVI</a>
+        </nav>
+    </main>
+
+    <footer class="colophon">
+        <p class="social">
+            <a href="../">henryvu.io</a>
+            <a href="https://github.com/HenryVu27" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" rel="noopener">LinkedIn</a>
+        </p>
+    </footer>
+</body>
+</html>

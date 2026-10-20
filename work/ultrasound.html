@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultrasound Segmentation for Portable Devices, Henry Vu</title>
+    <meta name="description" content="Bladder segmentation from 486 labeled ultrasound images, and how the encoder's starting point decides whether the model survives 4-bit weights. Henry Vu's work at ThorMed Innovation and UT Dallas.">
+    <meta name="author" content="Henry Vu">
+    <link rel="canonical" href="https://henryvu.io/work/ultrasound.html">
+    <meta property="og:title" content="Ultrasound Segmentation for Portable Devices">
+    <meta property="og:description" content="Bladder segmentation from 486 labeled ultrasound images, and how the encoder's starting point decides whether the model survives 4-bit weights.">
+    <meta property="og:image" content="https://henryvu.io/assets/og-image.png">
+    <meta property="og:url" content="https://henryvu.io/work/ultrasound.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#f3eee3">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="512x512" href="../assets/favicon.png">
+    <link rel="preload" href="../assets/fonts/ebgaramond-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../styles.css?v=14">
+    <link rel="stylesheet" href="../work.css?v=3">
+</head>
+<body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="rh">
+        <nav class="rh-nav" aria-label="Site">
+            <a href="../">Henry Vu</a>
+            <a href="../#work">Work</a>
+            <a href="../#projects">Projects</a>
+        </nav>
+    </header>
+
+    <main class="art" id="main">
+        <header class="art-head">
+            <p class="kicker">ThorMed Innovation and UT Dallas &middot; 2025 to now</p>
+            <h1>Ultrasound Segmentation for Portable Devices</h1>
+            <p class="dek">Segmenting the bladder from 486 labeled images, and why the encoder&rsquo;s starting point decides whether the model survives 4-bit weights.</p>
+        </header>
+
+        <dl class="facts">
+            <dt>Role</dt><dd>Computer vision engineer and modeling lead</dd>
+            <dt>With</dt><dd>Andrew Vu, Dr. Eric Chou, Dr. Gregory Thoreson and Dr. Katherine Brown</dd>
+            <dt>Stack</dt><dd>PyTorch, U-Net, segmentation_models_pytorch, Albumentations</dd>
+        </dl>
+
+        <section class="sec essay" aria-labelledby="problem">
+            <h2 id="problem">The problem</h2>
+            <p>Bladder volume tells a care team whether a patient is retaining urine. The standard way to measure it is a catheter, which carries a risk of infection. Ultrasound can do the job without one, if a model can outline the bladder reliably and run on the small device at the bedside.</p>
+            <p>There is no public bladder ultrasound dataset, so the model had to learn from 486 images labeled for this project. A model that small devices can run also has to survive having its weights compressed, and that turned out to be the harder constraint.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="labels">
+            <h2 id="labels">Building the labels</h2>
+            <p>Outlining the bladder by hand on every frame is slow, so I built a pipeline that drafts the labels first. It asks SAMUS, an ultrasound adaptation of Segment Anything, for a bladder mask on each frame and cleans the mask up. A radiologist then graded the masks by hand to make sure they were accurate before any model trained on them.</p>
+
+            <figure class="fig wide" aria-labelledby="f0-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="f0-title">From a video frame to a checked label</span>
+                </div>
+                <div class="flow">
+                    <div class="flow-node"><b>Frame</b><span>resized to 256 &times; 256</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>SAMUS</b><span>one point prompt at the center</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Threshold</b><span>Otsu on a smoothed probability map</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Clean up</b><span>drop specks, fill holes, keep the largest region</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node key"><b>Radiologist</b><span>graded by hand</span></div>
+                </div>
+            </figure>
+        </section>
+
+        <section class="sec essay" aria-labelledby="built">
+            <h2 id="built">What I built</h2>
+            <p>I trained U-Net segmentation models with four encoders, from ResNet34 down to the small MobileNetV2 and EfficientNet-B0. Before they saw a bladder, I pretrained each encoder on 9,204 thyroid and breast ultrasound images from the public US30K collection, which contains no bladder images at all, and compared that against the usual ImageNet starting point.</p>
+
+            <figure class="fig wide" aria-labelledby="f1-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="f1-title">The experiment, end to end</span>
+                    <span class="fig-note">each model trained five times, once per fold</span>
+                </div>
+                <div class="flow">
+                    <div class="flow-node"><b>Pretrain encoder</b><span>9,204 thyroid and breast images</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Fine-tune on bladder</b><span>389 images, 5 folds</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node key"><b>Quantize weights</b><span>8-bit and 4-bit, no retraining</span></div>
+                    <div class="flow-arrow" aria-hidden="true"></div>
+                    <div class="flow-node"><b>Score</b><span>97 held-out images</span></div>
+                </div>
+                <figcaption>The same pipeline runs from an ImageNet start and from an ultrasound start, for each of the four encoders.</figcaption>
+            </figure>
+
+            <p>To see what would survive on a small device, I quantized each trained model&rsquo;s weights to 8 and 4 bits without retraining, using symmetric per-channel quantization, and scored it again on the 97 held-out images with the Dice score, the overlap between the predicted outline and the sonographer&rsquo;s.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="showed">
+            <h2 id="showed">What it showed</h2>
+            <p>At full precision the starting point barely matters. Every model lands between 95.4 and 96 percent Dice, and the best, a MobileNetV2 pretrained on ultrasound, reaches 96. At 8 bits nothing changes by more than a point. The difference appears at 4 bits.</p>
+
+            <figure class="fig wide dumb" aria-labelledby="f2-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="f2-title">Dice at 4-bit weights, by encoder</span>
+                    <span class="fig-note"><span class="swatch"></span>ImageNet start<span class="swatch key"></span>ultrasound start</span>
+                </div>
+                <div class="row">
+                    <span class="label">ResNet34</span>
+                    <div class="track" style="--a:70.88%; --b:92.73%">
+                        <span class="seg"></span>
+                        <span class="dot" style="--x:70.88%"></span><span class="val lo" style="--x:70.88%">70.9</span>
+                        <span class="dot key" style="--x:92.73%"></span><span class="val hi" style="--x:92.73%">92.7</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="label">ResNet18</span>
+                    <div class="track" style="--a:54.49%; --b:91.45%">
+                        <span class="seg"></span>
+                        <span class="dot" style="--x:54.49%"></span><span class="val lo" style="--x:54.49%">54.5</span>
+                        <span class="dot key" style="--x:91.45%"></span><span class="val hi" style="--x:91.45%">91.5</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="label">MobileNetV2</span>
+                    <div class="track" style="--a:56.40%; --b:75.49%">
+                        <span class="seg"></span>
+                        <span class="dot" style="--x:56.40%"></span><span class="val lo" style="--x:56.40%">56.4</span>
+                        <span class="dot key" style="--x:75.49%"></span><span class="val hi" style="--x:75.49%">75.5</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="label">EfficientNet-B0</span>
+                    <div class="track" style="--a:10.88%; --b:76.01%">
+                        <span class="seg"></span>
+                        <span class="dot" style="--x:10.88%"></span><span class="val lo" style="--x:10.88%">10.9</span>
+                        <span class="dot key" style="--x:76.01%"></span><span class="val hi" style="--x:76.01%">76.0</span>
+                    </div>
+                </div>
+                <div class="axis" aria-hidden="true">
+                    <span style="--x:0%">0</span><span style="--x:25%">25</span><span style="--x:50%">50</span><span style="--x:75%">75</span><span style="--x:100%">100</span>
+                </div>
+                <figcaption>Mean test Dice over the five fold models. Every model scored between 95.4 and 96 before quantization.</figcaption>
+            </figure>
+
+            <figure class="fig" aria-labelledby="t1-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="t1-title">Test Dice at each precision</span>
+                    <span class="fig-note">mean over five fold models, 97 held-out images</span>
+                </div>
+                <table class="tbl">
+                    <thead>
+                        <tr><th>Encoder</th><th class="l">Start</th><th>32&#8209;bit</th><th>8&#8209;bit</th><th>4&#8209;bit</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>ResNet34</td><td class="l">ImageNet</td><td>95.57</td><td>95.48</td><td>70.88</td></tr>
+                        <tr><td></td><td class="l">Ultrasound</td><td>95.78</td><td>95.77</td><td>92.73</td></tr>
+                        <tr><td>ResNet18</td><td class="l">ImageNet</td><td>95.48</td><td>95.46</td><td>54.49</td></tr>
+                        <tr><td></td><td class="l">Ultrasound</td><td>95.82</td><td>95.80</td><td>91.45</td></tr>
+                        <tr><td>MobileNetV2</td><td class="l">ImageNet</td><td>95.45</td><td>95.14</td><td>56.40</td></tr>
+                        <tr><td></td><td class="l">Ultrasound</td><td>95.99</td><td>95.84</td><td>75.49</td></tr>
+                        <tr><td>EfficientNet-B0</td><td class="l">ImageNet</td><td>95.51</td><td>95.30</td><td>10.88</td></tr>
+                        <tr><td></td><td class="l">Ultrasound</td><td>95.62</td><td>95.37</td><td>76.01</td></tr>
+                    </tbody>
+                </table>
+                <figcaption>From Tables 1 and 2 of the paper. Ultrasound start means supervised segmentation pretraining on the US30K subset.</figcaption>
+            </figure>
+
+            <p>Models that started from ImageNet fell apart, EfficientNet-B0 down to 11 percent. Models that started from ultrasound kept 75 to 93 percent. Pretraining on the right kind of image left full-precision accuracy where it was and made the models far more robust to compression, which is the property a bedside device needs.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="busi">
+            <h2 id="busi">Breast ultrasound, scored on unseen images</h2>
+            <p>On the public BUSI breast ultrasound dataset I trained an attention U-Net and scored it on 156 test images that played no part in training or in choosing the checkpoint. Splitting the score by class shows where the error comes from.</p>
+
+            <figure class="fig bars" aria-labelledby="f3-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="f3-title">Test Dice by class</span>
+                    <span class="fig-note">attention U-Net, 156 held-out images</span>
+                </div>
+                <div class="row"><span class="label">Benign<small>86</small></span><div class="plot"><span class="bar" style="--w:71.8%"></span><span class="value">0.72</span></div></div>
+                <div class="row"><span class="label">Malignant<small>37</small></span><div class="plot"><span class="bar" style="--w:62.0%"></span><span class="value">0.62</span></div></div>
+                <div class="row"><span class="label">Normal<small>33</small></span><div class="plot"><span class="bar key" style="--w:42.4%"></span><span class="value">0.42</span></div></div>
+                <div class="row"><span class="label">All<small>156</small></span><div class="plot"><span class="bar" style="--w:63.2%"></span><span class="value">0.63</span></div></div>
+                <figcaption>A normal scan has no lesion, so it scores 1 only when the model draws nothing.</figcaption>
+            </figure>
+
+            <p>Normal scans contain no lesion, and the model drew one anyway on more than half of them. Those false alarms account for a third of the Dice the model loses while making up a fifth of the test set, so the cheapest next gain is a better call on whether a lesion is there at all.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="next">
+            <h2 id="next">Next</h2>
+            <p>Next is running the 4-bit models on the target hardware, where so far the compression is simulated, and checking predicted volumes against catheter measurements.</p>
+        </section>
+
+        <nav class="art-links" aria-label="Sources">
+            <a href="https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf" target="_blank" rel="noopener">Paper</a>
+            <a href="https://github.com/HenryVu27/ThorMed" target="_blank" rel="noopener">Bladder code</a>
+            <a href="https://github.com/HenryVu27/Polyps-Segmentation" target="_blank" rel="noopener">Breast ultrasound code</a>
+            <a href="https://github.com/HenryVu27/SAMUS---US-Masks-Generator" target="_blank" rel="noopener">Label pipeline</a>
+        </nav>
+    </main>
+
+    <footer class="colophon">
+        <p class="social">
+            <a href="../">henryvu.io</a>
+            <a href="https://github.com/HenryVu27" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" rel="noopener">LinkedIn</a>
+        </p>
+    </footer>
+</body>
+</html>

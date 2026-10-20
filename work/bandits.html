@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandits and Online Algorithms, Henry Vu</title>
+    <meta name="description" content="Henry Vu's undergraduate research at the University of Alberta, Amii and SODALab on multi-armed bandits in five settings and online algorithms that use machine-learned predictions.">
+    <meta name="author" content="Henry Vu">
+    <link rel="canonical" href="https://henryvu.io/work/bandits.html">
+    <meta property="og:title" content="Bandits and Online Algorithms">
+    <meta property="og:description" content="Multi-armed bandits in five settings, and online algorithms that use machine-learned predictions.">
+    <meta property="og:image" content="https://henryvu.io/assets/og-image.png">
+    <meta property="og:url" content="https://henryvu.io/work/bandits.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#f3eee3">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="512x512" href="../assets/favicon.png">
+    <link rel="preload" href="../assets/fonts/ebgaramond-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../styles.css?v=14">
+    <link rel="stylesheet" href="../work.css?v=3">
+</head>
+<body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="rh">
+        <nav class="rh-nav" aria-label="Site">
+            <a href="../">Henry Vu</a>
+            <a href="../#work">Work</a>
+            <a href="../#projects">Projects</a>
+        </nav>
+    </header>
+
+    <main class="art" id="main">
+        <header class="art-head">
+            <p class="kicker">University of Alberta, Amii and SODALab &middot; 2022 to 2024</p>
+            <h1>Bandits and Online Algorithms</h1>
+            <p class="dek">How to act when every choice both pays and teaches, and how a prediction about the future helps when it is right without hurting much when it is wrong.</p>
+        </header>
+
+        <dl class="facts">
+            <dt>Role</dt><dd>Undergraduate researcher</dd>
+            <dt>With</dt><dd>Dr. Xiaoqi Tan at SODALab</dd>
+            <dt>Code</dt><dd>Python and NumPy, rebuilt in 2026 from the research notes, with 126 tests</dd>
+        </dl>
+
+        <section class="sec essay" aria-labelledby="question">
+            <h2 id="question">The question</h2>
+            <p>A bandit algorithm picks one of several options each round and sees the reward of only the one it picked. It has to balance trying options it knows little about against using the best one so far, and regret measures how much that balance costs against the best choice in hindsight. Online algorithms face the same pressure from another side. They decide before the input arrives, and a machine-learned prediction of what is coming can help, if the algorithm trusts it the right amount.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="studied">
+            <h2 id="studied">What I studied</h2>
+            <p>Over two years I worked through bandits in five settings, from random rewards to an adversary that chooses them, and online algorithms that use predictions. I presented each topic as a seminar deck and wrote the derivations up in a report. The original code was lost with an old computer, so I rebuilt it from those notes, and every algorithm is now tested against the guarantee it should meet.</p>
+
+            <figure class="fig" aria-labelledby="t1-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="t1-title">Settings and algorithms</span>
+                </div>
+                <table class="tbl">
+                    <thead><tr><th class="l">Setting</th><th class="l">Algorithms</th></tr></thead>
+                    <tbody>
+                        <tr><td class="l">Stochastic</td><td class="l">Explore-then-commit, UCB1, ε-greedy</td></tr>
+                        <tr><td class="l">Bayesian</td><td class="l">Thompson sampling, the Gittins index</td></tr>
+                        <tr><td class="l">Adversarial</td><td class="l">Hedge, Exp3, Exp3-IX</td></tr>
+                        <tr><td class="l">Contextual</td><td class="l">Exp4, LinUCB</td></tr>
+                        <tr><td class="l">Restless</td><td class="l">The Whittle index</td></tr>
+                        <tr><td class="l">Online, with predictions</td><td class="l">Conversion, ski rental, knapsack, matching</td></tr>
+                    </tbody>
+                </table>
+            </figure>
+        </section>
+
+        <section class="sec essay" aria-labelledby="random">
+            <h2 id="random">Random rewards</h2>
+            <p>When rewards are random draws, optimism works. UCB1 plays the arm whose average plus a confidence bonus is highest, so an arm keeps getting tried until the data rules it out. Explore-then-commit pays its whole exploration cost up front, and ε-greedy keeps exploring forever, so its regret never stops growing.</p>
+
+            <figure class="fig bars" aria-labelledby="f1-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="f1-title">Regret after 10,000 rounds</span>
+                    <span class="fig-note">five Gaussian arms, mean of 200 runs</span>
+                </div>
+                <div class="row"><span class="label">UCB1</span><div class="plot"><span class="bar key" style="--w:41.5%"></span><span class="value">208</span></div></div>
+                <div class="row"><span class="label">Explore-then-commit</span><div class="plot"><span class="bar" style="--w:87.2%"></span><span class="value">436</span></div></div>
+                <div class="row"><span class="label">ε-greedy</span><div class="plot"><span class="bar" style="--w:96.0%"></span><span class="value">480</span></div></div>
+                <figcaption>Lower is better. Explore-then-commit spends 400 of its 436 on exploration.</figcaption>
+            </figure>
+
+            <p>With a prior over the arms, Thompson sampling did better still, ending at regret 8 where UCB1 reached 76 on three Bernoulli arms. For discounted rewards the Gittins index is the optimal rule. I computed it with the report&rsquo;s dynamic program, and it matches a published table in all 64 cells.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="adversary">
+            <h2 id="adversary">An adversary</h2>
+            <p>Optimism breaks when the rewards are chosen against you. An adversary that pays only the arm the learner is least likely to pull can hold a deterministic rule like UCB1 at zero reward forever. Exp3 randomizes its choice and estimates every arm&rsquo;s reward from the one it sees, which keeps its regret under a bound that holds against any sequence.</p>
+
+            <figure class="fig bars" aria-labelledby="f2-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="f2-title">Regret against an adaptive adversary</span>
+                    <span class="fig-note">10,000 rounds, five arms</span>
+                </div>
+                <div class="row"><span class="label">UCB1</span><div class="plot"><span class="bar key" style="--w:100%"></span><span class="value">8,000</span></div></div>
+                <div class="row"><span class="label">Exp3-IX</span><div class="plot"><span class="bar" style="--w:4.5%"></span><span class="value">357</span></div></div>
+                <div class="row"><span class="label">Exp3</span><div class="plot"><span class="bar" style="--w:4.4%"></span><span class="value">351</span></div></div>
+                <figcaption>Exp3&rsquo;s bound here is 401. UCB1&rsquo;s regret grows in a straight line.</figcaption>
+            </figure>
+
+            <p>Exp3&rsquo;s guarantee holds on average, and individual runs can still go badly. On a table whose best arm switches, 8.8 percent of Exp3 runs ended above the bound. Exp3-IX adds implicit exploration, which caps what one unlucky round can cost an arm, and none of its runs crossed it.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="context">
+            <h2 id="context">Context and restless arms</h2>
+            <p>When each round comes with a context, such as a user&rsquo;s features, the right arm depends on it. Scored offline on logged news recommendations with every parameter fixed in advance, LinUCB, which fits a model of clicks per article, earned twice the click rate of the best single article.</p>
+
+            <figure class="fig bars" aria-labelledby="f3-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="f3-title">Click rate on logged news data</span>
+                    <span class="fig-note">replay evaluation, 20 orderings</span>
+                </div>
+                <div class="row"><span class="label">LinUCB</span><div class="plot"><span class="bar key" style="--w:53.3%"></span><span class="value">0.533</span></div></div>
+                <div class="row"><span class="label">Best single article</span><div class="plot"><span class="bar" style="--w:26.8%"></span><span class="value">0.268</span></div></div>
+                <div class="row"><span class="label">ε-greedy</span><div class="plot"><span class="bar" style="--w:21.4%"></span><span class="value">0.214</span></div></div>
+                <div class="row"><span class="label">UCB</span><div class="plot"><span class="bar" style="--w:16.2%"></span><span class="value">0.162</span></div></div>
+                <div class="row"><span class="label">Random</span><div class="plot"><span class="bar" style="--w:10.4%"></span><span class="value">0.104</span></div></div>
+            </figure>
+
+            <p>Restless arms change state whether they are pulled or not, like machines that wear out when worked and recover when rested. Exact planning there is intractable, and the Whittle index splits the problem into one arm at a time. On ten such arms it reached 98 to 99 percent of the best achievable reward when most arms could be worked each round, against 86 to 90 percent for a myopic rule.</p>
+        </section>
+
+        <section class="sec essay" aria-labelledby="online">
+            <h2 id="online">Online algorithms with predictions</h2>
+            <p>A prediction is worth using only if a wrong one cannot do much damage. The learning-augmented algorithms I studied take a trust parameter that trades how well they do with a perfect prediction, their consistency, against their worst case under any prediction, their robustness. In every case below the measured ratio met the proven bound exactly.</p>
+
+            <figure class="fig" aria-labelledby="t2-title">
+                <div class="fig-head">
+                    <span class="fig-title" id="t2-title">Measured ratios against the optimum</span>
+                    <span class="fig-note">trust parameter 0.5 where it applies</span>
+                </div>
+                <table class="tbl">
+                    <thead><tr><th class="l">Problem</th><th>Perfect prediction</th><th>Any prediction</th><th>Without predictions</th></tr></thead>
+                    <tbody>
+                        <tr><td class="l">One-way trading</td><td>1.03</td><td>3.36</td><td>1.72</td></tr>
+                        <tr><td class="l">Ski rental</td><td>1.28</td><td>2.55</td><td>1.59</td></tr>
+                    </tbody>
+                </table>
+                <figcaption>Each ratio compares the algorithm with the offline optimum, so 1 is perfect and higher is worse. One-way trading uses Sun et al. (2021) with a price range ratio of 5; ski rental uses the primal-dual method of Bamas et al. (2020).</figcaption>
+            </figure>
+
+            <p>The classical primal-dual algorithms reach their guarantees too. The knapsack threshold rule meets its bound of 1 + ln&nbsp;&theta; where greedy can be a thousand times worse than the optimum, and water-filling matching reaches 1&nbsp;&minus;&nbsp;1/<i>e</i> on the hard instance where greedy falls to one half.</p>
+        </section>
+
+        <nav class="art-links" aria-label="Sources">
+            <a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning" target="_blank" rel="noopener">Code</a>
+            <a href="https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning/blob/main/Final%20Report.pdf" target="_blank" rel="noopener">Report</a>
+            <a href="https://www.henryvu.blog/series/bandits/part1.html" target="_blank" rel="noopener">Blog post</a>
+        </nav>
+    </main>
+
+    <footer class="colophon">
+        <p class="social">
+            <a href="../">henryvu.io</a>
+            <a href="https://github.com/HenryVu27" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/henry-vu27/" target="_blank" rel="noopener">LinkedIn</a>
+        </p>
+    </footer>
+</body>
+</html>

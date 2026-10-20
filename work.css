@@ -1,0 +1,102 @@
+/* Work pages: one essay per body of work. Builds on styles.css; the figure kit follows henryvu.blog. */
+
+:root {
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --wide: 860px;
+  --mark: #ddd5c6; --mark-strong: #b9ae9b; --mark-accent: #b84a32;
+}
+
+/* ---------- Head of the essay ---------- */
+.art { max-width: var(--col); margin: 0 auto; padding: 0 var(--pad); }
+.art-head { padding: 88px 0 0; text-align: center; }
+.kicker { color: var(--muted); font-variant-caps: small-caps; letter-spacing: .08em; font-size: 18px; }
+.art-head h1 { font-size: clamp(31px, 4.4vw, 42px); line-height: 1.15; margin-top: 12px; }
+.dek { font-style: italic; color: var(--text-2); margin: 18px auto 0; max-width: 32em; }
+
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 4px 24px; margin: 40px 0 0; padding: 14px 0;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-size: 18px; line-height: 1.45; }
+.facts dt { font-variant-caps: small-caps; letter-spacing: .08em; color: var(--muted); }
+.facts dd { margin: 0; }
+
+/* ---------- Body ---------- */
+.art .sec { padding-top: 48px; }
+.art .sec h2 { font-size: 18px; letter-spacing: .2em; margin-bottom: 22px; }
+.essay p { text-align: justify; hyphens: auto; hyphenate-limit-chars: 7 3 3; }
+.essay p + p { text-indent: 1.5em; }
+.essay .fig + p { text-indent: 0; }
+
+/* ---------- Figures: system sans, pale marks, one accent ---------- */
+.fig { margin: 34px 0; font-family: var(--sans); font-size: 14px; line-height: 1.45; color: var(--text-2);
+  font-variant-numeric: lining-nums tabular-nums; }
+.fig.wide { width: min(var(--wide), calc(100vw - 2 * var(--pad))); position: relative; left: 50%; transform: translateX(-50%); }
+.fig-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; margin: 0 0 16px; }
+.fig-title { font-size: 15px; font-weight: 600; color: var(--ink); }
+.fig-note { font-size: 13px; color: var(--muted); }
+.fig figcaption { margin-top: 16px; font-size: 13.5px; color: var(--muted); }
+.swatch { display: inline-block; width: 9px; height: 9px; margin: 0 6px 0 0; border-radius: 50%; background: var(--mark-strong); }
+.swatch.key { background: var(--mark-accent); }
+.fig-note .swatch + .swatch { margin-left: 14px; }
+
+/* Dumbbell rows: two values per row on one shared 0 to 100 scale */
+.dumb .row { display: grid; grid-template-columns: 128px 1fr; align-items: center; column-gap: 16px; padding: 6px 0; }
+.dumb .label { color: var(--ink); }
+.dumb .track { position: relative; height: 24px; margin: 0 34px; }
+.dumb .track::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px dotted var(--mark); }
+.dumb .seg { position: absolute; top: calc(50% - 1px); height: 2px; left: var(--a); width: calc(var(--b) - var(--a)); background: var(--mark-strong); }
+.dumb .dot { position: absolute; top: 50%; left: var(--x); width: 11px; height: 11px; border-radius: 50%; transform: translate(-50%, -50%); background: var(--mark-strong); }
+.dumb .dot.key { background: var(--mark-accent); }
+.dumb .val { position: absolute; top: 50%; transform: translateY(-50%); font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+.dumb .val.lo { right: calc(100% - var(--x) + 11px); }
+.dumb .val.hi { left: calc(var(--x) + 11px); }
+.dumb .axis { position: relative; height: 18px; margin: 4px 34px 0 calc(128px + 16px + 34px); border-top: 1px solid var(--rule); }
+.dumb .axis span { position: absolute; top: 3px; left: var(--x); transform: translateX(-50%); font-size: 12px; color: var(--muted); }
+
+/* Bar rows: label, bar, value at the tip */
+.bars .row { display: grid; grid-template-columns: 150px 1fr; align-items: center; column-gap: 16px; padding: 5px 0; }
+.bars .label { color: var(--ink); }
+.bars .label small { font-size: 12.5px; color: var(--muted); margin-left: 6px; }
+.bars .plot { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.bars .bar { flex: none; width: calc(var(--w) * .82); min-width: 6px; height: 12px; background: var(--mark-strong); border-radius: 0 3px 3px 0; }
+.bars .bar.key { background: var(--mark-accent); }
+.bars .value { flex: none; font-size: 13px; color: var(--muted); }
+
+/* Flow diagram: hairline nodes, thin arrows */
+.flow { display: flex; align-items: stretch; justify-content: center; }
+.flow-node { flex: 1 1 0; min-width: 0; padding: 9px 10px; text-align: center; border: 1px solid var(--mark-strong); border-radius: 3px; }
+.flow-node b { display: block; font-size: 13.5px; font-weight: 600; color: var(--ink); }
+.flow-node span { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+.flow-node.key { border-color: var(--mark-accent); box-shadow: inset 0 0 0 1px var(--mark-accent); }
+.flow-arrow { flex: 0 0 22px; align-self: center; height: 1px; background: var(--mark-strong); position: relative; margin: 0 5px; }
+.flow-arrow::after { content: ""; position: absolute; right: -1px; top: -3px; border: 3.5px solid transparent; border-left: 6px solid var(--mark-strong); border-right: 0; }
+
+/* Booktabs table */
+.tbl { width: 100%; border-collapse: collapse; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.tbl th, .tbl td { padding: 6px 10px; text-align: right; }
+.tbl th:first-child, .tbl td:first-child { text-align: left; padding-left: 0; }
+.tbl th:last-child, .tbl td:last-child { padding-right: 0; }
+.tbl thead th { font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--rule); }
+.tbl td { color: var(--text-2); }
+.tbl td { white-space: nowrap; }
+.tbl .l { text-align: left; white-space: normal; }
+
+/* ---------- Links at the end ---------- */
+.art-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 28px; margin-top: 44px; padding-top: 18px;
+  border-top: 1px solid var(--rule); font-variant-caps: small-caps; letter-spacing: .08em; font-size: 18px; }
+.art-links a { text-decoration: none; color: var(--text-2); }
+.art-links a:hover { color: var(--ink); text-decoration: underline; }
+
+/* ---------- Narrow screens ---------- */
+@media (max-width: 640px) {
+  .art-head { padding-top: 56px; }
+  .essay p { text-align: left; }
+  .facts { grid-template-columns: 1fr; gap: 0; }
+  .facts dd { margin-bottom: 8px; }
+  .dumb .row { grid-template-columns: 1fr; row-gap: 2px; }
+  .dumb .axis { margin-left: 34px; }
+  .bars .row { grid-template-columns: 1fr; row-gap: 2px; }
+  .tbl { font-size: 13px; }
+  .tbl th, .tbl td { padding: 6px 5px; }
+  .flow { flex-direction: column; }
+  .flow-arrow { flex: 0 0 16px; width: 1px; height: 16px; margin: 4px auto; }
+  .flow-arrow::after { right: -3px; top: auto; bottom: -1px; border: 3.5px solid transparent; border-top: 6px solid var(--mark-strong); border-bottom: 0; }
+}
