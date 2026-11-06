@@ -84,19 +84,19 @@ at henryvu.blog.
   cites the exact article and clause, an amendment graph pulls in the decrees that later changed a
   clause, and a citation verifier checks each cited article against what was actually retrieved,
   with no extra model call. Python, Gemini, Qdrant, Langfuse, Cloud Run.
-  https://github.com/HenryVu27/DatDai
+  https://github.com/HenryVu27/datdai
 - ADHD Coaching Agent. A coaching chatbot for parents of children with ADHD: a LangGraph ReAct agent
   between two guardrail gates, hybrid retrieval with a local cross-encoder reranker, four-tier
   memory, and an evaluation package with LLM judges and pairwise comparisons. Python, LangGraph,
-  Qdrant, ONNX. https://github.com/HenryVu27/ADHDAgent
+  Qdrant, ONNX. https://github.com/HenryVu27/compass
 - GardenXR. A mixed-reality gardening app for Meta Quest, published on the Meta Horizon Store after
   passing review for restricted camera access. Unity, C#.
   https://www.meta.com/experiences/gardenxr/24200709416226235/
 - Ultrasound Bladder Segmentation. NIH-funded work with UT Dallas Bioengineering: domain-aligned
   pretraining on 9,204 thyroid and breast ultrasound images, then 4-bit quantization for portable
   devices, with a paper on making the models small and robust. PyTorch, SimSiam, U-Net.
-  https://github.com/HenryVu27/ThorMed and
-  https://github.com/HenryVu27/ThorMed/blob/main/Thormed_ISBI_New.pdf
+  https://github.com/HenryVu27/thormed and
+  https://github.com/HenryVu27/thormed/blob/main/Thormed_ISBI_New.pdf
 - ML Interview Practice. LeetCode-style practice for ML coding interviews that runs entirely in the
   browser: real CPython with numpy through Pyodide, no backend, no build step. JavaScript, Pyodide,
   CodeMirror.
@@ -104,25 +104,25 @@ at henryvu.blog.
 - Agentic Framework for Suspect Detection. Multi-agent LangGraph pipeline that reads patient
   medical records to flag gaps such as medications without a documented diagnosis or abnormal labs
   that suggest an undiagnosed condition. Python, LangGraph, Gemini, FAISS.
-  https://github.com/HenryVu27/Suspect-Detection
+  https://github.com/HenryVu27/suspect
 - StitchKit. Turns a client's logo into a machine-ready embroidery stitch file for a one-person
   shop whose only computer is an older iPhone: phone-first, entirely in Vietnamese, with preflight
   checks because a bad file perforates leather for good. Python, FastAPI, Ink/Stitch, Swift.
 - VoiceBridge. Real-time Vietnamese-to-Russian speech translation over push-to-talk, a two-day
   proof of concept for a director who needed to talk across a language barrier. FastAPI, Deepgram,
-  DeepL. https://github.com/HenryVu27/voice-agent
+  DeepL. https://github.com/HenryVu27/voicebridge
 - EEG Decoding: a Multi-Modal Approach. EEG signal classification that fuses convolutional features
   and self-attention with language-model embeddings, with a paper.
-  https://github.com/HenryVu27/EEG-Multimodal-Decoding
+  https://github.com/HenryVu27/zuco
 - Modeling Political Sarcasm. Detection models using feature engineering and a fine-tuned
   DistilRoBERTa to identify subtle political sarcasm in online text.
-  https://github.com/HenryVu27/PoliticalSarcasm
+  https://github.com/HenryVu27/sarcasm
 - Multi-armed Bandits and Online Learning. Survey, simulations, and seminar slides from the Amii and
-  SODALab work. https://github.com/HenryVu27/Multi-armed-Bandits-and-Online-Learning
+  SODALab work. https://github.com/HenryVu27/bandits
 - Polyps and Breast Ultrasound Segmentation. Attention U-Net for medical image segmentation on
-  polyps and breast ultrasound datasets. https://github.com/HenryVu27/Polyps-Segmentation
+  polyps and breast ultrasound datasets. https://github.com/HenryVu27/polyps
 - A Survey of Geometric Set Cover. Approximation algorithms and PTAS approaches for the geometric
-  set cover problem. https://github.com/HenryVu27/Geometric-Set-Cover
+  set cover problem. https://github.com/HenryVu27/setcover
 
 ### Earlier work
 
