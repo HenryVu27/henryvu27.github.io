@@ -8,8 +8,8 @@
 /* ---------- Head ---------- */
 .art { padding-bottom: 96px; }
 .art-head { padding-top: 48px; }
-.kicker { color: var(--gray); }
-.art-head h1 { margin-top: 0; }
+.kicker { color: var(--gray); margin-top: 4px; }
+.art-head h1 { font-size: 24px; font-weight: 400; line-height: 1.25; }
 .art-head .kicker { order: 2; }
 .art-head { display: flex; flex-direction: column; }
 .dek { color: var(--gray); margin-top: 16px; }
@@ -24,7 +24,7 @@
 .essay p + p { margin-top: 1em; }
 
 /* ---------- Figures ---------- */
-.fig { margin: 32px 0; font-size: 14px; line-height: 1.45; color: var(--gray); font-variant-numeric: tabular-nums; }
+.fig { margin: 32px 0; font-family: var(--sans); font-size: 14px; line-height: 1.45; color: var(--gray); font-variant-numeric: tabular-nums; }
 .fig.wide { width: min(var(--wide), calc(100vw - 2 * var(--pad))); position: relative; left: 50%; transform: translateX(-50%); }
 .fig-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; margin: 0 0 12px; }
 .fig-title { font-weight: 500; color: var(--ink); }
