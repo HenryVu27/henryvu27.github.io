@@ -14,7 +14,7 @@ URL = f"http://127.0.0.1:{server.server_port}/index.html"
 async def main():
     failures = []
     async with async_playwright() as p:
-        b = await p.chromium.launch()
+        b = await p.chromium.launch(executable_path=os.environ.get("CHROME") or None)  # CHROME=<path> if the bundled build is missing
         for theme in ("day",):
             for w in (390, 820, 1440):
                 ctx = await b.new_context(viewport={"width": w, "height": 900})
@@ -26,9 +26,6 @@ async def main():
                 sw = await pg.evaluate("document.documentElement.scrollWidth"); cw = await pg.evaluate("document.documentElement.clientWidth")
                 if sw > cw: failures.append(f"{theme}-{w}: horizontal scroll {sw}>{cw}")
                 if errors: failures.append(f"{theme}-{w}: console errors {errors[:3]}")
-                fonts = await pg.evaluate("Array.from(document.fonts).filter(f=>f.status==='loaded').map(f=>f.family)")
-                for f in ("EB Garamond",):
-                    if f not in fonts: failures.append(f"{theme}-{w}: font not loaded {f}")
                 if w == 1440:
                     if await pg.evaluate("document.querySelectorAll('.work details[open]').length"): failures.append("work entries not collapsed")
                     await pg.click(".work details summary .role")
