@@ -1,19 +1,6 @@
-// henryvu.io: anchors, contact form, earlier-work disclosure. No scroll effects.
+// henryvu.io: contact form and earlier-work disclosure.
 (function () {
   'use strict';
-
-  // ---- Same-page anchors (smooth unless reduced motion) ----
-  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      var id = a.getAttribute('href').slice(1);
-      var el = id ? document.getElementById(id) : null;
-      if (!el) return;
-      e.preventDefault();
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-      history.replaceState(null, '', '#' + id);
-    });
-  });
 
   // ---- Earlier work disclosure ----
   var earlierBtn = document.getElementById('earlier-toggle');
